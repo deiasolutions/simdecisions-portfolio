@@ -1,0 +1,64 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MW-018-queue-pane-display
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-0958
+# Task file: QUEUE-TEMP-SPEC-MW-018-queue-pane-display.md
+# Success: True
+# Duration: 461.3s
+# Files modified: 17 (verified)
+# Cost (USD): $8.891217
+# Turns: 43
+# API duration (ms): 404191
+# Session ID: 4371aef8-d7db-43c2-b906-dd716c6e5625
+# Boot injected: True
+
+---
+
+Excellent! Now let me do a final summary of what was accomplished. The task is complete. Let me create a concise summary:
+
+## Summary
+
+I've successfully completed SPEC-MW-018 (Queue-Pane State Display). Here's what was built:
+
+### ✅ Core Deliverables
+
+**New Component: QueueTaskCard**
+- Status indicators with color-coded icons (blue/green/red/yellow)
+- Formatted metadata: cost ($0.042), tokens (5.2K), duration (2h 30m)
+- Progress bars: percentage for active tasks, indeterminate for new tasks
+- Expandable details showing logs and error messages
+- Responsive layout: card-based on mobile, optimized for desktop
+
+**Integration**
+- Updated QueuePane to use QueueTaskCard for Active, Completed, and Failed sections
+- Added viewport resize detection for responsive layout switching
+- Maintained backward compatibility with existing modal interactions
+
+**Testing**
+- 15 unit tests covering rendering, formatting, interactions
+- 4 smoke tests for edge cases
+- 2 existing E2E tests verify integration
+
+### ✅ Compliance
+
+- **TDD**: Tests written first ✓
+- **CSS Variables only**: No hardcoded colors (Rule 3) ✓
+- **File sizes**: QueueTaskCard 225 lines, tests 145 lines ✓
+- **Accessibility**: ARIA labels, keyboard navigation ✓
+- **Build**: Compiles successfully ✓
+
+### 📁 Files Created/Modified
+
+- `QueueTaskCard.tsx` (NEW - 225 lines)
+- `queue-task-card.css` (NEW - 242 lines)
+- `QueuePane.tsx` (MODIFIED - integrated QueueTaskCard)
+- `types.ts` (MODIFIED - updated to match backend)
+- `__tests__/QueueTaskCard.test.tsx` (NEW - 145 lines)
+- `__tests__/QueueTaskCard.smoke.test.tsx` (NEW - 63 lines)
+
+### 📊 Response File
+
+Created at: `.deia/hive/responses/20260406-QUEUE-TEMP-SPEC-MW-018-queue-pane-display-RESPONSE.md`
+
+**Status: COMPLETE** — All acceptance criteria met, tests passing, build successful.

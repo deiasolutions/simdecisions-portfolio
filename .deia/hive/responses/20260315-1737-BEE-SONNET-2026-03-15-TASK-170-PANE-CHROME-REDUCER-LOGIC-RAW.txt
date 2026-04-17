@@ -1,0 +1,54 @@
+# BEE RESPONSE: 2026-03-15-TASK-170-pane-chrome-reducer-logic
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260315-1737
+# Task file: 2026-03-15-TASK-170-pane-chrome-reducer-logic.md
+# Success: True
+# Duration: 366.1s
+# Files modified: 9 (verified)
+# Cost (USD): $0
+# Turns: 21
+# API duration (ms): 221383
+# Session ID: 9056b598-8f02-45a0-8568-50ad4f5606ba
+# Boot injected: True
+
+---
+
+## TASK-170 Complete ✅
+
+I've successfully implemented the pin and collapse reducer logic with full test coverage. Here's what was delivered:
+
+### Implementation Summary
+
+**Files Modified:**
+- `browser/src/shell/reducer.ts` — Added TOGGLE_PIN and TOGGLE_COLLAPSE reducer cases
+- `browser/src/shell/utils.ts` — Added `findParentSplit()` and `getSibling()` helper functions
+- `browser/src/shell/types.ts` — Confirmed action types (already present)
+- `browser/src/shell/__tests__/pin-collapse.test.ts` — **18 comprehensive tests (NEW)**
+
+### Key Features Implemented
+
+**Pin Logic (TOGGLE_PIN):**
+- Works only in binary splits (2 children)
+- Toggles `node.meta.isPinned` boolean
+- When pinning: automatically collapses sibling pane
+- When unpinning: restores sibling to normal state
+- No-op for invalid contexts (root pane, tabbed, triple-split)
+
+**Collapse Logic (TOGGLE_COLLAPSE):**
+- Toggles `node.meta.isCollapsed` boolean
+- Blocks manual collapse on pinned siblings (controlled by pin)
+- Allows collapsing the pinned pane itself
+- Works independently when not in pinned context
+
+### Test Results
+```
+✅ 18 new pin-collapse tests — ALL PASSING
+✅ 373 total shell tests — ALL PASSING
+✅ 0 failures, 0 regressions
+```
+
+**Response file written to:** `.deia/hive/responses/20260315-TASK-170-RESPONSE.md`
+
+Ready for TASK-171 (collapsed pane strip UI) and TASK-172 (E2E tests).

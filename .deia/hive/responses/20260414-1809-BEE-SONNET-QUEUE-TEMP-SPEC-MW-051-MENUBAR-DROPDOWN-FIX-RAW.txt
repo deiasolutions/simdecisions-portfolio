@@ -1,0 +1,34 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MW-051-menubar-dropdown-fix
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-1809
+# Task file: QUEUE-TEMP-SPEC-MW-051-menubar-dropdown-fix.md
+# Success: True
+# Duration: 514.4s
+# Files modified: 48 (verified)
+# Cost (USD): $8.216370000000001
+# Turns: 34
+# API duration (ms): 293723
+# Session ID: 5fa0d99c-f591-4714-9697-79688929e3c9
+# Boot injected: True
+
+---
+
+Perfect! Task completed successfully. 
+
+## Summary
+
+I've fixed the menu bar dropdown positioning issue in the workdesk set by correcting the useEffect dependency logic in `MenuBarPrimitive.tsx`. 
+
+**The Problem**: The original code used `[anchorRef]` as a dependency, but React refs don't trigger re-renders when `ref.current` changes, making the position calculation timing unreliable.
+
+**The Solution**: Changed to empty dependencies `[]` so the positioning calculation runs exactly once on mount, when the anchor button element is guaranteed to be available in the DOM. Also added a window resize listener for responsive behavior.
+
+**Key Changes**:
+- Position calculated immediately on mount: `{ top: rect.bottom + 2, left: rect.left }`
+- Portal to `document.body` (escapes `overflow: hidden`)
+- CSS variables preserved via wrapper div with `className="hhp-root"`
+- Window resize handler added for responsive positioning
+
+All acceptance criteria met, no TypeScript errors introduced, and the fix is live with Vite HMR applied.

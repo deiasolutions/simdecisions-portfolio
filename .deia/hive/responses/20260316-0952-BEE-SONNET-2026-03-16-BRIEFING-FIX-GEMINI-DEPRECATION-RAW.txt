@@ -1,0 +1,63 @@
+# BEE RESPONSE: 2026-03-16-BRIEFING-fix-gemini-deprecation
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260316-0952
+# Task file: 2026-03-16-BRIEFING-fix-gemini-deprecation.md
+# Success: True
+# Duration: 140.9s
+# Files modified: 16 (verified)
+# Cost (USD): $0
+# Turns: 15
+# API duration (ms): 138310
+# Session ID: 7b8c03fa-fd55-482b-839a-4132624754cc
+# Boot injected: True
+
+---
+
+Perfect! I have completed my Q33N coordination work. Let me now report to Q33NR (via the user, since this is a live session):
+
+---
+
+## Q33N Report to Q33NR
+
+I have read the briefing and created **one task file** for fixing the Gemini deprecation warning.
+
+### Task File Created
+**TASK-173: Fix Gemini Adapter Deprecation Warning**
+- **Location:** `.deia/hive/tasks/2026-03-16-TASK-173-fix-gemini-deprecation.md`
+- **Model:** Haiku (simple library migration)
+
+### Scope Expansion
+The briefing mentioned updating only `gemini.py`, but I discovered that **two files** use the deprecated package:
+1. `hivenode/adapters/gemini.py` (88 lines) - BaseAdapter implementation
+2. `hivenode/adapters/cli/gemini_adapter.py` (166 lines) - CLI adapter
+
+Both files must be updated to fully eliminate the FutureWarning.
+
+### Key Deliverables
+- Research new `google.genai` API
+- Update imports in both files from `google.generativeai` to `google.genai`
+- Update API calls if the new library has breaking changes
+- Write 5 tests for GeminiAdapter (init, call, call with system, cost estimation)
+- Write 4 tests for GeminiCLIAdapter (init, session, send_task, health check)
+- Verify FutureWarning eliminated
+- Verify all PHASE-IR tests still pass (325/325)
+
+### Test Requirements
+- **TDD approach** (tests first, then implementation)
+- Create test files (none currently exist):
+  - `tests/hivenode/adapters/test_gemini.py`
+  - `tests/hivenode/adapters/cli/test_gemini_adapter.py`
+- Mock all Gemini API calls (no real API calls in tests)
+- Edge cases: API key missing, model init failure, API call failure, empty prompts
+
+### Questions for Review
+1. **Scope:** Is it acceptable that I expanded scope to include `gemini_adapter.py`?
+2. **Test location:** Should CLI adapter tests go in `tests/hivenode/adapters/cli/` or flatten to `tests/hivenode/adapters/`?
+3. **Dependencies:** No `pyproject.toml` found in `hivenode/` — where should the bee look for dependency files?
+
+### Full Coordination Report
+Written to: `.deia/hive/responses/20260316-Q33N-fix-gemini-deprecation-COORDINATION-REPORT.md`
+
+**Awaiting your review and approval to dispatch the bee.**

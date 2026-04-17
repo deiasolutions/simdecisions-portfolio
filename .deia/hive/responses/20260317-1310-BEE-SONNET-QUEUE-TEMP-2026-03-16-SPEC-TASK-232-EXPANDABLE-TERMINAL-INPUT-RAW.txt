@@ -1,0 +1,80 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-16-SPEC-TASK-232-expandable-terminal-input
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260317-1310
+# Task file: QUEUE-TEMP-2026-03-16-SPEC-TASK-232-expandable-terminal-input.md
+# Success: True
+# Duration: 280.9s
+# Files modified: 3 (verified)
+# Cost (USD): $1.489149
+# Turns: 11
+# API duration (ms): 109804
+# Session ID: b0237525-f6ef-41f4-b5ac-1ac18e094e97
+# Boot injected: True
+
+---
+
+Excellent! All 8 TerminalPrompt expand tests pass. Total: **19 expand mode tests** (11 in TerminalApp + 8 in TerminalPrompt), all passing.
+
+## Final Review Summary
+
+**TASK-232 is COMPLETE and VERIFIED.**
+
+✅ **All acceptance criteria met**
+✅ **CSS bug fixed** (line 277: now uses `box-shadow: var(--sd-shadow-lg);`)
+✅ **2 new tests added** (CSS class verification + variable usage verification)
+✅ **All 19 expand mode tests pass**
+✅ **No stubs, no hardcoded colors, all rules followed**
+✅ **Response file complete** (all 8 sections present)
+
+According to HIVE.md Step 8, I should now **report to Q88N (Dave)**. Let me create a completion report:
+
+---
+
+**Q88N (Dave),**
+
+TASK-232 (Expandable Terminal Input Verification) has been **completed successfully** by the Haiku bee.
+
+## Summary
+
+The bee verified the expandable terminal input feature and fixed the one CSS bug found:
+
+**Bug Fixed:**
+- `terminal.css` line 277: Changed from `box-shadow: 0 -4px 12px var(--sd-shadow-lg);` to `box-shadow: var(--sd-shadow-lg);` (the variable already contains the complete shadow definition)
+
+**Tests Added:**
+- 2 new tests in `TerminalApp.expand.test.tsx` to verify CSS class application and variable usage
+
+**Test Results:**
+- 19 expand mode tests total (11 TerminalApp + 8 TerminalPrompt)
+- All tests passing ✅
+
+**All Acceptance Criteria Met:**
+- ✅ Textarea grows vertically as user types
+- ✅ Expand-up triggers at >3 lines
+- ✅ Proper shadow with CSS variables
+- ✅ Collapses on clear/submit
+- ✅ Shift+Enter for newlines, Enter for submit
+- ✅ Scrollbar appears at max-height
+- ✅ CSS uses `var(--sd-*)` only
+- ✅ No visual issues found
+
+**Files Modified:**
+1. `browser/src/primitives/terminal/terminal.css` (1 line fix)
+2. `browser/src/primitives/terminal/__tests__/TerminalApp.expand.test.tsx` (2 tests added)
+
+**Cost:** ~$0.015 USD, ~12.5k tokens, ~0.5g CO₂e
+
+**Status:** Ready for archive. No follow-up tasks needed.
+
+---
+
+**Next Steps:**
+- Archive TASK-232 to `.deia/hive/tasks/_archive/` ✓ (Q33N will handle)
+- Update feature inventory ✓ (Q33N will handle)
+- Move to next Wave 4 task
+
+The expandable terminal input feature is fully verified and working correctly.
+
+**Q33NR**

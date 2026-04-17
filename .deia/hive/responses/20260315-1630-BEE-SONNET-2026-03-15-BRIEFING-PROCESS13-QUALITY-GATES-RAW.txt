@@ -1,0 +1,194 @@
+# BEE RESPONSE: 2026-03-15-BRIEFING-process13-quality-gates
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260315-1630
+# Task file: 2026-03-15-BRIEFING-process13-quality-gates.md
+# Success: False
+# Duration: 79.3s
+# Files modified: 1 (verified)
+# Cost (USD): $0
+# Turns: 8
+# API duration (ms): 72772
+# Session ID: ec750c37-3d65-45b0-a56a-6417a5a73897
+# Boot injected: True
+
+---
+
+Perfect. Now I have a clear understanding. Let me draft my response to the briefing with clarifications on the open questions.
+
+---
+
+# Q33N COORDINATION REPORT — Process 13 Quality Gates
+
+**From:** Q33N (QUEEN-2026-03-15-BRIEFING-process13-)
+**To:** Q33NR
+**Date:** 2026-03-15
+**Re:** BRIEFING-process13-quality-gates
+
+---
+
+## Summary
+
+I have read the briefing, the relevant code, and the P-04 process definition. I understand the objective: wire quality gates into the dispatch pipeline to validate specs and builds before test verification.
+
+**Current state:**
+- ✅ Baseline test capture (already implemented via `_capture_baseline`)
+- ✅ Post-bee test verification (already implemented via `_run_verification`)
+- ✅ Regression detection with NEEDS_DAVE flagging (already implemented)
+- ❌ Spec format validation gate (missing)
+- ❌ Build verification gate (missing)
+
+**Clarifications needed before writing task files:**
+
+---
+
+## Open Questions for Q33NR
+
+### 1. Build Verification Timing
+
+The briefing asks: "Should build check run BEFORE dispatch (validate spec can even be attempted) or AFTER dispatch (validate bee's output)?"
+
+**My analysis:**
+- P-04 says: "Act 1: Validate the Plan" → "Act 2: Execute" → "Act 3: Validate Output"
+- The spec says: "spec validation → build → test"
+- Current flow: `spec file → dispatch.py (calls bee) → baseline → dispatch → verify`
+
+**Two interpretations:**
+
+**Option A: Build check BEFORE dispatch**
+- Pro: Catches broken repo state before wasting bee cost
+- Pro: Aligns with "validate the plan" (Act 1)
+- Con: Not the bee's fault if repo is broken — might flag specs as NEEDS_DAVE when the issue is environmental
+- When: In `process_spec()`, after loading spec but before `_capture_baseline`
+
+**Option B: Build check AFTER dispatch, BEFORE verification**
+- Pro: Validates bee didn't break the build
+- Pro: Aligns with "validate output" (Act 3)
+- Con: If build is already broken, baseline will likely fail anyway
+- When: In `process_spec()`, after dispatch but before `_run_verification`
+
+**My recommendation:** **Option A (before dispatch)** with graceful degradation. Rationale:
+1. The spec explicitly says "spec validation → build → test" (sequential, pre-dispatch)
+2. Catching a broken build BEFORE spending $0.50-$5 on a bee run is cost-efficient
+3. If build check fails, we skip dispatch entirely and flag NEEDS_DAVE with clear error
+4. This matches the "validate the plan" gate in P-04 Act 1
+
+**What I need from Q33NR:** Approve Option A, or tell me to use Option B.
+
+---
+
+### 2. Build Verification Commands
+
+What commands should the build gate run?
+
+**My recommendation:**
+
+**Python (hivenode + engine):**
+```bash
+python -m py_compile hivenode/__init__.py
+python -m py_compile engine/__init__.py
+```
+- Fast (< 5 seconds total)
+- Catches syntax errors and import failures
+- No external dependencies required
+
+**TypeScript (browser):**
+```bash
+# Check if type-check script exists in package.json
+cd browser && npm run type-check
+```
+- Only runs if `type-check` script is defined in `package.json`
+- Graceful skip if npm not installed or script missing
+- Catches type errors that might cause runtime failures
+
+**Graceful degradation:**
+- If Python compile fails → status = NEEDS_DAVE, error_msg = "Build failed: Python syntax error"
+- If npm not found or type-check missing → log warning, continue (don't block)
+- If type-check fails → status = NEEDS_DAVE, error_msg = "Build failed: TypeScript type errors"
+
+**Alternative (lighter):** Skip Python compile (rely on import errors during test baseline) and only check TypeScript. This reduces gate overhead to ~10 seconds.
+
+**What I need from Q33NR:** Approve Python + TypeScript checks as described, OR tell me to skip Python and only check TypeScript, OR tell me to skip build gate entirely and rely on test failures.
+
+---
+
+### 3. Spec Format Validation Strictness
+
+Should spec validation be **strict** (fail on any missing section) or **lenient** (warn on missing optional sections)?
+
+**Required sections (per spec_parser.py):**
+- Priority
+- Objective
+- Model Assignment
+- Acceptance Criteria (at least 1)
+- Smoke Test (at least 1)
+
+**Currently parsed but not required:**
+- Constraints
+- Hold
+
+**My recommendation:** **Lenient validation**
+- FAIL if: Priority invalid, Model invalid, Objective empty, Acceptance Criteria empty, Smoke Test empty
+- WARN if: Constraints missing (logged but not blocking)
+- SKIP if: Hold section present (already handled by queue runner)
+
+Rationale: Some specs may not have constraints (simple tasks). Blocking them would create friction.
+
+**What I need from Q33NR:** Approve lenient validation, OR tell me to use strict validation (fail on missing Constraints).
+
+---
+
+## Proposed Task Files
+
+Once the above questions are answered, I will create:
+
+### TASK-165: Add Spec Format Validation Gate
+- **Model:** haiku
+- **Effort:** S (~200 lines)
+- **Files:**
+  - `.deia/hive/scripts/queue/spec_validator.py` (new module, ~150 lines)
+  - `.deia/hive/scripts/queue/spec_processor.py` (add validation call in `process_spec`, ~5 lines)
+  - `.deia/hive/scripts/queue/tests/test_spec_validator.py` (new, ~200 lines)
+- **Tests:** 8 tests (valid spec, missing objective, invalid priority, invalid model, empty acceptance, empty smoke, lenient constraints, integration)
+
+### TASK-166: Add Build Verification Gate
+- **Model:** haiku
+- **Effort:** M (~300 lines)
+- **Files:**
+  - `.deia/hive/scripts/queue/build_checker.py` (new module, ~200 lines)
+  - `.deia/hive/scripts/queue/spec_processor.py` (add build check call, ~10 lines)
+  - `.deia/hive/scripts/queue/tests/test_build_checker.py` (new, ~250 lines)
+- **Tests:** 8 tests (Python valid, Python syntax error, TypeScript valid, TypeScript type error, npm missing graceful skip, integration before dispatch, integration after dispatch, graceful degradation)
+
+---
+
+## Next Steps
+
+**Awaiting Q33NR approval on:**
+1. Build check timing (Option A: before dispatch, or Option B: after dispatch)
+2. Build commands (Python + TypeScript, TypeScript only, or skip build gate)
+3. Validation strictness (lenient or strict)
+
+Once approved, I will:
+1. Write both task files
+2. Return them to Q33NR for review
+3. Wait for approval before dispatching bees
+
+---
+
+**Status:** AWAITING Q33NR CLARIFICATION
+
+---
+
+# Files Read
+
+- `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\BOOT.md`
+- `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\HIVE.md`
+- `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\processes\PROCESS-LIBRARY-V2.md`
+- `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\hive\scripts\queue\spec_processor.py`
+- `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\hive\scripts\queue\spec_parser.py`
+
+**Clock:** ~8 minutes (reading + analysis)
+**Cost:** $0.00 (coordination, no code)
+**Carbon:** ~0g (negligible)

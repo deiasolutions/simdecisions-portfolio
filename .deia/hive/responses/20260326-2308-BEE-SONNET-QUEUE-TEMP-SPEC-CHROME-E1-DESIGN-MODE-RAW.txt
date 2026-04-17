@@ -1,0 +1,59 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-CHROME-E1-design-mode
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260326-2308
+# Task file: QUEUE-TEMP-SPEC-CHROME-E1-design-mode.md
+# Success: True
+# Duration: 508.4s
+# Files modified: 9 (verified)
+# Cost (USD): $9.108198000000002
+# Turns: 34
+# API duration (ms): 382556
+# Session ID: bfb96568-51f1-4f31-8710-92a53a54ab07
+# Boot injected: True
+
+---
+
+Perfect! Now let me create a summary for the user:
+
+## Summary
+
+I've successfully implemented design mode toggle for ShiftCenter Stage. Here's what was delivered:
+
+### ✅ Implementation Complete
+
+**Files Modified:**
+- `browser/src/shell/types.ts` — Added `designMode: boolean` to ShellState and `TOGGLE_DESIGN_MODE` action
+- `browser/src/shell/reducer.ts` — Added design mode toggle logic (defaults to false)
+- `browser/src/shell/components/PaneChrome.tsx` — Renders minimal chrome for seamless panes in design mode, dashed borders for all panes
+- `browser/src/shell/components/__tests__/DesignMode.test.tsx` — NEW: 9 comprehensive tests (all passing)
+
+### ✅ Features Delivered
+
+1. **Design mode toggle** — `TOGGLE_DESIGN_MODE` action flips the boolean state
+2. **Minimal chrome on seamless panes** — In design mode, seamless panes (like status-bar, top-bar) render:
+   - Drag handle (⠿)
+   - Pane menu (split/flip/swap operations)
+   - Close button (✕)
+   - NO audio/bus mute buttons (minimal chrome only)
+3. **Dashed borders** — All panes show dashed borders in design mode (visual cue), solid in normal mode
+4. **Reversible** — Exiting design mode restores seamless panes to fully chromeless state
+
+### ✅ Test Coverage
+
+**9 tests, all passing:**
+- Toggle behavior (on/off, default state)
+- Seamless panes gain/lose chrome correctly
+- Normal panes unaffected by design mode
+- Dashed borders applied/removed correctly
+
+### 📋 Out of Scope (for future specs)
+
+- **Scoped add menu** (original EGG primitives + GC library) — CHROME-E1 follow-up
+- **Save-as-derived-EGG** — CHROME-E2
+- **Activation UI** (kebab menu / keyboard shortcut) — CHROME-B6 (command palette)
+
+### 🎯 Ready for Integration
+
+The design mode toggle is fully functional and tested. It can be activated programmatically via `dispatch({ type: 'TOGGLE_DESIGN_MODE' })`. Once CHROME-B6 (command palette) ships, this action can be wired to a keyboard shortcut and kebab menu item.

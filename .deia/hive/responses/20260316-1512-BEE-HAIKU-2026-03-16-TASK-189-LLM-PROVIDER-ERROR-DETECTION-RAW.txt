@@ -1,0 +1,69 @@
+# BEE RESPONSE: 2026-03-16-TASK-189-llm-provider-error-detection
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260316-1512
+# Task file: 2026-03-16-TASK-189-llm-provider-error-detection.md
+# Success: True
+# Duration: 905.9s
+# Files modified: 40 (verified)
+# Cost (USD): $1.9348368000000002
+# Turns: 39
+# API duration (ms): 475615
+# Session ID: c85e9c15-173a-44f9-9ccc-881f0af071b7
+# Boot injected: True
+
+---
+
+Perfect! **158 tests passed** across all 8 test files. This confirms that:
+
+1. **27 error tests** (new) all pass ✓
+2. **6 provider error handling tests** (new) all pass ✓
+3. **All 125 existing tests** still pass (no regressions) ✓
+
+Now let me create a summary for completion:
+
+## Summary
+
+I've successfully completed **TASK-189: Enhanced Error Detection in LLM Providers**. Here's what was delivered:
+
+### Files Created
+1. **`errors.ts`** (122 lines) — Custom error class and factory functions
+   - `ProviderError` class with `statusCode`, `errorType`, `provider`, `originalError` properties
+   - Factory functions: `createAuthError()`, `createRateLimitError()`, `createServerError()`, `createNetworkError()`
+   - Type guard: `isProviderError()`
+
+2. **`errors.test.ts`** (194 lines) — Comprehensive test coverage
+   - 27 tests covering all error classes and factories
+   - Edge cases: network errors, different status codes, null/undefined handling
+
+### Files Modified
+1. **`anthropic.ts`** — Enhanced error handling
+   - Wraps `fetch()` to catch network errors
+   - Parses Anthropic error responses (error.type, error.message)
+   - Maps HTTP status codes to ProviderError types (401, 429, 5xx)
+
+2. **`openai-compatible.ts`** — Enhanced error handling
+   - Same pattern as Anthropic
+   - Parses OpenAI error format (error.code, error.message)
+   - GroqProvider inherits all error handling
+
+3. **`providers/index.ts`** — Exported error classes
+   - `export * from './errors'` makes all error utilities available
+
+4. **`providers.test.ts`** — Added error integration tests
+   - 6 new tests for error scenarios (401, 429, network errors)
+   - 3 for Anthropic, 3 for Groq
+
+### Test Results
+✅ **158 tests passed** (8 test files)
+- 27 error tests (new)
+- 6 provider error handling tests (new)
+- 125 existing tests (no regressions)
+
+### Ready for Integration
+- **TASK-187** (error classifier) can now import and use `ProviderError`, `isProviderError()`, and status/error type information
+- Error information is fully preserved for downstream processing
+- All provider types (Anthropic, Groq) now throw structured errors
+
+Response file: `.deia/hive/responses/20260316-TASK-189-RESPONSE.md`

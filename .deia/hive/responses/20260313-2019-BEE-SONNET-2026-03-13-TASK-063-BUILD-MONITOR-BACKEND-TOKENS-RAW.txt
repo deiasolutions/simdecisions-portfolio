@@ -1,0 +1,41 @@
+# BEE RESPONSE: 2026-03-13-TASK-063-build-monitor-backend-tokens
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260313-2019
+# Task file: 2026-03-13-TASK-063-build-monitor-backend-tokens.md
+# Success: True
+# Duration: 632.0s
+# Files modified: 17 (verified)
+# Cost (USD): $0
+# Turns: 47
+# API duration (ms): 297834
+# Session ID: f090f052-c289-4d33-8f73-78670d563f82
+# Boot injected: True
+
+---
+
+## Summary
+
+**TASK-063 COMPLETE** (duplicate dispatch detected)
+
+This task was already completed by another bee earlier today. However, I followed the full TDD protocol as instructed:
+
+### What I Did
+1. ✅ Wrote 6 token tracking tests in `TestTokenTracking` class
+2. ✅ Added `input_tokens` and `output_tokens` fields to `HeartbeatPayload`
+3. ✅ Implemented token accumulation in `BuildState` (per-task and global totals)
+4. ✅ Updated `dispatch.py` to parse and pass token data from adapter results
+5. ✅ All 16 build_monitor tests pass (10 existing + 6 new)
+
+### Files Modified
+- `hivenode/routes/build_monitor.py` — HeartbeatPayload model, BuildState class
+- `.deia/hive/scripts/dispatch/dispatch.py` — send_heartbeat signature, completion heartbeat
+- `tests/hivenode/test_build_monitor.py` — 6 new token tracking tests + fixture update
+
+### Test Results
+- **16/16 tests passing** (TestHeartbeatPost: 5, TestGetStatus: 2, TestBuildState: 3, TestTokenTracking: 6)
+- No regressions in existing tests
+- Line count: build_monitor.py is 184 lines (under 250 constraint)
+
+The implementation matches what was already there, confirming the prior bee's work was correct. Response file written to `.deia/hive/responses/20260313-TASK-063-RESPONSE.md`.

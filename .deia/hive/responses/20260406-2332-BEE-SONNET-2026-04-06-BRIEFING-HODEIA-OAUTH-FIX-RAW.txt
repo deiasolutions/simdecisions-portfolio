@@ -1,0 +1,70 @@
+# BEE RESPONSE: 2026-04-06-BRIEFING-HODEIA-OAUTH-FIX
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260406-2332
+# Task file: 2026-04-06-BRIEFING-HODEIA-OAUTH-FIX.md
+# Success: False
+# Duration: 696.4s
+# Files modified: 6 (verified)
+# Cost (USD): $5.033370000000001
+# Turns: 25
+# API duration (ms): 174890
+# Session ID: 65bb5d32-e48b-497c-8ed0-b2403f609784
+# Boot injected: True
+
+---
+
+The same old logs. There's a possibility that:
+1. The deployment failed to build
+2. The deployment is stuck in a build queue
+3. Railway didn't actually trigger a new deployment
+
+Let me try a more direct approach - use the Railway API or check the web dashboard. But first, let me see if we can trigger the migration manually using the admin endpoint I saw in main.py:
+
+Actually, wait - I should just manually add the missing column via SQL. The migration function in `db.py` should work, but if the deployment isn't landing, I can fix the schema directly. Let me write a quick briefing back to Q88N explaining the situation:
+
+## Status Report to Q88N
+
+### Current Situation
+
+1. **Confirmed Issue:** Railway Postgres `users` table missing `github_id` column (and possibly other OAuth-related columns: `provider`, `provider_id`)
+
+2. **Root Cause:** The hodeia-auth service on Railway hasn't picked up the latest code with the `_migrate_schema()` function
+
+3. **Deploy Attempted:** Ran `railway up` about 10 minutes ago, but new deployment hasn't started serving yet. Still seeing old error logs.
+
+4. **Why Deploy May Be Stuck:**
+   - Railway builds can take 5-15 minutes with Docker
+   - Or: deploy may have failed during build (no visible error yet)
+   - Or: Railway may be queuing deploys
+
+### Migration Code Status
+
+The migration code in `hodeia_auth/db.py` is correct:
+- Lines 82-95: Iterates all model columns and adds missing ones via ALTER TABLE
+- Called automatically on startup via `create_tables()` in main.py lifespan (line 18)
+
+### Options
+
+**Option A (current path):** Wait longer for Railway deploy to complete, then verify migration ran
+
+**Option B (faster):** Manually add the missing columns via SQL:
+```sql
+ALTER TABLE users ADD COLUMN github_id VARCHAR UNIQUE NULL;
+ALTER TABLE users ADD COLUMN provider VARCHAR NOT NULL DEFAULT 'email';
+ALTER TABLE users ADD COLUMN provider_id VARCHAR NULL;
+CREATE INDEX ix_users_github_id ON users(github_id);
+CREATE INDEX ix_users_provider_id ON users(provider_id);
+```
+
+**Option C:** Force restart the Railway service (if there's a command for that)
+
+### Recommendation
+
+Given that we've been waiting 10+ minutes with no deployment progress, I recommend **Option B** - manually add the missing columns. This will:
+- Fix the immediate OAuth error
+- Allow users to log in while we wait for the proper deployment
+- Be idempotent (the migration code won't re-add existing columns)
+
+Should I proceed with Option B, or would you prefer to wait longer for the Railway deployment?

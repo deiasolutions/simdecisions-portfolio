@@ -1,0 +1,12 @@
+# Per-service config for beneficial-cooperation (hodeia-auth).
+# Pointed at by ServiceInstance.railwayConfigFile = "packages/hodeia-auth/railway.toml"
+# This overrides the root railway.toml for this service only.
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "packages/hodeia-auth/Dockerfile"
+
+[deploy]
+healthcheckPath = "/health"
+healthcheckTimeout = 120
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3

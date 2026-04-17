@@ -1,0 +1,61 @@
+# BEE RESPONSE: 2026-03-15-BRIEFING-shell-chrome-remaining
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260315-1531
+# Task file: 2026-03-15-BRIEFING-shell-chrome-remaining.md
+# Success: True
+# Duration: 583.4s
+# Files modified: 6 (verified)
+# Cost (USD): $0
+# Turns: 1
+# API duration (ms): 236347
+# Session ID: 115485d4-481a-4118-9e3d-88b54adc1c5b
+# Boot injected: True
+
+---
+
+I've completed the investigation and written the task file. Here's my report to Q33NR:
+
+---
+
+## Q33N COORDINATION REPORT
+
+**Briefing:** Shell chrome remaining components  
+**Status:** ✅ TASK FILES READY FOR REVIEW
+
+### Summary
+
+The briefing requested porting 6 shell chrome components. Upon investigation, **5 of 6 are already complete** with passing tests. Only **MaximizedOverlay** needs porting.
+
+### Current State
+
+**Already ported (with tests):**
+- ✅ NotificationModal.tsx (64 lines)
+- ✅ ShortcutsPopup.tsx (27 lines)
+- ✅ LayoutSwitcher.tsx (34 lines)
+- ✅ PinnedPaneWrapper.tsx (81 lines)
+- ✅ dragDropUtils.ts (62 lines)
+
+**Needs porting:**
+- ❌ MaximizedOverlay (27 lines from platform)
+
+**Baseline tests:** 40 test files, 634 tests passed, 0 failures
+
+### Task File Created
+
+**TASK-164: Port MaximizedOverlay component**
+- **Location:** `.deia\hive\tasks\2026-03-15-TASK-164-port-maximized-overlay.md`
+- **Source:** `platform\simdecisions-2\src\components\shell\overlays\MaximizedOverlay.jsx`
+- **Target:** `browser\src\shell\components\MaximizedOverlay.tsx`
+- **Model:** haiku
+- **Scope:** Port 27-line component, write 7+ tests (TDD)
+- **Key adaptation:** Replace `useShell()` context with `useShellStore()` Zustand
+
+### Files Written
+1. `.deia\hive\tasks\2026-03-15-TASK-164-port-maximized-overlay.md`
+2. `.deia\hive\responses\20260315-BRIEFING-shell-chrome-remaining-COORDINATION-REPORT.md`
+
+---
+
+**Ready for your review.** Please verify TASK-164 and approve dispatch when ready.

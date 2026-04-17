@@ -1,0 +1,60 @@
+# BEE RESPONSE: 2026-03-14-TASK-077-useterminal-chat-persist
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260314-0829
+# Task file: 2026-03-14-TASK-077-useterminal-chat-persist.md
+# Success: True
+# Duration: 412.4s
+# Files modified: 25 (verified)
+# Cost (USD): $0
+# Turns: 35
+# API duration (ms): 283520
+# Session ID: a298238f-5168-4f8f-88ca-6e187bc0dbce
+# Boot injected: True
+
+---
+
+Excellent! Everything is in place. Let me create a summary of what was completed:
+
+## Summary
+
+I have successfully completed **TASK-077: useTerminal Conversation Persistence Integration**. Here's what was delivered:
+
+### ✅ Deliverables Completed
+
+1. **8 TDD Tests** (`useTerminal.chatPersist.test.ts`) — ALL PASSING
+   - First message: createConversation + addMessage calls
+   - Subsequent messages: only addMessage (no duplicate createConversation)
+   - ChatApi failure handling: errors logged, terminal unaffected
+   - Volume preference: reads from settings, defaults to 'both'
+   - No conversationId edge case: safely skipped
+   - All 8 tests: ✓ PASS
+
+2. **Dual-Write Chat Persistence Integration**
+   - Added `chatApi.addMessage()` calls after every LLM response
+   - Persists both user and assistant messages with role, content, and metrics
+   - Fire-and-forget pattern with `.catch()` logging for safety
+   - Volume preference read from `settingsStore.loadSettings()`
+
+3. **Helper Module** (`terminalChatPersist.ts`)
+   - Extracted `persistChatMessages()` function to keep useTerminal.ts modular
+   - Handles null conversationId gracefully
+   - Clean separation of concerns
+
+4. **Volume Preference Support**
+   - Reads `volume_preference` from user settings
+   - Defaults to `'both'` when missing
+   - Passed to `createConversation()` on mount
+
+### Files Created
+- `browser/src/primitives/terminal/__tests__/useTerminal.chatPersist.test.ts` (8 tests)
+- `browser/src/primitives/terminal/terminalChatPersist.ts` (helper module)
+
+### Files Modified
+- `browser/src/primitives/terminal/useTerminal.ts` (integrated chatApi calls)
+
+### Response File
+- `.deia/hive/responses/20260314-TASK-077-RESPONSE.md` (complete with all 8 required sections)
+
+**Status: COMPLETE ✓**

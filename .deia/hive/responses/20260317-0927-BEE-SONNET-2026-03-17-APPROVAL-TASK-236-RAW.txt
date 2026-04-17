@@ -1,0 +1,39 @@
+# BEE RESPONSE: 2026-03-17-APPROVAL-TASK-236
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260317-0927
+# Task file: 2026-03-17-APPROVAL-TASK-236.md
+# Success: True
+# Duration: 2436.6s
+# Files modified: 68 (verified)
+# Cost (USD): $0.45855
+# Turns: 6
+# API duration (ms): 31771
+# Session ID: f1fd5801-da78-44c1-972f-094d9e7ab37f
+# Boot injected: True
+
+---
+
+**Dispatch authorized. BEE-HAIKU has been dispatched for TASK-236.**
+
+**Dispatch Details:**
+- **Task File:** `.deia/hive/tasks/2026-03-17-TASK-236-error-states.md`
+- **Model:** Haiku
+- **Role:** BEE
+- **Background Job ID:** bdaf297
+- **Output File:** `C:\Users\davee\AppData\Local\Temp\claude\C--Users-davee-OneDrive-Documents-GitHub-shiftcenter\tasks\bdaf297.output`
+
+**Next Steps (Q33N monitoring):**
+
+1. **When bee completes:** Read the response file in `.deia/hive/responses/20260317-TASK-236-RESPONSE.md`
+2. **Verify completion:**
+   - All 8 sections present in response file
+   - Terminal tests pass (`cd browser && npx vitest run src/primitives/terminal/`)
+   - Shell tests pass (`cd browser && npx vitest run src/shell/`)
+   - Error integration test has 7+ tests
+   - PaneErrorBoundary test has 3+ tests
+3. **Report results to Q33NR** with completion summary
+4. **If issues occur:** Create fix task (max 2 fix cycles before escalating)
+
+Awaiting bee completion...

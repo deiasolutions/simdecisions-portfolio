@@ -1,0 +1,45 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-CHROME-F1-delete-legacy-chrome
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260326-2308
+# Task file: QUEUE-TEMP-SPEC-CHROME-F1-delete-legacy-chrome.md
+# Success: True
+# Duration: 396.8s
+# Files modified: 37 (verified)
+# Cost (USD): $5.818893
+# Turns: 35
+# API duration (ms): 252841
+# Session ID: a026dc58-5085-4145-8918-3baab111f4e5
+# Boot injected: True
+
+---
+
+Excellent! All deliverables complete. Let me create a summary:
+
+## Task Complete: CHROME-F1 Legacy Component Deletion
+
+**Summary:**
+Successfully deleted ShellTabBar and MasterTitleBar legacy components from the codebase.
+
+**Files Deleted:**
+- ✓ `ShellTabBar.tsx` (197 lines)
+- ✓ `MasterTitleBar.tsx` (115 lines)  
+- ✓ `__tests__/ShellTabBar.test.tsx` (217 lines)
+- ✓ `__tests__/MasterTitleBar.test.tsx` (151 lines)
+
+**Files Modified:**
+- ✓ `Shell.tsx` — Removed imports, rendering, and context references
+- ✓ `__tests__/Shell.test.tsx` — Removed mock
+- ✓ `__tests__/ShellChromeIntegration.test.tsx` — Removed test suite
+
+**Tests Added:**
+- ✓ `__tests__/Shell.legacy-cleanup.test.tsx` — 6 new tests (all passing)
+
+**Verification:**
+- ✓ No compilation errors
+- ✓ No dangling imports or references
+- ✓ 1,013 shell tests passing (no regressions)
+- ✓ Response file written to `.deia/hive/responses/`
+
+The legacy components have been cleanly removed. ShellTabBar and MasterTitleBar are replaced by the new Wave B primitives (top-bar, menu-bar, tab-bar). The `ToolbarAction` type remains in `types.ts` as it's used by the new toolbar syndication system.

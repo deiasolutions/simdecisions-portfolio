@@ -1,0 +1,176 @@
+# BEE RESPONSE: 2026-03-15-Q33NR-APPROVAL-rag-entity-vectors
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260315-1429
+# Task file: 2026-03-15-Q33NR-APPROVAL-rag-entity-vectors.md
+# Success: False
+# Duration: 285.0s
+# Files modified: 28 (verified)
+# Cost (USD): $0
+# Turns: 16
+# API duration (ms): 256784
+# Session ID: 5cb84a11-1208-4750-bb0a-aa39ea9d4a54
+# Boot injected: True
+
+---
+
+Perfect! All four task files are written. Now I need to create a summary report for Q33NR review. Let me write the summary:
+
+---
+
+## Task Files Created — Ready for Q33NR Review
+
+**Q33N Report**
+**From:** Q33N (queen coordinator)
+**To:** Q33NR (regent)
+**Date:** 2026-03-15
+**Bot ID:** QUEEN-2026-03-15-Q33NR-APPROVAL-rag-
+
+---
+
+### Summary
+
+I have created **4 task files** for the RAG entity vectors critical path (TASK-159 through TASK-162), as approved in your directive. All task files follow the 8-section response template, include absolute file paths, specify TDD requirements, and stay within the 500-line file size limit.
+
+### Task Files Created
+
+**1. TASK-159: Port entity archetypes**
+- **File:** `.deia\hive\tasks\2026-03-15-TASK-159-port-entity-archetypes.md`
+- **Model:** Haiku
+- **Estimated lines:** ~450 (under 500 limit)
+- **Test target:** 15-20 tests
+- **Dependencies:** None (can start immediately)
+- **Deliverables:**
+  - `hivenode\entities\archetypes.py` (NEW)
+  - DomainArchetype ORM model
+  - 4 consensus methods (majority, weighted avg, LLM synthesis, human select)
+  - generate_archetype, get_current_archetype, check_drift functions
+  - Helper functions (hash_embedding, cosine_similarity)
+
+**2. TASK-160: Port entity updates**
+- **File:** `.deia\hive\tasks\2026-03-15-TASK-160-port-entity-updates.md`
+- **Model:** Sonnet (complex decay logic, performance requirements)
+- **Estimated lines:** ~420 (under 500 limit, may split if grows >450)
+- **Test target:** 20-25 tests
+- **Dependencies:** TASK-159 (needs archetypes.py for cold-start cascade)
+- **Deliverables:**
+  - `hivenode\entities\updates.py` (NEW)
+  - incremental_update (<100ms target)
+  - nightly_recalculation (batch with 30-day decay)
+  - cold_start_cascade (multi-level fallback)
+  - get_cold_start_status (diagnostics)
+
+**3. TASK-161: Port entity scheduler**
+- **File:** `.deia\hive\tasks\2026-03-15-TASK-161-port-entity-scheduler.md`
+- **Model:** Haiku
+- **Estimated lines:** ~240 (under 500 limit)
+- **Test target:** 8-10 tests
+- **Dependencies:** TASK-160 (needs updates.py nightly_recalculation function)
+- **Deliverables:**
+  - Add `apscheduler = "^3.10.4"` to pyproject.toml
+  - `hivenode\entities\scheduler.py` (NEW)
+  - EntityScheduler class (start, stop, get_status, trigger_now)
+  - Cron job for nightly recalc (default: 02:00 UTC)
+
+**4. TASK-162: Extend entity routes**
+- **File:** `.deia\hive\tasks\2026-03-15-TASK-162-extend-entity-routes.md`
+- **Model:** Haiku
+- **Estimated lines:** ~380 total across 3 files (archetype ~150, update ~130, vector ~100)
+- **Test target:** 15-18 tests (3 test files)
+- **Dependencies:** TASK-159, TASK-160, TASK-161 (all must complete first)
+- **Deliverables:**
+  - `hivenode\entities\archetype_routes.py` (NEW, 4 endpoints)
+  - `hivenode\entities\update_routes.py` (NEW, 3 endpoints)
+  - `hivenode\entities\vector_routes.py` (NEW, 2 endpoints)
+  - Route registration in `hivenode\routes\__init__.py`
+  - 9 new API endpoints total
+
+---
+
+### Compliance Checklist (All Task Files)
+
+- [x] Absolute file paths (no relative paths)
+- [x] Test requirements specified (TDD, test count targets)
+- [x] Deliverables match acceptance criteria from spec
+- [x] No files over 500 lines (TASK-160 has split strategy if grows >450)
+- [x] No stubs allowed (explicitly stated in all tasks)
+- [x] Response file template included (8-section mandatory template)
+- [x] Dependencies clearly identified (TASK-160 blocks TASK-161, both block TASK-162)
+- [x] Model assignment specified (Haiku for 159/161/162, Sonnet for 160)
+- [x] Platform source files identified (absolute paths)
+- [x] Test commands provided
+- [x] Edge cases enumerated
+- [x] Priority marked (P0.55 for all)
+
+---
+
+### Dependency Graph
+
+```
+TASK-159 (archetypes) ──┐
+                        ├──> TASK-162 (routes)
+TASK-160 (updates) ─────┼──> TASK-162 (routes)
+            │           │
+            └──> TASK-161 (scheduler) ──┘
+```
+
+**Dispatch order:**
+1. **Parallel:** TASK-159 + TASK-160 (independent)
+2. **Sequential:** TASK-161 after TASK-160 completes
+3. **Sequential:** TASK-162 after TASK-159, TASK-160, TASK-161 all complete
+
+---
+
+### Estimated Cost & Timeline
+
+**Total lines to port:** ~1,600 lines of new code
+**Total tests:** 58-73 tests minimum
+**Estimated wall time:** 6-8 hours
+**Estimated cost:** $8-12 USD (4 bees × ~$2-3 each)
+
+---
+
+### Spec Acceptance Criteria Mapping
+
+After TASK-159 through TASK-162 complete:
+
+- [x] Entity vector extraction ported ✓ (TASK-159 archetypes + TASK-160 updates)
+- [x] Voyage AI adapter ported ✓ (ALREADY COMPLETE)
+- [x] BOK service ported ✓ (ALREADY COMPLETE — basic search/enrich sufficient)
+- [ ] Tests written and passing (all 4 tasks deliver 58-73 tests)
+
+**All spec acceptance criteria satisfied upon completion of critical path.**
+
+---
+
+### File Size Compliance Strategy
+
+**TASK-160 (updates.py) split strategy:**
+- Platform source: 394 lines
+- If shiftcenter version grows >450 lines during port → split into:
+  - `updates_core.py` (incremental update logic)
+  - `updates_batch.py` (nightly recalculation logic)
+
+**TASK-162 (routes) already split:**
+- 3 separate route files instead of consolidating into routes.py
+- Keeps all files under 500 lines
+
+---
+
+### Q33NR: Ready for Final Review
+
+**Please review the 4 task files:**
+1. `.deia\hive\tasks\2026-03-15-TASK-159-port-entity-archetypes.md`
+2. `.deia\hive\tasks\2026-03-15-TASK-160-port-entity-updates.md`
+3. `.deia\hive\tasks\2026-03-15-TASK-161-port-entity-scheduler.md`
+4. `.deia\hive\tasks\2026-03-15-TASK-162-extend-entity-routes.md`
+
+**Awaiting your approval to dispatch bees.**
+
+If any corrections needed, I will revise task files and return for re-review.
+
+---
+
+**Q33N signature:** QUEEN-2026-03-15-Q33NR-APPROVAL-rag-
+**Status:** Task files complete, awaiting Q33NR approval for dispatch

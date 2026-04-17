@@ -1,0 +1,88 @@
+{
+  "id": "workflow_05_resource_contention",
+  "name": "Resource Contention Workflow",
+  "intent": "2 Sources -> Shared Resource Pool -> Service -> Sink. Tests resource contention.",
+  "phase_ir_version": "1.0.0",
+  "nodes": [
+    {
+      "id": "source1",
+      "type": "source",
+      "name": "Token Generator 1",
+      "config": {
+        "arrival_distribution": "poisson",
+        "lambda": 3.0,
+        "max_arrivals": 50
+      }
+    },
+    {
+      "id": "source2",
+      "type": "source",
+      "name": "Token Generator 2",
+      "config": {
+        "arrival_distribution": "poisson",
+        "lambda": 3.0,
+        "max_arrivals": 50
+      }
+    },
+    {
+      "id": "merge",
+      "type": "merge",
+      "name": "Merge Streams"
+    },
+    {
+      "id": "service",
+      "type": "service",
+      "name": "Service Node",
+      "config": {
+        "service_distribution": "exponential",
+        "mu": 8.0,
+        "servers": 1,
+        "requires_resource": "shared_pool"
+      }
+    },
+    {
+      "id": "sink",
+      "type": "sink",
+      "name": "Completion"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from_node": "source1",
+      "to_node": "merge",
+      "type": "then"
+    },
+    {
+      "id": "e2",
+      "from_node": "source2",
+      "to_node": "merge",
+      "type": "then"
+    },
+    {
+      "id": "e3",
+      "from_node": "merge",
+      "to_node": "service",
+      "type": "then"
+    },
+    {
+      "id": "e4",
+      "from_node": "service",
+      "to_node": "sink",
+      "type": "then"
+    }
+  ],
+  "resources": [
+    {
+      "id": "shared_pool",
+      "type": "generic",
+      "capacity": 2,
+      "queue_discipline": "FIFO"
+    }
+  ],
+  "metadata": {
+    "description": "2 Sources -> Shared Resource Pool -> Service -> Sink",
+    "evaluation_criteria": "Resource utilization 70-90%, no deadlocks",
+    "expected_runtime_seconds": 5
+  }
+}

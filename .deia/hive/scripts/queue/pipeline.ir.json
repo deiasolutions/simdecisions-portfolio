@@ -1,0 +1,1153 @@
+{
+  "id": "build-pipeline-001",
+  "name": "Unified Build Pipeline",
+  "intent": "Complete build pipeline from Q88N direction through to shipped, measured, archived code. Encodes all validation gates, execution stages, failure recovery, and LLM triage in PHASE-IR format for DES simulation.",
+  "phase_ir_version": "1.0.0",
+  "nodes": [
+    {
+      "id": "source",
+      "type": "source",
+      "name": "Q88N Direction",
+      "intent": "Entry point for new work from human sovereign",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "direction",
+          "type": "json",
+          "required": false
+        }
+      ],
+      "config": {
+        "distribution": "dist_spec_arrival"
+      }
+    },
+    {
+      "id": "gate_0",
+      "type": "llm",
+      "name": "Gate 0: Intent Validation",
+      "intent": "Validate Q33NR correctly interpreted Q88N direction. Extract requirements tree and verify coverage.",
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "json",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "briefing",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "valid",
+          "type": "bool",
+          "required": false
+        }
+      ],
+      "config": {
+        "model": "haiku-4.5",
+        "distribution_id": "dist_gate_0",
+        "resource_id": "res_llm_triage"
+      }
+    },
+    {
+      "id": "decide_gate_0",
+      "type": "python",
+      "name": "Gate 0 Decision",
+      "intent": "Branch based on intent validation result",
+      "inputs": [
+        {
+          "name": "valid",
+          "type": "bool",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "route",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "config": {
+        "code": "return 'pass' if valid else 'fail'"
+      }
+    },
+    {
+      "id": "phase_0",
+      "type": "llm",
+      "name": "Phase 0: Coverage Validation",
+      "intent": "Verify ALL requirements from briefing appear in spec. 100% coverage required.",
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "briefing",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "spec_draft",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "coverage_report",
+          "type": "json",
+          "required": false
+        },
+        {
+          "name": "fidelity",
+          "type": "float",
+          "required": false
+        }
+      ],
+      "config": {
+        "model": "haiku-4.5",
+        "distribution_id": "dist_phase_0",
+        "resource_id": "res_llm_triage"
+      }
+    },
+    {
+      "id": "decide_phase_0",
+      "type": "python",
+      "name": "Phase 0 Fidelity Check",
+      "intent": "Branch based on coverage validation (pass ≥ 1.0, fail < 1.0)",
+      "inputs": [
+        {
+          "name": "fidelity",
+          "type": "float",
+          "required": true
+        },
+        {
+          "name": "attempt",
+          "type": "int",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "route",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "config": {
+        "code": "return 'pass' if fidelity >= 1.0 else ('heal' if attempt < 3 else 'escalate')"
+      }
+    },
+    {
+      "id": "phase_1",
+      "type": "llm",
+      "name": "Phase 1: SPEC Fidelity",
+      "intent": "Round-trip SPEC through IR encoding/decoding. Verify meaning preserved (fidelity ≥ 0.85).",
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "spec",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "fidelity_report",
+          "type": "json",
+          "required": false
+        },
+        {
+          "name": "fidelity",
+          "type": "float",
+          "required": false
+        },
+        {
+          "name": "ir_encoding",
+          "type": "json",
+          "required": false
+        }
+      ],
+      "config": {
+        "model": "haiku-4.5",
+        "distribution_id": "dist_phase_1",
+        "resource_id": "res_llm_triage"
+      }
+    },
+    {
+      "id": "decide_phase_1",
+      "type": "python",
+      "name": "Phase 1 Fidelity Check",
+      "intent": "Branch based on SPEC fidelity (pass ≥ 0.85, fail < 0.85)",
+      "inputs": [
+        {
+          "name": "fidelity",
+          "type": "float",
+          "required": true
+        },
+        {
+          "name": "attempt",
+          "type": "int",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "route",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "config": {
+        "code": "return 'pass' if fidelity >= 0.85 else ('heal' if attempt < 3 else 'escalate')"
+      }
+    },
+    {
+      "id": "task_breakdown",
+      "type": "llm",
+      "name": "Task Breakdown",
+      "intent": "Q33N writes task files from spec",
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "spec",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "task_files",
+          "type": "list",
+          "required": false
+        }
+      ],
+      "config": {
+        "model": "sonnet-4.5",
+        "distribution_id": "dist_task_breakdown",
+        "resource_id": "res_llm_triage"
+      }
+    },
+    {
+      "id": "phase_2",
+      "type": "llm",
+      "name": "Phase 2: TASK Fidelity",
+      "intent": "Round-trip TASKS through IR. Verify spec intent preserved (fidelity ≥ 0.85).",
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "task_files",
+          "type": "list",
+          "required": true
+        },
+        {
+          "name": "spec",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "fidelity_report",
+          "type": "json",
+          "required": false
+        },
+        {
+          "name": "fidelity",
+          "type": "float",
+          "required": false
+        }
+      ],
+      "config": {
+        "model": "haiku-4.5",
+        "distribution_id": "dist_phase_2",
+        "resource_id": "res_llm_triage"
+      }
+    },
+    {
+      "id": "decide_phase_2",
+      "type": "python",
+      "name": "Phase 2 Fidelity Check",
+      "intent": "Branch based on TASK fidelity (pass ≥ 0.85, fail < 0.85)",
+      "inputs": [
+        {
+          "name": "fidelity",
+          "type": "float",
+          "required": true
+        },
+        {
+          "name": "attempt",
+          "type": "int",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "route",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "config": {
+        "code": "return 'pass' if fidelity >= 0.85 else ('heal' if attempt < 3 else 'escalate')"
+      }
+    },
+    {
+      "id": "q33nr_review",
+      "type": "human",
+      "name": "Q33NR Review",
+      "intent": "Mechanical review of task files against spec checklist",
+      "inputs": [
+        {
+          "name": "task_description",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "task_files",
+          "type": "list",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "approved",
+          "type": "bool",
+          "required": false
+        }
+      ],
+      "config": {
+        "resource_id": "res_human_reviewer",
+        "distribution_id": "dist_q33nr_review"
+      }
+    },
+    {
+      "id": "dispatch",
+      "type": "python",
+      "name": "Dispatch",
+      "intent": "Directory state machine: move spec to _active/, create manifest, assign bee",
+      "inputs": [
+        {
+          "name": "task_files",
+          "type": "list",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "bee_assignment",
+          "type": "json",
+          "required": false
+        }
+      ],
+      "config": {
+        "distribution_id": "dist_dispatch"
+      }
+    },
+    {
+      "id": "bee_execution",
+      "type": "llm",
+      "name": "Bee Execution",
+      "intent": "TDD, code, 8-section response, PROCESS-18 YAML. Bee writes code and tests.",
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "task",
+          "type": "json",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "response_file",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "config": {
+        "model": "haiku-4.5",
+        "distribution_id": "dist_bee_execution",
+        "resource_id": "res_bee_pool"
+      }
+    },
+    {
+      "id": "decide_bee_result",
+      "type": "python",
+      "name": "Bee Result Decision",
+      "intent": "Branch based on bee execution outcome",
+      "inputs": [
+        {
+          "name": "result",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "route",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "config": {
+        "code": "return result.lower() if result.lower() in ['clean', 'timeout', 'needs_dave', 'crash'] else 'crash'"
+      }
+    },
+    {
+      "id": "post_dispatch_verify",
+      "type": "python",
+      "name": "Post-Dispatch Verification",
+      "intent": "Test count comparison, regression check",
+      "inputs": [
+        {
+          "name": "response_file",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "baseline_tests",
+          "type": "int",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "regression",
+          "type": "bool",
+          "required": false
+        },
+        {
+          "name": "new_failures",
+          "type": "list",
+          "required": false
+        }
+      ],
+      "config": {
+        "distribution_id": "dist_post_verify"
+      }
+    },
+    {
+      "id": "triage_crash",
+      "type": "llm",
+      "name": "Triage: Crash Recovery",
+      "intent": "LLM triage for crash recovery. Assess % complete, safe to keep, continuation spec.",
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "spec",
+          "type": "json",
+          "required": true
+        },
+        {
+          "name": "diff",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "test_output",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "verdict",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "continuation_spec",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "config": {
+        "model": "haiku-4.5",
+        "distribution_id": "dist_triage",
+        "resource_id": "res_llm_triage"
+      }
+    },
+    {
+      "id": "decide_triage_crash",
+      "type": "python",
+      "name": "Crash Triage Decision",
+      "intent": "Route based on crash triage verdict",
+      "inputs": [
+        {
+          "name": "verdict",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "route",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "config": {
+        "code": "return verdict.lower() if verdict.lower() in ['complete_enough', 'partial_safe', 'revert'] else 'revert'"
+      }
+    },
+    {
+      "id": "triage_failure",
+      "type": "llm",
+      "name": "Triage: Failure Diagnosis",
+      "intent": "LLM triage for NEEDS_DAVE or error. Classify: spec ambiguous, coding error, dependency issue, environment issue.",
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "spec",
+          "type": "json",
+          "required": true
+        },
+        {
+          "name": "response_file",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "error_output",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "classification",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "fix_spec",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "config": {
+        "model": "haiku-4.5",
+        "distribution_id": "dist_triage",
+        "resource_id": "res_llm_triage"
+      }
+    },
+    {
+      "id": "decide_triage_failure",
+      "type": "python",
+      "name": "Failure Triage Decision",
+      "intent": "Route based on failure classification",
+      "inputs": [
+        {
+          "name": "classification",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "route",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "config": {
+        "code": "routes = {'ambiguous': 'needs_review', 'coding_error': 'generate_fix', 'dependency': 'block', 'environment': 'needs_review'}; return routes.get(classification.lower(), 'needs_review')"
+      }
+    },
+    {
+      "id": "triage_completion",
+      "type": "llm",
+      "name": "Triage: Completion Validation (Advisory)",
+      "intent": "Advisory review of diff vs acceptance criteria. Flag anything missing or suspicious.",
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "spec",
+          "type": "json",
+          "required": true
+        },
+        {
+          "name": "diff",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "test_results",
+          "type": "json",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "advisory",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "suspicious",
+          "type": "bool",
+          "required": false
+        }
+      ],
+      "config": {
+        "model": "haiku-4.5",
+        "distribution_id": "dist_triage",
+        "resource_id": "res_llm_triage"
+      }
+    },
+    {
+      "id": "q33n_review",
+      "type": "llm",
+      "name": "Q33N Review",
+      "intent": "Response complete? Tests pass? Stubs?",
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "response_file",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "complete",
+          "type": "bool",
+          "required": false
+        }
+      ],
+      "config": {
+        "model": "haiku-4.5",
+        "distribution_id": "dist_q33n_review",
+        "resource_id": "res_llm_triage"
+      }
+    },
+    {
+      "id": "q33nr_final_review",
+      "type": "human",
+      "name": "Q33NR Final Review",
+      "intent": "All bees clean? Report to Q88N",
+      "inputs": [
+        {
+          "name": "task_description",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "all_responses",
+          "type": "list",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "approved",
+          "type": "bool",
+          "required": false
+        }
+      ],
+      "config": {
+        "resource_id": "res_human_reviewer",
+        "distribution_id": "dist_q33nr_review"
+      }
+    },
+    {
+      "id": "archive_inventory",
+      "type": "python",
+      "name": "Archive + Inventory",
+      "intent": "Feature registered, backlog updated, ledger emitted",
+      "inputs": [
+        {
+          "name": "spec",
+          "type": "json",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "archived",
+          "type": "bool",
+          "required": false
+        }
+      ],
+      "config": {
+        "distribution_id": "dist_archive"
+      }
+    },
+    {
+      "id": "sink",
+      "type": "sink",
+      "name": "Completed Work",
+      "intent": "Exit point for successfully completed work",
+      "inputs": [
+        {
+          "name": "token",
+          "type": "token",
+          "required": true
+        }
+      ],
+      "outputs": [],
+      "config": {
+        "log": true,
+        "metrics": true
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_source_gate0",
+      "from_node": "source",
+      "to_node": "gate_0",
+      "type": "then"
+    },
+    {
+      "id": "e_gate0_decide",
+      "from_node": "gate_0",
+      "to_node": "decide_gate_0",
+      "type": "then"
+    },
+    {
+      "id": "e_decide_gate0_pass",
+      "from_node": "decide_gate_0",
+      "to_node": "phase_0",
+      "type": "then",
+      "guard": "route == 'pass'"
+    },
+    {
+      "id": "e_decide_gate0_fail",
+      "from_node": "decide_gate_0",
+      "to_node": "gate_0",
+      "type": "then",
+      "guard": "route == 'fail'"
+    },
+    {
+      "id": "e_phase0_decide",
+      "from_node": "phase_0",
+      "to_node": "decide_phase_0",
+      "type": "then"
+    },
+    {
+      "id": "e_decide_phase0_pass",
+      "from_node": "decide_phase_0",
+      "to_node": "phase_1",
+      "type": "then",
+      "guard": "route == 'pass'"
+    },
+    {
+      "id": "e_decide_phase0_heal",
+      "from_node": "decide_phase_0",
+      "to_node": "phase_0",
+      "type": "then",
+      "guard": "route == 'heal'"
+    },
+    {
+      "id": "e_decide_phase0_escalate",
+      "from_node": "decide_phase_0",
+      "to_node": "q33nr_review",
+      "type": "then",
+      "guard": "route == 'escalate'"
+    },
+    {
+      "id": "e_phase1_decide",
+      "from_node": "phase_1",
+      "to_node": "decide_phase_1",
+      "type": "then"
+    },
+    {
+      "id": "e_decide_phase1_pass",
+      "from_node": "decide_phase_1",
+      "to_node": "task_breakdown",
+      "type": "then",
+      "guard": "route == 'pass'"
+    },
+    {
+      "id": "e_decide_phase1_heal",
+      "from_node": "decide_phase_1",
+      "to_node": "phase_1",
+      "type": "then",
+      "guard": "route == 'heal'"
+    },
+    {
+      "id": "e_decide_phase1_escalate",
+      "from_node": "decide_phase_1",
+      "to_node": "q33nr_review",
+      "type": "then",
+      "guard": "route == 'escalate'"
+    },
+    {
+      "id": "e_task_breakdown_phase2",
+      "from_node": "task_breakdown",
+      "to_node": "phase_2",
+      "type": "then"
+    },
+    {
+      "id": "e_phase2_decide",
+      "from_node": "phase_2",
+      "to_node": "decide_phase_2",
+      "type": "then"
+    },
+    {
+      "id": "e_decide_phase2_pass",
+      "from_node": "decide_phase_2",
+      "to_node": "q33nr_review",
+      "type": "then",
+      "guard": "route == 'pass'"
+    },
+    {
+      "id": "e_decide_phase2_heal",
+      "from_node": "decide_phase_2",
+      "to_node": "task_breakdown",
+      "type": "then",
+      "guard": "route == 'heal'"
+    },
+    {
+      "id": "e_decide_phase2_escalate",
+      "from_node": "decide_phase_2",
+      "to_node": "q33nr_review",
+      "type": "then",
+      "guard": "route == 'escalate'"
+    },
+    {
+      "id": "e_q33nr_review_dispatch",
+      "from_node": "q33nr_review",
+      "to_node": "dispatch",
+      "type": "then",
+      "guard": "approved == true"
+    },
+    {
+      "id": "e_q33nr_review_retry",
+      "from_node": "q33nr_review",
+      "to_node": "task_breakdown",
+      "type": "then",
+      "guard": "approved == false"
+    },
+    {
+      "id": "e_dispatch_bee",
+      "from_node": "dispatch",
+      "to_node": "bee_execution",
+      "type": "then"
+    },
+    {
+      "id": "e_bee_decide",
+      "from_node": "bee_execution",
+      "to_node": "decide_bee_result",
+      "type": "then"
+    },
+    {
+      "id": "e_decide_bee_clean",
+      "from_node": "decide_bee_result",
+      "to_node": "post_dispatch_verify",
+      "type": "then",
+      "guard": "route == 'clean'"
+    },
+    {
+      "id": "e_decide_bee_timeout",
+      "from_node": "decide_bee_result",
+      "to_node": "triage_failure",
+      "type": "then",
+      "guard": "route == 'timeout'"
+    },
+    {
+      "id": "e_decide_bee_needs_dave",
+      "from_node": "decide_bee_result",
+      "to_node": "triage_failure",
+      "type": "then",
+      "guard": "route == 'needs_dave'"
+    },
+    {
+      "id": "e_decide_bee_crash",
+      "from_node": "decide_bee_result",
+      "to_node": "triage_crash",
+      "type": "then",
+      "guard": "route == 'crash'"
+    },
+    {
+      "id": "e_verify_triage",
+      "from_node": "post_dispatch_verify",
+      "to_node": "triage_completion",
+      "type": "then"
+    },
+    {
+      "id": "e_triage_completion_q33n",
+      "from_node": "triage_completion",
+      "to_node": "q33n_review",
+      "type": "then"
+    },
+    {
+      "id": "e_triage_crash_decide",
+      "from_node": "triage_crash",
+      "to_node": "decide_triage_crash",
+      "type": "then"
+    },
+    {
+      "id": "e_decide_crash_complete",
+      "from_node": "decide_triage_crash",
+      "to_node": "q33n_review",
+      "type": "then",
+      "guard": "route == 'complete_enough'"
+    },
+    {
+      "id": "e_decide_crash_partial",
+      "from_node": "decide_triage_crash",
+      "to_node": "dispatch",
+      "type": "then",
+      "guard": "route == 'partial_safe'"
+    },
+    {
+      "id": "e_decide_crash_revert",
+      "from_node": "decide_triage_crash",
+      "to_node": "dispatch",
+      "type": "then",
+      "guard": "route == 'revert'"
+    },
+    {
+      "id": "e_triage_failure_decide",
+      "from_node": "triage_failure",
+      "to_node": "decide_triage_failure",
+      "type": "then"
+    },
+    {
+      "id": "e_decide_failure_needs_review",
+      "from_node": "decide_triage_failure",
+      "to_node": "q33nr_review",
+      "type": "then",
+      "guard": "route == 'needs_review'"
+    },
+    {
+      "id": "e_decide_failure_fix",
+      "from_node": "decide_triage_failure",
+      "to_node": "dispatch",
+      "type": "then",
+      "guard": "route == 'generate_fix'"
+    },
+    {
+      "id": "e_decide_failure_block",
+      "from_node": "decide_triage_failure",
+      "to_node": "q33nr_review",
+      "type": "then",
+      "guard": "route == 'block'"
+    },
+    {
+      "id": "e_q33n_review_final",
+      "from_node": "q33n_review",
+      "to_node": "q33nr_final_review",
+      "type": "then"
+    },
+    {
+      "id": "e_final_review_archive",
+      "from_node": "q33nr_final_review",
+      "to_node": "archive_inventory",
+      "type": "then",
+      "guard": "approved == true"
+    },
+    {
+      "id": "e_final_review_retry",
+      "from_node": "q33nr_final_review",
+      "to_node": "dispatch",
+      "type": "then",
+      "guard": "approved == false"
+    },
+    {
+      "id": "e_archive_sink",
+      "from_node": "archive_inventory",
+      "to_node": "sink",
+      "type": "then"
+    }
+  ],
+  "resources": [
+    {
+      "id": "res_bee_pool",
+      "type": "bot",
+      "capacity": 5,
+      "queue_discipline": "FIFO",
+      "preemptive": false,
+      "consumable": false,
+      "store": false,
+      "cost_per_use": 0.08
+    },
+    {
+      "id": "res_human_reviewer",
+      "type": "human",
+      "capacity": 1,
+      "queue_discipline": "FIFO",
+      "preemptive": false,
+      "consumable": false,
+      "store": false,
+      "cost_per_use": 0.0
+    },
+    {
+      "id": "res_llm_triage",
+      "type": "bot",
+      "capacity": 3,
+      "queue_discipline": "FIFO",
+      "preemptive": false,
+      "consumable": false,
+      "store": false,
+      "cost_per_use": 0.02
+    }
+  ],
+  "distributions": [
+    {
+      "id": "dist_spec_arrival",
+      "type": "exponential",
+      "params": {
+        "rate": 0.5
+      },
+      "unit": "hours"
+    },
+    {
+      "id": "dist_gate_0",
+      "type": "constant",
+      "params": {
+        "value": 5.0
+      },
+      "unit": "seconds"
+    },
+    {
+      "id": "dist_phase_0",
+      "type": "constant",
+      "params": {
+        "value": 8.0
+      },
+      "unit": "seconds"
+    },
+    {
+      "id": "dist_phase_1",
+      "type": "constant",
+      "params": {
+        "value": 12.0
+      },
+      "unit": "seconds"
+    },
+    {
+      "id": "dist_phase_2",
+      "type": "constant",
+      "params": {
+        "value": 12.0
+      },
+      "unit": "seconds"
+    },
+    {
+      "id": "dist_task_breakdown",
+      "type": "normal",
+      "params": {
+        "mean": 45.0,
+        "std": 10.0
+      },
+      "unit": "seconds"
+    },
+    {
+      "id": "dist_q33nr_review",
+      "type": "lognormal",
+      "params": {
+        "mu": 3.5,
+        "sigma": 0.8
+      },
+      "unit": "seconds"
+    },
+    {
+      "id": "dist_dispatch",
+      "type": "constant",
+      "params": {
+        "value": 3.0
+      },
+      "unit": "seconds"
+    },
+    {
+      "id": "dist_bee_execution",
+      "type": "lognormal",
+      "params": {
+        "mu": 5.0,
+        "sigma": 1.2
+      },
+      "unit": "seconds"
+    },
+    {
+      "id": "dist_post_verify",
+      "type": "constant",
+      "params": {
+        "value": 10.0
+      },
+      "unit": "seconds"
+    },
+    {
+      "id": "dist_triage",
+      "type": "normal",
+      "params": {
+        "mean": 8.0,
+        "std": 2.0
+      },
+      "unit": "seconds"
+    },
+    {
+      "id": "dist_q33n_review",
+      "type": "constant",
+      "params": {
+        "value": 30.0
+      },
+      "unit": "seconds"
+    },
+    {
+      "id": "dist_archive",
+      "type": "constant",
+      "params": {
+        "value": 5.0
+      },
+      "unit": "seconds"
+    }
+  ],
+  "metadata": {
+    "author": "Q88NR-bot",
+    "created": "2026-03-16",
+    "spec_ref": "SPEC-PIPELINE-001",
+    "task_ref": "TASK-226",
+    "description": "Complete build pipeline encoding from Q88N direction through shipped code. Includes all 3 fidelity gates (Gate 0, Phase 0-2), LLM triage at 3 integration points, bee pool with capacity=5, human reviewer capacity=1. Service time distributions are initial estimates - calibrated from Event Ledger data after 50+ specs processed.",
+    "calibration_status": "initial",
+    "calibration_required_after": 50
+  }
+}

@@ -1,0 +1,81 @@
+# BEE RESPONSE: 2026-03-16-BRIEFING-shell-chrome-wire
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260316-1028
+# Task file: 2026-03-16-BRIEFING-shell-chrome-wire.md
+# Success: True
+# Duration: 192.8s
+# Files modified: 24 (verified)
+# Cost (USD): $0
+# Turns: 23
+# API duration (ms): 190135
+# Session ID: c34552b9-63f6-40df-8131-df384797eccf
+# Boot injected: True
+
+---
+
+Perfect! Now let me write my summary to Q33NR:
+
+---
+
+## Q33N Report: Shell Chrome Wiring Task Files Ready
+
+**Status:** Task files created, awaiting Q33NR review
+
+### Summary
+
+I've analyzed the shell chrome components and discovered that **MenuBar and ShellTabBar are already fully implemented** with comprehensive test coverage (29 + 16 = 45 tests). SpotlightOverlay is also fully implemented (13 tests) but is **missing the Ctrl+Shift+P keyboard shortcut** to open it.
+
+### Task Files Created
+
+I've written **3 task files** for bee execution:
+
+1. **TASK-174: Verify MenuBar Tests** (validation task)
+   - Run existing 29 tests
+   - Verify all menu actions work with shell reducer
+   - Expected: all tests pass, no code changes needed
+
+2. **TASK-175: Verify ShellTabBar Tests** (validation task)
+   - Run existing 16 tests
+   - Verify tab switching works with shell reducer
+   - Expected: all tests pass, no code changes needed
+
+3. **TASK-176: Add Ctrl+Shift+P Keyboard Shortcut** (new implementation)
+   - **TDD approach:** 5 new tests first in `Shell.keyboard.test.tsx`
+   - Add keyboard listener to `Shell.tsx` component
+   - Dispatch `REPARENT_TO_BRANCH` or `ADD_SPOTLIGHT` action
+   - Logic: move focused pane to spotlight, or create empty pane if none focused
+
+### Files Analyzed
+
+- `MenuBar.tsx` (423 lines) — COMPLETE, 29 tests
+- `ShellTabBar.tsx` (236 lines) — COMPLETE, 16 tests
+- `SpotlightOverlay.tsx` (98 lines) — COMPLETE, 13 tests, missing keyboard shortcut
+- `Shell.tsx` (~100 lines) — needs keyboard listener added
+- `reducer.ts` — actions: `REPARENT_TO_BRANCH`, `ADD_SPOTLIGHT`, `REMOVE_SPOTLIGHT`
+
+### Dispatch Recommendation
+
+**Parallel dispatch** (all 3 tasks are independent):
+```bash
+# All can run simultaneously
+python .deia/hive/scripts/dispatch/dispatch.py .deia/hive/tasks/2026-03-16-TASK-174-verify-menubar-tests.md --model haiku --role bee --inject-boot &
+python .deia/hive/scripts/dispatch/dispatch.py .deia/hive/tasks/2026-03-16-TASK-175-verify-shelltabbar-tests.md --model haiku --role bee --inject-boot &
+python .deia/hive/scripts/dispatch/dispatch.py .deia/hive/tasks/2026-03-16-TASK-176-spotlight-keyboard-shortcut.md --model sonnet --role bee --inject-boot &
+```
+
+### Acceptance Criteria Status
+
+From briefing:
+- ✅ **MenuBar renders with menu items** — already implemented
+- ✅ **Tab switching works** — already implemented
+- ⚠️ **Spotlight overlay opens/closes** — closes works, TASK-176 adds open shortcut
+- ⚠️ **Tests written and passing** — 58 existing tests, TASK-176 adds 5 new tests
+
+### Coordination Report
+
+Full analysis written to:
+`.deia/hive/responses/20260316-Q33N-BRIEFING-shell-chrome-wire-COORDINATION-REPORT.md`
+
+**Awaiting Q33NR review and approval to dispatch bees.**

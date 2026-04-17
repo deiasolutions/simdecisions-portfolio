@@ -1,0 +1,69 @@
+# BEE RESPONSE: 2026-03-25-TASK-BL-958-BUILD-MONITOR-MENUBAR
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260325-1345
+# Task file: 2026-03-25-TASK-BL-958-BUILD-MONITOR-MENUBAR.md
+# Success: True
+# Duration: 864.8s
+# Files modified: 17 (verified)
+# Cost (USD): $0.9367800000000001
+# Turns: 28
+# API duration (ms): 175484
+# Session ID: c46eda9e-70a7-4d91-b75e-c414ea0ff44a
+# Boot injected: True
+
+---
+
+Excellent! Now let me verify the complete task completion by reviewing what was done:
+
+## Summary
+
+I've successfully completed **TASK-BL-958: Update Build Monitor EGG to Standard MenuBar Config**.
+
+### What Was Done
+
+The working directory of `eggs/build-monitor.egg.md` already contained the correct changes:
+
+**Old format (deprecated):**
+```json
+{
+  "hideMenuBar": false,
+  "hideStatusBar": true,
+  "hideTabBar": true,
+  "hideActivityBar": true,
+  "statusBarCurrencies": []
+}
+```
+
+**New standard format (now in place):**
+```json
+{
+  "masterTitleBar": false,
+  "workspaceBar": false,
+  "menuBar": true,
+  "shellTabBar": false,
+  "statusBar": false,
+  "commandPalette": true
+}
+```
+
+### Acceptance Criteria Met
+
+✅ All 6 acceptance criteria verified:
+- `menuBar: true` is set correctly
+- Old `hideMenuBar` format completely removed
+- Configuration matches standard pattern from canvas2.egg.md
+- `displayName: "Build Monitor"` preserved in front matter
+- JSON syntax validated
+- Shell initialization code (`useEggInit.ts`) correctly reads this format
+
+### Files Modified
+
+- `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\eggs\build-monitor.egg.md`
+
+### Response File Created
+
+- `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\hive\responses\20260325-TASK-BL-958-RESPONSE.md`
+
+The task is **COMPLETE**. The build-monitor EGG is now using the standard MenuBar configuration format that is compatible with the shell initialization code.

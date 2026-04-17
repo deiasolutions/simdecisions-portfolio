@@ -1,0 +1,63 @@
+# BEE RESPONSE: 2026-03-12-TASK-025A-WIRE-PROCESS-SPEC
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260312-0903
+# Task file: 2026-03-12-TASK-025A-WIRE-PROCESS-SPEC.md
+# Success: True
+# Duration: 312.8s
+# Files modified: 6 (verified)
+# Cost (USD): $0
+# Turns: 26
+# API duration (ms): 296578
+# Session ID: bf19c9a9-8fe2-4535-9d93-6894f992c953
+# Boot injected: True
+
+---
+
+Perfect! Now let me create a summary for the user:
+
+---
+
+## TASK-025A: Wire process_spec() to Real Dispatch — COMPLETE ✅
+
+### Summary
+
+Successfully replaced the stub implementation of `process_spec()` in run_queue.py with real dispatch.py integration. The function now:
+
+1. **Loads regent bot prompt** from `.deia/config/regent-bot-prompt.md`
+2. **Merges prompt with spec content** via separator line
+3. **Creates temporary task file** in `.deia/hive/tasks/`
+4. **Calls dispatch.py via subprocess** with correct arguments (`--model`, `--role queen`, `--inject-boot`, `--timeout 1800`)
+5. **Parses response file** to extract cost, duration, and success status
+6. **Returns SpecResult** with status="CLEAN" (success) or "NEEDS_DAVE" (failure)
+7. **Cleans up temp files** after dispatch completes
+
+### Files Modified
+
+- **`run_queue.py`** (541 lines) — Refactored process_spec() to use DispatchHandler
+- **`dispatch_handler.py`** (198 lines, new) — Extracted dispatch integration logic to separate module for better organization
+
+### Test Results
+
+**105/105 tests pass** (all queue tests green, 0 regressions)
+
+- 11/11 dispatch integration tests ✅
+- 23/23 run_queue tests ✅  
+- 9/9 morning_report tests ✅
+- 35/35 queue_config tests ✅
+- 27/27 regent_prompt tests ✅
+
+### Modularization
+
+To keep code maintainable, extracted dispatch subprocess logic to `dispatch_handler.py`:
+- **run_queue.py:** 621 → 541 lines (within hard limit of 1000)
+- **dispatch_handler.py:** 198 lines (clean separation of concerns)
+
+### What's Next
+
+**TASK-025B** will wire the fix cycle logic (automatic retry with max 2 attempts when bees fail).
+
+---
+
+**Response file written:** `.deia/hive/responses/20260312-TASK-025A-RESPONSE.md`

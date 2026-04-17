@@ -1,0 +1,20 @@
+cert_tier: 3
+promoted_from: null
+promoted_at: null
+promoted_by: Q88N
+
+capabilities:
+  filesystem_read: true
+  filesystem_write: false
+  network_access: true      # curl to localhost queue runner
+  shell_exec: true           # netstat, tasklist, process checks
+  user_data_access: false
+  model_invocation: false
+  event_ledger_write: true
+
+blast_radius: contained
+
+budget:
+  clock_max_seconds: 120
+  coin_max_usd: 0.00
+  carbon_max_grams: 0.0

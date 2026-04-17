@@ -1,0 +1,54 @@
+# BEE RESPONSE: 2026-03-15-BRIEFING-simdecisions-applet-wiring
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260315-0810
+# Task file: 2026-03-15-BRIEFING-simdecisions-applet-wiring.md
+# Success: True
+# Duration: 222.0s
+# Files modified: 5 (verified)
+# Cost (USD): $0
+# Turns: 17
+# API duration (ms): 213518
+# Session ID: beb202d6-479a-4699-9484-e73f7acbc44b
+# Boot injected: True
+
+---
+
+## Task Breakdown Complete
+
+I have read the briefing and spec, analyzed the existing code patterns, and created **3 bee-sized task files** for the SimDecisions applet wiring work:
+
+### Task Files Created
+
+1. **TASK-140: SimDecisions Shell Integration (Phase 1)** — `haiku`
+   - Create simAdapter.tsx (40 lines, follows canvasAdapter pattern)
+   - Create sim.egg.md (schema_version 3, single pane layout)
+   - Register sim in APP_REGISTRY
+   - 6 tests (adapter mount + EGG resolution)
+   - Frontend-only, works independently of backend
+
+2. **TASK-141: SimDecisions Engine Integration (Phase 2)** — `sonnet`
+   - Wire SimulationEngine into all 13 sim.py endpoints
+   - Replace all 503 stubs with real engine calls
+   - Connect LedgerAdapter for event emission
+   - 17 tests (full engine lifecycle) + unskip existing tests
+
+3. **TASK-142: SimDecisions Integration Tests (Phase 3)** — `sonnet`
+   - Full stack integration tests (15 new tests)
+   - Adapter integration, EGG resolution, lifecycle tests
+   - Verify all existing sim component tests still pass
+
+### Dispatch Sequence
+- TASK-140 first (independent, haiku)
+- TASK-141 after TASK-140 completes (sonnet)
+- TASK-142 after both complete (sonnet)
+
+All task files are in `.deia/hive/tasks/` and ready for your review. Please review for:
+- Missing deliverables vs spec
+- Stubs or vague acceptance criteria
+- Hardcoded colors, files over 500 lines
+- Imprecise file paths
+- Gaps vs briefing
+
+If approved, I will dispatch bees in sequence. If corrections needed, I will fix and return.

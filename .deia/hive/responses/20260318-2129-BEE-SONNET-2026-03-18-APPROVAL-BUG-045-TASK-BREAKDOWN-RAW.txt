@@ -1,0 +1,65 @@
+# BEE RESPONSE: 2026-03-18-APPROVAL-BUG-045-TASK-BREAKDOWN
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260318-2129
+# Task file: 2026-03-18-APPROVAL-BUG-045-TASK-BREAKDOWN.md
+# Success: True
+# Duration: 164.9s
+# Files modified: 9 (verified)
+# Cost (USD): $1.369638
+# Turns: 11
+# API duration (ms): 157799
+# Session ID: db26ecac-14d8-4a23-815c-03432e29b317
+# Boot injected: True
+
+---
+
+Perfect! Now I'll report to the user (acting as Q33N reporting to Q33NR):
+
+## Task File Ready for Review
+
+I've completed writing the comprehensive task file for **BUG-045: Queue Runner Crash Resilience + Modularization** as approved in your decision memo.
+
+### Task File Location
+`C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\hive\tasks\2026-03-18-TASK-BUG-045-queue-crash-resilience.md`
+
+### What's Included
+
+**Single comprehensive task** combining:
+1. **Crash resilience** — Exception handling at all levels (watch loop, result handling, file moves, fix cycle)
+2. **Modularization** — Split `run_queue.py` (1,219 lines → ~400 lines) into:
+   - `queue_pool.py` (~260 lines)
+   - `queue_batch.py` (~150 lines) 
+   - `queue_util.py` (~100 lines)
+
+**Test Requirements:** Minimum 15 new tests + all 116 existing tests must pass = 131 total
+
+**Model:** Sonnet (complexity justified)
+
+### Quality Verification Completed
+
+✅ Deliverables concrete and measurable  
+✅ File paths absolute (Windows format)  
+✅ Test requirements specify exact scenarios (15 tests enumerated)  
+✅ File size targets table included (before/after line counts)  
+✅ No stubs allowed (explicit constraint)  
+✅ Response file template (all 8 sections)  
+✅ Edge cases enumerated (7 scenarios)  
+✅ Acceptance criteria clear and testable  
+
+### Key Features
+
+- **File size compliance table** showing current vs. target line counts
+- **Two-part deliverables** (crash resilience + modularization)
+- **Explicit "off-limits" callout** for `auto_commit.py` (already has error handling)
+- **Error logging pattern** with code example
+- **Import strategy** guidance to prevent circular dependencies
+- **Detailed test requirements** (15 specific scenarios vs. generic "write tests")
+
+### Ready for Review
+
+The task file is complete and ready for your review. A detailed report has been written to:
+`C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\hive\responses\20260318-Q33N-BUG-045-TASK-FILE-READY.md`
+
+**Awaiting your approval to dispatch the bee.**

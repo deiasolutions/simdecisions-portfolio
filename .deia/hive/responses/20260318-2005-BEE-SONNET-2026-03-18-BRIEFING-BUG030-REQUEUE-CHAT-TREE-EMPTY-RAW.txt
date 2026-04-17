@@ -1,0 +1,68 @@
+# BEE RESPONSE: 2026-03-18-BRIEFING-BUG030-REQUEUE-chat-tree-empty
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260318-2005
+# Task file: 2026-03-18-BRIEFING-BUG030-REQUEUE-chat-tree-empty.md
+# Success: True
+# Duration: 120.2s
+# Files modified: 8 (verified)
+# Cost (USD): $1.592976
+# Turns: 17
+# API duration (ms): 110717
+# Session ID: 3134d158-bdb4-458e-aeb3-58d80d0a1b08
+# Boot injected: True
+
+---
+
+Perfect! Now let me create a summary for the user:
+
+---
+
+## Task File Ready for Review
+
+I've analyzed the BUG-030 re-queue briefing and created **one task file** for a sonnet bee to fix the failing chatHistoryAdapter tests.
+
+### What I Found
+
+The previous bee made the **correct fix** to AUTO_EXPAND_ADAPTERS, but wrote tests with **wrong mock expectations**:
+
+**Test expectations vs API reality:**
+- Tests: `conversationId: 'conv-1'` → API: `'conv-1773866695314-3hhi8o'` (dynamic)
+- Tests: `volume: 'cloud://'` → API: `'home://'` (default)
+- Tests: `volumePreference: 'cloud-only'` → API: `'both'` (default)
+- Tests: badge `'🟢'` → API: `'🔴'` (offline when mocked)
+
+**What's correct (no changes needed):**
+- `chatHistoryAdapter.ts` — implementation is correct
+- `treeBrowserAdapter.tsx` — AUTO_EXPAND fix is correct
+- `chatApi.ts` — API contract is correct
+
+**What needs fixing:**
+- `chatHistoryAdapter.test.ts` — mock expectations
+
+### Task File Created
+
+**File:** `.deia/hive/tasks/2026-03-18-TASK-BUG030B-fix-chat-history-tests.md`
+
+**Instructs bee to:**
+1. Use dynamic conversationId pattern matching (regex, not hardcoded 'conv-1')
+2. Fix mock data to match API defaults (`home://`, `both`)
+3. Fix badge expectations for mocked volumeStatus
+4. Do NOT modify adapter source code
+5. Verify all 9 tests pass + no regressions
+
+**Model:** sonnet  
+**Priority:** P0  
+**Estimated:** 15-20 minutes
+
+### Review Checklist
+
+- [x] Deliverables are concrete and testable
+- [x] Test requirements are clear (2 test commands)
+- [x] No stubs allowed
+- [x] Absolute file paths provided
+- [x] 8-section response format mandated
+- [x] Acceptance criteria match spec
+
+**Ready for your approval to dispatch.**

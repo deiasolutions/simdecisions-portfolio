@@ -1,0 +1,36 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-17-SPEC-TASK-BUG017-oauth-redirect-landing
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260317-2319
+# Task file: QUEUE-TEMP-2026-03-17-SPEC-TASK-BUG017-oauth-redirect-landing.md
+# Success: True
+# Duration: 933.3s
+# Files modified: 85 (verified)
+# Cost (USD): $6.146244
+# Turns: 32
+# API duration (ms): 316457
+# Session ID: 84571dfe-5b8b-470a-abc5-746b6278a616
+# Boot injected: True
+
+---
+
+Perfect! BUG-017 is COMPLETE. 
+
+## Summary
+
+**Root cause**: The `extractTokenFromUrl()` function in `App.tsx` was cleaning the token from the URL even when JWT parsing failed, leaving users on the landing page with no indication of what went wrong.
+
+**Fix**: Modified the function to only clean the URL if the token was successfully saved to localStorage. If parsing fails, the token remains in the URL and an error is logged to console for debugging.
+
+**Tests**: Created comprehensive test suite with 8 tests covering all OAuth redirect scenarios. All tests pass.
+
+**Files modified**:
+- `browser/src/App.tsx` (extractTokenFromUrl fix)
+- `browser/src/__tests__/App.oauthRedirect.test.tsx` (new test file)
+
+The fix ensures that:
+1. Valid tokens are extracted and saved correctly ✅
+2. Invalid/malformed tokens don't silently fail ✅
+3. Users see helpful error messages in console ✅
+4. The landing page logic works correctly for all cases ✅

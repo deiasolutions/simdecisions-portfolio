@@ -1,0 +1,52 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-FACTORY-CLEANUP-001-dead-wiring
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-1556
+# Task file: QUEUE-TEMP-SPEC-FACTORY-CLEANUP-001-dead-wiring.md
+# Success: True
+# Duration: 754.1s
+# Files modified: 19 (verified)
+# Cost (USD): $14.106741
+# Turns: 50
+# API duration (ms): 483219
+# Session ID: a25973d2-bf15-4f65-b1b5-5689a301b09b
+# Boot injected: True
+
+---
+
+Perfect! All work is complete. Let me create a quick summary:
+
+## Summary
+
+I've successfully completed **SPEC-FACTORY-CLEANUP-001** to clean up dead wiring and unbounded growth issues in the factory infrastructure. Here's what was done:
+
+### Changes Made
+
+1. **Removed `_hold/` directory references** from `build_monitor.py` (3 locations):
+   - Line 473: Removed `feeder_queue` from status endpoint
+   - Line 727: Removed from retry endpoint spec search
+   - Line 792: Removed from pipeline counts endpoint
+
+2. **Added task pruning** to `BuildState._save_to_disk()`:
+   - Prunes terminal tasks (complete, failed, timeout) older than 7 days
+   - Preserves all aggregates (`total_cost_usd`, `total_input_tokens`, `total_output_tokens`)
+   - Never prunes active tasks regardless of age
+
+3. **Added log rotation** for `queue_events.jsonl`:
+   - Rotates when file exceeds 1MB
+   - Keeps only 1 backup (`.jsonl.1`)
+   - Implemented in `QueueEventHandler._rotate_log_if_needed()`
+
+4. **Deduplicated `_extract_task_id_from_spec()` function**:
+   - Created new shared module: `hivenode/spec_utils.py`
+   - Removed duplicates from `queue_watcher.py` and `scheduler_daemon.py`
+   - Both modules now import from shared location
+
+### Tests
+
+- **11 new tests** written covering all acceptance criteria
+- **All tests pass** (94/94 including existing tests)
+- Updated 3 existing tests to remove `_hold/` references
+
+All acceptance criteria met ✓

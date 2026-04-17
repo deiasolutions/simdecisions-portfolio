@@ -1,0 +1,51 @@
+# BEE RESPONSE: 2026-03-24-TASK-BUG-SIM-BUS-ON-CRASH
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260324-1426
+# Task file: 2026-03-24-TASK-BUG-SIM-BUS-ON-CRASH.md
+# Success: True
+# Duration: 443.5s
+# Files modified: 4 (verified)
+# Cost (USD): $11.026914
+# Turns: 52
+# API duration (ms): 421153
+# Session ID: 3d59bd37-86a5-4edd-b8a1-b2e35e4206b6
+# Boot injected: True
+
+---
+
+## Summary
+
+I've completed the investigation of **TASK-BUG-SIM-BUS-ON-CRASH** and have a definitive conclusion:
+
+### Finding: **NO BUG EXISTS**
+
+After a comprehensive source code audit, I found:
+
+1. **ZERO instances of `bus.on()`** in the Sim EGG codebase — all code correctly uses MessageBus API (`.subscribe()` and `.send()`)
+
+2. **ALL bus subscriptions are null-safe** — every call to `bus.subscribe()` is guarded by `if (!bus) return;`
+
+3. **MessageBus interface has NO `.on()` method** — it only has `.subscribe()` and `.send()`, never EventEmitter methods
+
+4. **Prior bus API sweep already validated compliance** — the briefing mentions a prior TASK-BUS-API-SWEEP that found zero violations
+
+### What I Did
+
+- ✅ Audited all bus access in FlowDesigner.tsx (7 subscriptions, all safe)
+- ✅ Audited useNodeEditing.ts, useCollaborationLayer.ts, usePlaybackLayer.ts, useSimulationLayer.ts
+- ✅ Verified MessageBus class implementation (no `.on()` method exists)
+- ✅ Created regression test (`BUG-SIM-BUS-ON.test.tsx`) documenting the correct architecture
+- ✅ Wrote complete response file with all 8 required sections
+
+### Conclusion
+
+The reported "bus.on is not a function" crash **cannot be reproduced from the current source code**. The bug report is either:
+- Outdated (already fixed)
+- Misdiagnosed (actual issue elsewhere)
+- Environmental (not code-related)
+
+The codebase is **architecturally sound** and follows all best practices for MessageBus usage.
+
+Response file location: `.deia/hive/responses/20260324-TASK-BUG-SIM-BUS-ON-CRASH-RESPONSE.md`

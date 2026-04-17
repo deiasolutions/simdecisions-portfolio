@@ -1,0 +1,71 @@
+# BEE RESPONSE: 2026-03-24-BRIEFING-MCP-P0-APPROVED
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260324-1532
+# Task file: 2026-03-24-BRIEFING-MCP-P0-APPROVED.md
+# Success: True
+# Duration: 1240.6s
+# Files modified: 64 (verified)
+# Cost (USD): $2.1603449999999995
+# Turns: 17
+# API duration (ms): 170871
+# Session ID: 5076434c-feb8-4bbe-b974-f91ae694e811
+# Boot injected: True
+
+---
+
+Perfect! All three Phase 0 MCP tasks have been successfully dispatched and completed. Let me provide you with a summary:
+
+---
+
+## ✅ MCP Phase 0 Tasks — ALL COMPLETE
+
+I've successfully dispatched all 3 tasks sequentially as instructed:
+
+### 📊 Results Summary
+
+| Task | Status | Duration | Tests | Cost |
+|------|--------|----------|-------|------|
+| **TASK-MCP-001** (State Manager) | ✅ COMPLETE | 5.1 min | 20/20 | $4.49 |
+| **TASK-MCP-002** (Read Tools) | ✅ COMPLETE | 4.8 min | 28/28 | $3.20 |
+| **TASK-MCP-003** (SSE Transport) | ✅ COMPLETE | 7.1 min | 10/10 | $5.85 |
+| **TOTAL** | ✅ ALL COMPLETE | **17 min** | **58/58** | **$13.54** |
+
+### 🎯 What Was Built
+
+**Infrastructure created:**
+- `hivenode/hive_mcp/` package (state manager + tools + SSE server)
+- State persistence to `~/.shiftcenter/hive_state/hive_state.json` (outside OneDrive sync)
+- 4 MCP tools: `queue_list`, `queue_peek`, `task_list`, `task_read`
+- SSE transport on localhost:8421 (separate from hivenode on 8420)
+- `.mcp.json` config for Claude Code auto-discovery
+- 58 tests (all passing, 0 failures)
+
+**Total code:** 1,637 lines (865 implementation + 772 tests)
+
+### 🔑 Key Patterns Applied
+
+1. **Windows compatibility fix:** Used `shutil.move()` instead of `Path.rename()` (same fix as queue runner)
+2. **JSON state outside OneDrive:** Avoids SQLite corruption from file sync
+3. **Separate MCP server:** Port 8421, NOT a router in main hivenode
+4. **Path validation:** All tools reject traversal (../, absolute paths, _archive/ bypass)
+5. **TDD throughout:** Tests written first, all acceptance criteria met
+
+### 📁 Response Files
+
+- `.deia/hive/responses/20260324-TASK-MCP-001-RESPONSE.md`
+- `.deia/hive/responses/20260324-TASK-MCP-002-RESPONSE.md`
+- `.deia/hive/responses/20260324-TASK-MCP-003-RESPONSE.md`
+- `.deia/hive/responses/20260324-QUEEN-2026-03-24-BRIEFING-MCP-P0-RESPONSE.md` (this report)
+
+### ✅ All Acceptance Criteria Met
+
+- [x] State manager with JSON persistence (20 tests)
+- [x] Read-only tools for queue and tasks (28 tests)
+- [x] SSE transport on localhost:8421 (10 integration tests)
+- [x] `.mcp.json` in repo root
+- [x] No stubs, no hardcoded colors, all files under 500 lines
+- [x] Tested against real repo data (426 tasks, 13 specs)
+
+**Phase 0 MCP foundation is COMPLETE and ready for Phase 1 write tools.**

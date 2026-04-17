@@ -1,0 +1,56 @@
+# BEE RESPONSE: 2026-03-16-TASK-220-heartbeat-integration-test
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260316-1944
+# Task file: 2026-03-16-TASK-220-heartbeat-integration-test.md
+# Success: True
+# Duration: 356.2s
+# Files modified: 34 (verified)
+# Cost (USD): $3.0087539999999997
+# Turns: 18
+# API duration (ms): 212683
+# Session ID: d988d5d3-dd8c-4d97-8492-c92326f19f4a
+# Boot injected: True
+
+---
+
+Good - 369 lines, well under the 500-line limit. Let me create a final summary of what was delivered:
+
+## TASK-220: Complete ✓
+
+I've successfully implemented the heartbeat split integration test. Here's what was delivered:
+
+### Test File Created
+- **`tests/hivenode/routes/test_build_monitor_integration.py`** (369 lines)
+
+### Test Coverage (5 tests, all passing)
+1. **`test_complete_bee_lifecycle`** - Comprehensive E2E test covering:
+   - Initial "dispatched" heartbeat → log grows
+   - Status transition → log grows
+   - 5 silent pings with "Processing..." → log doesn't grow
+   - New message → log grows
+   - 3 silent pings with same message → log doesn't grow
+   - "complete" status → log grows
+   - Verifies timestamps advance on every heartbeat
+   - Verifies `/build/status` endpoint returns correct data
+
+2. **`test_multiple_tasks_separate_logs`** - Separator logic between tasks
+
+3. **`test_silent_ping_no_message`** - Heartbeats without messages are silent
+
+4. **`test_liveness_check_via_last_heartbeat`** - Timestamps always advance, log doesn't
+
+5. **`test_state_persistence`** - State persists to disk correctly
+
+### Key Findings
+- Both `last_heartbeat` and `last_seen` **always** update on every heartbeat
+- The split is about the **log**: silent pings don't append to log
+- This verifies all pieces of the heartbeat split feature work together
+
+### Test Results
+- **5/5 tests passing** in integration test file
+- **33/33 total tests passing** across all build monitor test files
+- Full suite validates the heartbeat split feature end-to-end
+
+Response file written to: `.deia/hive/responses/20260316-TASK-220-RESPONSE.md`

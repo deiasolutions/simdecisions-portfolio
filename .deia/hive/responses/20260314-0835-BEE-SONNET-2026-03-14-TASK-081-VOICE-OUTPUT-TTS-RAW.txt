@@ -1,0 +1,71 @@
+# BEE RESPONSE: 2026-03-14-TASK-081-voice-output-tts
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260314-0835
+# Task file: 2026-03-14-TASK-081-voice-output-tts.md
+# Success: True
+# Duration: 420.7s
+# Files modified: 36 (verified)
+# Cost (USD): $0
+# Turns: 45
+# API duration (ms): 365491
+# Session ID: 68677da2-86fc-407b-97f8-4ce8f7bfa775
+# Boot injected: True
+
+---
+
+Perfect! Let me create a summary of the work completed:
+
+---
+
+## TASK-081 COMPLETE ✓
+
+Successfully implemented voice output (TTS) for terminal responses using browser-native `speechSynthesis` API.
+
+### What Was Built
+
+**Core Components:**
+1. **useSpeechSynthesis Hook** — React hook wrapping `window.speechSynthesis`
+   - Graceful fallback when API unavailable
+   - State tracking via polling (100ms)
+   - Auto-cancel stuck speech after 30s
+   - Clean shutdown on unmount
+
+2. **SpeakerButton Component** — 🔊/⏸ icon button
+   - Hides when API not supported
+   - Pulsing animation when speaking
+   - Accessible (aria-label, title)
+
+3. **Terminal Integration** — Speaker buttons on all response entries
+   - Manual read: click 🔊 on any response
+   - Auto-read: latest response spoken when setting enabled
+   - Only one message speaks at a time
+
+4. **Settings Integration** — `voice_auto_read` from settingsStore
+   - Wired through TerminalApp → TerminalResponsePane → TerminalOutput
+   - Respects user preference (default: false)
+
+### Test Coverage
+- **13 new tests** (all passing)
+  - 5 hook tests (useSpeechSynthesis)
+  - 5 component tests (SpeakerButton)
+  - 3 integration tests (TerminalOutput TTS)
+- **Full suite:** 1400 tests passing, 0 failures
+- **Build:** ✓ No TypeScript errors
+
+### CSS
+- All styles use `var(--sd-*)` variables only
+- Pulsing animation for active state
+- Hover effects with scale transform
+
+### Files Changed
+- **5 new files** (hook, component, 3 test files)
+- **4 modified files** (CSS, TerminalOutput, TerminalResponsePane, TerminalApp)
+- **No file over 500 lines** ✓
+
+### Acceptance Criteria: 11/11 ✓
+All acceptance criteria met. Feature ready for use.
+
+**Response file:** `.deia/hive/responses/20260314-TASK-081-RESPONSE.md`
+**Inventory:** Added as `FEAT-VOICE-TTS-001` (13 tests)

@@ -1,0 +1,51 @@
+# BEE RESPONSE: 2026-03-19-TASK-BL110-STATUS-SYSTEM-ALIGNMENT
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260319-2301
+# Task file: 2026-03-19-TASK-BL110-STATUS-SYSTEM-ALIGNMENT.md
+# Success: True
+# Duration: 519.1s
+# Files modified: 8 (verified)
+# Cost (USD): $7.237113
+# Turns: 38
+# API duration (ms): 373143
+# Session ID: 614d3dc5-0348-4321-9ad6-3d8b287b332b
+# Boot injected: True
+
+---
+
+## Summary
+
+**TASK-BL110: Status System Alignment — COMPLETE**
+
+I've successfully aligned the build status system between the backend and frontend:
+
+### What Was Accomplished
+
+**Backend Changes:**
+- Added `BuildStatus` enum with 9 status values (dispatched, running, complete, failed, timeout, wave_start, wave_end, separator, unknown)
+- Added `TERMINAL_STATUSES` and `ACTIVE_STATUSES` constant sets
+- Added status validation to `HeartbeatPayload` that rejects invalid values
+- Updated all status comparisons to use enum values consistently
+
+**Frontend Changes:**
+- Created `buildMonitorTypes.ts` with matching TypeScript enum and helper functions
+- Centralized status color mapping (CSS variables only, no hardcoded colors)
+- Centralized status label mapping
+- Added type guards for status validation
+- Updated `buildMonitorAdapter.tsx` to use centralized types
+
+**Tests:**
+- **Backend: 33 tests passing** (13 new tests for status alignment)
+- **Frontend: 19 tests passing** (all new tests for type definitions)
+
+### Key Achievements
+
+✅ **Perfect alignment** between backend and frontend status values
+✅ **Status validation** at API boundary prevents invalid values
+✅ **No hardcoded colors** — all colors use `var(--sd-*)` CSS variables
+✅ **Type safety** with enums and validation functions
+✅ **Comprehensive test coverage** for both backend and frontend
+
+The build monitor system is now fully aligned with consistent status values, validated transitions, and proper color mapping across the stack.

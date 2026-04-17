@@ -1,0 +1,95 @@
+# BEE RESPONSE: TASK-HOURLY-REPORT-SYSTEM
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260408-1343
+# Task file: TASK-HOURLY-REPORT-SYSTEM.md
+# Success: True
+# Duration: 264.9s
+# Files modified: 19 (verified)
+# Cost (USD): $2.0296860000000003
+# Turns: 25
+# API duration (ms): 226373
+# Session ID: 1ed7c807-026f-4ac4-bf7b-a6fb2bb7be81
+# Boot injected: True
+
+---
+
+Perfect! The factory status report system is complete. Let me create a quick summary for Q88N:
+
+---
+
+## TASK-HOURLY-REPORT-SYSTEM — COMPLETE ✓
+
+**Deliverable:** `_tools/factory_report.py` (685 lines, stdlib only)
+
+### What Was Built
+
+A standalone Python script that queries hivenode's `/build/status` endpoint and generates hourly factory status reports tracking:
+
+1. **Concurrent processes** — active queens and bees by name
+2. **Productivity metrics** — completed/dispatched counts, completion rate, avg duration, longest running task
+3. **3 Currencies** — USD (today/lifetime), tokens (in/out, today/lifetime), wall hours (consumed/parallel)
+4. **Queue state** — backlog, active, done, needs_review, blocked counts
+5. **Recent completions** — last N tasks with timestamp, cost, duration, turn count
+
+### Features Implemented
+
+- ✅ Default report: shows factory status since midnight
+- ✅ `--json` flag for machine-readable output
+- ✅ `--watch` flag for live monitoring (60s refresh)
+- ✅ `--since HOURS` for custom time windows
+- ✅ `--daemon` mode for hourly auto-reports to `.deia/hive/reports/`
+- ✅ Graceful offline handling ("HIVENODE OFFLINE" message)
+- ✅ No external dependencies (stdlib only)
+
+### Usage
+
+```bash
+python _tools/factory_report.py              # Default report
+python _tools/factory_report.py --json       # JSON output
+python _tools/factory_report.py --watch      # Live monitoring
+python _tools/factory_report.py --since 24   # Last 24 hours
+python _tools/factory_report.py --daemon     # Hourly auto-reports
+```
+
+### Sample Output
+
+```
+============================================================
+ FACTORY STATUS REPORT — 2026-04-08 13:47
+============================================================
+
+CONCURRENT PROCESSES
+  Active queens:   3  (TASK-HOURLY-REPORT-SYSTEM, TASK-FIX-SCHEDULER-PARSER, ...)
+  Active bees:     1  (QUEUE-TEMP-SPEC-MCP-001-health-endpoint)
+  Total active:    4 / 15 max
+
+PRODUCTIVITY (since midnight)
+  Tasks completed:    20
+  Tasks dispatched:   24
+  Completion rate:    83%
+  Avg duration:       41.7min
+  Longest running:    QUEUE-TEMP-SPEC-MCP-001-health (1.3h, still active)
+
+3 CURRENCIES
+  USD cost:      $160.45  (today)  |  $3301.25 (lifetime)
+  Tokens:        54628K in / 638K out (today)  |  1077M in / 9M out (lifetime)
+  Wall hours:    13.9h consumed  |  16.3h parallel (actual wall)
+
+QUEUE STATE
+  Backlog:       12 specs
+  Active:        1 specs
+  Done today:    432 specs
+  Needs review:  16 specs
+  Blocked:       12 specs (deps unmet)
+
+RECENT COMPLETIONS (last 1h)
+  12:51  TASK-REVIEW-QUEEN-ECHO          $  3.07   2.4min  18 turns
+  12:52  TASK-REVIEW-QUEEN-ALPHA         $  2.18   3.4min   8 turns
+  12:55  TASK-REVIEW-QUEEN-CHARLIE       $ 11.19   6.2min  35 turns
+  ...
+============================================================
+```
+
+All acceptance criteria met. Response file written to `.deia/hive/responses/20260408-TASK-HOURLY-REPORT-SYSTEM-RESPONSE.md`.

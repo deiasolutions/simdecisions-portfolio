@@ -1,0 +1,46 @@
+# Carbon methodology — ADR-015
+default_carbon_intensity_g_kwh: 400
+default_region: "us_average"
+
+model_energy:
+  claude-opus-4-6:
+    input_kwh_per_1k: 0.0080
+    output_kwh_per_1k: 0.0120
+  claude-sonnet-4-5:
+    input_kwh_per_1k: 0.0030
+    output_kwh_per_1k: 0.0045
+  claude-haiku-4-5:
+    input_kwh_per_1k: 0.0008
+    output_kwh_per_1k: 0.0012
+  gpt-5.4:
+    input_kwh_per_1k: 0.0040
+    output_kwh_per_1k: 0.0060
+  gpt-4o:
+    input_kwh_per_1k: 0.0040
+    output_kwh_per_1k: 0.0060
+  gpt-4o-mini:
+    input_kwh_per_1k: 0.0015
+    output_kwh_per_1k: 0.0022
+  gemini-pro:
+    input_kwh_per_1k: 0.0035
+    output_kwh_per_1k: 0.0050
+  llama-70b:
+    input_kwh_per_1k: 0.0025
+    output_kwh_per_1k: 0.0035
+  llama-8b:
+    input_kwh_per_1k: 0.0005
+    output_kwh_per_1k: 0.0008
+
+region_intensity:
+  us_average: 400
+  texas: 380
+  california: 230
+  eu_average: 250
+  france: 50
+
+budgets:
+  daily_limit_g: 50000
+  weekly_limit_g: 250000
+  monthly_limit_g: 1000000
+  alert_threshold: 0.8
+  hard_cap: false

@@ -1,0 +1,63 @@
+# BEE RESPONSE: 2026-03-14-TASK-078-conversation-load-handler
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260314-0830
+# Task file: 2026-03-14-TASK-078-conversation-load-handler.md
+# Success: True
+# Duration: 286.5s
+# Files modified: 18 (verified)
+# Cost (USD): $0
+# Turns: 40
+# API duration (ms): 174077
+# Session ID: 716ecdf8-18c1-45dc-90d1-4ea6338a3f19
+# Boot injected: True
+
+---
+
+Excellent! Everything passes. Let me create a summary:
+
+---
+
+## Summary
+
+I have successfully completed **TASK-078: Tree-Browser Conversation Load Handler**.
+
+### ✅ What Was Delivered
+
+1. **`browser/src/services/chat/conversationLoader.ts`** (84 lines)
+   - Implements `useConversationLoader(bus, textPaneNodeId)` hook
+   - Subscribes to `tree-browser:conversation-selected` events
+   - Loads conversations via `chatApi.getConversation()`
+   - Serializes to markdown via `chatMarkdown.serializeConversation()`
+   - Sends to text-pane via `terminal:text-patch` bus message
+   - Handles errors (404 vs network) with appropriate messages
+
+2. **`browser/src/services/chat/__tests__/conversationLoader.test.ts`** (230 lines)
+   - 7 comprehensive tests covering:
+     - ✓ Successful load and send
+     - ✓ 404 error handling
+     - ✓ Network/volume offline error handling
+     - ✓ Null bus handling
+     - ✓ Null textPaneNodeId handling
+     - ✓ Missing conversationId filtering
+     - ✓ Wrong event type filtering
+
+3. **Response file**: `.deia/hive/responses/20260314-TASK-078-RESPONSE.md`
+
+### 🧪 Test Results
+```
+✓ All 7 tests PASS (104ms)
+```
+
+### 📋 Acceptance Criteria
+- [x] TDD approach (tests written first)
+- [x] All tests pass
+- [x] No files over 500 lines
+- [x] No stubs (fully implemented)
+- [x] Proper error handling
+- [x] Bus integration complete
+- [x] All edge cases covered
+
+### 🚀 Next Steps
+The hook is ready to be wired into EGG apps that combine tree-browser + text-pane components (follow-up task).

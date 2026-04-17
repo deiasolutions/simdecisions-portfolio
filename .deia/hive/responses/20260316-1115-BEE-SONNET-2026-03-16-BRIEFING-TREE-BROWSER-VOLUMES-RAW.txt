@@ -1,0 +1,70 @@
+# BEE RESPONSE: 2026-03-16-BRIEFING-tree-browser-volumes
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260316-1115
+# Task file: 2026-03-16-BRIEFING-tree-browser-volumes.md
+# Success: True
+# Duration: 343.9s
+# Files modified: 25 (verified)
+# Cost (USD): $0
+# Turns: 53
+# API duration (ms): 300483
+# Session ID: 1d19827e-e31a-4e82-9aeb-ea3bd99f2fe3
+# Boot injected: True
+
+---
+
+Perfect! Now let me output a summary for the user:
+
+## Task Files Created — Ready for Review
+
+I've investigated the codebase and created **4 task files** to wire tree-browser to the volume storage backend:
+
+### Investigation Summary
+
+**Good news:** The backend is already fully implemented! All storage endpoints exist:
+- ✅ `/storage/list` — lists directory contents
+- ✅ `/storage/read` — reads file content
+- ✅ `/storage/stat` — returns file metadata (size, dates)
+- ✅ VolumeRegistry with home:// protocol support
+
+**What needs wiring:**
+1. Frontend `filesystemAdapter` currently calls wrong endpoint (`/repo/tree` instead of `/storage/*`)
+2. Bus events not wired (no `file:selected` emission/listening)
+3. Text-pane doesn't know how to load file content
+
+### Task Breakdown
+
+**TASK-180: Wire volumeAdapter to backend** (Sonnet, 1.5h)
+- Update `filesystemAdapter.ts` to call `/storage/list` + `/storage/stat`
+- Support `home://` protocol
+- 8 tests (3 new + 5 existing)
+
+**TASK-181: Add file:selected bus event** (Haiku, 45m)
+- TreeBrowserAdapter emits `file:selected` when file clicked
+- Follows same pattern as `channel:selected`
+- 4 tests
+
+**TASK-182: Wire text-pane to load files** (Sonnet, 2h)
+- SDEditor listens for `file:selected` bus event
+- Fetches content via `/storage/read`
+- 6 tests
+
+**TASK-183: E2E integration tests** (Sonnet, 1.5h)
+- Complete flow verification
+- 6 integration tests
+- Depends on TASK-180, 181, 182
+
+### Execution Plan
+- **Parallel:** TASK-180 + TASK-181 (independent)
+- **Sequential:** TASK-182 → TASK-183 (depend on prior tasks)
+
+### Files Created
+✅ `.deia/hive/tasks/2026-03-16-TASK-180-volume-adapter-backend-wire.md`
+✅ `.deia/hive/tasks/2026-03-16-TASK-181-tree-browser-file-select-bus.md`
+✅ `.deia/hive/tasks/2026-03-16-TASK-182-text-pane-file-load.md`
+✅ `.deia/hive/tasks/2026-03-16-TASK-183-volume-integration-e2e-test.md`
+✅ `.deia/hive/responses/20260316-Q33N-BRIEFING-tree-browser-volumes-COORDINATION-REPORT.md`
+
+**Ready for Q33NR review and dispatch approval.**

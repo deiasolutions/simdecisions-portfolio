@@ -1,0 +1,45 @@
+# BEE RESPONSE: 2026-03-16-TASK-216-heartbeat-state-transition-detection
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260316-1928
+# Task file: 2026-03-16-TASK-216-heartbeat-state-transition-detection.md
+# Success: True
+# Duration: 307.0s
+# Files modified: 14 (verified)
+# Cost (USD): $1.9490370000000001
+# Turns: 13
+# API duration (ms): 113728
+# Session ID: 992fbf72-f91d-4449-baf1-4abeff6024d1
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Let me provide a summary:
+
+---
+
+## TASK-216 Complete ✓
+
+The heartbeat state transition detection logic was **already implemented** but had a minor bug in the test isolation. I fixed the bug and verified all functionality.
+
+### What Was Done:
+1. **Found existing implementation** - `_is_state_transition()` method (lines 126-160 in build_monitor.py)
+2. **Fixed bug** - `_load_from_disk()` was using global `STATE_FILE` instead of instance `self.STATE_FILE` (line 93)
+3. **Fixed test** - Updated backward compatibility test to properly verify field initialization
+4. **Verified tests** - All 20 state transition tests pass, plus 37 existing build monitor tests
+
+### Test Results:
+- **State transition tests:** 20/20 passed
+- **Build monitor tests:** 37/37 passed  
+- **Total:** 57/57 passed ✓
+
+### Key Features Verified:
+✓ Silent pings update `last_heartbeat` timestamp only  
+✓ State transitions append to `log[]` array  
+✓ "Processing..." messages don't spam the log  
+✓ Status changes always logged  
+✓ New messages (except "Processing...") trigger log append  
+✓ Backward compatible with old monitor-state.json files  
+
+Response file written to: `.deia\hive\responses\20260316-TASK-216-RESPONSE.md`

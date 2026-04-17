@@ -1,0 +1,58 @@
+# BEE RESPONSE: 2026-03-15-TASK-126A-kanban-pg-connection
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260315-0029
+# Task file: 2026-03-15-TASK-126A-kanban-pg-connection.md
+# Success: False
+# Duration: 262.0s
+# Files modified: 9 (verified)
+# Cost (USD): $0
+# Turns: 26
+# API duration (ms): 139104
+# Session ID: 63c70d05-6d45-4419-a1e6-98fe7c1fe860
+# Boot injected: True
+
+---
+
+Perfect! All 23 tests pass. Let me create a summary of what was accomplished:
+
+## Summary
+
+**TASK-126A: Kanban Routes - Connect to Railway PostgreSQL** is now **COMPLETE**.
+
+### What was delivered:
+
+1. **CSV Fallback Implementation** in `kanban_routes.py`:
+   - `_csv_fallback_enabled()`: Checks if CSV exists
+   - `_load_csv_backlog()`: Parses CSV with full schema validation (12 columns)
+   - `_filter_csv_items()`: Applies query filters to CSV data
+   - Updated `get_kanban_items()`: Tries Railway PG via `get_engine()`, falls back to CSV on RuntimeError
+   - Updated `move_kanban_item()`: Returns 501 "Read-only mode" in CSV fallback
+
+2. **Comprehensive Test Coverage** (9 new tests):
+   - CSV loads when engine unavailable
+   - Filters work on CSV: priority, column, type, graduated
+   - Move returns 501 in CSV mode
+   - Error handling: missing CSV (503), malformed CSV (503), empty CSV (empty array)
+   - All 14 existing tests still pass (no regression)
+   - **Total: 23 passed, 0 failed**
+
+3. **Key Features**:
+   - Falls back gracefully when Railway PG unavailable
+   - Preserves all query filters in CSV mode
+   - Logging warnings for observability
+   - Read-only safety (no accidental writes)
+   - Handles edge cases (missing/malformed files)
+
+4. **Code Quality**:
+   - 330 lines (under 500 limit)
+   - TDD approach (tests first)
+   - Zero stubs, fully implemented
+   - No changes to `store.py` or `main.py`
+
+5. **Response File**:
+   - Written to: `.deia/hive/responses/20260315-TASK-126A-RESPONSE.md`
+   - Contains all 8 required sections with complete details
+
+**Ready for next task:** TASK-126B (hivenode PostgreSQL environment configuration)

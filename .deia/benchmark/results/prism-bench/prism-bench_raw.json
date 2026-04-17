@@ -1,0 +1,522 @@
+[
+  {
+    "benchmark": "prism-bench",
+    "benchmark_version": "0.1.0",
+    "simdecisions_version": "0.1.0",
+    "task_id": "branch_01_cost_vs_speed-baseline-T1",
+    "track": "baseline",
+    "trial": 1,
+    "model": "claude-sonnet-4-5",
+    "score": {
+      "passed": true,
+      "partial_credit": 1.0
+    },
+    "currencies": {
+      "clock_seconds": 0.01738715171813965,
+      "coin_usd": 0.0,
+      "carbon_kg": 0.0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "model_calls": 0
+    },
+    "recovery": {
+      "errors_encountered": 0,
+      "errors_recovered": 0,
+      "human_interventions": 0
+    },
+    "metadata": {
+      "started_at": "2026-04-13T18:48:36.646936",
+      "completed_at": "2026-04-13T18:48:36.664323",
+      "output": {
+        "token_flow": {
+          "arrivals": 1,
+          "completions": 1,
+          "abandonments": 0,
+          "aborts": 0
+        },
+        "time_metrics": {
+          "cycle_time": {
+            "count": 1,
+            "sum": 2.0,
+            "mean": 2.0,
+            "min": 2.0,
+            "max": 2.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "wait_time": {
+            "count": 0,
+            "sum": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "service_time": {
+            "count": 4,
+            "sum": 2.0,
+            "mean": 0.5,
+            "min": 0.0,
+            "max": 1.0,
+            "variance": 0.25,
+            "std_dev": 0.5
+          },
+          "queue_time": {
+            "count": 0,
+            "sum": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          }
+        },
+        "throughput": 0.5,
+        "wip": {
+          "time_average": 1.0,
+          "min": 0.0,
+          "max": 1.0,
+          "total_time": 2.0
+        },
+        "resource_utilization": {},
+        "resource_queue_length": {},
+        "node_throughput": {
+          "start": 1,
+          "choose_strategy": 1,
+          "fast_path": 1,
+          "end": 1
+        },
+        "node_service_time": {
+          "start": {
+            "count": 1,
+            "sum": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "choose_strategy": {
+            "count": 1,
+            "sum": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "fast_path": {
+            "count": 1,
+            "sum": 1.0,
+            "mean": 1.0,
+            "min": 1.0,
+            "max": 1.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "end": {
+            "count": 1,
+            "sum": 1.0,
+            "mean": 1.0,
+            "min": 1.0,
+            "max": 1.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          }
+        },
+        "total_cost_cents": 0
+      }
+    }
+  },
+  {
+    "benchmark": "prism-bench",
+    "benchmark_version": "0.1.0",
+    "simdecisions_version": "0.1.0",
+    "task_id": "branch_01_cost_vs_speed-baseline-T2",
+    "track": "baseline",
+    "trial": 2,
+    "model": "claude-sonnet-4-5",
+    "score": {
+      "passed": true,
+      "partial_credit": 1.0
+    },
+    "currencies": {
+      "clock_seconds": 0.0,
+      "coin_usd": 0.0,
+      "carbon_kg": 0.0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "model_calls": 0
+    },
+    "recovery": {
+      "errors_encountered": 0,
+      "errors_recovered": 0,
+      "human_interventions": 0
+    },
+    "metadata": {
+      "started_at": "2026-04-13T18:48:36.664323",
+      "completed_at": "2026-04-13T18:48:36.678936",
+      "output": {
+        "token_flow": {
+          "arrivals": 1,
+          "completions": 1,
+          "abandonments": 0,
+          "aborts": 0
+        },
+        "time_metrics": {
+          "cycle_time": {
+            "count": 1,
+            "sum": 2.0,
+            "mean": 2.0,
+            "min": 2.0,
+            "max": 2.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "wait_time": {
+            "count": 0,
+            "sum": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "service_time": {
+            "count": 4,
+            "sum": 2.0,
+            "mean": 0.5,
+            "min": 0.0,
+            "max": 1.0,
+            "variance": 0.25,
+            "std_dev": 0.5
+          },
+          "queue_time": {
+            "count": 0,
+            "sum": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          }
+        },
+        "throughput": 0.5,
+        "wip": {
+          "time_average": 1.0,
+          "min": 0.0,
+          "max": 1.0,
+          "total_time": 2.0
+        },
+        "resource_utilization": {},
+        "resource_queue_length": {},
+        "node_throughput": {
+          "start": 1,
+          "choose_strategy": 1,
+          "fast_path": 1,
+          "end": 1
+        },
+        "node_service_time": {
+          "start": {
+            "count": 1,
+            "sum": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "choose_strategy": {
+            "count": 1,
+            "sum": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "fast_path": {
+            "count": 1,
+            "sum": 1.0,
+            "mean": 1.0,
+            "min": 1.0,
+            "max": 1.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "end": {
+            "count": 1,
+            "sum": 1.0,
+            "mean": 1.0,
+            "min": 1.0,
+            "max": 1.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          }
+        },
+        "total_cost_cents": 0
+      }
+    }
+  },
+  {
+    "benchmark": "prism-bench",
+    "benchmark_version": "0.1.0",
+    "simdecisions_version": "0.1.0",
+    "task_id": "branch_01_cost_vs_speed-simdecisions-T1",
+    "track": "simdecisions",
+    "trial": 1,
+    "model": "claude-sonnet-4-5",
+    "score": {
+      "passed": true,
+      "partial_credit": 1.0
+    },
+    "currencies": {
+      "clock_seconds": 0.0,
+      "coin_usd": 0.0,
+      "carbon_kg": 0.0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "model_calls": 0
+    },
+    "recovery": {
+      "errors_encountered": 0,
+      "errors_recovered": 0,
+      "human_interventions": 0
+    },
+    "metadata": {
+      "started_at": "2026-04-13T18:48:36.694877",
+      "completed_at": "2026-04-13T18:48:36.694877",
+      "output": {
+        "token_flow": {
+          "arrivals": 1,
+          "completions": 1,
+          "abandonments": 0,
+          "aborts": 0
+        },
+        "time_metrics": {
+          "cycle_time": {
+            "count": 1,
+            "sum": 2.0,
+            "mean": 2.0,
+            "min": 2.0,
+            "max": 2.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "wait_time": {
+            "count": 0,
+            "sum": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "service_time": {
+            "count": 4,
+            "sum": 2.0,
+            "mean": 0.5,
+            "min": 0.0,
+            "max": 1.0,
+            "variance": 0.25,
+            "std_dev": 0.5
+          },
+          "queue_time": {
+            "count": 0,
+            "sum": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          }
+        },
+        "throughput": 0.5,
+        "wip": {
+          "time_average": 1.0,
+          "min": 0.0,
+          "max": 1.0,
+          "total_time": 2.0
+        },
+        "resource_utilization": {},
+        "resource_queue_length": {},
+        "node_throughput": {
+          "start": 1,
+          "choose_strategy": 1,
+          "fast_path": 1,
+          "end": 1
+        },
+        "node_service_time": {
+          "start": {
+            "count": 1,
+            "sum": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "choose_strategy": {
+            "count": 1,
+            "sum": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "fast_path": {
+            "count": 1,
+            "sum": 1.0,
+            "mean": 1.0,
+            "min": 1.0,
+            "max": 1.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "end": {
+            "count": 1,
+            "sum": 1.0,
+            "mean": 1.0,
+            "min": 1.0,
+            "max": 1.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          }
+        },
+        "total_cost_cents": 0
+      }
+    }
+  },
+  {
+    "benchmark": "prism-bench",
+    "benchmark_version": "0.1.0",
+    "simdecisions_version": "0.1.0",
+    "task_id": "branch_01_cost_vs_speed-simdecisions-T2",
+    "track": "simdecisions",
+    "trial": 2,
+    "model": "claude-sonnet-4-5",
+    "score": {
+      "passed": true,
+      "partial_credit": 1.0
+    },
+    "currencies": {
+      "clock_seconds": 0.0,
+      "coin_usd": 0.0,
+      "carbon_kg": 0.0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "model_calls": 0
+    },
+    "recovery": {
+      "errors_encountered": 0,
+      "errors_recovered": 0,
+      "human_interventions": 0
+    },
+    "metadata": {
+      "started_at": "2026-04-13T18:48:36.710712",
+      "completed_at": "2026-04-13T18:48:36.710712",
+      "output": {
+        "token_flow": {
+          "arrivals": 1,
+          "completions": 1,
+          "abandonments": 0,
+          "aborts": 0
+        },
+        "time_metrics": {
+          "cycle_time": {
+            "count": 1,
+            "sum": 2.0,
+            "mean": 2.0,
+            "min": 2.0,
+            "max": 2.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "wait_time": {
+            "count": 0,
+            "sum": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "service_time": {
+            "count": 4,
+            "sum": 2.0,
+            "mean": 0.5,
+            "min": 0.0,
+            "max": 1.0,
+            "variance": 0.25,
+            "std_dev": 0.5
+          },
+          "queue_time": {
+            "count": 0,
+            "sum": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          }
+        },
+        "throughput": 0.5,
+        "wip": {
+          "time_average": 1.0,
+          "min": 0.0,
+          "max": 1.0,
+          "total_time": 2.0
+        },
+        "resource_utilization": {},
+        "resource_queue_length": {},
+        "node_throughput": {
+          "start": 1,
+          "choose_strategy": 1,
+          "fast_path": 1,
+          "end": 1
+        },
+        "node_service_time": {
+          "start": {
+            "count": 1,
+            "sum": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "choose_strategy": {
+            "count": 1,
+            "sum": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "fast_path": {
+            "count": 1,
+            "sum": 1.0,
+            "mean": 1.0,
+            "min": 1.0,
+            "max": 1.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          },
+          "end": {
+            "count": 1,
+            "sum": 1.0,
+            "mean": 1.0,
+            "min": 1.0,
+            "max": 1.0,
+            "variance": 0.0,
+            "std_dev": 0.0
+          }
+        },
+        "total_cost_cents": 0
+      }
+    }
+  }
+]

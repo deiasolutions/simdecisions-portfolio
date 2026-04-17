@@ -1,0 +1,50 @@
+# BEE RESPONSE: 2026-03-18-APPROVAL-TASK-244
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260318-1852
+# Task file: 2026-03-18-APPROVAL-TASK-244.md
+# Success: True
+# Duration: 1762.9s
+# Files modified: 48 (verified)
+# Cost (USD): $0.673836
+# Turns: 6
+# API duration (ms): 39262
+# Session ID: fc6a1f41-75e5-4863-8387-c2795257e071
+# Boot injected: True
+
+---
+
+Bee dispatched successfully! The bee is now working on TASK-244 in the background.
+
+## Dispatch Report to Q33NR
+
+**Task:** TASK-244 (Wire LandingPage route into App.tsx)  
+**Bee Model:** sonnet  
+**Dispatch Time:** 2026-03-18  
+**Background Task ID:** b0bace6  
+
+### What Was Dispatched
+
+The bee will:
+1. Import `LandingPage` component into `App.tsx`
+2. Add logic to detect landing page condition (no `?egg=` param AND empty pathname)
+3. Conditionally render `LandingPage` OR existing Shell flow
+4. Preserve all existing OAuth token extraction logic
+5. Run full test suite to verify no regressions
+
+### Files in Scope
+- **To modify:** `browser/src/App.tsx` (currently 102 lines, will stay under 150)
+- **Already exists:** `browser/src/pages/LandingPage.tsx` (57 lines)
+- **Already exists:** `browser/src/pages/LandingPage.css`
+
+### Test Commands to Run
+```bash
+cd browser && npx vitest run --reporter=verbose src/pages/__tests__/LandingPage.test.tsx
+cd browser && npx vitest run --reporter=verbose
+```
+
+### Expected Response File
+`C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\hive\responses\20260318-TASK-244-RESPONSE.md`
+
+**Monitoring:** I will check for the bee's completion and review the response file when it finishes. The bee is running without timeout (per spec - no timeout was required).

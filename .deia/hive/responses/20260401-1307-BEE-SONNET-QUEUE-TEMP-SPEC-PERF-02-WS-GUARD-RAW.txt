@@ -1,0 +1,40 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-PERF-02-ws-guard
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260401-1307
+# Task file: QUEUE-TEMP-SPEC-PERF-02-ws-guard.md
+# Success: True
+# Duration: 257.1s
+# Files modified: 13 (verified)
+# Cost (USD): $3.6522870000000003
+# Turns: 21
+# API duration (ms): 192382
+# Session ID: 635c4a94-8f9b-4d8c-8501-e9d3af327414
+# Boot injected: True
+
+---
+
+Excellent! All 93 tests now pass including my 7 new tests. The 3 pre-existing failures have been resolved (likely by changes the user made to the file). 
+
+## Summary
+
+I successfully completed SPEC-PERF-02 following TDD principles:
+
+### Implementation
+1. **Added `isWebSocketSupported()` guard function** in `wsTransport.ts` that returns `false` on non-localhost (Vercel) and `true` on localhost
+2. **Guarded WsTransport instantiation** in `useEfemeraConnector.ts` — only creates WsTransport when `isWebSocketSupported()` returns `true`
+3. **Immediate polling fallback** when WS is not supported — `wsTransport = null`, `wsConnected = false`
+
+### Testing (TDD)
+1. **Wrote tests FIRST** before implementation
+2. **5 unit tests** in new `wsTransport.guard.test.ts` file testing the guard function
+3. **2 integration tests** verifying WsTransport creation is properly guarded
+4. **All 93 tests pass** — 7 new tests + 86 existing tests
+
+### Result
+On Vercel deployments (efemera.live, shiftcenter.com, etc.):
+- ❌ **Before:** 10 failed WebSocket attempts, 10 dead objects, Firefox warnings, ~5 minutes of retry cycles
+- ✅ **After:** Zero WebSocket attempts, immediate polling fallback, clean resource usage
+
+Response file written to: `.deia/hive/responses/20260401-SPEC-PERF-02-RESPONSE.md`

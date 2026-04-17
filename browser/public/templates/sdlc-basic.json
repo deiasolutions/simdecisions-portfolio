@@ -1,0 +1,142 @@
+{
+  "id": "sdlc-basic-template",
+  "name": "Software Development Lifecycle",
+  "description": "Standard SDLC process with human gates at Requirements, Design, and Deployment. Implementation and Testing are automated by AI agents. Supports variable project parameters and templated outputs.",
+  "version": "1.0.0",
+  "created_at": "2026-03-01T00:00:00Z",
+  "updated_at": "2026-03-01T00:00:00Z",
+  "dialect": "phase",
+  "metadata": {
+    "author": "SimDecisions",
+    "domain": "software-engineering",
+    "intention": "Execute a complete SDLC process with human gates at key stages and AI-assisted implementation and testing",
+    "tags": ["sdlc", "software", "development", "agile", "process", "workflow"],
+    "category": "process-templates",
+    "variables": [
+      {
+        "name": "project_name",
+        "type": "string",
+        "default": "My Project",
+        "description": "Name of the software project"
+      },
+      {
+        "name": "project_description",
+        "type": "string",
+        "default": "A new software project",
+        "description": "High-level description of the project goals and scope"
+      },
+      {
+        "name": "output_format",
+        "type": "string",
+        "default": "markdown",
+        "description": "Format for generated documentation and artifacts",
+        "enum": ["markdown", "json", "yaml"]
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "name": "Project Start",
+      "node_type": "start",
+      "position": { "x": 0, "y": 250 }
+    },
+    {
+      "id": "requirements",
+      "name": "Requirements Gathering",
+      "node_type": "task",
+      "description": "Define project requirements, user stories, and acceptance criteria for {{project_name}}.",
+      "position": { "x": 250, "y": 250 },
+      "oracle": {
+        "tier": "human"
+      },
+      "actions": {
+        "on_enter": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "id": "design",
+      "name": "System Design",
+      "node_type": "task",
+      "description": "Create system architecture, component design, and technical specifications for {{project_name}}.",
+      "position": { "x": 500, "y": 250 },
+      "oracle": {
+        "tier": "human"
+      }
+    },
+    {
+      "id": "implementation",
+      "name": "Implementation",
+      "node_type": "task",
+      "description": "Implement the approved design for {{project_name}}. Generate code, configurations, and infrastructure setup in {{output_format}} format.",
+      "position": { "x": 750, "y": 250 },
+      "oracle": {
+        "tier": "llm"
+      }
+    },
+    {
+      "id": "testing",
+      "name": "Testing & QA",
+      "node_type": "task",
+      "description": "Generate and execute test plans for {{project_name}}. Produce test results, coverage reports, and quality metrics.",
+      "position": { "x": 1000, "y": 250 },
+      "oracle": {
+        "tier": "llm"
+      }
+    },
+    {
+      "id": "deployment",
+      "name": "Deployment",
+      "node_type": "task",
+      "description": "Review implementation and test results. Approve and execute deployment of {{project_name}}.",
+      "position": { "x": 1250, "y": 250 },
+      "oracle": {
+        "tier": "human"
+      }
+    },
+    {
+      "id": "end",
+      "name": "Project Complete",
+      "node_type": "end",
+      "position": { "x": 1500, "y": 250 }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-start-req",
+      "source": "start",
+      "target": "requirements"
+    },
+    {
+      "id": "e-req-design",
+      "source": "requirements",
+      "target": "design",
+      "label": "Requirements Approved"
+    },
+    {
+      "id": "e-design-impl",
+      "source": "design",
+      "target": "implementation",
+      "label": "Design Approved"
+    },
+    {
+      "id": "e-impl-test",
+      "source": "implementation",
+      "target": "testing"
+    },
+    {
+      "id": "e-test-deploy",
+      "source": "testing",
+      "target": "deployment",
+      "label": "Tests Passed"
+    },
+    {
+      "id": "e-deploy-end",
+      "source": "deployment",
+      "target": "end",
+      "label": "Deployed"
+    }
+  ]
+}

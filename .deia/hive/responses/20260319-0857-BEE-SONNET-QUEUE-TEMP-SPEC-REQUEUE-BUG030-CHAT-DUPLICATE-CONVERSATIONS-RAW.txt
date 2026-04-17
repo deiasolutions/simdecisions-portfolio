@@ -1,0 +1,66 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-REQUEUE-BUG030-chat-duplicate-conversations
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260319-0857
+# Task file: QUEUE-TEMP-SPEC-REQUEUE-BUG030-chat-duplicate-conversations.md
+# Success: True
+# Duration: 131.1s
+# Files modified: 17 (verified)
+# Cost (USD): $2.2446
+# Turns: 15
+# API duration (ms): 107527
+# Session ID: abb3221b-ee24-4d85-b81d-a43702797687
+# Boot injected: True
+
+---
+
+The bee hasn't completed yet. According to my role as Q33NR (regent), I should wait for the bee to complete and then review its results. However, I notice that I AM the "QUEUE-TEMP-SPEC-REQUEUE-BUG030-chat-duplicate-conversations" regent bot. This means Q88N (Dave) is asking me to handle this spec.
+
+Let me understand what's happening:
+1. The queue runner picked up the spec
+2. I (Q33NR-bot) wrote a briefing for Q33N
+3. Q33N created task file TASK-BUG030D
+4. I approved the task
+5. Q33N dispatched a Haiku bee
+6. The bee is currently running (hasn't completed yet)
+
+My job now is to WAIT for the bee to complete, then review its response. But since Dave messaged me directly, he may want status. Let me report status to Q88N:
+
+---
+
+**STATUS REPORT: BUG-030 (Chat Duplicate Conversations)**
+
+**Current Status:** ⏳ BEE IN PROGRESS
+
+**What's Happening:**
+- Spec received and processed
+- Q33N created task file: `TASK-BUG030D-CHAT-TREE-DEDUP`
+- Task approved and dispatched to Haiku bee
+- Bee is currently running (no response file yet)
+
+**What the Bee is Doing:**
+Adding explicit deduplication logic in `chatHistoryAdapter.ts` to ensure each conversation appears exactly once in the tree, even if the API returns duplicates.
+
+**Files Being Modified:**
+- `browser/src/primitives/tree-browser/adapters/chatHistoryAdapter.ts` (add ~10 lines for dedup)
+- `browser/src/primitives/tree-browser/adapters/__tests__/chatHistoryAdapter.test.ts` (add 1 test)
+
+**Expected Deliverables:**
+1. Deduplication logic using Map to track conversations by ID
+2. Prefer most recent conversation when duplicates exist
+3. New test that verifies deduplication works
+4. All tests passing
+
+**Next Steps:**
+1. Wait for bee to complete and write response file
+2. Review response file (verify all 8 sections present)
+3. Verify tests pass
+4. Report results to you
+
+**Estimated Completion:** Bee has been running for ~2 minutes. Expected total: 15-20 minutes.
+
+**Do you want me to:**
+- [ ] Continue waiting for bee completion (recommended)
+- [ ] Check bee output to see current progress
+- [ ] Something else

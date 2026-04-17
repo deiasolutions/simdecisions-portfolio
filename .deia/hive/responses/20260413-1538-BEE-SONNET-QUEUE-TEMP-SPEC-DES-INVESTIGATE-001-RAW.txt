@@ -1,0 +1,45 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-DES-INVESTIGATE-001
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260413-1538
+# Task file: QUEUE-TEMP-SPEC-DES-INVESTIGATE-001.md
+# Success: True
+# Duration: 308.4s
+# Files modified: 12 (verified)
+# Cost (USD): $5.242017
+# Turns: 33
+# API duration (ms): 297774
+# Session ID: 9a4417f0-8377-4398-9eb9-e20bedb67bc3
+# Boot injected: True
+
+---
+
+Perfect! Investigation complete. Let me provide a concise summary:
+
+## DES Engine Investigation Complete
+
+I've completed a comprehensive investigation of the DES engine with **actual code verification + live simulation runs**. Here's what I found:
+
+### Capability Breakdown (28 total)
+- ✅ **12 CONFIRMED**: Event loop, 14 distributions, Welford stats, MSER-5, Cornish-Fisher CIs, CRN, parameter sweep, Pareto frontier
+- ⚠️ **10 PARTIAL**: Checkpoint/fork/restore (code works, stats not wired), replay (code works, no UI), ledger adapter (hook exists, not called)
+- ❌ **6 MISSING**: Entire surrogate subsystem, entire dialects subsystem (BPMN/SBML/L-systems)
+
+### Integration Status (9 connections)
+- **0 WIRED**: Nothing fully connected end-to-end
+- **3 PARTIAL**: Ledger has hook in core.py but not called by default
+- **5 ADJACENT**: Both sides exist (e.g., Canvas exports IR, engine.load() accepts it) but no API route connects them
+- **1 MISSING**: Surrogates
+
+### Live Simulations (6 attempted)
+All 6 ran. **Key finding**: Engine loop executes correctly, but **statistics collector is never called** from event handlers. Every simulation returned zeros for cycle time/throughput because `stats.record_completion()` etc. are never invoked.
+
+**Evidence captured**: Actual terminal output from 4 successful runs + 2 missing-subsystem failures.
+
+### 3 Highest-Leverage Tasks
+1. **Wire statistics collection into event loop** (~50 lines, 2 hours) — **blocks everything**
+2. **Create `/api/des` routes** (~200 lines, 4 hours) — unlocks Canvas→DES
+3. **Build minimal Replay UI** (~400 lines, 6 hours) — huge demo value
+
+**Response file written to:** `.deia/hive/responses/20260413-TASK-DES-INVESTIGATE-001-RESPONSE.md` with file:line evidence for all 28 capabilities, verdicts for all 9 integrations, actual simulation output, and prioritized gap list.

@@ -1,0 +1,64 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-15-0158-SPEC-fix-engine-import-paths
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260315-0208
+# Task file: QUEUE-TEMP-2026-03-15-0158-SPEC-fix-engine-import-paths.md
+# Success: True
+# Duration: 135.5s
+# Files modified: 3 (verified)
+# Cost (USD): $0
+# Turns: 15
+# API duration (ms): 129298
+# Session ID: 7fe733de-b144-46bb-be6f-1367a73072b5
+# Boot injected: True
+
+---
+
+Perfect. The queue shows:
+- **Morning reports** (3 files - regular reports)
+- **SSO federation spec** (from Mar 14)
+- **BL-126 kanban fix** (from Mar 15)
+- **WAVE0-07** (spotlight tests)
+- **WAVE0-08** (cloudapi mock)
+
+The `2026-03-15-0158-SPEC-fix-engine-import-paths.md` is **NOT in the queue** — it's been removed as documented in the response file.
+
+## Summary for Q88N
+
+The spec I was invoked to process (`2026-03-15-0158-SPEC-fix-engine-import-paths.md`) has already been **RESOLVED** by a previous session. Here's what happened:
+
+### What Was the Issue?
+
+The queue runner created a malformed fix-cycle spec trying to "fix" WAVE0-02, but:
+- WAVE0-02 primary objective was **already complete** (TASK-132 fixed imports)
+- The "error" was just that the original spec file had been moved to `_done/` (normal completion)
+- The secondary issue discovered (test_des_engine.py routes) requires **architectural decision**, not code fix
+
+### What Was Done?
+
+A previous regent/Q33N session:
+1. ✅ Analyzed the situation
+2. ✅ Deleted the malformed spec
+3. ✅ Created **BL-135** backlog item for the architectural decision
+4. ✅ Properly closed WAVE0-02 status
+
+### Current State
+
+- **WAVE0-02**: PARTIALLY COMPLETE, escalated to BL-135 ✅
+- **Malformed spec**: DELETED ✅
+- **BL-135**: Created (P1, enhancement) — awaiting your decision on DES routes architecture
+- **Response file**: `.deia/hive/responses/20260315-REGENT-QUEUE-TEMP-2026-03-15-0158-RESPONSE.md` (complete)
+
+### Your Action Required
+
+**BL-135 decision:** Where should DES API routes live?
+- **Option A**: Change tests to import from `hivenode.routes.sim` (quick, layer violation)
+- **Option B**: Create `engine/des/engine_routes.py` (proper, more work)
+- **Option C**: Skip/delete API tests (pragmatic, lose coverage)
+
+**Recommendation in response file:** Option B aligns with modular architecture, Option A unblocks immediately.
+
+---
+
+**No further action needed from me on this spec. It's been handled correctly.**

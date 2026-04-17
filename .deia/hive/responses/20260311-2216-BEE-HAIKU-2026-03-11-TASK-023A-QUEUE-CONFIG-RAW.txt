@@ -1,0 +1,47 @@
+# BEE RESPONSE: 2026-03-11-TASK-023A-QUEUE-CONFIG
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260311-2216
+# Task file: 2026-03-11-TASK-023A-QUEUE-CONFIG.md
+# Success: True
+# Duration: 242.2s
+# Files modified: 8 (verified)
+# Cost (USD): $0
+# Turns: 60
+# API duration (ms): 209234
+# Session ID: 9c65ea24-df0d-4640-9902-f48850cbdd6b
+# Boot injected: True
+
+---
+
+Perfect! The queue configuration is complete and valid. 
+
+## Summary
+
+**TASK-023A: Queue Config YAML is COMPLETE.** ✅
+
+### Deliverables
+
+1. **`.deia/config/queue.yml`** — Queue configuration file with 5 required sections:
+   - **budget**: Max session budget of $20.00, 80% warning threshold, 2 fix cycles max, 50 specs per session, 3 parallel bees
+   - **models**: Regent bot (ollama:llama3.1:8b), Q33N (claude-sonnet-4-6), bee default (claude-haiku-4-5), bee complex (claude-sonnet-4-6)
+   - **paths**: 7 path keys for queue, needs_review, done, smoke, coordination, tasks, responses directories
+   - **deploy**: Railway & Vercel health check URLs, 15-second polling interval, 300-second timeout
+   - **git**: Dev branch, [Q33N] commit prefix, auto-push enabled
+
+2. **`.deia/hive/scripts/queue/tests/test_queue_config.py`** — Comprehensive test suite with 35 tests:
+   - Structure validation (required keys, no extras)
+   - Budget validation (positive numbers, valid ranges)
+   - Model validation (correct assignments)
+   - Paths validation (all exist, relative paths)
+   - Deploy validation (HTTPS URLs, integer polling)
+   - Git validation (correct settings)
+   - Integration validation (valid YAML, reasonable budget math, file exists)
+   - **Result: 35/35 tests PASS** ✅
+
+3. **Response file** — `.deia/hive/responses/20260311-TASK-023A-RESPONSE.md` with full documentation
+
+4. **Archived task** — Original task file moved to `_archive/` and registered in feature inventory (30 features, 5,513 tests tracked)
+
+All acceptance criteria met. Ready for run_queue.py to use this config in TASK-023B.

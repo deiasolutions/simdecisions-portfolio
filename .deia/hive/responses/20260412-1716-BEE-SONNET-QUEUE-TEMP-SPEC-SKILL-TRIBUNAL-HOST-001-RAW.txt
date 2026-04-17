@@ -1,0 +1,65 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-SKILL-TRIBUNAL-HOST-001
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260412-1716
+# Task file: QUEUE-TEMP-SPEC-SKILL-TRIBUNAL-HOST-001.md
+# Success: True
+# Duration: 339.0s
+# Files modified: 9 (verified)
+# Cost (USD): $3.569661
+# Turns: 30
+# API duration (ms): 323742
+# Session ID: 26f19b25-f17d-4656-a83a-916133608120
+# Boot injected: True
+
+---
+
+Excellent! All files are well under the 500-line limit. Let me create a quick summary:
+
+## Task Complete
+
+I've successfully written the `tribunal-host` skill documentation that codifies the full Tribunal podcast production pipeline. Here's what was delivered:
+
+### Files Created (5 total)
+
+1. **SKILL.md** (284 lines) — Main skill document with:
+   - Frontmatter (cert_tier: 3, carbon_class: heavy)
+   - 10-step production pipeline from topic definition through OBS recording
+   - Output format specification
+   - Comprehensive gotchas section
+
+2. **governance.yml** — DEIA governance metadata with tier 3 certification
+
+3. **references/episode-structure.md** (136 lines) — Documents the 5-phase format:
+   - Phase 0: Intro (Moderator, 45-60s)
+   - Phase 1: Opening Statements (3 panelists, 90-130s each)
+   - Phase 2: Rebuttals (3 panelists, 60-100s each)
+   - Phase 3: Closing Arguments (3 panelists, 90-110s each)
+   - Phase 4: Summary (Moderator, 80-100s)
+
+4. **references/voice-casting.md** (156 lines) — Complete Kokoro-82M voice catalog:
+   - All 13 voices with Episode 001 ratings (5-point scale)
+   - Assignment rules (no duplicates, distinct moderator, gender balance)
+   - Recommended lineups for 2, 3, and 4-panelist debates
+   - Voice ID reference format
+
+5. **references/episode-template.md** (333 lines) — Directory scaffold and file templates:
+   - Complete episode directory structure
+   - Templates for topic.md, context.md, personas.md, format.yaml
+   - WAV naming convention: `{phase}_{speaker_id}_{segment:03d}_{sentence:03d}.wav`
+   - manifest.json schema
+   - Quick start guide and checklists
+
+### Key Features
+
+✅ Full pipeline documented: topic → context → transcript → TTS → OBS → recording
+✅ All 13 Kokoro voices catalogued with ratings from Episode 001
+✅ WAV naming convention and manifest.json schema extracted from Episode 001
+✅ VB-Audio setup and OBS multi-track recording workflow documented
+✅ Three Currencies tracking included (COIN, CLOCK, CARBON)
+✅ No file over 500 lines (largest is 333 lines)
+✅ Cross-references SPEC-SKILL-PRIMITIVE-001 and manim-animation skill
+✅ Follows agentskills.io format with DEIA governance extension
+
+The skill is ready for use. Any bee can now pick up a topic and produce a complete Tribunal episode following this documented process.

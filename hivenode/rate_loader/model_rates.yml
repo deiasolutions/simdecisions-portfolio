@@ -1,0 +1,32 @@
+# Model rates per million tokens (USD)
+# Source: https://www.anthropic.com/pricing/claude
+rates:
+  claude-opus-4-6:
+    input_per_million: 15.00
+    output_per_million: 75.00
+    max_context_tokens: 200000
+    batch_preference: NONE
+  claude-sonnet-4-5-20250929:
+    input_per_million: 3.00
+    output_per_million: 15.00
+    max_context_tokens: 200000
+    batch_preference: PREFERRED
+  claude-haiku-4-5-20251001:
+    input_per_million: 0.80
+    output_per_million: 4.00
+    max_context_tokens: 200000
+    batch_preference: NONE
+  gpt-4o:
+    input_per_million: 2.50
+    output_per_million: 10.00
+    max_context_tokens: 128000
+    batch_preference: NONE
+  default:  # Fallback for unknown models
+    input_per_million: 3.00
+    output_per_million: 15.00
+    max_context_tokens: 100000
+    batch_preference: NONE
+
+# Carbon estimate per million tokens (kg CO2e)
+# Baseline: ~0.0001 kg per token = 100 kg per million tokens
+carbon_per_million_tokens: 100.0

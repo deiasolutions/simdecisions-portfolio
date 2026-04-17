@@ -1,0 +1,51 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-WIKI-101-database-schema-tables
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260407-1859
+# Task file: QUEUE-TEMP-SPEC-WIKI-101-database-schema-tables.md
+# Success: True
+# Duration: 195.7s
+# Files modified: 11 (verified)
+# Cost (USD): $1.54551
+# Turns: 11
+# API duration (ms): 149653
+# Session ID: 70482777-7710-478d-b3b6-89c908a2b1f2
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Let me create a summary for you:
+
+---
+
+## ✅ SPEC-WIKI-101: Database Schema and Tables — COMPLETE
+
+I've successfully implemented the wiki database schema following the inventory store pattern exactly.
+
+**What was delivered:**
+
+1. **`hivenode/wiki/store.py`** (214 lines):
+   - `wiki_pages` table with 19 columns (id, workspace_id, path, title, content, summary, page_type, tags, frontmatter, outbound_links, version, is_current, previous_version_id, created_at, updated_at, created_by, updated_by, is_deleted, deleted_at)
+   - `wiki_edit_log` table with 10 columns (id, page_id, workspace_id, operation, previous_content_hash, new_content_hash, diff_summary, edited_by, edited_at, event_id)
+   - 5 indexes on workspace_id, path, page_type, page_id (edit_log), edited_at (edit_log)
+   - `init_engine()`, `get_engine()`, `reset_engine()` functions
+   - `_migrate_schema()` idempotent migration function
+
+2. **`tests/hivenode/wiki/test_wiki_schema.py`** (321 lines):
+   - 13 comprehensive tests covering table creation, column types, nullability, indexes, migrations, and basic inserts
+
+**Test results:** ✅ All 13 tests passed in 0.43s
+
+**Compliance:**
+- ✅ TDD: Tests written first
+- ✅ SQLAlchemy Core (NOT ORM)
+- ✅ Text/Integer types (SQLite + PostgreSQL compatible)
+- ✅ No VECTOR columns (PostgreSQL-only, deferred)
+- ✅ No foreign keys to users table (self-contained)
+- ✅ Idempotent migration
+- ✅ No file over 500 lines
+- ✅ No stubs — all functions complete
+- ✅ No git operations
+
+The foundation is ready for all dependent wiki specs (WIKI-102 through WIKI-108).

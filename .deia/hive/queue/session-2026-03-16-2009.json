@@ -1,0 +1,26 @@
+[
+  {
+    "event_type": "QUEUE_SPEC_STARTED",
+    "timestamp": "2026-03-16T20:03:29.775836",
+    "spec_id": "2026-03-16-1830-SPEC-fix-hamburger-menu-overflow",
+    "cost_usd": 0.0,
+    "duration_ms": 0,
+    "model_used": "sonnet",
+    "details": {
+      "priority": 0,
+      "batch_mode": true
+    }
+  },
+  {
+    "event_type": "QUEUE_BEES_COMPLETE",
+    "timestamp": "2026-03-16T20:09:32.442738",
+    "spec_id": "2026-03-16-1830-SPEC-fix-hamburger-menu-overflow",
+    "cost_usd": 1.604451,
+    "duration_ms": 315600,
+    "model_used": "sonnet",
+    "details": {
+      "status": "CLEAN",
+      "response_file": "20260316-2003-BEE-SONNET-QUEUE-TEMP-2026-03-16-1830-SPEC-FIX-HAMBURGER-MENU-OVERFLOW-RAW.txt"
+    }
+  }
+]

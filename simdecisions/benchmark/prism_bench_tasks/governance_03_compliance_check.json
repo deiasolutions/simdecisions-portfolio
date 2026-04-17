@@ -1,0 +1,39 @@
+{
+  "id": "governance_03_compliance_check",
+  "name": "Compliance Check Governance",
+  "intent": "Test governance overhead with compliance validation",
+  "phase_ir_version": "1.0.0",
+  "variables": [
+    {"id": "compliance_mode", "type": "string", "default": "disabled"}
+  ],
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "pre_compliance", "type": "service", "name": "Pre-Execution Compliance Check", "config": {"duration": {"type": "constant", "params": {"value": 1.0}}}},
+    {"id": "data_collection", "type": "service", "name": "Data Collection", "config": {"duration": {"type": "constant", "params": {"value": 2.0}}}},
+    {"id": "mid_compliance", "type": "service", "name": "Mid-Process Compliance Check", "config": {"duration": {"type": "constant", "params": {"value": 0.8}}}},
+    {"id": "data_processing", "type": "service", "name": "Data Processing", "config": {"duration": {"type": "constant", "params": {"value": 2.5}}}},
+    {"id": "post_compliance", "type": "service", "name": "Post-Execution Compliance Check", "config": {"duration": {"type": "constant", "params": {"value": 1.2}}}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "pre_compliance", "type": "switch", "guard": "compliance_mode == 'enabled'"},
+    {"id": "e2", "from_node": "start", "to_node": "data_collection", "type": "switch", "guard": "compliance_mode == 'disabled'"},
+    {"id": "e3", "from_node": "pre_compliance", "to_node": "data_collection", "type": "then"},
+    {"id": "e4", "from_node": "data_collection", "to_node": "mid_compliance", "type": "switch", "guard": "compliance_mode == 'enabled'"},
+    {"id": "e5", "from_node": "data_collection", "to_node": "data_processing", "type": "switch", "guard": "compliance_mode == 'disabled'"},
+    {"id": "e6", "from_node": "mid_compliance", "to_node": "data_processing", "type": "then"},
+    {"id": "e7", "from_node": "data_processing", "to_node": "post_compliance", "type": "switch", "guard": "compliance_mode == 'enabled'"},
+    {"id": "e8", "from_node": "data_processing", "to_node": "end", "type": "switch", "guard": "compliance_mode == 'disabled'"},
+    {"id": "e9", "from_node": "post_compliance", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "governance",
+    "description": "Workflow with optional compliance checks at pre/mid/post execution points",
+    "evaluation_criteria": "Compliance overhead measured, validation points executed, accuracy preserved",
+    "expected_runtime_seconds": 8,
+    "governance_mode": {
+      "ungoverned": {"compliance_mode": "disabled", "expected_time": 4.5, "compliance_checks": 0},
+      "governed": {"compliance_mode": "enabled", "expected_time": 7.5, "compliance_checks": 3}
+    }
+  }
+}

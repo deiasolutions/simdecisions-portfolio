@@ -1,0 +1,47 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-ANALYTICS-002-routes
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260409-1047
+# Task file: QUEUE-TEMP-SPEC-ANALYTICS-002-routes.md
+# Success: True
+# Duration: 341.3s
+# Files modified: 44 (verified)
+# Cost (USD): $5.057321999999999
+# Turns: 31
+# API duration (ms): 281791
+# Session ID: f3c33c59-c48a-4c87-8723-34a2ecde1234
+# Boot injected: True
+
+---
+
+Perfect! The task is complete. Let me create a summary:
+
+## Summary
+
+**SPEC-ANALYTICS-002 completed successfully!**
+
+✅ **Files Created:**
+- `hivenode/routes/analytics_routes.py` (154 lines) — beacon receiver + stats endpoint
+- `hivenode/analytics/tests/test_analytics_routes.py` (341 lines, 16 tests)
+
+✅ **Files Modified:**
+- `hivenode/routes/__init__.py` — registered analytics routes
+
+✅ **Endpoints Implemented:**
+1. `POST /beacon` — Public pageview tracker (no auth, 204 response)
+   - Domain allowlist (7 production domains + localhost)
+   - Rate limiting (60/min per IP, in-memory)
+   - Silent drops for invalid domains/rate violations
+   - Never propagates errors to client
+   
+2. `GET /api/analytics/stats` — Authenticated stats query
+   - Uses `verify_jwt_or_local` (JWT in cloud, bypass in local)
+   - Query params: `?domain=` and `?days=`
+   - Returns: total_views, unique_sessions, top_pages, referrers, visits_per_day, geo_breakdown
+
+✅ **All Tests Pass:** 16/16 integration tests (5.77s)
+
+✅ **Smoke Tests Pass:** Manual verification confirmed both endpoints work correctly
+
+The analytics routes module is ready for production use. The beacon endpoint is designed to never break page loads (always returns 204, even on errors), and the stats endpoint provides comprehensive analytics data with flexible filtering.

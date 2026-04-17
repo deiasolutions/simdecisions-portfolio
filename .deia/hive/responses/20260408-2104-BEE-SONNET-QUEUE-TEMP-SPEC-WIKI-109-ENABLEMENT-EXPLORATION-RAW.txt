@@ -1,0 +1,64 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-WIKI-109-enablement-exploration
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260408-2104
+# Task file: QUEUE-TEMP-SPEC-WIKI-109-enablement-exploration.md
+# Success: True
+# Duration: 236.1s
+# Files modified: 9 (verified)
+# Cost (USD): $1.9159829999999998
+# Turns: 20
+# API duration (ms): 210630
+# Session ID: cf6e48e9-ac28-4646-a2d2-9281729b4b75
+# Boot injected: True
+
+---
+
+Perfect! The exploration task is complete. Let me create a brief summary of the findings:
+
+---
+
+## WIKI-109 Exploration Complete ✓
+
+I've completed the wiki enablement exploration and documented comprehensive findings in the response file.
+
+### Key Results
+
+**All three use cases are FEASIBLE** with the existing WIKI infrastructure. The schema (WIKI-101) and CRUD API (WIKI-103) are production-ready. The blockers are integration wiring, not architectural problems.
+
+### Use Case Findings
+
+1. **Tiered Instruction Injection** → **LOW effort** (1 bee task)
+   - Wiki schema supports tag + frontmatter queries already
+   - Just need to add wiki query helper to dispatch.py
+   - Can start using immediately with client-side filtering
+
+2. **Adversarial Verification Auto-Queue** → **MEDIUM effort** (2-3 bee tasks)
+   - Schema supports `triggers_on` + `target_spec` in frontmatter
+   - Need queue runner event hooks + BAT spec generator
+   - Event ledger schema unknown (needs inspection)
+
+3. **Cross-Session Memory (WWWB)** → **HIGH effort** (4-5 bee tasks)
+   - Session log format directly compatible with wiki schema
+   - VoyageEmbedder + IndexStorage exist but **IndexStorage lacks vector search**
+   - Need: embedding integration, vector search endpoint, ETL script, startup hooks
+
+### Critical Gaps (P0 Blockers)
+
+- **IndexStorage.search_by_vector()** — Required for WWWB semantic search (storage.py has no similarity search method)
+- **Queue runner event hooks** — Required for auto-BAT dispatch
+- **Wiki embedding integration** — WIKI-103 routes don't generate embeddings yet
+
+### Recommended Next Steps
+
+**Sprint 1 (P0):** 3 specs
+- SPEC-WIKI-110: Vector Search Infrastructure
+- SPEC-WIKI-111: Wiki Embedding Integration  
+- SPEC-WIKI-112: Queue Runner Event Hooks
+
+**Sprint 2 (P1):** 4 specs (tiered injection + session logs)
+
+**Sprint 3 (P2):** 2 specs (performance optimizations)
+
+Full response file written to: `.deia/hive/responses/20260409-WIKI-ENABLEMENT-EXPLORATION-RESPONSE.md` (18,544 characters)

@@ -1,0 +1,46 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-18-SPEC-REQUEUE-BUG028-efemera-channels-wiring
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260318-1911
+# Task file: QUEUE-TEMP-2026-03-18-SPEC-REQUEUE-BUG028-efemera-channels-wiring.md
+# Success: True
+# Duration: 576.9s
+# Files modified: 24 (verified)
+# Cost (USD): $2.1335520000000003
+# Turns: 14
+# API duration (ms): 297412
+# Session ID: 777ca10f-3944-46e0-a165-49f0207fa0ba
+# Boot injected: True
+
+---
+
+Now I need to ask Q88N for permission to dispatch Q33N, since the queue runner is not active.
+
+**Q88N (Dave):**
+
+I've read BOOT.md and HIVE.md. I understand my role as Q33NR.
+
+I've analyzed BUG-028 RE-QUEUE. The situation is complex:
+
+**Current Architecture:**
+- channelsAdapter.ts loads channel data (it's a data loader)
+- treeBrowserAdapter.tsx handles clicks and emits `channel:selected` events (lines 173-187)
+- This is the SAME pattern used for filesystem adapter
+- Previous bee (SONNET) verified the feature works: 6/7 tests passing, click → event → message load flow functional
+
+**The Re-Queue Reason:**
+You stated: "channelsAdapter.ts has zero references to `channel:selected` event. The click handler was never wired."
+
+**This is technically true** — channelsAdapter.ts doesn't emit the event. But treeBrowserAdapter.tsx does (for all adapters: channels, filesystem, etc.).
+
+**I've written a briefing for Q33N** asking Q33N to determine:
+1. Is this a bug or an architectural misunderstanding?
+2. Should the architecture change (move click handling into data adapters)?
+3. Or should the spec be updated to reflect the actual working architecture?
+
+**Queue runner is NOT active.** Per HIVE.md, I need your permission to dispatch Q33N directly.
+
+**May I dispatch Q33N with this briefing?** Or do you want to clarify the re-queue directive first?
+
+Briefing file: `.deia/hive/coordination/2026-03-18-BRIEFING-BUG028-REQUEUE-efemera-channels.md`

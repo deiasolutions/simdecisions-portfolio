@@ -1,0 +1,34 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-AUTH-E-DEPLOYMENT-DOCS
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260327-1329
+# Task file: QUEUE-TEMP-SPEC-AUTH-E-DEPLOYMENT-DOCS.md
+# Success: True
+# Duration: 101.2s
+# Files modified: 2 (verified)
+# Cost (USD): $1.003047
+# Turns: 8
+# API duration (ms): 85221
+# Session ID: 0f589017-b7c9-4564-9d99-41e90f8b0e23
+# Boot injected: True
+
+---
+
+## Task Complete
+
+I've successfully updated `.deia/config/deployment-env.md` with the auth rebrand from ra96it to hodeia. 
+
+**What was done:**
+
+1. ✅ **Updated all env var references** - Changed `VITE_RA96IT_API` → `VITE_AUTH_API` and `RA96IT_PUBLIC_KEY` → `HODEIA_PUBLIC_KEY` throughout the document
+
+2. ✅ **Added migration mapping table** - Created comprehensive "Auth Rebrand Migration" section with old-to-new env var mapping
+
+3. ✅ **Documented dual-issuer JWT strategy** - Explained how hivenode will accept JWTs from both `api.ra96it.com` and `api.hodeia.me` issuers during the transition period, with a 48-hour cutover plan
+
+4. ✅ **Updated URLs to hodeia.me** - All references now point to `api.hodeia.me` instead of `api.ra96it.com`
+
+5. ✅ **No stubs** - All documentation complete and production-ready
+
+Response file written to: `.deia/hive/responses/20260327-SPEC-AUTH-E-deployment-docs-RESPONSE.md`

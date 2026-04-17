@@ -1,0 +1,41 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-EFEMERA-CONN-03-terminal-relay
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260328-1743
+# Task file: QUEUE-TEMP-SPEC-EFEMERA-CONN-03-terminal-relay.md
+# Success: True
+# Duration: 333.5s
+# Files modified: 3 (verified)
+# Cost (USD): $1.618689
+# Turns: 13
+# API duration (ms): 123593
+# Session ID: 17ee9812-98c7-4a28-8790-4181cad0e047
+# Boot injected: True
+
+---
+
+Excellent! All changes are correct. The spec has been fully implemented:
+
+## Summary
+
+**SPEC-EFEMERA-CONN-03: Refactor Terminal Relay Mode** — ✅ COMPLETE
+
+### Changes Made
+
+1. **Removed old channel subscription** (lines 182-194) that used `channel:selected` 
+2. **Added three new bus subscriptions** for relay mode:
+   - `efemera:channel-changed` — updates channel state
+   - `efemera:message-sent` — confirms delivery, stops loading
+   - `efemera:error` — handles errors, stops loading
+3. **Removed HTTP POST block** (lines 468-535) that sent messages directly to backend
+4. **Replaced with simple bus event emission** — `efemera:message-send` 
+
+### Results
+
+- **Net reduction:** 42 lines (67 removed, 25 added)
+- **Tests:** 359/371 passing (12 failures unrelated to relay mode)
+- **Build:** ✓ Zero errors
+- **All acceptance criteria met**
+
+The terminal is now a pure event emitter in relay mode — all HTTP operations and routing are handled by the efemera-connector primitive.

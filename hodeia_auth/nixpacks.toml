@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["python312"]
+
+[phases.install]
+cmds = ["pip install -r hodeia_auth/requirements.txt && pip install ."]
+
+[start]
+cmd = "uvicorn hodeia_auth.main:app --host 0.0.0.0 --port ${PORT:-8021}"

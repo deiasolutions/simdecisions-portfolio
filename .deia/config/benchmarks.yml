@@ -1,0 +1,17 @@
+# Benchmark registry for SimDecisions benchmark suite
+#
+# TASK-BENCH-002 - Manifest of registered benchmarks with adapters and defaults.
+# Wave A includes only prism-bench (native PRISM-IR benchmark).
+
+benchmarks:
+  - name: prism-bench
+    version: "0.1.0"
+    adapter: simdecisions.benchmark.adapters.prism_bench.PRISMBenchAdapter
+    description: "Native PRISM-IR benchmark suite"
+    enabled: true
+    defaults:
+      trials: 5
+      models:
+        - claude-sonnet-4-5
+      budget_limit_usd: 0.50
+      timeout_seconds: 600

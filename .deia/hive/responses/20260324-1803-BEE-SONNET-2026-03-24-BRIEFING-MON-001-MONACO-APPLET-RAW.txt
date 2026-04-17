@@ -1,0 +1,76 @@
+# BEE RESPONSE: 2026-03-24-BRIEFING-MON-001-MONACO-APPLET
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260324-1803
+# Task file: 2026-03-24-BRIEFING-MON-001-MONACO-APPLET.md
+# Success: True
+# Duration: 101.0s
+# Files modified: 3 (verified)
+# Cost (USD): $1.125783
+# Turns: 9
+# API duration (ms): 94361
+# Session ID: 47454153-dea9-4c14-94c3-e343f394e4c3
+# Boot injected: True
+
+---
+
+Perfect! Now I'll write a summary report to Q33NR:
+
+## Task File Ready for Review
+
+I've created the task file for MON-001 Monaco Applet Component at:
+`.deia/hive/tasks/2026-03-24-TASK-MON-001-monaco-applet-component.md`
+
+### Task File Structure
+
+**Objective:** Build Monaco editor React component as ShiftCenter applet with `appType: "code-editor"` — component shell only, no filesystem I/O.
+
+**Deliverables:**
+1. **MonacoApplet.tsx** (300-400 lines) — AppletShell-wrapped editor
+   - getValue/setValue/isDirty ref interface
+   - Feature registry (format document, toggle minimap, goto line, find)
+   - Capability advertisement on mount
+   - NO filesystem imports
+
+2. **MonacoApplet.css** (50-100 lines) — Scoped styles, `var(--sd-*)` only
+
+3. **monacoAppletAdapter.ts** (30-50 lines) — Adapter registration following terminalAdapter pattern
+
+4. **index.ts** (10 lines) — Barrel export
+
+5. **__tests__/MonacoApplet.test.tsx** (200-300 lines, 8 tests minimum)
+   - Render, adapter registration, feature registry, isDirty, getValue, setValue
+   - CSS variable validation (grep check)
+   - No filesystem imports validation (grep check)
+
+**Test Requirements:**
+- TDD (tests first)
+- All 8 tests pass
+- Build passes: `npx vite build`
+- No regressions
+
+**Constraints Explicitly Called Out:**
+- Rule 3: NO hardcoded colors (only `var(--sd-*)`)
+- No file over 500 lines
+- NO filesystem I/O (no fs, path, require)
+- NO stubs
+
+**Response File:** 8-section template with absolute paths, test results, build verification, acceptance criteria checklist, Clock/Cost/Carbon.
+
+**Reference Files:** Listed with absolute paths:
+- terminalAdapter.tsx (adapter pattern)
+- useTerminal.ts (ref pattern, bus integration)
+- FlowDesigner.tsx (AppletShell usage, feature registry, bus syndication)
+
+**Model Recommendation:** Haiku (well-defined scope, clear patterns to follow)
+
+### Ready for Q33NR Review
+
+The task file is complete and ready for your review. After approval, I'll dispatch the bee with:
+
+```bash
+python .deia/hive/scripts/dispatch/dispatch.py .deia/hive/tasks/2026-03-24-TASK-MON-001-monaco-applet-component.md --model haiku --role bee --inject-boot
+```
+
+Awaiting your review and approval to proceed with dispatch.

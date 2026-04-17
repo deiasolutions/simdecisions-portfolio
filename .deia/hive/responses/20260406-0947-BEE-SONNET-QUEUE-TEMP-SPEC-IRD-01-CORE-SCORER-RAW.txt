@@ -1,0 +1,52 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-IRD-01-core-scorer
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-0947
+# Task file: QUEUE-TEMP-SPEC-IRD-01-core-scorer.md
+# Success: True
+# Duration: 431.1s
+# Files modified: 29 (verified)
+# Cost (USD): $7.452708
+# Turns: 34
+# API duration (ms): 357545
+# Session ID: e1bfadaa-e66d-4d1b-a36d-0d9b1cc04949
+# Boot injected: True
+
+---
+
+Perfect! The scorer works correctly on multiple spec files. Let me do one final summary and check:
+
+## Summary
+
+I have successfully completed **TASK-IRD-01: IR Density Core Scorer (Dual-Mode)**:
+
+### Deliverables Created:
+1. **`_tools/ir_density.py`** (559 lines) - Full dual-mode scorer implementation
+2. **`_tools/tests/test_ir_density.py`** (631 lines) - Comprehensive test suite with 27 tests
+
+### Key Features Implemented:
+- ✅ Auto-detection of document type (spec/prism/unknown)
+- ✅ Spec mode scoring with 4 metrics (instruction, reference, clarity, composite)
+- ✅ PRISM mode scoring with IRD calculation
+- ✅ CLI with `score` command and verbose output
+- ✅ Token estimation using chars/4 (no external dependencies)
+- ✅ Pure static analysis (no LLM calls)
+- ✅ 27 comprehensive tests (100% pass rate)
+
+### Test Results:
+- **27/27 tests passing**
+- Coverage includes both modes, edge cases, and real file integration
+- Validated on multiple real spec files from queue backlog
+- All smoke tests pass
+
+### Validation on Real Specs:
+- SPEC-MW-015: composite 0.455 (Acceptable)
+- SPEC-MW-018: composite 0.450 (Acceptable)
+- SPEC-EST-02: composite 0.547 (Acceptable)
+- SPEC-IRD-02: composite 0.504 (Acceptable)
+
+### All Acceptance Criteria Met:
+✅ All 12 acceptance criteria from the spec are satisfied
+
+The implementation is complete, tested, and ready for use. The response file has been written to `.deia/hive/responses/20260406-TASK-IRD-01-RESPONSE.md`.

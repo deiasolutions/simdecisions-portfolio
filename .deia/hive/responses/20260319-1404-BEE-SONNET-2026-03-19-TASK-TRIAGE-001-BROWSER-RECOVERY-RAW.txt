@@ -1,0 +1,62 @@
+# BEE RESPONSE: 2026-03-19-TASK-TRIAGE-001-BROWSER-RECOVERY
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260319-1404
+# Task file: 2026-03-19-TASK-TRIAGE-001-BROWSER-RECOVERY.md
+# Success: True
+# Duration: 656.7s
+# Files modified: 4 (verified)
+# Cost (USD): $2.8355250000000005
+# Turns: 33
+# API duration (ms): 352741
+# Session ID: 09244a49-cf5b-466d-80a3-f0dd8da6d211
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Let me provide a summary for Q88N:
+
+---
+
+## ✅ TASK-TRIAGE-001: COMPLETE
+
+I've completed the browser recovery diff triage. Here's what I found:
+
+### **The Damage Report**
+
+Out of 30 changed files between March 16 baseline and the messy checkpoint:
+
+- **Only 3 files (10%) are clean** enough to cherry-pick:
+  - `messages.ts` — Added `canvas:node-selected` type
+  - `canvas.css` — Added click-to-place styles
+  - `sim.egg.md` — Minor EGG metadata fix
+
+- **22 files (90%) are tangled** and must be rebuilt from specs:
+  - Touched by 3-10 commits each
+  - Multiple REQUEUE + fix-REQUEUE cycles
+  - BUG030 had **3 separate fix attempts**, 2 marked NEEDS_DAVE
+  - Shared files (App.tsx, CanvasApp.tsx, AppFrame.tsx) modified by 5+ different tasks
+
+- **7 test files have recoverable value:**
+  - **CanvasApp.test.tsx:** +368 lines (BL121 node selection tests)
+  - **propertiesAdapter.test.ts:** +347 lines (BL121 properties panel tests)
+  - Should be cataloged before rebuild, re-integrated later
+
+- **Pre-approved tests (chatRenderer 42, canvasEgg 31) are safe** — they weren't modified, already on baseline
+
+### **What Happened March 17-19**
+
+The queue runner batch-processed multiple REQUEUE specs. Many required 2-3 fix attempts, creating cascading changes across shared files. This is the "tangled" state the recovery is designed to fix.
+
+### **Full Report**
+
+`.deia/hive/responses/2026-03-19-TRIAGE-001-RESPONSE.md` (13.5 KB)
+
+Contains:
+- All 30 files classified into buckets
+- Commit-by-commit analysis (53 commits reviewed)
+- 3-batch recovery strategy (cherry-pick → catalog tests → rebuild)
+- Spec IDs for all Bucket C rebuilds
+
+**No git operations performed.** This was pure research/audit as requested.

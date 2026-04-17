@@ -1,0 +1,60 @@
+Chat:
+a. I dont see anything in the chat list other than Today, Yesterday, This week. There is a menu bar on the left pane that asks if i want to split the pane? I dont want that ham burger menu. i want a custom menu with sort methods!
+b. every pane has a menu bar that i dont want. I want ONE title bar / menu bar with syndicated menu items from the constituent panes.
+
+
+
+
+Code: 
+a. I sent a request to Canvas and it showed up in my Code chat... on a different browser tab! We need to respect page integrity. messages from one browerser window should NOT come up in another browser window. 
+b. there is a list of items in the Explorer, i have no idea where they are from, but it's progress. When I click on an item I get # Error Error loading file: Bar Request URI: name_of_file.txt
+
+
+
+
+canvas:
+
+a. i get "an error occured" and nothing shows up on the canvas when i ask for IR. however if go to the Code egg, i can see in the terminal display that the LLM is responding.
+b. i cant draw a component to the canvas, the Stage grabs the drag event (though I am NOT clicking the drag handle, im clicking an item in the components list), and so when i try to drag the component to the canvas it looks like im trying to move a pane.
+c. if i epand the ir generator (label in canvas for the Terminal), i cant see the to_user response, and the only thing i see in the Text box is my prompt and the error message from a.
+d. the minimap is formatted funny, it has an outline kinda (except for on the points of the rectangle, and despite being in a dark background the visible zone for the minimap shows white.
+e. the componets only shows a bulleted list of process, flow control, parallel, and group, with items underneath the list. when i click the items they dont drop anything on the canvas. there are no icons for the items like it shuold be. i feel like we are showing the wrong type of tree view.
+f. when i try to reduce the components panel it doesnt do as I specced, which is to srhink to only show the icons, with mouse-over text tips for what the names are.
+
+
+Efemera:
+a. clicking on the channels doesnt do anything. i only see a fake conversation, an in the prompt it says in a red box (easy to see, i like this) 'Select a channel first.'
+b. i see menu bars for everything, i need a legit menu bar.
+c. the Members list doesnt show their avatars. Check the actually build efemera design in platform to see how we designed it there. our primitives need to be able to handle what we give them to display.
+
+egg=sim:
+a. fails to load
+
+build-monitor:
+a. same as others, 4 panes = 5 title bars (4 panes and a master)
+
+Kanban: 
+a. fails to load: "Something went wrong
+kanban pane encountered an error
+items.filter is not a function
+ID: kanban-board" Retry button
+
+Turtle-draw
+a. i have a frank app failing to coming up on the right-hand pane, but we also have a nice chat telement on the left-hand side.  the frank pne sayd unknown app type frank-cli saying its not registered.
+
+Processing:
+a. Turtle-draw is working as a draw item (yay!) however, there is no Processing primitive... as there us supposed to be. or if it exists it doesnt come up on the list of primitives to load. And for a Processing app, I would like to have a browser that lets me see Processing files on the left panel, processing window in the center, and a code editor on the right, where I can save the code and reload it.
+
+
+
+
+Stage:
+When i try to add an App to an open pane, if I select Chat it warns me that it will take over the entire window. It's supposed to ask me if I want it to replace the current 'name here' app, or drop the app i'm requesting into the pane I selected, or cancel.
+
+App Directory: 
+a. when I have it up as a pane in a window, it should do the same choices as Stage, load the app in the current pane, or replace the entire window.
+
+
+
+
+NEED TO DO AN INVENTORY to see what's up with the other primitive and app / applet types that arent coming up. It looks like the app egg is only showing built items, i want to see unbuilt items and not working yet items, on the list down below.

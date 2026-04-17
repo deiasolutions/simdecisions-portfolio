@@ -1,0 +1,52 @@
+# BEE RESPONSE: 2026-03-15-TASK-126A-kanban-pg-connection
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260315-0052
+# Task file: 2026-03-15-TASK-126A-kanban-pg-connection.md
+# Success: True
+# Duration: 178.7s
+# Files modified: 12 (verified)
+# Cost (USD): $0
+# Turns: 19
+# API duration (ms): 83605
+# Session ID: b8ea684b-e52f-4530-9ccf-ce09feefa155
+# Boot injected: True
+
+---
+
+Excellent! Task complete. Let me summarize the work:
+
+## Summary
+
+**TASK-126A: Initialize Inventory Engine in Hivenode Lifespan** is now **COMPLETE**.
+
+### What Was Done
+
+I enhanced the existing inventory store initialization in `hivenode/main.py` (lines 187-204):
+
+1. **Added descriptive comments** explaining that this initializes PostgreSQL or local SQLite, connects kanban routes to Railway PG, and allows graceful fallback to CSV
+2. **Wrapped initialization in try/except** to gracefully handle failures
+3. **Added logging:**
+   - **Success:** `logger.info(f"Inventory store initialized: {display_url}")`
+   - **Failure:** `logger.warning(f"Inventory store initialization failed (CSV fallback enabled): {e}")`
+4. **URL truncation** to keep logs readable (PostgreSQL URLs can be 80+ characters)
+
+### Test Results
+
+✅ **All 31 tests pass:**
+- kanban_routes.py: 23/23 PASSED
+- config.py: 8/8 PASSED
+- CSV fallback tests confirm graceful degradation works
+
+### Key Features
+
+- Engine initialization is **idempotent** (safe to initialize multiple times)
+- Engine initialization is **optional** (if PG fails, CSV fallback enables)
+- Tests still work because they initialize in-memory SQLite before the app lifespan runs
+- `INVENTORY_DATABASE_URL=local` env var is already handled by `config.py`
+- No new tests required (existing suite covers all scenarios)
+
+### Deliverables
+
+✅ Response file: `.deia/hive/responses/20260315-TASK-126A-RESPONSE.md`

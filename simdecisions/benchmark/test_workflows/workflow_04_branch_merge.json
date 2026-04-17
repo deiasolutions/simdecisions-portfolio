@@ -1,0 +1,102 @@
+{
+  "id": "workflow_04_branch_merge",
+  "name": "Branch-Merge Workflow",
+  "intent": "Source -> Branch -> [Path A, Path B] -> Merge -> Sink. Tests forking and joining.",
+  "phase_ir_version": "1.0.0",
+  "nodes": [
+    {
+      "id": "source",
+      "type": "source",
+      "name": "Token Generator",
+      "config": {
+        "arrival_distribution": "poisson",
+        "lambda": 10.0,
+        "max_arrivals": 100
+      }
+    },
+    {
+      "id": "branch",
+      "type": "branch",
+      "name": "Split Point",
+      "config": {
+        "strategy": "random",
+        "weights": [0.5, 0.5]
+      }
+    },
+    {
+      "id": "service_a",
+      "type": "service",
+      "name": "Path A Service",
+      "config": {
+        "service_distribution": "exponential",
+        "mu": 0.5,
+        "servers": 1
+      }
+    },
+    {
+      "id": "service_b",
+      "type": "service",
+      "name": "Path B Service",
+      "config": {
+        "service_distribution": "exponential",
+        "mu": 0.25,
+        "servers": 1
+      }
+    },
+    {
+      "id": "merge",
+      "type": "merge",
+      "name": "Join Point"
+    },
+    {
+      "id": "sink",
+      "type": "sink",
+      "name": "Completion"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from_node": "source",
+      "to_node": "branch",
+      "type": "then"
+    },
+    {
+      "id": "e2",
+      "from_node": "branch",
+      "to_node": "service_a",
+      "type": "fork",
+      "weight": 1
+    },
+    {
+      "id": "e3",
+      "from_node": "branch",
+      "to_node": "service_b",
+      "type": "fork",
+      "weight": 1
+    },
+    {
+      "id": "e4",
+      "from_node": "service_a",
+      "to_node": "merge",
+      "type": "then"
+    },
+    {
+      "id": "e5",
+      "from_node": "service_b",
+      "to_node": "merge",
+      "type": "then"
+    },
+    {
+      "id": "e6",
+      "from_node": "merge",
+      "to_node": "sink",
+      "type": "then"
+    }
+  ],
+  "metadata": {
+    "description": "Source -> Branch -> [Path A, Path B] -> Merge -> Sink",
+    "evaluation_criteria": "45-55% of tokens went through each branch",
+    "expected_runtime_seconds": 5
+  }
+}

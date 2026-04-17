@@ -1,0 +1,51 @@
+# BEE RESPONSE: 2026-03-24-BRIEFING-canvas2-ir-routing
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260324-2054
+# Task file: 2026-03-24-BRIEFING-canvas2-ir-routing.md
+# Success: True
+# Duration: 195.2s
+# Files modified: 3 (verified)
+# Cost (USD): $3.263103
+# Turns: 22
+# API duration (ms): 175122
+# Session ID: 9e0851a2-64c8-468b-89f4-f7b24cf1e205
+# Boot injected: True
+
+---
+
+Perfect. Now let me write a briefing response for Q33NR summarizing my findings:
+
+I've completed my investigation. Here's what I found:
+
+## Summary for Q33NR
+
+**Briefing analyzed:** Canvas2 IR mutations not reaching canvas
+
+**Root cause analysis:**
+
+I traced the complete code path from terminal → LLM → bus → canvas. The architecture is **CORRECT** and should work:
+
+1. **Terminal (`useTerminal.ts` lines 688-715):** Builds paneRegistry from EGG `links` config, calls `routeEnvelope()` with registry
+2. **Envelope router (`terminalResponseRouter.ts` lines 184-196):** Extracts `to_ir` from envelope, sends `terminal:ir-deposit` bus message to `resolveTarget('to_ir', paneRegistry)` → `"canvas-editor"`
+3. **Canvas (`FlowDesigner.tsx` lines 527-606):** Subscribes to `terminal:ir-deposit`, processes mutations via `processMutations()`, updates canvas state
+
+**Likely issues (not architectural bugs, but runtime/config):**
+
+1. **LLM not following envelope format** — If LLM returns plain text instead of JSON envelope, `parseEnvelope` degrades gracefully but `to_ir` won't exist, so no bus message sent
+2. **paneRegistry not built correctly** — If EGG `links` config doesn't load properly, `to_ir` won't map to `canvas-editor`
+3. **Bus subscription timing** — Canvas subscribes in useEffect, might miss early messages if terminal sends before canvas mounts
+
+**What needs verification:**
+
+A BEE needs to write an **integration test** that mocks the full path to prove it works OR find the exact break point. The test will:
+- Mock LLM response with valid envelope + `to_ir` array
+- Verify `routeEnvelope` extracts and routes correctly
+- Verify FlowDesigner receives and applies mutations
+- Add debug logging to trace actual runtime behavior
+
+**Task file created:**
+`C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\hive\tasks\2026-03-24-TASK-CANVAS2-IR-ROUTING.md`
+
+**Recommendation:** Dispatch a BEE (Sonnet or Haiku) to implement the integration test and add debug logging. The test will either pass (proving architecture works) or fail (revealing exact break point). Once break point is known, fix is straightforward.

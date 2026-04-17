@@ -1,0 +1,55 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-EFEMERA-CONN-05-adapter-cleanup
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260328-1722
+# Task file: QUEUE-TEMP-SPEC-EFEMERA-CONN-05-adapter-cleanup.md
+# Success: True
+# Duration: 638.3s
+# Files modified: 14 (verified)
+# Cost (USD): $7.893822
+# Turns: 47
+# API duration (ms): 328413
+# Session ID: 22a7e5a0-f649-4442-baa1-0aca76be873b
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Let me provide a summary:
+
+## Summary
+
+✅ **SPEC-EFEMERA-CONN-05 COMPLETE**
+
+### What was done:
+
+1. **channelsAdapter.ts** — Converted to pure data transformation module:
+   - Exported `channelToNode()` and added `groupChannels()` 
+   - Removed all HTTP calls, mock data, and async functions
+   - Reduced from 132 → 98 lines
+
+2. **membersAdapter.ts** — Converted to pure data transformation module:
+   - Exported `memberToNode()` and added `groupMembers()`
+   - Removed all HTTP calls, mock data, and async functions
+   - Reduced from 113 → 88 lines
+
+3. **treeBrowserAdapter.tsx** — Removed efemera integration:
+   - Deleted imports for `loadChannels` and `loadMembers`
+   - Removed `'channels'` and `'members'` from EMPTY_TEXT and AUTO_EXPAND_ADAPTERS
+   - Removed channels/members adapter paths from load() function
+   - Removed channel:selected bus event emission from handleSelect()
+
+4. **relayPoller.ts** — DELETED (+ empty parent directory removed)
+
+5. **Tests updated**:
+   - Rewrote channelsAdapter.test.ts for pure functions (11 tests, all passing)
+   - Deleted obsolete BUG-028-regression.test.tsx (21 test failures eliminated)
+   - Updated treeBrowserAdapter.autoExpand.test.ts
+
+### Results:
+- ✅ Build passes: `npx vite build` — zero errors
+- ✅ Tests pass: channelsAdapter tests all green (11/11)
+- ✅ No dead imports remain
+- ✅ Ready for CONN-02 to import these pure functions
+
+**Response file:** `.deia/hive/responses/20260328-EFEMERA-CONN-05-RESPONSE.md`

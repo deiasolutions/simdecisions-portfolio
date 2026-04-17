@@ -1,0 +1,67 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-EXEC-02-build-integrity-ir-flow
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-2234
+# Task file: QUEUE-TEMP-SPEC-EXEC-02-build-integrity-ir-flow.md
+# Success: True
+# Duration: 402.0s
+# Files modified: 12 (verified)
+# Cost (USD): $4.586076
+# Turns: 27
+# API duration (ms): 310973
+# Session ID: d4d1a01d-8c56-4b74-acb0-8a62e9604f7c
+# Boot injected: True
+
+---
+
+Perfect! The task is complete. Let me create a summary:
+
+---
+
+## ✅ TASK COMPLETE
+
+I've successfully authored **PROCESS-0013 (Build Integrity 3-Phase Validation)** as a PHASE-IR YAML flow file with comprehensive testing.
+
+### Deliverables
+
+**1. Flow file:** `engine/flows/build-integrity.phase` (496 lines)
+- 26 nodes encoding Gate 0 + Phase 0 + Phase 1 + Phase 2
+- 40 edges with proper typing (then, switch, repeat)
+- 6 variables (4 retry counters + 2 score trackers)
+- 1 resource (llm_budget)
+- 4 groups for visual organization
+- Full healing loops (max 3 retries per phase)
+- Human escalation paths with approve/edited/abort options
+
+**2. Integration tests:** `tests/engine/flows/test_build_integrity_flow.py` (410 lines)
+- 19 comprehensive tests
+- All tests pass ✅
+
+### Validation Results
+
+```
+✅ Structural validation: Valid (0 errors)
+✅ YAML round-trip: Equivalent flow preserved
+✅ Node count: 26 nodes (all required nodes present)
+✅ Edge count: 40 edges (all routing logic correct)
+✅ Variable count: 6 variables (counters + scores)
+✅ Smoke test: PASSED
+✅ Pytest: 19/19 tests PASSED
+```
+
+### Flow Architecture
+
+The flow encodes the complete build integrity process:
+- **Gate 0:** Prompt→SPEC disambiguation (TF-IDF tree comparison)
+- **Phase 0:** Coverage validation (100% requirement coverage)
+- **Phase 1:** SPEC fidelity (SPEC→IR→SPEC' ≥ 0.85)
+- **Phase 2:** TASK fidelity (TASKS→IR→TASKS' ≥ 0.85)
+
+Each phase has:
+- Validation nodes (LLM + Python)
+- Decision node (pass/heal/escalate)
+- Healing loop with retry counter
+- Human escalation with 3 outcomes
+
+**Response file:** `.deia/hive/responses/20260406-QUEUE-TEMP-SPEC-EXEC-02-RESPONSE.md`

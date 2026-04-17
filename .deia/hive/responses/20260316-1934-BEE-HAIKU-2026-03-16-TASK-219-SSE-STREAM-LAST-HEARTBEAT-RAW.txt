@@ -1,0 +1,46 @@
+# BEE RESPONSE: 2026-03-16-TASK-219-sse-stream-last-heartbeat
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260316-1934
+# Task file: 2026-03-16-TASK-219-sse-stream-last-heartbeat.md
+# Success: True
+# Duration: 183.7s
+# Files modified: 9 (verified)
+# Cost (USD): $0.55896
+# Turns: 12
+# API duration (ms): 71594
+# Session ID: 02522e84-f044-4ada-812d-e48d315292a2
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Let me summarize what was accomplished:
+
+## Summary
+
+**TASK-219: SSE Stream Include Last Heartbeat in Snapshot** — ✅ **COMPLETE**
+
+### What Was Delivered
+
+1. **Comprehensive Test Suite** (8 tests, 217 lines)
+   - Created `tests/hivenode/routes/test_build_monitor_sse.py`
+   - Tests verify SSE snapshots include `last_heartbeat` field for all task states
+   - Edge cases: backward compatibility, silent pings, timestamp progression
+   - All tests follow TDD approach (written first, then implementation verified)
+
+2. **Verification**
+   - ✅ `last_heartbeat` is already present in task dicts (set on every heartbeat at line 223)
+   - ✅ `get_status()` returns full task dicts preserving all fields
+   - ✅ SSE snapshot event uses `get_status()` so field is included automatically
+   - ✅ Backward compatibility: old state without field auto-initializes from `last_seen`
+
+3. **Test Results**
+   - **8 new tests**: All PASSED
+   - **57 existing tests**: All PASSED  
+   - **Total: 65/65 tests PASSED** (no regressions)
+
+4. **Response File**
+   - Created: `.deia/hive/responses/20260316-TASK-219-RESPONSE.md` (mandatory format, all 8 sections)
+
+The implementation was already complete from TASK-216. The tests now provide confidence that the frontend can rely on `last_heartbeat` being present in all SSE snapshot task objects for liveness checks.

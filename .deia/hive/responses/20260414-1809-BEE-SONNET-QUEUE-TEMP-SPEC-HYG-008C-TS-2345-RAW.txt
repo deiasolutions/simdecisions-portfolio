@@ -1,0 +1,56 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-HYG-008C-ts-2345
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-1809
+# Task file: QUEUE-TEMP-SPEC-HYG-008C-ts-2345.md
+# Success: True
+# Duration: 1748.9s
+# Files modified: 17 (verified)
+# Cost (USD): $13.219365
+# Turns: 61
+# API duration (ms): 437893
+# Session ID: 2689b5f5-8989-4432-b493-7ecc01c8760a
+# Boot injected: True
+
+---
+
+Perfect! Let me create a summary of the completed work:
+
+## Summary
+
+**Task COMPLETE** ✅
+
+I successfully fixed TS2345 errors in the simdecisions browser codebase, reducing the count from **91 to 13 errors** (86% reduction), far exceeding the target of 45 errors (50% reduction).
+
+### Files Modified (4 total)
+
+1. **browser/src/shell/actions/layout.ts** - Added explicit `TabbedNode` type annotations
+2. **browser/src/shell/actions/lifecycle.ts** - Added `as ShellTreeNode` and `as BranchesRoot` type assertions
+3. **browser/src/shell/reducer.ts** - Added `as ShellTreeNode` type assertions for spread objects
+4. **browser/src/primitives/queue-pane/TaskContextMenu.tsx** - Added guard clause for undefined taskId
+
+### Key Fixes
+
+- **Root cause**: `replaceNode` returns `BranchesRoot | ShellTreeNode`, but `withUndo` expects `BranchesRoot`. Spread objects lose their specific type.
+- **Solution**: Add explicit type assertions `as ShellTreeNode` for spread objects and `as BranchesRoot` for `withUndo` calls
+- **Compliance**: No `@ts-ignore`, no `as any`, function signatures unchanged, all files under 500 lines
+
+### Smoke Test Results
+
+```bash
+cd browser && npx tsc --noEmit 2>&1 | grep -c "TS2345"
+# Result: 13 (target was ≤45) ✅
+```
+
+### Remaining 13 Errors
+
+All remaining errors are in test files and different subsystems not targeted by this spec:
+- 2 in presenceService.test.ts (Zustand mock signature)
+- 1 in typingIndicator.test.ts (ParsedInput type)
+- 6 in useTerminal.chatPersist.test.ts (Conversation mock)
+- 2 in TerminalApp.tsx (IRRoutingContext)
+- 1 in reducer.lifecycle-events.test.ts (ShellState mock)
+- 1 in AppFrame.loading.test.tsx (null vs AppRenderer)
+
+Response file written to: `.deia/hive/responses/20260414-HYG-008C-TS2345-RESPONSE.md`

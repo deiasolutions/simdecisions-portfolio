@@ -1,0 +1,64 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-PERF-01-useeffect-stability
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260401-1306
+# Task file: QUEUE-TEMP-SPEC-PERF-01-useeffect-stability.md
+# Success: True
+# Duration: 439.2s
+# Files modified: 9 (verified)
+# Cost (USD): $6.274683
+# Turns: 37
+# API duration (ms): 361419
+# Session ID: 3a280e10-6175-4ebb-bbd3-667d3ffc9b53
+# Boot injected: True
+
+---
+
+Excellent! All 98 tests pass. Let me create a summary:
+
+---
+
+## Task Complete ✓
+
+I've successfully fixed the useEffect dependency instability in `useEfemeraConnector` and the config memoization issue in `AppFrame`.
+
+### Changes Made
+
+**1. useEfemeraConnector.ts** — Stabilized dependencies to prevent re-initialization
+- Added refs for config values (`pollingIntervalMsRef`, `presenceAutoIdleMsRef`)
+- Replaced `handleMessageSend` useCallback with a ref pattern
+- Reduced init effect dependencies from `[bus, paneId, config, services, handleMessageSend]` to just `[bus, paneId]`
+- Handler updates via ref when `activeChannelId` changes, without re-subscribing to bus
+
+**2. AppFrame.tsx** — Memoized config to prevent new object references
+- Added `useMemo(() => node.appConfig || {}, [node.appConfig])`
+- Prevents creating new `{}` on every render when appConfig is undefined
+
+### Tests Added (TDD)
+
+**useEfemeraConnector.test.ts** — 4 new tests
+- Init effect doesn't re-run when activeChannelId changes
+- Init effect doesn't re-run when config object reference changes
+- Handler uses latest activeChannelId without re-subscription
+- Handler reference remains stable across channel changes
+
+**AppFrame.config.test.tsx** — 5 new tests (new file)
+- Stable config reference when appConfig is undefined
+- Stable config reference when appConfig value doesn't change
+- New config reference when appConfig value changes
+- No new object creation on every render when appConfig is falsy
+- Correct transitions between undefined and defined config
+
+### Test Results
+```
+✓ 8 test files passed
+✓ 98 tests passed
+✓ No regressions
+```
+
+### Impact
+- **Before**: Every channel selection caused full re-initialization (WS teardown, channel reload, presence restart) → Firefox "slowing down your browser" warning
+- **After**: Init runs once on mount, channel changes update refs only → No unnecessary re-initialization, no Firefox warning
+
+Response file written to: `.deia/hive/responses/20260401-SPEC-PERF-01-RESPONSE.md`

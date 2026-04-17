@@ -1,0 +1,68 @@
+# BEE RESPONSE: 2026-03-14-BRIEFING-voice-interface
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260313-2310
+# Task file: 2026-03-14-BRIEFING-voice-interface.md
+# Success: True
+# Duration: 260.0s
+# Files modified: 5 (verified)
+# Cost (USD): $0
+# Turns: 16
+# API duration (ms): 257549
+# Session ID: 3413de1f-4ad0-479c-bd79-d2c6e85f1702
+# Boot injected: True
+
+---
+
+Perfect! I've completed the task breakdown for BL-045 Voice Interface. Let me provide a summary to the user.
+
+---
+
+## Task Files Ready for Review
+
+I've created **3 comprehensive task files** for implementing BL-045 Voice Interface with browser-native Web Speech API:
+
+### Task Breakdown
+
+**TASK-080: Voice Input (STT)** — 13+ tests
+- `useVoiceRecognition.ts` hook (SpeechRecognition API)
+- `VoiceInputButton.tsx` component (🎤 mic button)
+- Visual pulsing indicator when listening
+- Auto-stop after 3s silence, stop on Enter key
+- Integration into TerminalPrompt next to file attachment button
+- Graceful fallback if API not supported
+
+**TASK-081: Voice Output (TTS)** — 13+ tests  
+- `useSpeechSynthesis.ts` hook (speechSynthesis API)
+- `SpeakerButton.tsx` component (🔊/⏸ icons)
+- Speaker buttons on each terminal response
+- Auto-read mode for latest responses
+- Pulsing animation while speaking
+- Only one message speaks at a time
+
+**TASK-082: Voice Settings Integration** — 10+ tests
+- Add `voice_enabled` and `voice_auto_read` to settings store
+- Settings UI with two checkboxes
+- Defaults: voice_enabled = true (if API available), voice_auto_read = false
+- localStorage persistence
+
+### Coverage
+- **36+ total tests** (mock browser APIs)
+- All acceptance criteria met ✅
+- No file exceeds 500 lines ✅
+- CSS: var(--sd-*) only ✅
+- TDD: tests first ✅
+- No stubs ✅
+
+### Files Created
+1. `.deia/hive/tasks/2026-03-14-TASK-080-voice-input-stt.md`
+2. `.deia/hive/tasks/2026-03-14-TASK-081-voice-output-tts.md`
+3. `.deia/hive/tasks/2026-03-14-TASK-082-voice-settings-integration.md`
+4. `.deia/hive/responses/20260314-Q33N-VOICE-INTERFACE-TASK-FILES.md` (summary)
+
+### Recommended Dispatch Order
+1. **TASK-082** (settings foundation)
+2. **TASK-080 + TASK-081** in parallel (both depend on settings)
+
+All task files include absolute paths, 8-section response templates, comprehensive test requirements, and compliance with all 10 DEIA hard rules. Ready for your review.

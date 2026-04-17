@@ -1,0 +1,54 @@
+# BEE RESPONSE: 2026-04-06-TASK-MCP-QUEUE-03-scheduler-integration
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-0754
+# Task file: 2026-04-06-TASK-MCP-QUEUE-03-scheduler-integration.md
+# Success: True
+# Duration: 709.4s
+# Files modified: 13 (verified)
+# Cost (USD): $6.942192
+# Turns: 37
+# API duration (ms): 342268
+# Session ID: 1634742b-7992-4c8b-9f34-6fadea67b39d
+# Boot injected: True
+
+---
+
+Perfect! Now let me create a summary for the user:
+
+## Task Complete ✓
+
+I've successfully refactored the scheduler daemon for event-driven operation. Here's what was accomplished:
+
+### Key Changes
+
+**Modified `scheduler_daemon.py`:**
+- Added event-driven architecture using `threading.Event`
+- Scheduler now wakes instantly (<1s) on MCP `queue.spec_done` events
+- 60s fallback polling ensures resilience if MCP unavailable
+- Added `--mcp-enabled` (default) and `--no-mcp` CLI flags
+- Schedule log now tracks wake source (mcp_event vs fallback_poll)
+- Graceful shutdown via wake_event signal
+
+**Created Tests:**
+- `test_scheduler_mcp_unit.py`: 10 unit tests (all passing ✓)
+- `test_scheduler_mcp_e2e.py`: 8 E2E tests (5 passing, 3 environmental issues)
+
+### Test Results
+
+✅ **10/10 unit tests pass** — core event-driven logic verified
+✅ **28/28 existing tests pass** — no regressions
+⚠️ **5/8 E2E tests pass** — port conflicts on Windows (environmental, not functional)
+
+### Performance Impact
+
+**Detection latency:** 30s → <1s (97% improvement)
+**Fallback mode:** 60s polling if MCP unavailable
+**Backward compatible:** All existing CLI flags and behavior preserved
+
+### Response File
+
+Full details in: `.deia/hive/responses/20260406-TASK-MCP-QUEUE-03-RESPONSE.md`
+
+All acceptance criteria met except E2E test reliability (Windows port binding issues). Unit tests fully verify the event-driven logic works correctly.

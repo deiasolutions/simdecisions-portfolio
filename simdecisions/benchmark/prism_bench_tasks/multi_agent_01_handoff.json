@@ -1,0 +1,37 @@
+{
+  "id": "multi_agent_01_handoff",
+  "name": "Two-Agent Handoff",
+  "intent": "Test single handoff point between two agents",
+  "phase_ir_version": "1.0.0",
+  "groups": [
+    {"id": "agent_a", "name": "Agent A", "node_ids": ["a_receive", "a_process", "a_handoff"]},
+    {"id": "agent_b", "name": "Agent B", "node_ids": ["b_receive", "b_process", "b_complete"]}
+  ],
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "a_receive", "type": "service", "name": "Agent A Receive", "config": {"duration": {"type": "constant", "params": {"value": 0.5}}}},
+    {"id": "a_process", "type": "service", "name": "Agent A Process", "config": {"duration": {"type": "exponential", "params": {"lambda": 1.0}}}},
+    {"id": "a_handoff", "type": "service", "name": "Agent A Handoff", "config": {"duration": {"type": "constant", "params": {"value": 0.3}}}},
+    {"id": "b_receive", "type": "service", "name": "Agent B Receive", "config": {"duration": {"type": "constant", "params": {"value": 0.5}}}},
+    {"id": "b_process", "type": "service", "name": "Agent B Process", "config": {"duration": {"type": "exponential", "params": {"lambda": 0.8}}}},
+    {"id": "b_complete", "type": "service", "name": "Agent B Complete", "config": {"duration": {"type": "constant", "params": {"value": 0.3}}}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "a_receive", "type": "then"},
+    {"id": "e2", "from_node": "a_receive", "to_node": "a_process", "type": "then"},
+    {"id": "e3", "from_node": "a_process", "to_node": "a_handoff", "type": "then"},
+    {"id": "e4", "from_node": "a_handoff", "to_node": "b_receive", "type": "emit"},
+    {"id": "e5", "from_node": "b_receive", "to_node": "b_process", "type": "then"},
+    {"id": "e6", "from_node": "b_process", "to_node": "b_complete", "type": "then"},
+    {"id": "e7", "from_node": "b_complete", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "multi-agent",
+    "description": "Simple handoff from Agent A to Agent B with coordination overhead",
+    "evaluation_criteria": "Handoff edge correct, both agents complete work, no data loss at handoff",
+    "expected_runtime_seconds": 6,
+    "agent_count": 2,
+    "handoff_points": [{"from": "agent_a", "to": "agent_b", "edge": "e4"}]
+  }
+}

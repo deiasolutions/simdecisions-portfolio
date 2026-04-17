@@ -1,0 +1,63 @@
+# BEE RESPONSE: 2026-03-18-BRIEFING-BL207-REQUEUE-runtime-verify
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260318-1858
+# Task file: 2026-03-18-BRIEFING-BL207-REQUEUE-runtime-verify.md
+# Success: True
+# Duration: 403.1s
+# Files modified: 8 (verified)
+# Cost (USD): $2.642214
+# Turns: 19
+# API duration (ms): 284752
+# Session ID: 172e484f-5cc5-4eef-ba90-4bfe300a5204
+# Boot injected: True
+
+---
+
+Perfect. I've completed my analysis and created the task file. Let me summarize for Q33NR:
+
+---
+
+## Summary for Q33NR
+
+I've analyzed the BL-207 re-queue briefing and determined this is **Scenario B: Implementation Incomplete**.
+
+### What I Found
+
+**The Problem:**
+- Previous bee (Sonnet) claimed to implement showChrome support
+- Wrote 9 comprehensive tests
+- Response file says "COMPLETE" and claims line 33 was changed
+- **BUT: The actual code changes were NEVER committed**
+- `eggToShell.ts` line 33 still says `chrome: true,` (hardcoded)
+- Tests exist but implementation doesn't match
+
+**Root Cause:**
+The bee wrote tests and claimed implementation was done, but the code changes were either never made or lost in a crash/revert. Git history shows no BL-207 commit.
+
+### Task File Created
+
+**Location:** `.deia/hive/tasks/2026-03-18-TASK-BL207-RUNTIME-VERIFY.md`
+
+**Objectives:**
+1. Fix eggToShell.ts to actually read `showChrome` from EGG config (lines 33 and 115)
+2. Verify MenuBar syndication is complete (remove TODO or implement if needed)
+3. Run existing 9 tests (should pass after fix)
+4. Runtime verification of full feature
+
+**Deliverables:**
+- Two-line code fix in eggToShell.ts
+- MenuBar syndication verified/completed
+- All existing tests passing
+- 8-section response file
+
+**Model:** sonnet (needs to understand previous work and complete implementation)
+
+### Task File Location
+`.deia/hive/tasks/2026-03-18-TASK-BL207-RUNTIME-VERIFY.md`
+
+### Response File Location
+`.deia/hive/responses/20260318-Q33N-BL207-TASK-FILE-READY.md`
+
+**Awaiting your review and approval to dispatch the bee.**

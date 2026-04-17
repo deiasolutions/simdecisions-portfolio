@@ -1,0 +1,56 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-SMOKE-AUDIT-FIX-001-run
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-1202
+# Task file: QUEUE-TEMP-SPEC-SMOKE-AUDIT-FIX-001-run.md
+# Success: True
+# Duration: 528.1s
+# Files modified: 5 (verified)
+# Cost (USD): $7.9173089999999995
+# Turns: 47
+# API duration (ms): 421028
+# Session ID: fdaf6759-7732-42f1-aba5-7eb7f7fcc7eb
+# Boot injected: True
+
+---
+
+Perfect! Now let me create a concise summary for Q88N:
+
+## Smoke Test Execution Complete
+
+I successfully ran the smoke test for SPEC-AUDIT-FIX-001 capabilities against the live hivenode at http://127.0.0.1:8420. Full analysis with root cause for every failure is documented in the response file.
+
+### Key Findings
+
+**CRITICAL DISCOVERY:** Hivenode has been running for 26 hours, but SCAN and briefing route modules were added to the codebase only 16 hours ago. The server was never restarted, so these routes are not loaded despite being properly imported and mounted in main.py.
+
+### Test Results Summary
+- **Passed:** 4/18 tests (health, wiki list/get/create)
+- **Failed:** 14/18 tests
+- **Blocked:** 10 tests cannot run until hivenode restart
+
+### Failures by Category
+
+1. **Requires Restart (10 tests):**
+   - All SCAN endpoints (6 tests) - routes added after server start
+   - All briefing endpoints (2 tests) - routes added after server start
+   - Wave 1 and Wave 2 completely blocked
+
+2. **Implementation Issues (3 tests):**
+   - RAG /status and /search - wrong router module imported
+   - RAG /stats - 500 Internal Server Error (implementation bug)
+   
+3. **Design Mismatches (2 tests):**
+   - Wiki update - expects POST, implementation uses PUT
+   - Governance events - endpoint doesn't exist (smoke test expects /api/governance/events, but governance routes are at /governance/* and don't include event query)
+
+4. **Script Bugs (2 tests):**
+   - Unicode encoding crash on Windows
+   - DELETE test code error (TypeError)
+
+### Immediate Action Required
+
+**To complete smoke testing:** Restart hivenode with `bash _tools/restart-services.sh`, then re-run this spec.
+
+All root causes documented with fix recommendations in response file.

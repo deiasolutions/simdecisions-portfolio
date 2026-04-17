@@ -1,0 +1,56 @@
+# BEE RESPONSE: 2026-03-18-BRIEFING-REQUEUE3-BUG031-code-explorer-click
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260318-2111
+# Task file: 2026-03-18-BRIEFING-REQUEUE3-BUG031-code-explorer-click.md
+# Success: True
+# Duration: 133.9s
+# Files modified: 5 (verified)
+# Cost (USD): $1.951341
+# Turns: 14
+# API duration (ms): 118782
+# Session ID: 0a036aa2-1e76-4f51-bfc4-fc67afee6c63
+# Boot injected: True
+
+---
+
+Perfect! Now let me provide a summary to Q33NR:
+
+---
+
+## Summary for Q33NR
+
+I have completed my investigation of the BUG-031 (REQUEUE 3) briefing. 
+
+**Finding: FALSE POSITIVE** — The fix described in the briefing has already been implemented in the source code.
+
+### Evidence
+1. **Source code inspection** shows `treeBrowserAdapter.tsx` (lines 189-211) already sends `file:selected` events with:
+   - `name: node.label` field ✓
+   - URI with protocol prefix `${protocol}${path}` ✓
+   - Directory exclusion via `!node.children` check ✓
+
+2. **All tests passing** (6/6) in `treeBrowserAdapter.test.tsx`
+
+3. **SDEditor compatibility** confirmed — expects `{ uri, name }` which matches what's being sent
+
+4. **Backend compatibility** confirmed — `/storage/read` expects URI format that matches
+
+### Root Cause of Requeue
+Prior fix cycles failed due to queue runner infrastructure issues (missing `_active/` paths), not code issues. The actual fix was completed earlier but kept being requeued due to infrastructure failures.
+
+### Task File Created
+I've written `.deia/hive/tasks/2026-03-18-TASK-BUG031-REQUEUE3-VERIFY.md` as a **verification task** (not implementation) that will:
+- Document the existing fix with line numbers
+- Add integration tests for the full file load flow
+- Mark this as FALSE POSITIVE with evidence
+
+### Your Options
+1. **Dispatch verification task** → add integration tests, then close BUG-031 as FIXED
+2. **Close immediately** as FALSE POSITIVE based on this evidence
+3. **Manual smoke test** in live app before closing
+
+**My detailed response is in:** `.deia/hive/responses/20260318-Q33N-BUG031-REQUEUE3-BRIEFING.md`
+
+Awaiting your direction on how to proceed.

@@ -1,0 +1,55 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-18-SPEC-TASK-FIX-PIPELINE-SIM-TESTS
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260318-1120
+# Task file: QUEUE-TEMP-2026-03-18-SPEC-TASK-FIX-PIPELINE-SIM-TESTS.md
+# Success: True
+# Duration: 112.9s
+# Files modified: 2 (verified)
+# Cost (USD): $0.5226989999999999
+# Turns: 5
+# API duration (ms): 57420
+# Session ID: ec854a9f-b8c7-45a7-8e7e-1cbbf9788b9b
+# Boot injected: True
+
+---
+
+I can see the queue runner is active and I'm in a live session with Q88N (Dave). The task is to fix the pipeline simulation tests.
+
+However, there's a **role mismatch**: I'm assigned `Q33NR` (regent), but this is clearly a **BEE task** (writing test fixes). According to HIVE.md:
+
+- **Q33NR does NOT code** (Rule 2 from BOOT.md)
+- **BEE writes code**
+
+Since this task requires fixing tests (coding work), I need to clarify with Q88N whether:
+1. This should be a BEE task (and I should re-dispatch it correctly), OR
+2. Q88N wants me to handle this directly as a Q33NR-approved direct fix
+
+Let me inform Q88N of the situation:
+
+---
+
+**Q88N (Dave):**
+
+I've received a task to fix the 6 failing pipeline simulation tests, but there's a **role mismatch**:
+
+- **My assigned role:** Q33NR (regent) — does NOT write code per Rule 2
+- **Task type:** Fix test failures — requires writing/modifying code (BEE work)
+
+The failing tests are in `tests/hivenode/test_pipeline_sim.py`:
+1. `test_simulate_detects_pool_starvation`
+2. `test_simulate_optimal_pool_size_is_reasonable`
+3. `test_simulate_with_zero_failure_rate`
+4. `test_simulate_with_small_num_specs`
+5. `test_simulate_handles_fix_cycles`
+6. `test_simulate_budget_exhaustion`
+
+**Options:**
+1. **Dispatch through Q33N** (proper chain): I write a briefing → dispatch Q33N → Q33N creates task → dispatches BEE
+2. **Direct BEE dispatch** (if urgent): I create a task file and dispatch a Haiku BEE directly (spec says model=haiku)
+3. **Q33NR-direct fix** (if you approve): You explicitly approve me coding this one time
+
+**Queue status:** Active (1 task running). The queue runner could handle this as a spec.
+
+**Which approach do you want me to take?**

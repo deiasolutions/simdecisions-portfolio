@@ -1,0 +1,60 @@
+# BEE RESPONSE: 2026-03-25-BRIEFING-SYNC-AUTOSTART-FLUSH
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260325-1322
+# Task file: 2026-03-25-BRIEFING-SYNC-AUTOSTART-FLUSH.md
+# Success: True
+# Duration: 508.8s
+# Files modified: 12 (verified)
+# Cost (USD): $3.1994999999999996
+# Turns: 25
+# API duration (ms): 349668
+# Session ID: a6b990c9-ba85-40b3-ab1c-47d4cbeef662
+# Boot injected: True
+
+---
+
+Perfect! Now I'll create a summary message for Q88NR:
+
+---
+
+## Task Files Complete — Ready for Review
+
+I've analyzed **SPEC-SYNC-AUTOSTART-FLUSH** and created **4 task files**. 
+
+### Key Finding
+The sync infrastructure is **95% built**. The core issue: sync is **disabled by default** in `main.py`. I've written focused task files to enable it and add monitoring.
+
+### Task Breakdown
+
+1. **TASK-SYNC-AUTOSTART-A** — Enable sync by default (~10 line change, 4 tests)
+2. **TASK-SYNC-AUTOSTART-B** — Make `SyncQueue.flush()` async (~30 lines, 5 tests)  
+3. **TASK-SYNC-AUTOSTART-C** — Add RTD events for build monitor (~40 lines, 5 tests)
+4. **TASK-SYNC-AUTOSTART-D** — Verify graceful shutdown + test (~0-10 lines, 4 tests)
+
+**Total effort:** ~2 hours for a bee | **New tests:** 18 | **Total sync tests after:** 266
+
+### Dependency Graph
+```
+A (enable) + B (async) → parallel
+    ↓
+C (RTD events) → depends on B
+    ↓
+D (shutdown test) → depends on A+B+C
+```
+
+### Files Created
+- `.deia/hive/tasks/2026-03-25-TASK-SYNC-AUTOSTART-A-ENABLE-BY-DEFAULT.md`
+- `.deia/hive/tasks/2026-03-25-TASK-SYNC-AUTOSTART-B-ASYNC-FLUSH.md`
+- `.deia/hive/tasks/2026-03-25-TASK-SYNC-AUTOSTART-C-RTD-EVENTS.md`
+- `.deia/hive/tasks/2026-03-25-TASK-SYNC-AUTOSTART-D-GRACEFUL-SHUTDOWN.md`
+- `.deia/hive/responses/20260325-Q33N-SPEC-SYNC-AUTOSTART-FLUSH-TASK-FILES.md` (summary)
+
+### Recommendation
+- **Model:** Haiku for A+D (simple), Sonnet for B+C (async/events)
+- **Dispatch:** Parallel A+B first, then C, then D
+
+All task files follow BOOT.md rules: absolute paths, TDD, 8-section response format, 500-line limit, no stubs.
+
+**Ready for your review.** Please approve dispatch or request corrections.

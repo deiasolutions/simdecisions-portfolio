@@ -1,0 +1,67 @@
+{
+  "id": "workflow_02_multi_server",
+  "name": "Multi-Server Queue Workflow",
+  "intent": "Source -> Queue -> Service (3 servers) -> Sink. Tests parallel server utilization.",
+  "phase_ir_version": "1.0.0",
+  "nodes": [
+    {
+      "id": "source",
+      "type": "source",
+      "name": "Token Generator",
+      "config": {
+        "arrival_distribution": "poisson",
+        "lambda": 10.0,
+        "max_arrivals": 100
+      }
+    },
+    {
+      "id": "queue",
+      "type": "queue",
+      "name": "Wait Queue",
+      "config": {
+        "discipline": "FIFO",
+        "capacity": 20
+      }
+    },
+    {
+      "id": "service",
+      "type": "service",
+      "name": "Service Node",
+      "config": {
+        "service_distribution": "exponential",
+        "mu": 4.0,
+        "servers": 3
+      }
+    },
+    {
+      "id": "sink",
+      "type": "sink",
+      "name": "Completion"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from_node": "source",
+      "to_node": "queue",
+      "type": "then"
+    },
+    {
+      "id": "e2",
+      "from_node": "queue",
+      "to_node": "service",
+      "type": "then"
+    },
+    {
+      "id": "e3",
+      "from_node": "service",
+      "to_node": "sink",
+      "type": "then"
+    }
+  ],
+  "metadata": {
+    "description": "Source -> Queue -> Service (3 servers) -> Sink",
+    "evaluation_criteria": "Server utilization < 90%, queue depth < 15",
+    "expected_runtime_seconds": 5
+  }
+}

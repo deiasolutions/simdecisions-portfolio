@@ -1,0 +1,118 @@
+# BEE RESPONSE: 2026-03-15-BRIEFING-rebuild-batch-01
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260315-2231
+# Task file: 2026-03-15-BRIEFING-rebuild-batch-01.md
+# Success: True
+# Duration: 220.7s
+# Files modified: 9 (verified)
+# Cost (USD): $0
+# Turns: 22
+# API duration (ms): 214537
+# Session ID: 017b8686-cd4c-4da4-96c8-4ef813576c62
+# Boot injected: True
+
+---
+
+Perfect! Now I'll write a completion summary for Q33NR:
+
+---
+
+# Q33N REPORT: 5 Task Files Written for Rebuild Batch 01
+
+**From:** Q33N (QUEEN-2026-03-15-BRIEFING-rebuild-ba)
+**To:** Q33NR
+**Date:** 2026-03-15
+**Status:** READY FOR REVIEW
+
+---
+
+## Summary
+
+I have written 5 task files to reconstruct the tracked-file modifications lost in the `git reset --hard HEAD` incident. Each task file tells a bee exactly how to redo one piece of the lost work.
+
+All 5 task files are ready for your review at:
+- `.deia/hive/tasks/2026-03-15-TASK-R01-re-register-des-routes.md`
+- `.deia/hive/tasks/2026-03-15-TASK-R02-restore-rag-models-exports-ccc-fix.md`
+- `.deia/hive/tasks/2026-03-15-TASK-R03-add-scanner-class-to-exports.md`
+- `.deia/hive/tasks/2026-03-15-TASK-R04-add-chunker-to-exports.md`
+- `.deia/hive/tasks/2026-03-15-TASK-R05-add-embedder-storage-exports.md`
+
+---
+
+## Task Breakdown
+
+| Task ID | Priority | Model | Original | Purpose | Files Modified |
+|---------|----------|-------|----------|---------|----------------|
+| **R01** | P0.05 | Haiku | TASK-146 | Re-register DES routes in __init__.py | `hivenode/routes/__init__.py` |
+| **R02** | P0.10 | Haiku | TASK-151 | Add compatibility aliases to models.py + fix CCC_PER_FILE | `hivenode/rag/indexer/models.py`<br>`hivenode/rag/indexer/indexer_service.py` |
+| **R03** | P0.15 | Haiku | TASK-152 | Add Scanner class to exports + fix indexer_service | `hivenode/rag/indexer/__init__.py`<br>`hivenode/rag/indexer/indexer_service.py` |
+| **R04** | P0.20 | Haiku | TASK-153 | Add Chunker to exports | `hivenode/rag/indexer/__init__.py` |
+| **R05** | P0.25 | Haiku | TASK-154+155 | Add TFIDFEmbedder, IndexStorage, compute_content_hash to exports | `hivenode/rag/indexer/__init__.py` |
+
+---
+
+## Key Findings During Analysis
+
+### 1. Corrected briefing misunderstandings
+
+The briefing mentioned "canonical names with Metadata suffix" (ProvenanceMetadata, etc.), but the actual `models.py` file uses the OLD names (ProvenanceInfo, ReliabilityMetrics, etc.). I discovered that:
+- The classes in models.py are named with OLD convention
+- The LOST work was adding REVERSE compatibility aliases (ProvenanceMetadata = ProvenanceInfo, etc.)
+- This allows code expecting canonical names to work with the old class names
+
+### 2. Sequential dispatch required for R02-R05
+
+Tasks R02, R03, R04, and R05 ALL modify `hivenode/rag/indexer/__init__.py`. They MUST be dispatched sequentially, not in parallel, to avoid conflicts.
+
+Task R01 is independent (different file) and could be dispatched in parallel with R02 if desired.
+
+### 3. CCC_PER_FILE may already be correct
+
+In TASK-R02, I noted that the current `CCC_PER_FILE` constant might already have the correct field names (`clock_ms`, `coin_usd`, `carbon_kg`). I instructed the bee to double-check the actual current state and only fix if the field names are wrong. The briefing mentioned adding a `token_estimate` field, but `CCCMetadata` does not have that field per the actual models.py code.
+
+---
+
+## File Dependencies
+
+**Shared file (`__init__.py`) requires sequential dispatch:**
+```
+R02 → (modifies __init__.py indirectly via models.py — no __init__ change)
+R03 → (modifies __init__.py — adds Scanner)
+R04 → (modifies __init__.py — adds Chunker)  
+R05 → (modifies __init__.py — adds TFIDFEmbedder, IndexStorage, compute_content_hash)
+```
+
+**Recommended dispatch order:**
+1. R01 (independent, can run in parallel with R02)
+2. R02 (only touches models.py and indexer_service.py)
+3. R03 (first __init__.py modification)
+4. R04 (second __init__.py modification, depends on R03 completing)
+5. R05 (third __init__.py modification, depends on R04 completing)
+
+---
+
+## Test Coverage
+
+All 5 tasks include verification steps:
+- **R01:** 22 DES route tests
+- **R02:** 50 RAG models tests
+- **R03:** 32 Scanner tests
+- **R04:** 43 Chunker tests
+- **R05:** 34 Embedder tests + Storage tests
+
+**Total verification:** 181+ tests across all rebuild tasks
+
+---
+
+## Next Steps
+
+**Awaiting Q33NR review.** Once approved:
+1. I will dispatch R01 and R02 in parallel
+2. Then dispatch R03, R04, R05 sequentially
+3. Collect bee responses
+4. Verify all tests pass
+5. Report completion to Q33NR
+
+**I will NOT dispatch bees until you approve these task files.**

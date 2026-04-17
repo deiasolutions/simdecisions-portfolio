@@ -1,0 +1,46 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-HYG-008B-ts-2304
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-1809
+# Task file: QUEUE-TEMP-SPEC-HYG-008B-ts-2304.md
+# Success: True
+# Duration: 2004.6s
+# Files modified: 18 (verified)
+# Cost (USD): $8.245911
+# Turns: 53
+# API duration (ms): 327704
+# Session ID: d2655b61-c561-4c4a-8e61-b67734d97929
+# Boot injected: True
+
+---
+
+Perfect! Now let me create a final summary:
+
+## Summary
+
+I've successfully completed SPEC-HYG-008B-ts-2304 to fix TS2304 "Cannot find name" errors in the browser codebase.
+
+### Work Completed
+
+**Files Modified:**
+1. `browser/src/primitives/menu-bar/__tests__/MenuBarPrimitive.test.tsx` - Fixed missing `container` destructuring (2 locations)
+2. `browser/src/shell/utils.ts` - Changed `ShellNodeType` and `LoadState` from type-only imports to value imports
+
+### Results
+
+- **TS2304 Error Count**: 65 → 0 (100% reduction)
+- **Target**: ≤136 errors (50% reduction)
+- **Status**: ✅ **EXCEEDED TARGET** - All TS2304 errors eliminated
+
+### Test Verification
+
+- TypeScript compilation: ✅ 0 TS2304 errors
+- utils.test.ts: ✅ 44/44 tests passed
+- No `@ts-ignore`, no `as any`, no stubs used
+
+### Key Fix
+
+The utils.ts fix was critical - `ShellNodeType` and `LoadState` are enums that must be imported as values (not just types) since they're used at runtime. This was causing a runtime error: "ShellNodeType is not defined".
+
+**Response file:** `.deia/hive/responses/20260414-HYG-008B-TS2304-RESPONSE.md`

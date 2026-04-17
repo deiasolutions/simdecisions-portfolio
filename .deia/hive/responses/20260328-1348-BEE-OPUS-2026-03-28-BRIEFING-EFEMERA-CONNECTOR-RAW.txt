@@ -1,0 +1,103 @@
+# BEE RESPONSE: 2026-03-28-BRIEFING-EFEMERA-CONNECTOR
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: opus
+# Role: queen
+# Timestamp: 20260328-1348
+# Task file: 2026-03-28-BRIEFING-EFEMERA-CONNECTOR.md
+# Success: True
+# Duration: 854.9s
+# Files modified: 25 (verified)
+# Cost (USD): $21.143939999999997
+# Turns: 33
+# API duration (ms): 898107
+# Session ID: b6fda9e6-e29c-4b25-8147-8fef61230446
+# Boot injected: True
+
+---
+
+All deliverables complete. Here's the summary for Q33NR:
+
+---
+
+## Q33N Completion Report — Efemera Connector
+
+### Deliverables Written
+
+**1. Assessment Document:**
+`.deia/hive/responses/20260328-EFEMERA-ASSESSMENT.md`
+- Cross-repo audit: platform had ~2,710 lines across channels, messages, WebSocket, RBAC, moderation, commands, Discord bridge, and 891 lines of tests
+- ShiftCenter has ~880 lines with no versioning, no threading, no moderation, no RBAC, no WebSocket, no typing indicators
+- Gap analysis: 17 backend gaps, 9 frontend gaps, 7 architecture debt items
+
+**2. Connector Design Document:**
+`.deia/hive/responses/20260328-EFEMERA-CONNECTOR-DESIGN.md`
+- 5-module architecture: EfemeraConnector (orchestrator), channelService, messageService, presenceService, memberService
+- Full bus event contract: 6 inbound events (from primitives), 12 outbound events (to primitives)
+- `efemera:*` namespace replaces old `channel:*` events
+- Data flow diagrams for message send, channel switch, polling, presence
+- Primitive refactoring plan (terminal, text-pane, tree-browser adapters)
+- Backend upgrade plan (schema extensions, new modules, route additions)
+- Migration strategy (4 phases, backward compatible at each step)
+- 4 open questions for Q33NR review
+
+**3. Task Specs (12 tasks):**
+
+| Task | File | Model | Dependencies |
+|------|------|-------|-------------|
+| CONN-01: Data Layer | `2026-03-28-TASK-EFEMERA-CONN-01-DATA-LAYER.md` | Sonnet | None |
+| CONN-02: Orchestrator | `2026-03-28-TASK-EFEMERA-CONN-02-ORCHESTRATOR.md` | Sonnet | CONN-01 |
+| CONN-03: Terminal Refactor | `2026-03-28-TASK-EFEMERA-CONN-03-TERMINAL-REFACTOR.md` | Sonnet | CONN-02 |
+| CONN-04: Text-Pane Refactor | `2026-03-28-TASK-EFEMERA-CONN-04-TEXTPANE-REFACTOR.md` | Sonnet | CONN-02 |
+| CONN-05: Adapter Refactor | `2026-03-28-TASK-EFEMERA-CONN-05-ADAPTER-REFACTOR.md` | Sonnet | CONN-02 |
+| CONN-06: EGG Lifecycle | `2026-03-28-TASK-EFEMERA-CONN-06-EGG-LIFECYCLE.md` | Sonnet | CONN-02 |
+| CONN-07: Backend Schema | `2026-03-28-TASK-EFEMERA-CONN-07-BACKEND-SCHEMA.md` | Sonnet | None |
+| CONN-08: RBAC + SysChannels | `2026-03-28-TASK-EFEMERA-CONN-08-RBAC-SYSCHANNELS.md` | Sonnet | CONN-07 |
+| CONN-09: Msg Versioning | `2026-03-28-TASK-EFEMERA-CONN-09-MSG-VERSIONING.md` | Sonnet | CONN-07 |
+| CONN-10: Moderation | `2026-03-28-TASK-EFEMERA-CONN-10-MODERATION.md` | Sonnet | CONN-07, CONN-08 |
+| CONN-11: WebSocket | `2026-03-28-TASK-EFEMERA-CONN-11-WEBSOCKET.md` | Sonnet | CONN-07, CONN-08 |
+| CONN-12: Bus Cleanup | `2026-03-28-TASK-EFEMERA-CONN-12-CLEANUP.md` | Sonnet | CONN-03, CONN-04, CONN-05 |
+
+### Dependency Graph
+
+```
+Frontend Track:                Backend Track:
+CONN-01 (data layer)           CONN-07 (schema)
+    ↓                              ↓
+CONN-02 (orchestrator)         CONN-08 (RBAC)    CONN-09 (versioning)
+    ↓                              ↓                  ↓
+CONN-03 ─┐                    CONN-10 (moderation)
+CONN-04  ├─ (parallel)        CONN-11 (WebSocket)
+CONN-05 ─┤
+CONN-06 ─┘
+    ↓
+CONN-12 (cleanup)
+```
+
+**Frontend and backend tracks are independent — they can run in parallel.**
+
+### Estimated Test Counts
+
+| Task | Est. Tests |
+|------|-----------|
+| CONN-01 | 35+ |
+| CONN-02 | 15+ |
+| CONN-03 | 6+ |
+| CONN-04 | 8+ |
+| CONN-05 | 13+ |
+| CONN-06 | 5+ |
+| CONN-07 | 25+ |
+| CONN-08 | 20+ |
+| CONN-09 | 22+ |
+| CONN-10 | 30+ |
+| CONN-11 | 15+ |
+| CONN-12 | 0 (cleanup, run full suite) |
+| **Total** | **194+** |
+
+### Open Questions for Q33NR (from design doc Section 11)
+
+1. WebSocket vs. polling priority for first implementation
+2. Tree-browser adapter wiring approach (bus-driven vs. callback)
+3. Old bus event namespace migration strategy (parallel vs. clean cut)
+4. Connector instantiation hook (generic service registration vs. hard-wired)
+
+**Awaiting Q33NR review before dispatch.**

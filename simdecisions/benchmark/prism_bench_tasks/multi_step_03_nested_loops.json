@@ -1,0 +1,39 @@
+{
+  "id": "multi_step_03_nested_loops",
+  "name": "Nested Loops Workflow",
+  "intent": "Test iterative processing with repeat edges and loop detection",
+  "phase_ir_version": "1.0.0",
+  "variables": [
+    {"id": "iteration_count", "type": "counter", "default": 0},
+    {"id": "inner_count", "type": "counter", "default": 0}
+  ],
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "outer_check", "type": "decision", "name": "Outer Loop Check"},
+    {"id": "outer_work", "type": "service", "name": "Outer Loop Work", "config": {"duration": {"type": "constant", "params": {"value": 0.5}}}},
+    {"id": "inner_check", "type": "decision", "name": "Inner Loop Check"},
+    {"id": "inner_work", "type": "service", "name": "Inner Loop Work", "config": {"duration": {"type": "constant", "params": {"value": 0.3}}}},
+    {"id": "inner_increment", "type": "service", "name": "Increment Inner", "config": {"duration": {"type": "constant", "params": {"value": 0.1}}}},
+    {"id": "outer_increment", "type": "service", "name": "Increment Outer", "config": {"duration": {"type": "constant", "params": {"value": 0.1}}}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "outer_check", "type": "then"},
+    {"id": "e2", "from_node": "outer_check", "to_node": "outer_work", "type": "switch", "guard": "iteration_count < 3"},
+    {"id": "e3", "from_node": "outer_check", "to_node": "end", "type": "switch", "guard": "iteration_count >= 3"},
+    {"id": "e4", "from_node": "outer_work", "to_node": "inner_check", "type": "then"},
+    {"id": "e5", "from_node": "inner_check", "to_node": "inner_work", "type": "switch", "guard": "inner_count < 2"},
+    {"id": "e6", "from_node": "inner_check", "to_node": "outer_increment", "type": "switch", "guard": "inner_count >= 2"},
+    {"id": "e7", "from_node": "inner_work", "to_node": "inner_increment", "type": "then"},
+    {"id": "e8", "from_node": "inner_increment", "to_node": "inner_check", "type": "repeat"},
+    {"id": "e9", "from_node": "outer_increment", "to_node": "outer_check", "type": "repeat"}
+  ],
+  "metadata": {
+    "category": "multi-step",
+    "description": "Nested loop structure with outer loop (3 iterations) and inner loop (2 iterations per outer)",
+    "evaluation_criteria": "Correct iteration counts (3x2=6 inner executions), loop detection prevents infinite loops",
+    "expected_runtime_seconds": 12,
+    "node_count": 8,
+    "loop_depth": 2
+  }
+}

@@ -1,0 +1,56 @@
+# BEE RESPONSE: TASK-028-SHELL-EXEC-ROUTE
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260312-1031
+# Task file: TASK-028-SHELL-EXEC-ROUTE.md
+# Success: True
+# Duration: 529.8s
+# Files modified: 18 (verified)
+# Cost (USD): $0
+# Turns: 67
+# API duration (ms): 417591
+# Session ID: 9919f507-2e09-4e41-b29e-beea76900f67
+# Boot injected: True
+
+---
+
+Excellent! Task complete. Let me create a summary for Dave:
+
+---
+
+## TASK-028 COMPLETE ✅
+
+Successfully implemented the `/shell/exec` route with OS translation, allowlist/denylist security, and Event Ledger integration.
+
+### What was delivered:
+
+**New modules (310 lines total):**
+- `hivenode/shell/allowlist.py` — Allowlist/denylist validation (55 lines)
+- `hivenode/shell/executor.py` — OS translation engine (142 lines)  
+- `hivenode/shell/schemas.py` — Pydantic models (18 lines)
+- `hivenode/routes/shell.py` — FastAPI route handler (95 lines)
+
+**Key features:**
+- **OS translation**: IR commands → Windows/Unix native commands
+- **Path normalization**: `/` → `\` on Windows, `\` → `/` on Unix
+- **Allowlist**: 24 allowed commands (mkdir, ls, git, npm, python, etc.)
+- **Denylist**: 5 forbidden patterns (format, mkfs, rm -rf /, fork bomb, etc.)
+- **Security**: Local mode only (403 in cloud), volume path validation, 30s timeout
+- **Event Ledger**: Logs all executions (`SHELL_EXEC`) and denials (`SHELL_DENIED`)
+- **Volume integration**: Resolves `home://` URIs to disk paths
+
+**Tests: 24/24 passing**
+- 5 allowlist tests
+- 11 executor tests (translation, normalization, execution)
+- 8 route tests (success, denial, cloud mode, logging, timeout)
+
+**Full hivenode suite: 593 passed, 3 skipped** — no regressions
+
+**Feature inventory updated:**
+- Added SHELL-EXEC-001 (24 tests)
+- Exported to `docs/FEATURE-INVENTORY.md`
+
+**Response file:** `.deia/hive/responses/20260312-TASK-028-SHELL-EXEC-ROUTE-RESPONSE.md`
+
+Ready for Q33N review.

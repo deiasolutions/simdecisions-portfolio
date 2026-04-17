@@ -1,0 +1,140 @@
+# BEE RESPONSE: 2026-03-15-BRIEFING-canvas-animation
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260315-1219
+# Task file: 2026-03-15-BRIEFING-canvas-animation.md
+# Success: True
+# Duration: 326.8s
+# Files modified: 4 (verified)
+# Cost (USD): $0
+# Turns: 38
+# API duration (ms): 272243
+# Session ID: d192c1b1-b0a3-42e1-86bd-7b9b306bf0c1
+# Boot injected: True
+
+---
+
+Now I'll write a summary report for Q33NR review.
+
+---
+
+## Q33N Report to Q33NR: Canvas Animation Task Files Ready for Review
+
+**Date:** 2026-03-15  
+**Briefing:** 2026-03-15-BRIEFING-canvas-animation.md  
+**Spec:** 2026-03-15-1036-SPEC-w1-07-canvas-animation.md
+
+### Critical Findings
+
+1. **Components Already Ported (2026-03-14)**
+   - All 6 components + hook already exist in shiftcenter
+   - Source: Previous work (likely TASK-145 or similar)
+   - Location: `browser/src/apps/sim/components/flow-designer/animation/`
+   - Files: TokenAnimation, NodePulse, QueueBadge, ResourceBar, CheckpointFlash, SimClock, useAnimationFrame
+
+2. **Briefing Spec Mismatch**
+   - Briefing mentions "EdgeFlow" and "AnimationController" — these don't exist in platform
+   - Actual components differ from briefing list
+   - Total line count matches (~743 lines vs briefing's 749)
+
+3. **ZERO Tests (Spec Violation)**
+   - No `__tests__/` directory exists
+   - Spec requires "Tests written and passing"
+   - Platform has complete test suite (228 lines, 17 tests)
+
+4. **Hardcoded Color Violation (Rule #3 Violation)**
+   - All 6 components import from `lib/theme.ts`
+   - theme.ts contains 20+ hex color literals (#8b5cf6, etc.)
+   - **This violates Rule #3:** NO HARDCODED COLORS
+   - Must replace with `var(--sd-*)` CSS variables
+
+### Task Files Written
+
+**TASK-147: Port animation component test suite**
+- Port 228-line test file from platform
+- Adapt import paths (useAnimationFrame: `../../../../hooks/` → `./`)
+- 17 test cases (3 skipped due to timing issues in platform)
+- Expected: ~14 passing, ~3 skipped, 0 failures
+- File: `.deia/hive/tasks/2026-03-15-TASK-147-animation-tests.md`
+
+**TASK-148: Fix hardcoded colors in animation components**
+- Remove theme.ts imports from all 6 components
+- Replace all hex/rgb literals with CSS variables
+- Update default props, inline styles, canvas code
+- Run tests after changes to verify no regressions
+- File: `.deia/hive/tasks/2026-03-15-TASK-148-animation-colors-fix.md`
+
+### Execution Order
+
+**Sequential (TASK-147 first, then TASK-148):**
+- TASK-147 must complete first (establishes test baseline)
+- TASK-148 modifies components (tests will catch regressions)
+- Both can be dispatched to same haiku session if preferred
+
+### Deliverables Summary
+
+**After TASK-147:**
+- [ ] `animation/__tests__/animation.test.tsx` exists
+- [ ] 17 test cases ported (14 active, 3 skipped)
+- [ ] Tests run successfully
+
+**After TASK-148:**
+- [ ] Zero theme.ts imports remaining
+- [ ] Zero hex literals in any animation file
+- [ ] All tests still pass
+- [ ] Build succeeds with no TypeScript errors
+
+### Files Accounted For
+
+| Component | Lines | Already Ported | Tests Needed | Colors Need Fix |
+|-----------|-------|----------------|--------------|-----------------|
+| TokenAnimation.tsx | 115 | ✓ | ✓ | ✓ |
+| NodePulse.tsx | 120 | ✓ | ✓ | ✓ |
+| QueueBadge.tsx | 82 | ✓ | ✓ | ✓ |
+| ResourceBar.tsx | 91 | ✓ | ✓ | ✓ |
+| CheckpointFlash.tsx | 141 | ✓ | ✓ | ✓ |
+| SimClock.tsx | 194 | ✓ | ✓ | ✓ |
+| useAnimationFrame.ts | 44 | ✓ | ✓ | N/A |
+| **Test suite** | 228 | ✗ | ← TASK-147 | N/A |
+
+**Total:** 987 lines (components + tests)
+
+### Acceptance Criteria Coverage
+
+From spec `2026-03-15-1036-SPEC-w1-07-canvas-animation.md`:
+
+- [x] All 6 animation components ported ← Already done (pre-existing work)
+- [ ] Animation controller manages playback state ← No controller found (spec mismatch)
+- [ ] Token animations follow edges ← Implemented (TokenAnimation.tsx line 42-45)
+- [ ] Tests written and passing ← **TASK-147 addresses this**
+
+Additional requirement (Rule #3):
+- [ ] No hardcoded colors ← **TASK-148 addresses this**
+
+### Risks & Issues
+
+1. **Spec mentioned components that don't exist** (EdgeFlow, AnimationController)
+   - Actual platform components are different
+   - May indicate outdated briefing or misunderstanding
+   - Recommend: Close spec as "already implemented with different component names"
+
+2. **Tests may reveal bugs** after color fixes
+   - Canvas API may require runtime color extraction from CSS vars
+   - SimClock inline `<style>` may have scoping issues with CSS vars
+   - Recommend: Visual QA after TASK-148 completes
+
+3. **Theme.ts still exists** after TASK-148
+   - Other files may still import it
+   - Recommend: Future task to deprecate theme.ts entirely if all consumers moved to CSS vars
+
+### Q33NR: Ready for Review
+
+Task files are written and ready for your review. Please verify:
+1. Acceptance criteria are specific enough
+2. File paths are absolute (all Windows format)
+3. Edge cases are covered (canvas colors, keyframe animations, dynamic colors)
+4. Test requirements are clear (14 passing, 3 skipped expected)
+5. Response template requirements included (8 sections mandatory)
+
+**Awaiting your approval to dispatch bees.**

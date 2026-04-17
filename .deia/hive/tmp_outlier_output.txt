@@ -1,0 +1,130 @@
+Total tasks in monitor-state: 254
+Completed tasks with valid duration: 242
+
+================================================================================
+RAW STATISTICS (NO TRIMMING)
+================================================================================
+
+Duration Distribution:
+  Count: 242
+  Mean: 176.5 min
+  Median: 7.2 min
+  StdDev: 1286.0 min
+  Min: 0.0 min
+  Max: 14395.1 min
+
+📊 RAW PLANNING NUMBERS (from METRICS-001):
+  Tasks per hour: 4.54
+  Human-hours per factory-hour: 2.12
+  Cost per human-hour: $20.61
+
+================================================================================
+METHOD 1: IQR TRIMMING
+================================================================================
+
+Quartile Analysis:
+  Q1 (25th percentile): 4.6 min
+  Q3 (75th percentile): 11.6 min
+  IQR: 7.0 min
+  Lower bound (Q1 - 1.5×IQR): -5.9 min
+  Upper bound (Q3 + 1.5×IQR): 22.0 min
+
+Trimming Results:
+  Tasks kept: 215 (88.8%)
+  Tasks excluded: 27 (11.2%)
+  Excluded cost: $514.55 (19.8% of total)
+
+Excluded Task Characteristics (IQR):
+  Model distribution: {'sonnet': 26, 'haiku': 1}
+  Duration range: 23.2 - 14395.1 min
+
+📊 IQR-TRIMMED PLANNING NUMBERS:
+  Mean task duration: 7.2 min
+  Median task duration: 6.7 min
+  Tasks per hour: 8.99
+  Human-hours per factory-hour: 33.23
+  Cost per human-hour: $2.43
+
+================================================================================
+METHOD 2: MEDIAN CEILING (3× MEDIAN)
+================================================================================
+
+Median Analysis:
+  Median duration: 7.2 min
+  Ceiling (3× median): 21.6 min
+
+Trimming Results:
+  Tasks kept: 215 (88.8%)
+  Tasks excluded: 27 (11.2%)
+  Excluded cost: $514.55 (19.8% of total)
+
+Excluded Task Characteristics (Median Ceiling):
+  Model distribution: {'sonnet': 26, 'haiku': 1}
+  Duration range: 23.2 - 14395.1 min
+
+Outlier Task IDs (Median Ceiling method, top 10 by duration):
+  QUEUE-TEMP-SPEC-CHROME-F2-remove-legacy-flags: 14395.1 min, $1.37, sonnet
+  QUEUE-TEMP-SPEC-EFEMERA-CONN-05-adapter-cleanup: 11876.6 min, $47.36, sonnet
+  QUEUE-TEMP-SPEC-PERF-04-presence-dedup: 7187.7 min, $10.29, sonnet
+  QUEUE-TEMP-SPEC-CHROME-E2-save-derived-egg: 1148.1 min, $69.27, sonnet
+  QUEUE-TEMP-SPEC-BIDIRECTIONAL-OFFLINE-SYNC: 906.3 min, $47.79, sonnet
+  QUEUE-TEMP-SPEC-BL-950-EFEMERA-MINIMAL-TERMINAL: 898.2 min, $51.41, sonnet
+  QUEUE-TEMP-SPEC-AUTH-C-LOGIN-EGG-UPDATE: 892.3 min, $2.51, sonnet
+  QUEUE-TEMP-SPEC-AUTH-E-DEPLOYMENT-DOCS: 886.1 min, $4.98, sonnet
+  QUEUE-TEMP-SPEC-CHROME-E4-close-recovery-prompts: 860.0 min, $24.62, sonnet
+  QUEUE-TEMP-SPEC-MW-S02-voice-input: 662.4 min, $9.13, sonnet
+
+📊 MEDIAN-CEILING-TRIMMED PLANNING NUMBERS:
+  Mean task duration: 7.2 min
+  Median task duration: 6.7 min
+  Tasks per hour: 8.99
+  Human-hours per factory-hour: 33.23
+  Cost per human-hour: $2.43
+
+================================================================================
+THREE PLANNING NUMBERS — COMPARISON TABLE
+================================================================================
+
+Metric                              Raw             IQR-Trimmed     Median-Ceiling 
+--------------------------------------------------------------------------------
+Tasks per hour                      4.54            8.99            8.99           
+Human-hours per factory-hour        2.12            33.23           33.23          
+Cost per human-hour                 $20.61          $2.43           $2.43          
+
+Exclusion Summary                   IQR Method      Median Method  
+--------------------------------------------------------------------------------
+Tasks excluded                      27              27             
+% of tasks excluded                 11.2          % 11.2          %
+Cost excluded (USD)                 $514.55         $514.55        
+% of cost excluded                  19.8          % 19.8          %
+
+================================================================================
+CLUSTERING ANALYSIS OF EXCLUDED TASKS
+================================================================================
+
+Model Distribution:
+  All tasks: {':model': 1, 'ollama:llama3.1:8b': 3, 'model:': 1, 'haiku': 17, 'vendor:model:v1': 1, 'sonnet': 216, 'ollama:llama3.1': 1, 'anthropic:claude:sonnet': 1, 'opus': 1}
+  IQR excluded: {'sonnet': 26, 'haiku': 1}
+  Median excluded: {'sonnet': 26, 'haiku': 1}
+
+Task Type Distribution (top 10):
+  All tasks: [('QUEUE-TEMP', 148), ('2026-04', 44), ('2026-03', 36), ('TASK-TEST', 9), ('FLOW-A', 1), ('TASK-CHROME', 1), ('TASK-002', 1), ('TASK-001', 1), ('TASK-DDD', 1)]
+  IQR excluded: [('QUEUE-TEMP', 20), ('2026-03', 5), ('2026-04', 2)]
+  Median excluded: [('QUEUE-TEMP', 20), ('2026-03', 5), ('2026-04', 2)]
+
+Time Range Analysis:
+  Earliest task: 2026-03-26 10:41:48.737359
+  Latest task: 2026-04-06 17:11:28.342490
+  Time span: 270.5 hours
+
+  IQR excluded tasks time range:
+    Earliest: 2026-03-26 18:27:21.526175
+    Latest: 2026-04-06 15:58:30.118645
+
+  Median excluded tasks time range:
+    Earliest: 2026-03-26 18:27:21.526175
+    Latest: 2026-04-06 15:58:30.118645
+
+================================================================================
+ANALYSIS COMPLETE
+================================================================================

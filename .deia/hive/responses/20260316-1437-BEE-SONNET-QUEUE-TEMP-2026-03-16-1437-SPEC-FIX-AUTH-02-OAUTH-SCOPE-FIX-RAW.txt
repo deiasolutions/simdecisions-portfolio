@@ -1,0 +1,89 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-16-1437-SPEC-fix-auth-02-oauth-scope-fix
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260316-1437
+# Task file: QUEUE-TEMP-2026-03-16-1437-SPEC-fix-auth-02-oauth-scope-fix.md
+# Success: True
+# Duration: 89.4s
+# Files modified: 6 (verified)
+# Cost (USD): $0.789981
+# Turns: 8
+# API duration (ms): 60025
+# Session ID: f4cc706b-12c1-4815-8fba-5a1266f58252
+# Boot injected: True
+
+---
+
+Perfect! Now I see the situation clearly:
+
+1. **The original auth-02 spec (1401) was SUCCESSFULLY completed**
+   - TASK-182 fixed the OAuth scope issue
+   - All tests passed (85/85 ra96it tests)
+   - The completion report shows ✅ COMPLETE
+   
+2. **The fix spec (1437) is a FALSE ALARM**
+   - It was auto-generated because the spec file moved to `_done/`
+   - But there were NO actual failures
+   - The "error" is just "file not found" because the original spec already succeeded
+
+This is a queue runner bug: it created a fix spec when the original spec succeeded and moved to `_done/`.
+
+**My action:** I need to inform Q88N that this fix spec is unnecessary and should be removed from the queue.
+
+---
+
+## Q33NR REPORT TO Q88N
+
+**From:** Q33NR (Bot ID: REGENT-QUEUE-TEMP-2026-03-16-1437-SPE)  
+**To:** Q88N (Dave)  
+**Date:** 2026-03-16  
+**Re:** SPEC-fix-auth-02-oauth-scope-fix (1437) — FALSE ALARM
+
+---
+
+### Summary
+
+❌ **THIS FIX SPEC IS INVALID** — The original spec already succeeded.
+
+The queue runner created a "fix spec" because it couldn't find the original spec file (it moved to `_done/`), but there were no actual failures. This is a queue runner bug, not a code failure.
+
+---
+
+### Evidence
+
+**Original spec (1401):** `2026-03-16-1401-SPEC-auth-02-oauth-scope-fix.md`
+- **Status:** ✅ COMPLETE (moved to `_done/`)
+- **TASK-182:** Fix OAuth scope — COMPLETE
+- **Tests:** 85/85 ra96it tests PASSED
+- **Completion report:** `.deia/hive/responses/20260316-Q33NR-COMPLETION-oauth-scope-fix.md`
+
+**Fix spec (1437):** `2026-03-16-1437-SPEC-fix-auth-02-oauth-scope-fix.md`
+- **Error message:** "Failed to read spec file: [Errno 2] No such file or directory"
+- **Root cause:** Queue runner looked for `1401` spec in `queue/` but it's already in `queue/_done/`
+- **Actual failures:** NONE
+
+---
+
+### Recommended Action
+
+**Move 1437 fix spec to `_dead/`:**
+```bash
+mv .deia/hive/queue/2026-03-16-1437-SPEC-fix-auth-02-oauth-scope-fix.md .deia/hive/queue/_dead/
+```
+
+**No code work needed.** The OAuth scope fix is complete and working.
+
+---
+
+### Root Cause Analysis
+
+The queue runner's fix-cycle logic checks if the original spec file exists at the original path. When a spec succeeds and moves to `_done/`, the fix-cycle generator sees "file not found" and creates a fix spec.
+
+**This is a queue runner bug.** Fix specs should only be created when tests fail, not when files move.
+
+---
+
+**Awaiting Q88N decision:**
+- Approve moving 1437 to `_dead/`?
+- Should I file a bug for the queue runner fix-cycle logic?

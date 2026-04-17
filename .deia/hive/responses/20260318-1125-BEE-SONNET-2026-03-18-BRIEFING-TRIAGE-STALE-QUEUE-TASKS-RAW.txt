@@ -1,0 +1,74 @@
+# BEE RESPONSE: 2026-03-18-BRIEFING-TRIAGE-STALE-QUEUE-TASKS
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260318-1125
+# Task file: 2026-03-18-BRIEFING-TRIAGE-STALE-QUEUE-TASKS.md
+# Success: True
+# Duration: 247.7s
+# Files modified: 15 (verified)
+# Cost (USD): $3.5515890000000003
+# Turns: 32
+# API duration (ms): 232678
+# Session ID: ca6cc4f1-9670-4aac-a87f-e231c3fe90ca
+# Boot injected: True
+
+---
+
+Perfect! Now I'll create a summary response for Q33NR:
+
+## Triage Complete: Stale Queue Tasks
+
+**Status:** ✅ Investigation complete, report written
+
+**Finding:** Most "stale" tasks were NOT actually orphaned — they were either:
+1. **Completed** (7 tasks with response files)
+2. **Active Q33N sessions** (5 legitimate coordinator processes)
+3. **Orphaned** (only 2-3 tasks genuinely dead)
+
+---
+
+### Full Report
+`.deia/hive/responses/20260318-TRIAGE-STALE-QUEUE-REPORT.md`
+
+### Key Findings
+
+**✅ COMPLETED (7 tasks):**
+- FIX-HOT-RELOAD-TESTS
+- BUG042 (bus ledger publisher)
+- BUG044 (RAG reliability metadata)
+- FIX-PIPELINE-SIM-TESTS
+- FIX-MOVEAPP-TESTS
+- FIX-HAIKU-PRICING
+- FIX-SIM-EGG-TESTS (briefing)
+
+**⚠️ ORPHANED (2-3 tasks):**
+- BUG043-e2e-server-startup-timeout (no response, spec still in queue)
+- FIX-SIM-EGG-TESTS (spec) (task file created but bee never ran)
+- FIX-KANBAN-TEST (status unknown)
+
+**🔄 ACTIVE (5 legitimate sessions):**
+- BUG-043 e2e server briefing (Q33N session)
+- FULL-TEST-SWEEP (Q33N session)
+- DISPATCH-BUG-044 (Q33N session)
+- BUG-044-A add reliability metadata (active bee)
+- TRIAGE-STALE-QUEUE-TASKS (this session)
+
+---
+
+### Recommended Actions
+
+1. **Clear 7 completed tasks** from monitor-state.json active list
+2. **Re-queue 2 orphaned specs** (BUG043-timeout, FIX-SIM-EGG-TESTS)
+3. **Investigate FIX-KANBAN-TEST** (check for response file elsewhere)
+4. **Keep 5 active tasks running** (legitimate ongoing work)
+
+---
+
+### Process Improvements Suggested
+
+- Queue runner crash recovery auto-scan
+- Bee PID tracking in monitor state
+- Heartbeat timestamps for hung process detection
+
+Awaiting Q33NR instructions for cleanup actions.

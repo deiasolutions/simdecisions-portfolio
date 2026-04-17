@@ -1,0 +1,118 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-16-SPEC-TASK-208-cloud-adapter-e2e-tests
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260316-1942
+# Task file: QUEUE-TEMP-2026-03-16-SPEC-TASK-208-cloud-adapter-e2e-tests.md
+# Success: True
+# Duration: 257.5s
+# Files modified: 25 (verified)
+# Cost (USD): $1.6390289999999998
+# Turns: 15
+# API duration (ms): 132342
+# Session ID: 3869c814-5533-4e8e-99da-86374a81be6b
+# Boot injected: True
+
+---
+
+No hanging processes. The issue is that `httpx.ConnectTimeout` is not being caught. This is a bug in the test fixture. Let me look at whether this needs a fix task, or if I should report to Q88N (Dave) with options.
+
+Based on my analysis:
+
+1. **The bee completed significant work**: 4 passing tests for CloudAdapter integration with respx mocking
+2. **The bee identified the root cause**: uvicorn not available (though it seems to be available now)
+3. **The bee provided three clear options** for resolution
+4. **There's a new issue**: The fixture exception handling is incomplete (doesn't catch `httpx.ConnectTimeout`)
+
+This is a classic case where the bee did good diagnostic work but encountered a blocker. According to HIVE.md, my role as Q33NR is to:
+- Review bee output
+- If issues found, either dispatch a fix task or report to Q88N
+
+Let me create a summary for Q88N (Dave) with the situation and recommended options.
+
+## Summary for Q88N
+
+TASK-208 (Cloud Storage Adapter E2E Tests) was attempted by a bee and partially completed. Here's the situation:
+
+### What Was Delivered
+- ✅ Test file created: `tests/hivenode/storage/test_cloud_adapter_e2e.py` (549 lines)
+- ✅ 4 CloudAdapter integration tests PASSING (respx-mocked offline behavior)
+- ✅ 13 E2E server tests written (but blocked by environment issue)
+- ✅ 2 JWT tests written (skipped in local mode)
+- ✅ Thorough response file documenting the blocker
+
+### Current Status
+**FAILED** - Environment blocker:
+- The E2E server fixture attempts to start uvicorn in a subprocess
+- The health check poll times out because `httpx.ConnectTimeout` is not caught in the exception handler (line 117)
+- Uvicorn IS available (version 0.40.0 in Python 3.12), so the original blocker may have been resolved
+- But the test fixture has a bug: it doesn't catch `httpx.ConnectTimeout`, only `httpx.ConnectError`
+
+### Test Results (Current)
+- 4 PASSED (CloudAdapter respx-mocked tests)
+- 2 SKIPPED (JWT tests - local mode only)
+- 13 ERROR (E2E server fixture fails with ConnectTimeout)
+- **File exceeds 500 line limit**: 549 lines (violation of Rule 4)
+
+### Acceptance Criteria Status
+- ❌ 12+ integration tests with real HTTP calls (only 4 passing respx tests)
+- ❌ All tests pass (4/19 pass, 13 error, 2 skip)
+- ❌ Test file under 500 lines (549 lines)
+- ✅ Offline behavior verified (via respx mocking)
+
+---
+
+## Options for Q88N
+
+### Option A: Create fix spec (P0)
+Dispatch a bee to:
+1. Fix the fixture exception handling (catch `httpx.ConnectTimeout`)
+2. Debug why uvicorn subprocess isn't starting (capture stdout/stderr)
+3. Split the 549-line test file into two files (E2E server tests + CloudAdapter integration tests)
+4. Ensure all 13 E2E tests pass
+
+**Effort**: ~1 hour (sonnet)
+**Risk**: May reveal deeper environment issues
+
+### Option B: Use FastAPI TestClient (recommended by bee)
+Rewrite E2E tests to use FastAPI's `TestClient` instead of subprocess:
+- No uvicorn subprocess needed
+- Real HTTP → routes flow (via ASGI transport)
+- Eliminates environment complexity
+- Modularize into separate files to fix 500-line violation
+
+**Effort**: ~45-60 minutes (sonnet)
+**Risk**: Low - TestClient is standard for FastAPI testing
+
+### Option C: Accept respx tests as "integration tests"
+- Keep the 4 passing CloudAdapter tests
+- Remove the 15 failing/skipped E2E server tests
+- Add 8+ more respx-mocked tests to reach 12+ requirement
+- File size drops below 500 lines
+- Trade-off: Tests don't verify full storage routes layer (already covered by `test_e2e.py`)
+
+**Effort**: ~20-30 minutes (haiku)
+**Risk**: Lower test coverage for cloud:// volume routing
+
+### Option D: Close as complete (not recommended)
+Accept the 4 passing respx tests as meeting the intent of the task, since:
+- CloudAdapter is well-tested (4 new + 14 existing unit tests)
+- Storage routes are tested in `test_e2e.py` (28 passing local mode tests)
+- The gap (cloud:// volume E2E) is not critical for MVP
+
+**Risk**: Leaves cloud:// volume E2E untested
+
+---
+
+## Q33NR Recommendation
+
+**Option B (FastAPI TestClient)** is the best path forward:
+1. It resolves the environment complexity
+2. It provides real integration testing without subprocess headaches
+3. It allows modularization to fix the 500-line violation
+4. It's the standard practice for FastAPI E2E testing
+5. The bee already recommended it
+
+**Alternative**: If speed is priority, **Option C** (expand respx tests) gets to 12+ passing tests quickly, though with less coverage.
+
+**What do you prefer, Q88N?**

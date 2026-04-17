@@ -1,0 +1,51 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-VIDEO-GOVERNED-BUILD-001
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260412-1648
+# Task file: QUEUE-TEMP-SPEC-VIDEO-GOVERNED-BUILD-001.md
+# Success: True
+# Duration: 1055.0s
+# Files modified: 9 (verified)
+# Cost (USD): $10.485845999999999
+# Turns: 51
+# API duration (ms): 356862
+# Session ID: 083652dd-5fb3-4f44-86c3-449d9b6764a3
+# Boot injected: True
+
+---
+
+Perfect! The task is complete. Let me create a summary of what was accomplished:
+
+---
+
+## Task Complete ✓
+
+I've successfully created the Manim animation for **SPEC-VIDEO-GOVERNED-BUILD-001: The Governed Build vs Black Box Development**.
+
+### Key Deliverables
+
+**Scene File:** `production/episodes/governed-build/governed_build.py`
+
+**Duration:** 80.13 seconds (low quality) / 80.2 seconds (high quality) — within the 80-100 second target
+
+**Visual Structure:**
+- Title frame with @daaaave-atx handle
+- Split screen comparing The Governed Build (left, green) vs Black Box Development (right, red)
+- Left side shows the full governed workflow: human ↔ claude → spec → DAG (parallel tasks TASK-001/002 → dependent TASK-003) → model assignments (haiku/sonnet/opus) → output + transcript → BAT validation → Three Currencies (CLOCK/COIN/CARBON)
+- Right side shows the black box: prompt → black box with "?" → output → "nothing else."
+- Final beat dims right side to 15% opacity while left header brightens
+- Ending frame with SimDecisions branding, "Build governed." tagline, and CTAs
+
+### Compliance
+
+✅ All acceptance criteria met
+✅ All brand constants defined (no hardcoded colors)
+✅ All narration cue comments present
+✅ Renders successfully at both `-ql` and `-qh`
+✅ Module docstring complete with all required fields
+✅ Scene class named `GovernedBuild` as specified
+✅ No LaTeX, external assets, or complex camera movements
+✅ Ready for voice-over narration
+
+**Response file:** `.deia/hive/responses/20260412-SPEC-VIDEO-GOVERNED-BUILD-001-RESPONSE.md`

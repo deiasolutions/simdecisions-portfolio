@@ -1,0 +1,58 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MCP-WAVE-5-TELEMETRY-LOOP
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260412-0946
+# Task file: QUEUE-TEMP-SPEC-MCP-WAVE-5-TELEMETRY-LOOP.md
+# Success: True
+# Duration: 369.8s
+# Files modified: 5 (verified)
+# Cost (USD): $3.671661
+# Turns: 28
+# API duration (ms): 254204
+# Session ID: afd6833f-5e38-4c59-b7c1-cd70d211651b
+# Boot injected: True
+
+---
+
+Perfect! All tests pass. Let me create a summary of the work completed:
+
+---
+
+## Task Completion Summary
+
+I have successfully completed **SPEC-MCP-WAVE-5-TELEMETRY-LOOP** to wire the heartbeat tool to log events to the Event Ledger and implement advisory feedback.
+
+### What Was Done
+
+1. **Enhanced Advisory Logic** in `telemetry.py`:
+   - Modified `_get_advisory()` to read budget configuration from `.deia/config/queue.yml` instead of hardcoded values
+   - Implemented stall detection by checking StateManager for heartbeat timestamps >15 minutes old
+   - Maintained <50ms performance constraint with graceful fallback
+
+2. **Added Smoke Test**:
+   - Created `test_mcp_telemetry_smoke.py` for end-to-end verification
+
+3. **Verified Implementation**:
+   - All 5 acceptance criteria (AC-06, AC-20, AC-21, AC-22, AC-23) verified via tests
+   - Observer loop: heartbeat → StateManager + Event Ledger ✅
+   - Advisor loop: budget/stall detection → advisory response ✅
+
+### Test Results
+
+✅ **10/10 tests passed** (9 unit tests + 1 smoke test)
+- All acceptance criteria verified
+- Budget warning triggers at >80% of session budget
+- Stall warning triggers after >15 minutes without heartbeat
+- Advisories are non-blocking (best-effort)
+
+### Files Modified
+
+1. `packages/core/src/simdecisions/core/hive_mcp/tools/telemetry.py` - Enhanced advisory logic
+2. `tests/core/test_mcp_telemetry_smoke.py` - NEW smoke test
+
+### Response File
+
+Written to: `.deia/hive/responses/20260412-SPEC-MCP-WAVE-5-TELEMETRY-LOOP-RESPONSE.md`
+
+**Status: COMPLETE** ✅

@@ -1,0 +1,116 @@
+# BEE RESPONSE: 2026-03-14-BRIEFING-chat-persistence-tasks
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260313-2303
+# Task file: 2026-03-14-BRIEFING-chat-persistence-tasks.md
+# Success: True
+# Duration: 179.2s
+# Files modified: 4 (verified)
+# Cost (USD): $0
+# Turns: 27
+# API duration (ms): 175224
+# Session ID: 636b4386-1f2f-4907-9317-f987cff6eb28
+# Boot injected: True
+
+---
+
+Perfect! Now I'll write a summary message for Q88NR:
+
+---
+
+## Q33N Report: Chat Persistence Task Files Complete
+
+**Date:** 2026-03-14  
+**Briefing:** `.deia/hive/coordination/2026-03-14-BRIEFING-chat-persistence-tasks.md`  
+**Status:** 3 task files written, ready for Q88NR review
+
+---
+
+### Task Files Created
+
+1. **TASK-077: useTerminal Conversation Persistence Integration**
+   - **File:** `.deia/hive/tasks/2026-03-14-TASK-077-useterminal-chat-persist.md`
+   - **Objective:** Wire useTerminal to call chatApi.addMessage() after each LLM response
+   - **Effort:** 2 hours (S)
+   - **Tests:** 5 new tests
+
+2. **TASK-078: Tree-Browser Conversation Load Handler**
+   - **File:** `.deia/hive/tasks/2026-03-14-TASK-078-conversation-load-handler.md`
+   - **Objective:** Subscribe to `tree-browser:conversation-selected` bus event, load conversation via chatApi, send markdown to text-pane
+   - **Effort:** 1 hour (S)
+   - **Tests:** 3 new tests
+
+3. **TASK-079: Volume Status Badges for Chat History**
+   - **File:** `.deia/hive/tasks/2026-03-14-TASK-079-volume-status-badges.md`
+   - **Objective:** Add volume status badges (online/syncing/conflict/offline) to conversation nodes via `/node/discover` polling
+   - **Effort:** 3 hours (M)
+   - **Tests:** 4 new tests
+
+---
+
+### Test Count Summary
+
+**Existing tests (verified):**
+- chatApi.test.ts: 20 tests
+- chatHistoryAdapter.test.ts: 7 tests
+- chatMarkdown.test.ts: 13 tests
+- **Existing total: 40 tests**
+
+**New tests (from task files):**
+- TASK-077: 5 tests
+- TASK-078: 3 tests
+- TASK-079: 4 tests
+- **New total: 12 tests**
+
+**Grand total: 52 tests** (exceeds spec requirement of 15+)
+
+---
+
+### Pre-Task Research Completed
+
+✅ **Markdown format verified:** `chatMarkdown.ts` matches SPEC-HIVENODE-E2E-001 Section 7.2 format (YAML frontmatter + message blocks with metrics)
+
+✅ **Existing tests counted:** 40 tests across 3 files
+
+✅ **Bus handler pattern identified:** useTerminal.ts lines 169-179 show `bus.subscribe()` pattern for channel:selected
+
+✅ **Volume status route verified:** `/node/discover` exists in hivenode, returns nodes with `last_seen` timestamp (test_node_routes.py lines 86-114)
+
+---
+
+### Deliverables vs Spec Acceptance Criteria
+
+| Spec Criterion | Task Mapping |
+|----------------|--------------|
+| Dual-write: conversations saved to both cloud:// and home:// | TASK-077 (calls existing chatApi dual-write) |
+| Bus integration: `tree-browser:conversation-selected` published on click | TASK-078 (subscribes to event, loads conversation) |
+| Volume badges: online, syncing, conflict, offline | TASK-079 (polls /node/discover, adds badges) |
+| Volume preference per conversation | TASK-077 (reads from settings, passes to createConversation) |
+| 15+ tests | 52 total tests (40 existing + 12 new) |
+| No file over 500 lines | All tasks enforce this constraint |
+
+---
+
+### Blockers / Assumptions
+
+**No blockers.**
+
+**Assumptions:**
+1. `/node/discover` route is functional and returns `{ nodes: [...] }` with `last_seen` field
+2. Settings store uses key `sd_user_settings` in localStorage with `volume_preference` field
+3. Tree-browser adapter currently publishes `conversationId` in node meta (verified in chatHistoryAdapter.ts line 69)
+4. EGG app wiring for TASK-078 hook will be done in a follow-up task (the hook is ready to use)
+
+---
+
+### Next Steps
+
+**Awaiting Q88NR review.** DO NOT dispatch bees until approved.
+
+When approved, I will dispatch:
+- TASK-077 to BEE-HAIKU (2h, straightforward wiring)
+- TASK-078 to BEE-HAIKU (1h, simple bus handler)
+- TASK-079 to BEE-SONNET (3h, caching logic + API integration)
+
+**Sequential dispatch recommended:** TASK-077 → TASK-078 → TASK-079 (each depends on prior tests passing)

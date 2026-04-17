@@ -1,0 +1,43 @@
+# BEE RESPONSE: 2026-03-25-TASK-RENAME-RA96IT-TO-HODEIA-AUTH
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260325-1730
+# Task file: 2026-03-25-TASK-RENAME-RA96IT-TO-HODEIA-AUTH.md
+# Success: True
+# Duration: 613.8s
+# Files modified: 19 (verified)
+# Cost (USD): $10.221105
+# Turns: 88
+# API duration (ms): 453873
+# Session ID: e042fbee-ce6c-4739-ab44-99b96861c3ad
+# Boot injected: True
+
+---
+
+Perfect! The task is complete. Let me provide a summary:
+
+## Summary
+
+Successfully renamed the `ra96it` module to `hodeia_auth` across the entire codebase:
+
+### Changes Made:
+1. ✅ Test directory already renamed (via git mv)
+2. ✅ Updated 13 test files in `tests/hodeia_auth/`:
+   - Changed all `from ra96it.` imports to `from hodeia_auth.`
+   - Updated all `patch("ra96it.` to `patch("hodeia_auth.`
+3. ✅ Updated build configs:
+   - `hodeia_auth/nixpacks.toml`
+   - Root `nixpacks.toml`
+   - `pyproject.toml` packages list
+
+### Test Results:
+**85/85 tests passing** in the `tests/hodeia_auth/` directory
+
+### Preserved (per task spec):
+- ❌ Domain references to `ra96it.com` (kept as-is)
+- ❌ `.deia/` coordination docs (not modified)
+
+The response file has been written to `.deia/hive/responses/20260325-TASK-RENAME-RA96IT-TO-HODEIA-AUTH-RESPONSE.md` with all required sections.
+
+**Note:** Railway environment variable will need updating separately to reference `hodeia_auth.main:app`.

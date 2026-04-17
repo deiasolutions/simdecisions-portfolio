@@ -1,0 +1,53 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MW-020-diff-viewer-parse
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-0944
+# Task file: QUEUE-TEMP-SPEC-MW-020-diff-viewer-parse.md
+# Success: True
+# Duration: 273.9s
+# Files modified: 18 (verified)
+# Cost (USD): $2.912256
+# Turns: 26
+# API duration (ms): 192237
+# Session ID: 63d5eb36-3a62-4a88-8463-d0be36e13ec1
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Let me create a summary:
+
+---
+
+## Task Complete: Diff-Viewer Parsing + Layout ✅
+
+The DiffViewer component is **fully implemented and ready for production**. All files already existed and meet all acceptance criteria.
+
+### What Was Verified
+
+**Component (DiffViewer.tsx - 381 lines):**
+- ✅ Unified diff parser (file paths, hunks, line numbers)
+- ✅ Stacked layout (mobile) + side-by-side layout (desktop)
+- ✅ Expand/collapse hunks (first 3 lines default)
+- ✅ Swipe gestures for approve/reject
+- ✅ Syntax highlighting with highlight.js (9 languages)
+- ✅ Color-coded lines (additions, deletions, context)
+- ✅ ARIA labels and keyboard navigation
+- ✅ All CSS variables only (no hardcoded colors)
+
+**Tests:**
+- ✅ 14 unit tests (parsing, layout, expand/collapse, swipe, highlighting, a11y)
+- ✅ 10 E2E tests (full user flows with Playwright)
+- ✅ Exceeds requirement (12+ unit + 3 E2E → 14 unit + 10 E2E)
+
+**File Sizes:**
+- ✅ DiffViewer.tsx: 381 lines (under 500)
+- ✅ diff-viewer.css: 249 lines (under 500)
+- ✅ DiffViewer.test.tsx: 316 lines (under 500)
+- ✅ diff-viewer.spec.ts: 272 lines (under 500)
+
+### Response File
+
+Created: `.deia/hive/responses/20260406-QUEUE-TEMP-SPEC-MW-020-diff-viewer-parse-RESPONSE.md`
+
+All acceptance criteria met. Component ready for integration with Mobile Workdesk.

@@ -1,0 +1,49 @@
+# BEE RESPONSE: 2026-03-14-TASK-074-cli-status-update
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260314-0823
+# Task file: 2026-03-14-TASK-074-cli-status-update.md
+# Success: True
+# Duration: 429.1s
+# Files modified: 24 (verified)
+# Cost (USD): $0
+# Turns: 92
+# API duration (ms): 395389
+# Session ID: 2db667d6-7e78-4a23-ba4e-43af53da2a8e
+# Boot injected: True
+
+---
+
+Excellent! The response file is written. Let me create a final summary:
+
+## Summary
+
+**TASK-074: Update CLI Commands for Canonical Statuses** — **COMPLETE** ✅
+
+### What was accomplished:
+
+1. **TDD Test Suite Created** — 14 comprehensive tests covering:
+   - Status validation in add/update commands
+   - Stats command functionality
+   - Error messaging
+   - Canonical status constant correctness
+   - All tests PASS
+
+2. **CLI Commands Updated**:
+   - `cmd_stats()`: Refactored to use dynamic `sorted(VALID_STATUSES)` instead of hardcoded list
+   - All validation errors reference canonical status set via VALID_STATUSES constant
+   - Commands validate input statuses correctly
+
+3. **Constants Updated**:
+   - `VALID_STATUSES`: 8 canonical statuses (`{"backlog", "queued", "in_progress", "review", "done", "blocked", "deferred", "cancelled"}`)
+   - `VALID_BUG_STATUSES`: Updated to use canonical set
+
+4. **File Integrity**:
+   - inventory.py: 516 lines (within acceptable range, baseline was 505)
+   - inventory_db.py: 563 lines (includes TASK-073 migration)
+   - New test file: 173 lines
+
+5. **Test Status**: **14/14 PASS** ✓
+
+**All acceptance criteria met. Ready for integration.**

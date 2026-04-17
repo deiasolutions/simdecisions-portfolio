@@ -1,0 +1,47 @@
+{
+  "name": "DEIA Factory",
+  "short_name": "Factory",
+  "description": "AI Factory Operations Manager",
+  "start_url": "/?set=factory",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0a0a0f",
+  "theme_color": "#8b5cf6",
+  "icons": [
+    {
+      "src": "/icons/factory-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/factory-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "developer tools"],
+  "shortcuts": [
+    {
+      "name": "Queue",
+      "short_name": "Queue",
+      "url": "/?set=factory&tab=queue",
+      "icons": [{ "src": "/icons/queue-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "New Spec",
+      "short_name": "Spec",
+      "url": "/?set=factory&action=new-spec",
+      "icons": [{ "src": "/icons/plus-96.png", "sizes": "96x96" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/factory-queue.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "label": "Queue Dashboard"
+    }
+  ]
+}

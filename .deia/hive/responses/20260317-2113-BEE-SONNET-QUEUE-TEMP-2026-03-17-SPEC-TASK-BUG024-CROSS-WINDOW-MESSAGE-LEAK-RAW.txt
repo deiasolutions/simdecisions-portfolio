@@ -1,0 +1,71 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-17-SPEC-TASK-BUG024-cross-window-message-leak
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260317-2113
+# Task file: QUEUE-TEMP-2026-03-17-SPEC-TASK-BUG024-cross-window-message-leak.md
+# Success: True
+# Duration: 1738.5s
+# Files modified: 61 (verified)
+# Cost (USD): $3.662001
+# Turns: 26
+# API duration (ms): 597940
+# Session ID: 05bb61c2-5b7c-4c5c-9abd-da7a8585e4e6
+# Boot injected: True
+
+---
+
+Q33N is still running. Let me wait a bit and report status to Q88N (Dave):
+
+---
+
+## BUG-024 Processing Status
+
+**Q88NR reporting to Q88N (Dave):**
+
+### What I've Done
+
+1. ✅ **Read the spec** from queue: `2026-03-17-SPEC-TASK-BUG024-cross-window-message-leak.md`
+2. ✅ **Investigated the codebase:**
+   - Read relay_bus architecture (messageBus.ts, types/messages.ts)
+   - Read message senders (useTerminal.ts)
+   - Read message receivers (chatRenderer.tsx)
+   - Read existing tests (messageBus.test.ts)
+3. ✅ **Wrote briefing for Q33N:** `.deia/hive/coordination/2026-03-17-BRIEFING-BUG-024-cross-window-message-leak.md`
+4. ✅ **Dispatched Q33N** to investigate and create task files
+5. ✅ **Reviewed task files** (mechanical checklist — all passed)
+6. ✅ **Approved dispatch:** `.deia/hive/coordination/2026-03-17-APPROVAL-BUG-024.md`
+7. 🔄 **Dispatching bees** (Q33N running in background)
+
+### Key Finding from Q33N's Investigation
+
+**The bug may not exist as reported.** Q33N found:
+- MessageBus is per-window (each tab has its own isolated instance)
+- No BroadcastChannel or localStorage sync exists for messages
+- Cross-tab message leaking should be architecturally impossible
+
+**Alternate hypothesis:** The issue is **same-window routing** — messages go to the wrong pane within one tab when multiple EGG instances coexist (e.g., Canvas + Code both open as panes in same window).
+
+### Task Files Created (3 tasks)
+
+- **TASK-BUG-024-A** (P0, haiku) — Verify cross-window isolation test (likely proves bug doesn't exist)
+- **TASK-BUG-024-C** (P0, haiku) — Test same-window routing (likely reveals actual issue)
+- **TASK-BUG-024-B** (P1, haiku) — Add defensive windowId scoping (future-proofing)
+
+### Current Status
+
+- Q33N is dispatching TASK-BUG-024-A and TASK-BUG-024-C in parallel (both investigative tests)
+- TASK-BUG-024-B is held pending findings from A+C
+- Expected completion: ~10-15 minutes (2 haiku bees running tests)
+
+### Next Steps
+
+1. Wait for bees to complete A+C
+2. Review test results and root cause analysis
+3. If same-window routing is confirmed as the issue, adjust approach
+4. Dispatch TASK-BUG-024-B only if defensive windowId is still needed
+5. Report final results to you (Dave)
+
+---
+
+**No action needed from you at this time.** I'm monitoring the bee dispatch and will report when results are ready.

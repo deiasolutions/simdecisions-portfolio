@@ -1,0 +1,67 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MW-015-notification-pane-badges
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-0958
+# Task file: QUEUE-TEMP-SPEC-MW-015-notification-pane-badges.md
+# Success: True
+# Duration: 576.5s
+# Files modified: 17 (verified)
+# Cost (USD): $8.927085000000002
+# Turns: 49
+# API duration (ms): 484004
+# Session ID: 1e225128-d657-42f1-a191-94e2727cca2e
+# Boot injected: True
+
+---
+
+Perfect! Now let me write a brief summary for the user:
+
+## Summary
+
+I've successfully implemented notification badges and swipe gestures for the Mobile Workdesk notification pane. Here's what was done:
+
+### ✅ Completed Features
+
+1. **useSwipeNotification Hook** (145 lines)
+   - Swipe left (>50% width) → dismiss notification
+   - Swipe right (>50% width) → archive notification  
+   - Swipe < 50% → snap back to original position
+   - Real-time visual feedback (card follows finger)
+   - Haptic feedback on completion (vibrate 50ms if supported)
+
+2. **Mobile-Nav Badge**
+   - Red circular badge on notifications icon in MobileNavHub
+   - Shows unread count (e.g., "5")
+   - Updates in real-time via Zustand store
+   - Accessible aria-label: "Navigate to Notifications (5 unread)"
+
+3. **Updated NotificationPane**
+   - Replaced inline swipe handlers with NotificationItem component
+   - Added archiveNotification action to store
+   - Smooth animations for swipe gestures
+
+4. **CSS Styling**
+   - Mobile-nav-badge: red background, white text, positioned top-right of icon
+   - All styles use CSS variables only (no hardcoded colors)
+
+### ✅ Tests
+
+- **Unit tests**: 13/13 passing (gesture detection, haptics, transform callbacks)
+- **E2E tests**: 4 tests written (badge display, swipe left/right, tap navigation)
+- **Syntax validation**: Passed
+
+### 📝 Files Modified
+
+**Created:**
+- `browser/src/hooks/useSwipeNotification.ts`
+- `browser/src/hooks/__tests__/useSwipeNotification.test.ts`
+
+**Modified:**
+- `browser/src/primitives/notification-pane/NotificationPane.tsx`
+- `browser/src/primitives/notification-pane/notificationStore.ts`
+- `browser/src/shell/components/MobileNavHub.tsx`
+- `browser/src/shell/components/mobile-nav-hub.css`
+- `browser/e2e/notification-pane.spec.ts`
+
+All acceptance criteria met. Response file written to `.deia/hive/responses/20260406-QUEUE-TEMP-SPEC-MW-015-notification-pane-badges-RESPONSE.md`.

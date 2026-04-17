@@ -1,0 +1,52 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-FACTORY-CLAIMS-001-persist-claims
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-1555
+# Task file: QUEUE-TEMP-SPEC-FACTORY-CLAIMS-001-persist-claims.md
+# Success: True
+# Duration: 407.6s
+# Files modified: 20 (verified)
+# Cost (USD): $4.231167
+# Turns: 21
+# API duration (ms): 229777
+# Session ID: d1861c6d-274e-4ce3-947f-2c96751bd3eb
+# Boot injected: True
+
+---
+
+The file is 930 lines, which is under the hard limit of 1,000 lines (though over the soft limit of 500, but that's pre-existing). Let me create a summary of the changes:
+
+## Summary
+
+I've successfully completed SPEC-FACTORY-CLAIMS-001 to persist file claims across hivenode restarts.
+
+### Changes Made
+
+**C:\Users\davee\OneDrive\Documents\GitHub\simdecisions\hivenode\routes\build_monitor.py**
+- Modified `_save_to_disk()` to include `claims` dict in persisted JSON
+- Modified `_load_from_disk()` to restore `claims` from JSON with automatic stale claim pruning
+- Stale claims (for nonexistent or terminal tasks) are automatically pruned on load
+- `claim_waiters` are intentionally NOT persisted (runtime-only async queues)
+
+### Tests Created
+
+**C:\Users\davee\OneDrive\Documents\GitHub\simdecisions\tests\hivenode\routes\test_build_monitor_claims_persistence.py**
+- 8 comprehensive tests covering all acceptance criteria
+- Tests claim persistence, pruning, waiter non-persistence, edge cases
+
+**C:\Users\davee\OneDrive\Documents\GitHub\simdecisions\tests\hivenode\routes\test_claims_smoke_test.py**
+- 1 smoke test simulating real hivenode restart scenario
+
+### Test Results
+- ✅ All 8 new persistence tests pass
+- ✅ Smoke test passes
+- ✅ All 14 existing claim-related tests still pass
+- ✅ No regressions in claim functionality
+
+### Implementation Details
+Claims now survive hivenode restarts while maintaining correctness through automatic pruning of:
+1. Claims for tasks that no longer exist
+2. Claims for tasks in terminal status (complete, failed, timeout)
+
+This prevents two bees from claiming the same files after a restart while also preventing unbounded accumulation of stale claims.

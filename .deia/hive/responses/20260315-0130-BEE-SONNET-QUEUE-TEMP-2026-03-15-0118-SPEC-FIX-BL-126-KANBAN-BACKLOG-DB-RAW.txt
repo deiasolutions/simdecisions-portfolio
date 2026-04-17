@@ -1,0 +1,77 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-15-0118-SPEC-fix-BL-126-kanban-backlog-db
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260315-0130
+# Task file: QUEUE-TEMP-2026-03-15-0118-SPEC-fix-BL-126-kanban-backlog-db.md
+# Success: True
+# Duration: 128.3s
+# Files modified: 2 (verified)
+# Cost (USD): $0
+# Turns: 14
+# API duration (ms): 123977
+# Session ID: 99156282-6977-4a5c-9c68-cec0d21ea4da
+# Boot injected: True
+
+---
+
+Now let me create a summary report for Q88N (Dave):
+
+## Summary Report: SPEC 0118 Fix BL-126 Regressions
+
+**Status:** NEEDS_DAVE (spec fundamentally flawed)
+
+### The Issue
+
+This spec (`.deia/hive/queue/2026-03-15-0118-SPEC-fix-BL-126-kanban-backlog-db.md`) is a fix cycle spec that cannot be processed because:
+
+1. **No actionable error details** — spec says "Dispatch reported failure (success=False)" but provides no stack trace, error message, or specific failures
+2. **BL-126 is already COMPLETE** — all 23 kanban tests pass, all acceptance criteria met
+3. **Listed "regressions" are misattributed** — the 51 test failures are from OTHER commits (DES engine port `a63e21b`, RAG API issues), NOT from BL-126
+
+### What Previous Investigation Found
+
+The previous regent processing the 0118 spec did comprehensive analysis and correctly identified:
+
+**BL-126 Changes (only 3 files):**
+- `hivenode/config.py` — Added Railway PostgreSQL URL
+- `hivenode/main.py` — Added graceful degradation wrapper
+- `hivenode/routes/kanban_routes.py` — Added CSV fallback
+
+**BL-126 Test Results:**
+- ✅ All 23 kanban tests PASSING
+- ✅ Zero code overlap with failing test files
+- ✅ All acceptance criteria met
+
+**Actual Root Causes of "Regressions":**
+- **37 DES engine failures** — Commit `a63e21b` changed token propagation semantics
+- **7 RAG failures** — API contract mismatch in `IndexerService.index_repository()`
+- **3 smoke test failures** — Unrelated to kanban
+- **1 inventory test failure** — Intermittent connection pool issue
+
+### Root Cause: Queue Runner Regression Attribution
+
+The queue runner is incorrectly attributing ALL test suite failures to the most recent spec, rather than tracking deltas (before vs after). This creates unfixable fix specs.
+
+### Recommended Actions
+
+**1. Close all BL-126 fix specs as INVALID/MISATTRIBUTED:**
+   - `2026-03-15-0104-SPEC-fix-BL-126-kanban-backlog-db.md`
+   - `2026-03-15-0118-SPEC-fix-BL-126-kanban-backlog-db.md`
+   - `2026-03-15-0124-SPEC-fix-BL-126-kanban-backlog-db.md`
+
+**2. Mark original BL-126 as COMPLETE** (it is already complete)
+
+**3. Create separate P1 specs for actual failures:**
+   - SPEC-fix-des-token-propagation.md (37 failures)
+   - SPEC-fix-rag-indexer-api-contract.md (7 failures)
+   - SPEC-investigate-smoke-test-failures.md (3 failures)
+   - SPEC-fix-inventory-schema-test-isolation.md (1 failure)
+
+**4. Fix queue runner regression attribution logic:**
+   - Add test snapshots BEFORE processing spec
+   - Add test snapshots AFTER processing spec
+   - DIFF snapshots to identify NEW failures only
+   - Only create fix specs for TRUE regressions
+
+Full analysis written to: `.deia/hive/responses/20260315-REGENT-QUEUE-TEMP-2026-03-15-0118-RESPONSE.md`

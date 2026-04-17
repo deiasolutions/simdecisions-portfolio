@@ -1,0 +1,44 @@
+# BEE RESPONSE: 2026-03-16-BRIEFING-TASK-230-terminal-command-history
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260316-2146
+# Task file: 2026-03-16-BRIEFING-TASK-230-terminal-command-history.md
+# Success: True
+# Duration: 106.9s
+# Files modified: 2 (verified)
+# Cost (USD): $1.2126329999999998
+# Turns: 12
+# API duration (ms): 94013
+# Session ID: b71f91cf-12df-47a1-a916-e0783597d9e5
+# Boot injected: True
+
+---
+
+Perfect. Now I'll create a summary for Q33NR:
+
+---
+
+## Task File Created
+
+**Task file path:** `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\hive\tasks\2026-03-16-TASK-230-terminal-command-history.md`
+
+**Task ID assigned:** TASK-230
+
+**Model assigned:** Haiku
+
+**Key deliverables:**
+- Verify existing command history navigation (up/down arrows) works
+- Verify localStorage persistence already implemented in useTerminal.ts works correctly
+- Add new test file: `commandHistoryPersistence.test.ts` with minimum 5 persistence tests:
+  - Save to localStorage after command submission
+  - Load from localStorage on mount
+  - Handle corrupted localStorage (invalid JSON)
+  - Truncate localStorage data exceeding 100 items
+  - Handle empty localStorage
+- Fix any bugs found during verification
+- Manual smoke tests: reload page + recall history, corrupted localStorage gracefully handled
+- Run all terminal tests: `cd browser && npx vitest run src/primitives/terminal/`
+- Expected: 22+ tests passing (17 existing + 5 new)
+
+**Status:** Task file written. Awaiting your review and approval before dispatching the bee.

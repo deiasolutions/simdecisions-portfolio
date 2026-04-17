@@ -1,0 +1,124 @@
+# BEE RESPONSE: 2026-03-25-BRIEFING-BUG-019-CANVAS-DRAG-ISOLATION
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260325-1337
+# Task file: 2026-03-25-BRIEFING-BUG-019-CANVAS-DRAG-ISOLATION.md
+# Success: True
+# Duration: 190.3s
+# Files modified: 23 (verified)
+# Cost (USD): $0.7448490000000001
+# Turns: 12
+# API duration (ms): 173006
+# Session ID: 68818c2d-059d-4167-a06f-185eb12bc91f
+# Boot injected: True
+
+---
+
+Perfect. I've created three task files. Now let me write a summary report for Q33NR review.
+
+---
+
+## Task Files Created for BUG-019 Canvas Drag Isolation
+
+I've read the briefing and analyzed all 5 source files. I've created **3 task files** following the briefing's expected breakdown:
+
+### TASK-BUG-019-A: Palette and TreeNode Canvas Internal Marker
+**File:** `.deia/hive/tasks/2026-03-25-TASK-BUG-019-A-PALETTE-TREENODE-MARKER.md`
+
+**Objective:** Add `canvasInternal: true` marker to paletteAdapter nodes and propagate it as `canvas/internal` dataTransfer type in TreeNodeRow.
+
+**Deliverables:**
+- Update `paletteAdapter.ts` `itemToNode()` function to add `canvasInternal: true` to meta object (line 64-68)
+- Update `TreeNodeRow.tsx` `handleDragStart()` to check for `canvasInternal` marker and set `canvas/internal` dataTransfer type
+- Call `stopPropagation()` for canvas-internal drags
+- Create 2 test files: `paletteAdapter.test.ts` (3+ tests) and `TreeNodeRow.canvasInternal.test.tsx` (4+ tests)
+
+**Key Finding:** Drag MIME type is `application/phase-node` (NOT `application/sd-node-type` as the old test expected). Keeping existing MIME type.
+
+---
+
+### TASK-BUG-019-B: Shell Early Return for Canvas Internal Drags
+**File:** `.deia/hive/tasks/2026-03-25-TASK-BUG-019-B-SHELL-EARLY-RETURN.md`
+
+**Objective:** Add early return logic to ShellNodeRenderer's `onDragOver` and `onDrop` handlers to ignore drags with `canvas/internal` dataTransfer type.
+
+**Deliverables:**
+- Update `ShellNodeRenderer.tsx` `onDragOver()` to check for `canvas/internal` marker and return early (after line 160)
+- Update `ShellNodeRenderer.tsx` `onDrop()` to check for `canvas/internal` marker and return early (after line 176)
+- Create test file: `ShellNodeRenderer.canvasDrag.test.tsx` (5+ tests)
+
+**Edge Case Handling:** Shell still accepts `hhs/node-id` drags for pane rearrangement. When both `hhs/node-id` and `canvas/internal` are present, `canvas/internal` takes precedence.
+
+---
+
+### TASK-BUG-019-C: Replace Drag Isolation Tests with Runtime Behavior Tests
+**File:** `.deia/hive/tasks/2026-03-25-TASK-BUG-019-C-RUNTIME-TESTS.md`
+
+**Objective:** Replace the existing `canvasDragIsolation.test.tsx` file (which uses source code reading via `fs.readFileSync()`) with runtime behavior tests.
+
+**Deliverables:**
+- Replace `browser/src/primitives/canvas/__tests__/canvasDragIsolation.test.tsx` with runtime tests
+- Minimum 8 runtime tests (NO source code reading)
+- Tests verify: palette → TreeNodeRow → ShellNodeRenderer → CanvasApp integration
+- Mock drag events, dataTransfer objects, verify event handlers
+
+**Depends On:** TASK-BUG-019-A and TASK-BUG-019-B must be complete first (this task tests their runtime behavior).
+
+---
+
+## Task Sequencing
+
+**Sequential execution required:**
+1. **TASK-BUG-019-A** (palette + TreeNodeRow) — independent, can run first
+2. **TASK-BUG-019-B** (ShellNodeRenderer) — independent, can run in parallel with A
+3. **TASK-BUG-019-C** (runtime tests) — depends on A and B being complete
+
+**Recommendation:** Dispatch A and B in parallel, then C after both complete.
+
+---
+
+## Constraints Verified
+
+All task files include:
+- ✅ All 8 mandatory response file sections
+- ✅ TDD requirements (tests first)
+- ✅ No file over 500 lines (ShellNodeRenderer: 344 lines, plenty of room)
+- ✅ CSS: var(--sd-*) only
+- ✅ No stubs
+- ✅ Absolute file paths
+- ✅ Minimum test counts specified (3, 4, 5, 8)
+- ✅ Edge cases documented
+- ✅ Acceptance criteria (checkboxes)
+
+---
+
+## Key Findings from Code Review
+
+1. **CanvasApp.tsx already has stopPropagation** (lines 467, 473) — no changes needed, just verify.
+2. **Drag MIME type mismatch:** Old test expects `application/sd-node-type`, but code uses `application/phase-node`. Keeping existing `application/phase-node`.
+3. **paletteAdapter missing marker:** `itemToNode()` does NOT set `canvasInternal: true` (confirmed at line 64-68).
+4. **TreeNodeRow missing propagation:** `handleDragStart()` does NOT check for `canvasInternal` or set `canvas/internal` type (confirmed at line 56-71).
+5. **ShellNodeRenderer missing guard:** `onDragOver` and `onDrop` do NOT check for `canvas/internal` marker (confirmed at lines 160-199).
+
+---
+
+## Test Requirements Summary
+
+- **TASK-BUG-019-A:** 7+ tests (3 paletteAdapter + 4 TreeNodeRow)
+- **TASK-BUG-019-B:** 5+ tests (ShellNodeRenderer)
+- **TASK-BUG-019-C:** 8+ runtime tests (integration)
+- **Total:** 20+ tests passing
+
+---
+
+## Ready for Q33NR Review
+
+All task files are written and saved to `.deia/hive/tasks/`. No dispatch has been performed. Awaiting Q33NR review and approval before dispatching bees.
+
+**Files Created:**
+1. `.deia/hive/tasks/2026-03-25-TASK-BUG-019-A-PALETTE-TREENODE-MARKER.md`
+2. `.deia/hive/tasks/2026-03-25-TASK-BUG-019-B-SHELL-EARLY-RETURN.md`
+3. `.deia/hive/tasks/2026-03-25-TASK-BUG-019-C-RUNTIME-TESTS.md`
+
+**Next Step:** Q33NR reviews task files. If approved, I will dispatch bees via `dispatch.py`.

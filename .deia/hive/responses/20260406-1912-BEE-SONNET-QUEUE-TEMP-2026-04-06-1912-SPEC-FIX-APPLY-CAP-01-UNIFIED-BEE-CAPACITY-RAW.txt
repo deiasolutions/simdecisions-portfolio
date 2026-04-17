@@ -1,0 +1,44 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-04-06-1912-SPEC-fix-APPLY-CAP-01-unified-bee-capacity
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-1912
+# Task file: QUEUE-TEMP-2026-04-06-1912-SPEC-fix-APPLY-CAP-01-unified-bee-capacity.md
+# Success: True
+# Duration: 204.1s
+# Files modified: 12 (verified)
+# Cost (USD): $4.943076
+# Turns: 28
+# API duration (ms): 177319
+# Session ID: 2c7eead9-1bb4-4eeb-98c3-7ee46b175ce9
+# Boot injected: True
+
+---
+
+Perfect! So there are TWO files:
+1. `20260406-1908-BEE-SONNET-QUEUE-TEMP-SPEC-APPLY-CAP-01-UNIFIED-BEE-CAPACITY-RAW.txt` — has `# Success: False`
+2. `20260406-SPEC-APPLY-CAP-01-RESPONSE.md` — has `**Status:** COMPLETE`
+
+The find_response_file pattern `*{spec_id.upper()}*.txt` (line 315) matches only the RAW.txt file because it specifically looks for `.txt` extension!
+
+**The fix:** Change line 315 from `pattern = f"*{spec_id.upper()}*.txt"` to `pattern = f"*{spec_id.upper()}*"` to match both .md and .txt files, then prefer .md files over .txt files.
+
+Let me now write my fix proposal:
+
+## Plan
+
+Based on my analysis, the issue is:
+
+1. The bee completed SPEC-APPLY-CAP-01 successfully and created `20260406-SPEC-APPLY-CAP-01-RESPONSE.md` with `**Status:** COMPLETE`
+2. The bee also created `RAW.txt` with `# Success: False` (this is from the subprocess detection heuristic, not the actual response file)
+3. The `find_response_file()` method in `dispatch_handler.py` line 315 uses pattern `*.txt` which only finds the RAW.txt file
+4. The `parse_response_header()` checks RAW.txt first (line 360) and returns False immediately without checking for the .md status
+
+**Fix:** Modify `find_response_file()` to prefer `.md` files over `.txt` files when searching for response files.
+
+Changes needed in `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\hive\scripts\queue\dispatch_handler.py`:
+
+1. Line 313-322: Change the fallback search to look for `.md` files first, then `.txt` files
+2. This ensures that the formal response file (`.md`) takes precedence over the raw subprocess output (`.txt`)
+
+Should I proceed with this fix?

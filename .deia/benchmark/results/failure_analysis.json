@@ -1,0 +1,189 @@
+{
+  "total_failures": 533,
+  "sample_size": 20,
+  "samples": [
+    {
+      "instance_id": "instance_qutebrowser__qutebrowser-66cfa15c372fa9e613ea5a82d3b03e4609399fb6-v363c8a7e5ccdf6968fc7ab84a2053ac78036691d",
+      "repo": "qutebrowser/qutebrowser",
+      "language": "python",
+      "problem_length": 1458,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_tutao__tutanota-f3ffe17af6e8ab007e8d461355057ad237846d9d-vbc0d9ba8f0071fbe982809910959a6ff8884dbbf",
+      "repo": "tutao/tutanota",
+      "language": "ts",
+      "problem_length": 1077,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_protonmail__webclients-c5a2089ca2bfe9aa1d85a664b8ad87ef843a1c9c",
+      "repo": "protonmail/webclients",
+      "language": "js",
+      "problem_length": 1672,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_gravitational__teleport-65438e6e44b6ce51458d09b7bb028a2797cfb0ea-vce94f93ad1030e3136852817f2423c1b3ac37bc4",
+      "repo": "gravitational/teleport",
+      "language": "go",
+      "problem_length": 1131,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_internetarchive__openlibrary-fad4a40acf5ff5f06cd7441a5c7baf41a7d81fe4-vfa6ff903cb27f336e17654595dd900fa943dcd91",
+      "repo": "internetarchive/openlibrary",
+      "language": "python",
+      "problem_length": 1208,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_navidrome__navidrome-8383527aaba1ae8fa9765e995a71a86c129ef626",
+      "repo": "navidrome/navidrome",
+      "language": "go",
+      "problem_length": 2041,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_NodeBB__NodeBB-b1f9ad5534bb3a44dab5364f659876a4b7fe34c1-vnan",
+      "repo": "NodeBB/NodeBB",
+      "language": "js",
+      "problem_length": 908,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_flipt-io__flipt-b4bb5e13006a729bc0eed8fe6ea18cff54acdacb",
+      "repo": "flipt-io/flipt",
+      "language": "go",
+      "problem_length": 1159,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_future-architect__vuls-4c04acbd9ea5b073efe999e33381fa9f399d6f27",
+      "repo": "future-architect/vuls",
+      "language": "go",
+      "problem_length": 742,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_element-hq__element-web-fe14847bb9bb07cab1b9c6c54335ff22ca5e516a-vnan",
+      "repo": "element-hq/element-web",
+      "language": "js",
+      "problem_length": 1130,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_ansible__ansible-c1f2df47538b884a43320f53e787197793b105e8-v906c969b551b346ef54a2c0b41e04f632b7b73c2",
+      "repo": "ansible/ansible",
+      "language": "python",
+      "problem_length": 933,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_qutebrowser__qutebrowser-305e7c96d5e2fdb3b248b27dfb21042fb2b7e0b8-v2ef375ac784985212b1805e1d0431dc8f1b3c171",
+      "repo": "qutebrowser/qutebrowser",
+      "language": "python",
+      "problem_length": 921,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_tutao__tutanota-09c2776c0fce3db5c6e18da92b5a45dce9f013aa-vbc0d9ba8f0071fbe982809910959a6ff8884dbbf",
+      "repo": "tutao/tutanota",
+      "language": "ts",
+      "problem_length": 1053,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_gravitational__teleport-0415e422f12454db0c22316cf3eaa5088d6b6322",
+      "repo": "gravitational/teleport",
+      "language": "go",
+      "problem_length": 1014,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_internetarchive__openlibrary-3f580a5f244c299d936d73d9e327ba873b6401d9-v0f5aece3601a5b4419f7ccec1dbda2071be28ee4",
+      "repo": "internetarchive/openlibrary",
+      "language": "python",
+      "problem_length": 1279,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_future-architect__vuls-a76302c11174ca081f656c63a000ffa746e350af",
+      "repo": "future-architect/vuls",
+      "language": "go",
+      "problem_length": 1031,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_qutebrowser__qutebrowser-a25e8a09873838ca9efefd36ea8a45170bbeb95c-vc2f56a753b62a190ddb23cd330c257b9cf560d12",
+      "repo": "qutebrowser/qutebrowser",
+      "language": "python",
+      "problem_length": 1058,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_gravitational__teleport-fd2959260ef56463ad8afa4c973f47a50306edd4",
+      "repo": "gravitational/teleport",
+      "language": "go",
+      "problem_length": 920,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_flipt-io__flipt-ebb3f84c74d61eee4d8c6875140b990eee62e146",
+      "repo": "flipt-io/flipt",
+      "language": "go",
+      "problem_length": 847,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    },
+    {
+      "instance_id": "instance_gravitational__teleport-4d0117b50dc8cdb91c94b537a4844776b224cd3d",
+      "repo": "gravitational/teleport",
+      "language": "go",
+      "problem_length": 1171,
+      "status": "NO_RESPONSE",
+      "response_file": "NONE",
+      "reason": "NO_RESPONSE"
+    }
+  ],
+  "reason_summary": {
+    "NO_RESPONSE": 20
+  }
+}

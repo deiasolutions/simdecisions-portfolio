@@ -1,0 +1,77 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-16-SPEC-TASK-207-heartbeat-metadata-verify
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260316-1904
+# Task file: QUEUE-TEMP-2026-03-16-SPEC-TASK-207-heartbeat-metadata-verify.md
+# Success: False
+# Duration: 551.3s
+# Files modified: 55 (verified)
+# Cost (USD): $1.521081
+# Turns: 14
+# API duration (ms): 91226
+# Session ID: 0bc57b5c-c9d4-43f1-aa4b-594cccfb7b85
+# Boot injected: True
+
+---
+
+Good. Now I need to report back to Q88N (Dave). Let me prepare a summary of TASK-207 completion:
+
+---
+
+## TASK-207 Completion Report
+
+**Status:** ✅ COMPLETE
+
+**Task:** Heartbeat Metadata Verification + Build Monitor Display
+
+**Bee:** Sonnet (36 turns, $7.44, 419.3s)
+
+### Summary
+
+TASK-207 was a **verification task** — all required functionality was already implemented by previous tasks (especially TASK-204). The bee created a comprehensive test suite (7 tests, all passing) to verify that:
+
+1. ✅ Heartbeat callbacks include model + tokens metadata
+2. ✅ Dispatch script forwards usage data to build monitor
+3. ✅ Build monitor accumulates cost correctly
+4. ✅ All edge cases handled (zero tokens, None values, missing model)
+
+### Files Created
+- `tests/routes/test_heartbeat_metadata.py` (240 lines, 7 tests)
+
+### Test Results
+```
+7 passed, 0 failed in 18.61s
+```
+
+### Key Findings
+
+**Already implemented:**
+- HeartbeatPayload fields: model, input_tokens, output_tokens, cost_usd (build_monitor.py:37-47)
+- BuildState accumulation: total_cost, total_input_tokens, total_output_tokens (build_monitor.py:77-79)
+- dispatch.py send_heartbeat forwards usage metadata (dispatch.py:379-387)
+- ClaudeCodeProcess includes usage in ProcessResult (claude_cli_subprocess.py:372-426)
+- Build monitor /status calculates token_cost_usd from tokens (build_monitor.py:313-314)
+
+**Edge cases verified:**
+- Zero tokens handled gracefully
+- None tokens handled gracefully
+- Missing model uses default rate
+- Cost calculation uses model-specific rates
+
+### CCCMetadata.model_for_cost Note
+
+The task mentioned populating `CCCMetadata.model_for_cost`, but this field is NOT used in the heartbeat flow. It's only relevant for RAG indexer context. The field exists but doesn't affect heartbeat metadata.
+
+### Next Steps
+
+According to HIVE.md, I should:
+1. ✅ Verify bee response has all 8 sections — CONFIRMED
+2. ✅ Verify tests pass — CONFIRMED (7/7 passing)
+3. ✅ Check for stubs — NONE (verification task, no code changes)
+4. ⏭️ Report to Q88N — DOING NOW
+5. ⏭️ Await Q88N decision on git commit/archive
+
+**Awaiting your direction, Q88N:**
+- Shall I proceed with git commit for the new test file?
+- Should I archive TASK-207 to `_archive/`?

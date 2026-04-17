@@ -1,0 +1,76 @@
+{
+  "id": "workflow_03_priority_queue",
+  "name": "Priority Queue Workflow",
+  "intent": "Source -> Priority Queue -> Service -> Sink. Tests priority queueing discipline.",
+  "phase_ir_version": "1.0.0",
+  "nodes": [
+    {
+      "id": "source",
+      "type": "source",
+      "name": "Token Generator",
+      "config": {
+        "arrival_distribution": "poisson",
+        "lambda": 8.0,
+        "max_arrivals": 100,
+        "token_properties": {
+          "priority": {
+            "type": "integer",
+            "distribution": "uniform",
+            "min": 1,
+            "max": 3
+          }
+        }
+      }
+    },
+    {
+      "id": "queue",
+      "type": "queue",
+      "name": "Priority Queue",
+      "config": {
+        "discipline": "PRIORITY",
+        "priority_key": "priority",
+        "capacity": 20
+      }
+    },
+    {
+      "id": "service",
+      "type": "service",
+      "name": "Service Node",
+      "config": {
+        "service_distribution": "exponential",
+        "mu": 10.0,
+        "servers": 2
+      }
+    },
+    {
+      "id": "sink",
+      "type": "sink",
+      "name": "Completion"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from_node": "source",
+      "to_node": "queue",
+      "type": "then"
+    },
+    {
+      "id": "e2",
+      "from_node": "queue",
+      "to_node": "service",
+      "type": "then"
+    },
+    {
+      "id": "e3",
+      "from_node": "service",
+      "to_node": "sink",
+      "type": "then"
+    }
+  ],
+  "metadata": {
+    "description": "Source -> Priority Queue -> Service -> Sink",
+    "evaluation_criteria": "High-priority tokens (priority=1) have mean cycle time < low-priority (priority=3)",
+    "expected_runtime_seconds": 5
+  }
+}

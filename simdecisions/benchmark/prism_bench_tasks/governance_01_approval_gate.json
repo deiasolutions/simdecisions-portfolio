@@ -1,0 +1,35 @@
+{
+  "id": "governance_01_approval_gate",
+  "name": "Approval Gate Governance",
+  "intent": "Test governance overhead with approval gate insertion",
+  "phase_ir_version": "1.0.0",
+  "variables": [
+    {"id": "approval_required", "type": "flag", "default": false}
+  ],
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "prepare_request", "type": "service", "name": "Prepare Request", "config": {"duration": {"type": "constant", "params": {"value": 1.0}}}},
+    {"id": "check_gate", "type": "decision", "name": "Check If Approval Needed", "mode": "exclusive"},
+    {"id": "approval_gate", "type": "human", "name": "Approval Gate", "config": {"duration": {"type": "exponential", "params": {"lambda": 0.1}}}},
+    {"id": "execute_request", "type": "service", "name": "Execute Request", "config": {"duration": {"type": "constant", "params": {"value": 2.0}}}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "prepare_request", "type": "then"},
+    {"id": "e2", "from_node": "prepare_request", "to_node": "check_gate", "type": "then"},
+    {"id": "e3", "from_node": "check_gate", "to_node": "approval_gate", "type": "switch", "guard": "approval_required == true"},
+    {"id": "e4", "from_node": "check_gate", "to_node": "execute_request", "type": "switch", "guard": "approval_required == false"},
+    {"id": "e5", "from_node": "approval_gate", "to_node": "execute_request", "type": "then"},
+    {"id": "e6", "from_node": "execute_request", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "governance",
+    "description": "Workflow with optional approval gate based on approval_required flag",
+    "evaluation_criteria": "Governance mode comparison: time overhead, approval latency, accuracy preservation",
+    "expected_runtime_seconds": 5,
+    "governance_mode": {
+      "ungoverned": {"approval_required": false, "expected_time": 3.0},
+      "governed": {"approval_required": true, "expected_time": 13.0}
+    }
+  }
+}

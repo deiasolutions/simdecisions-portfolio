@@ -1,0 +1,59 @@
+# BEE RESPONSE: 2026-03-16-TASK-188-property-panel-emit-changes
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260316-1625
+# Task file: 2026-03-16-TASK-188-property-panel-emit-changes.md
+# Success: True
+# Duration: 305.8s
+# Files modified: 16 (verified)
+# Cost (USD): $2.502946
+# Turns: 31
+# API duration (ms): 203523
+# Session ID: 5bafe57f-a42a-42db-b72e-182a6ffb7d38
+# Boot injected: True
+
+---
+
+Perfect! Let me verify all the files are correct and summarize what was done:
+
+## Summary
+
+I've successfully completed **TASK-188: Wire PropertyPanel to Emit node:property-changed Bus Event**.
+
+### What Was Implemented:
+
+1. **TDD First**: Wrote 10 comprehensive tests before any implementation
+   - Tests cover event emission, payload structure, backward compatibility, edge cases, and multiple saves
+   - All 10 tests now pass ✓
+
+2. **Added Message Type** (`types/messages.ts`):
+   - `NodePropertyChangedData` interface with nodeId, properties, and section fields
+   - Added to ShellMessage union type
+   - Exported from relay_bus public API
+
+3. **Modified PropertyPanel** (`PropertyPanel.tsx`):
+   - `handleSave()` now emits `node:property-changed` bus event
+   - Event includes: nodeId, full properties object, optional section field
+   - Broadcasts to all panes (target='*')
+   - Uses component's paneId as sourcePane
+   - Always calls onSave callback for backward compatibility
+   - Gracefully handles null bus
+
+4. **Test Coverage**:
+   - ✓ Event emission when saving
+   - ✓ Correct payload structure
+   - ✓ Backward compatibility
+   - ✓ Null bus handling
+   - ✓ Correct broadcasting and sourcing
+   - ✓ Reset button doesn't emit
+   - ✓ Multiple saves each emit separate events
+   - All 10 tests passing, 0 failures
+
+### Key Features:
+- **Backward Compatible**: Works with or without bus; always calls onSave callback
+- **Proper Bus Integration**: Uses correct MessageEnvelope structure with all required fields
+- **Tested**: Comprehensive TDD test suite ensures reliability
+- **No Breaking Changes**: Existing PropertyPanel usage unaffected
+
+The task is now complete and ready for integration with FlowDesigner to listen for and handle these property change events.

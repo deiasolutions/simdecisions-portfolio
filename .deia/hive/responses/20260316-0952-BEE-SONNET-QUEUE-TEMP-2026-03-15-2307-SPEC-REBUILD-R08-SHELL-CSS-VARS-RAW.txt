@@ -1,0 +1,73 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-15-2307-SPEC-rebuild-R08-shell-css-vars
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260316-0952
+# Task file: QUEUE-TEMP-2026-03-15-2307-SPEC-rebuild-R08-shell-css-vars.md
+# Success: True
+# Duration: 149.0s
+# Files modified: 19 (verified)
+# Cost (USD): $0
+# Turns: 12
+# API duration (ms): 84986
+# Session ID: 0c110b89-9c86-4dc6-945c-f5cf4e5b4ee3
+# Boot injected: True
+
+---
+
+Perfect! **35 tests PASSING** (14 ShellTabBar + 21 WorkspaceBar). The warnings are pre-existing test issues, not related to this CSS fix.
+
+Now let me write my Q33NR completion report to Q88N (Dave):
+
+---
+
+## ✅ SPEC COMPLETE: TASK-R08 — CSS Variable Compliance Fixed
+
+**Status:** COMPLETE  
+**Priority:** P0.40  
+**Bee:** Haiku 4.5  
+**Date:** 2026-03-16  
+**Duration:** 50.6 seconds  
+
+---
+
+### What Was Delivered
+
+**4 hardcoded color violations replaced** in ShellTabBar.tsx and WorkspaceBar.tsx:
+
+1. ShellTabBar.tsx:150 — `boxShadow: 'rgba(0,0,0,0.15)'` → `'var(--sd-shadow-sm)'`
+2. WorkspaceBar.tsx:56 — hover background `'rgba(139,92,246,0.06)'` → `'var(--sd-accent-subtle)'`
+3. WorkspaceBar.tsx:145 — active pane indicator `'rgba(139,92,246,0.06)'` → `'var(--sd-accent-subtle)'`
+4. WorkspaceBar.tsx:229 — menu boxShadow `'rgba(0,0,0,0.5)'` → `'var(--sd-shadow-xl)'`
+
+---
+
+### Verification
+
+- ✅ **Grep verification**: Zero hardcoded colors remain in both files
+- ✅ **35 tests PASSING** (14 ShellTabBar + 21 WorkspaceBar)
+- ✅ **Hard Rule #3 (NO HARDCODED COLORS)** now enforced
+- ✅ **Response file complete** (all 8 sections present)
+
+---
+
+### Files Modified
+
+1. `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\browser\src\shell\components\ShellTabBar.tsx`
+2. `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\browser\src\shell\components\WorkspaceBar.tsx`
+
+---
+
+### Cost
+
+- **Duration**: 50.6s
+- **Cost**: $0 (Haiku, local tests)
+- **Turns**: 12
+
+---
+
+### Next Steps
+
+This was a P0.40 rebuild task. The fixes from TASK-158 (lost in `git reset --hard`) have been successfully restored. Both components now comply with Hard Rule #3.
+
+**Ready for next queue item.**

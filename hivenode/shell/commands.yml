@@ -1,0 +1,352 @@
+# Command dictionary for natural language parser
+# Format: command_name → aliases, description, parameters
+
+commands:
+  # File operations
+  open:
+    aliases: [launch, start, show, view]
+    description: "Open a file, folder, or app"
+    params:
+      - name: target
+        type: string
+        required: true
+        values: [file, folder, app, terminal, settings, dashboard]
+
+  # Compound commands for specific targets
+  open-terminal:
+    aliases: ["open terminal", "launch terminal", "new terminal"]
+    description: "Open a new terminal"
+    params: []
+
+  open-file:
+    aliases: ["open file", "show file", "view file"]
+    description: "Open a specific file"
+    params:
+      - name: filename
+        type: string
+        required: true
+
+  open-folder:
+    aliases: ["open folder", "show folder", "view folder"]
+    description: "Open a folder"
+    params:
+      - name: foldername
+        type: string
+        required: true
+
+  create-new-terminal:
+    aliases: ["create new terminal", "new terminal", "add terminal"]
+    description: "Create a new terminal instance"
+    params: []
+
+  create-folder:
+    aliases: ["create folder", "new folder", "make folder"]
+    description: "Create a new folder"
+    params:
+      - name: foldername
+        type: string
+        required: true
+
+  close:
+    aliases: [quit, exit, shutdown]
+    description: "Close a file, folder, or app"
+    params:
+      - name: target
+        type: string
+        required: true
+
+  close-terminal:
+    aliases: ["close terminal", "exit terminal", "quit terminal"]
+    description: "Close the current terminal"
+    params: []
+
+  search-text:
+    aliases: ["search text", "find text", "search for"]
+    description: "Search for text in files"
+    params:
+      - name: query
+        type: string
+        required: true
+      - name: path
+        type: string
+        required: false
+
+  # Navigation
+  navigate:
+    aliases: [nav, goto, go]
+    description: "Navigate to a location"
+    params:
+      - name: destination
+        type: string
+        required: true
+
+  back:
+    aliases: [previous, return]
+    description: "Navigate back"
+    params: []
+
+  # Execution
+  execute:
+    aliases: [exec, run, do]
+    description: "Execute a command or script"
+    params:
+      - name: command
+        type: string
+        required: true
+
+  # Search
+  search:
+    aliases: [find, lookup, query]
+    description: "Search for content"
+    params:
+      - name: query
+        type: string
+        required: true
+
+  # Toggle operations
+  toggle:
+    aliases: [switch, flip]
+    description: "Toggle a setting or feature"
+    params:
+      - name: feature
+        type: string
+        required: true
+
+  # Create operations
+  create:
+    aliases: [new, make, add]
+    description: "Create a new item"
+    params:
+      - name: item_type
+        type: string
+        required: true
+
+  # Delete operations
+  delete:
+    aliases: [remove, rm, del]
+    description: "Delete an item"
+    params:
+      - name: target
+        type: string
+        required: true
+
+  # Edit operations
+  edit:
+    aliases: [modify, change, update]
+    description: "Edit an item"
+    params:
+      - name: target
+        type: string
+        required: true
+
+  # Copy/Paste
+  copy:
+    aliases: [cp, duplicate]
+    description: "Copy an item"
+    params:
+      - name: source
+        type: string
+        required: true
+
+  paste:
+    aliases: [pst, insert]
+    description: "Paste copied content"
+    params: []
+
+  # Move operations
+  move:
+    aliases: [mv, relocate]
+    description: "Move an item"
+    params:
+      - name: source
+        type: string
+        required: true
+      - name: destination
+        type: string
+        required: true
+
+  # Rename operations
+  rename:
+    aliases: [ren, mv]
+    description: "Rename an item"
+    params:
+      - name: target
+        type: string
+        required: true
+      - name: new_name
+        type: string
+        required: true
+
+  # List operations
+  list:
+    aliases: [ls, dir, show]
+    description: "List items"
+    params:
+      - name: target
+        type: string
+        required: false
+
+  # Save operations
+  save:
+    aliases: [write, store]
+    description: "Save current work"
+    params:
+      - name: target
+        type: string
+        required: false
+
+  # Load operations
+  load:
+    aliases: [read, fetch]
+    description: "Load data"
+    params:
+      - name: source
+        type: string
+        required: true
+
+  # Refresh operations
+  refresh:
+    aliases: [reload, update]
+    description: "Refresh view or data"
+    params: []
+
+  # Clear operations
+  clear:
+    aliases: [reset, clean]
+    description: "Clear content or reset state"
+    params: []
+
+  # Help
+  help:
+    aliases: [h, info, docs]
+    description: "Show help or documentation"
+    params:
+      - name: topic
+        type: string
+        required: false
+
+  # Settings
+  settings:
+    aliases: [config, preferences, prefs]
+    description: "Open or modify settings"
+    params:
+      - name: setting
+        type: string
+        required: false
+
+  # Terminal
+  terminal:
+    aliases: [term, shell, console, cmd]
+    description: "Open terminal or execute shell command"
+    params:
+      - name: command
+        type: string
+        required: false
+
+  # Notifications
+  notify:
+    aliases: [alert, notification]
+    description: "Show a notification"
+    params:
+      - name: message
+        type: string
+        required: true
+
+  # Queue operations
+  queue:
+    aliases: [enqueue, schedule]
+    description: "Add to queue"
+    params:
+      - name: item
+        type: string
+        required: true
+
+  # Status
+  status:
+    aliases: [state, check]
+    description: "Check status"
+    params:
+      - name: target
+        type: string
+        required: false
+
+  # Expand/Collapse
+  expand:
+    aliases: [unfold, spread]
+    description: "Expand a view or section"
+    params:
+      - name: target
+        type: string
+        required: false
+
+  collapse:
+    aliases: [fold, minimize]
+    description: "Collapse a view or section"
+    params:
+      - name: target
+        type: string
+        required: false
+
+  # Filter
+  filter:
+    aliases: [where, match]
+    description: "Filter items"
+    params:
+      - name: criteria
+        type: string
+        required: true
+
+  # Sort
+  sort:
+    aliases: [order, arrange]
+    description: "Sort items"
+    params:
+      - name: by
+        type: string
+        required: true
+
+  # Select
+  select:
+    aliases: [choose, pick]
+    description: "Select an item"
+    params:
+      - name: target
+        type: string
+        required: true
+
+  # Show/Hide operations
+  show:
+    aliases: [display, reveal]
+    description: "Show a UI element"
+    params:
+      - name: target
+        type: string
+        required: true
+
+  hide:
+    aliases: [conceal, dismiss]
+    description: "Hide a UI element"
+    params:
+      - name: target
+        type: string
+        required: true
+
+  # Focus operations
+  focus:
+    aliases: [activate, select]
+    description: "Focus on a pane or element"
+    params:
+      - name: target
+        type: string
+        required: true
+
+  # Undo/Redo
+  undo:
+    aliases: [revert, rollback]
+    description: "Undo last action"
+    params: []
+
+  redo:
+    aliases: [reapply, forward]
+    description: "Redo last undone action"
+    params: []

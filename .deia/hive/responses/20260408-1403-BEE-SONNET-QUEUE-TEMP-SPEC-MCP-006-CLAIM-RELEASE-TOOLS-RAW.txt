@@ -1,0 +1,68 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MCP-006-claim-release-tools
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260408-1403
+# Task file: QUEUE-TEMP-SPEC-MCP-006-claim-release-tools.md
+# Success: True
+# Duration: 259.7s
+# Files modified: 16 (verified)
+# Cost (USD): $3.0831809999999997
+# Turns: 25
+# API duration (ms): 241315
+# Session ID: 8a1adfdc-0cc8-4347-a436-e359d5416365
+# Boot injected: True
+
+---
+
+Excellent! Everything is working. Let me create a quick summary of the implementation:
+
+## Summary
+
+I have successfully completed **SPEC-MCP-006: Claim Task + Release Task Tools**.
+
+### Files Modified
+
+1. **`hivenode/hive_mcp/tools/tasks.py`** (516 lines)
+   - Added `claim_task()` function - prevents double-dispatch by claiming specs
+   - Added `release_task()` function - releases claims and moves specs to final destination
+
+2. **`hivenode/hive_mcp/state.py`** (227 lines)
+   - Added `recover_claims_from_active()` function - rebuilds claims from `_active/` directory on MCP server restart
+
+3. **`hivenode/hive_mcp/tests/test_claim_release.py`** (284 lines, NEW)
+   - Comprehensive test suite with 9 tests covering all scenarios
+
+### Implementation Details
+
+**claim_task(spec_id, bee_id, state_manager)**
+- Checks if spec is already claimed in StateManager
+- If claimed: returns current owner info
+- If unclaimed: moves spec from `backlog/` to `_active/`, records claim in state
+- Returns success/failure with claim details
+
+**release_task(spec_id, reason, state_manager)**
+- Validates reason: "done", "failed", or "timeout"
+- Moves spec from `_active/` to `_done/` (done) or `_needs_review/` (failed/timeout)
+- Removes claim from StateManager
+- Gracefully handles edge cases
+
+**recover_claims_from_active(state_manager, repo_root)**
+- Scans `_active/` directory for SPEC-*.md files
+- Rebuilds claims with owner="UNKNOWN" for crash recovery
+- Returns count of recovered claims
+
+### Test Results
+
+**All 9 tests pass:**
+- ✓ claim unclaimed task
+- ✓ claim already-claimed task  
+- ✓ claim nonexistent spec
+- ✓ release task (done)
+- ✓ release task (failed)
+- ✓ release task (timeout)
+- ✓ release unclaimed task
+- ✓ state manager recovery
+- ✓ claim-release integration
+
+**Status:** COMPLETE - All acceptance criteria met, all tests pass, no stubs, no TODOs.

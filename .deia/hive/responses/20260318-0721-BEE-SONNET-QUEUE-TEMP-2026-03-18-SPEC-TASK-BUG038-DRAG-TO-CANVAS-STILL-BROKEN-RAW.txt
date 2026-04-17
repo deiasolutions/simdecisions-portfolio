@@ -1,0 +1,99 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-18-SPEC-TASK-BUG038-drag-to-canvas-still-broken
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260318-0721
+# Task file: QUEUE-TEMP-2026-03-18-SPEC-TASK-BUG038-drag-to-canvas-still-broken.md
+# Success: True
+# Duration: 3457.1s
+# Files modified: 40 (verified)
+# Cost (USD): $5.309432999999999
+# Turns: 29
+# API duration (ms): 322961
+# Session ID: 42a97371-9247-4033-b940-ddfe7b194c65
+# Boot injected: True
+
+---
+
+Q33N is still running. This is expected as it needs to dispatch 3 bees sequentially. Let me report the current status to Q88N:
+
+---
+
+## Status Report to Q88N
+
+**Task:** BUG-038 — Palette Drag-to-Canvas Not Working  
+**Priority:** P0  
+**Status:** IN PROGRESS — Bees dispatched, awaiting completion
+
+### What I've Done (Q33NR Actions)
+
+1. ✅ **Read BOOT.md and HIVE.md** — Confirmed my role and process
+2. ✅ **Read the spec** — BUG-038 from queue
+3. ✅ **Read context files:**
+   - BUG-019 response (claimed fix, never committed)
+   - BUG-035 response (recent TreeNodeRow changes)
+   - TreeNodeRow.tsx, paletteAdapter.ts, CanvasApp.tsx source files
+4. ✅ **Identified root causes:**
+   - paletteAdapter doesn't set `dragMimeType` or `dragData` in node meta
+   - CanvasApp missing `stopPropagation()` calls (BUG-019 never committed)
+   - CanvasApp expects plain string, TreeNodeRow sends JSON
+5. ✅ **Wrote briefing for Q33N** — `.deia/hive/coordination/2026-03-18-BRIEFING-BUG-038-palette-drag-to-canvas.md`
+6. ✅ **Dispatched Q33N** — Sonnet model, queen role
+7. ✅ **Received Q33N's task files** — 3 tasks (A, B, C)
+8. ✅ **Reviewed all 3 task files** against mechanical checklist:
+   - All deliverables match spec ✅
+   - All file paths absolute ✅
+   - All test requirements present ✅
+   - No hardcoded colors ✅
+   - No files over 500 lines ✅
+   - No stubs/TODOs ✅
+   - Response templates present ✅
+9. ✅ **Approved dispatch** — `.deia/hive/coordination/2026-03-18-APPROVAL-BUG-038.md`
+10. ✅ **Dispatched Q33N with instruction** — Sequential bee dispatch (A → B → C)
+
+### Current Status
+
+**Q33N is dispatching bees** (started ~5 minutes ago):
+- **TASK-BUG-038-A:** paletteAdapter drag metadata (Haiku)
+- **TASK-BUG-038-B:** CanvasApp drag handlers (Haiku)
+- **TASK-BUG-038-C:** Integration test (Haiku)
+
+**Estimated completion:** 45-60 minutes total (sequential dispatch + 3 bees × 15-20 min each)
+
+### Next Steps
+
+1. **Wait for Q33N** to complete all 3 bee dispatches
+2. **Review Q33N's completion report** when ready
+3. **Verify:**
+   - All 3 response files have 8 sections
+   - Test counts: 4+ (A), 8+ (B), 6+ (C) = 18+ total
+   - No stubs shipped
+   - All tests pass
+4. **Report final results** to Q88N
+
+### Files Created
+
+**Coordination files:**
+- `.deia/hive/coordination/2026-03-18-BRIEFING-BUG-038-palette-drag-to-canvas.md`
+- `.deia/hive/coordination/2026-03-18-APPROVAL-BUG-038.md`
+- `.deia/hive/coordination/2026-03-18-DISPATCH-INSTRUCTION-BUG-038.md`
+
+**Task files (created by Q33N):**
+- `.deia/hive/tasks/2026-03-18-TASK-BUG-038-A-PALETTE-DRAG-METADATA.md`
+- `.deia/hive/tasks/2026-03-18-TASK-BUG-038-B-CANVAS-DRAG-HANDLERS.md`
+- `.deia/hive/tasks/2026-03-18-TASK-BUG-038-C-INTEGRATION-TEST.md`
+
+**Response files (created by Q33N):**
+- `.deia/hive/responses/20260318-Q33N-BUG-038-TASK-FILES-READY.md`
+
+### Budget
+
+- **Q33N (briefing):** ~$1.87 USD (245 seconds, 15 turns)
+- **Q33N (dispatch instruction):** Running now
+- **3 Bees:** TBD (estimated ~$0.15-0.30 total for 3 Haiku bees)
+
+**Total estimated:** ~$2.20 USD for BUG-038 complete resolution
+
+---
+
+**Q88N, I'm monitoring Q33N's progress. I'll report back when all 3 bees complete.**

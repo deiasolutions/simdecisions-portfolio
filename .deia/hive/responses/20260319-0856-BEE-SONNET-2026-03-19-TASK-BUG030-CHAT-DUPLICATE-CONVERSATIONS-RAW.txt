@@ -1,0 +1,46 @@
+# BEE RESPONSE: 2026-03-19-TASK-BUG030-chat-duplicate-conversations
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260319-0856
+# Task file: 2026-03-19-TASK-BUG030-chat-duplicate-conversations.md
+# Success: True
+# Duration: 755.8s
+# Files modified: 39 (verified)
+# Cost (USD): $4.170533999999999
+# Turns: 22
+# API duration (ms): 230479
+# Session ID: 2656f705-a737-4fd2-acb3-2d43967ac36c
+# Boot injected: True
+
+---
+
+Perfect! Task is complete. Let me create a summary:
+
+## Task Complete ✅
+
+I've successfully implemented defensive deduplication logic in the chat history adapter to prevent duplicate conversations from appearing in the tree browser.
+
+### What Was Done:
+
+1. **Added deduplication logic** in `chatHistoryAdapter.ts` (lines 86-95):
+   - Uses `Map<string, Conversation>` keyed by conversation ID
+   - Keeps conversation with most recent `updated_at` when duplicates exist
+   - Happens before sorting and grouping
+
+2. **Added 2 new test cases** in `chatHistoryAdapter.test.ts`:
+   - "deduplicates conversations when API returns duplicates" - verifies handling of 3 duplicate conversations
+   - "handles conversations with same ID but different volumes" - verifies cross-volume deduplication
+
+3. **Test Results:**
+   - ✅ 11/11 tests passing in chatHistoryAdapter.test.ts (9 existing + 2 new)
+   - ✅ No regressions introduced
+   - ✅ All acceptance criteria met
+
+### Files Modified:
+- `browser/src/primitives/tree-browser/adapters/chatHistoryAdapter.ts` (135 lines)
+- `browser/src/primitives/tree-browser/adapters/__tests__/chatHistoryAdapter.test.ts` (640 lines)
+
+The implementation provides defense-in-depth: even though chatApi has deduplication, the adapter now has its own defensive layer to ensure each conversation appears exactly once in the UI, regardless of API bugs or data inconsistencies.
+
+**Response file written to:** `.deia/hive/responses/20260319-TASK-BUG030-RESPONSE.md`

@@ -1,0 +1,56 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-EFEMERA-CONN-10-versioning-threading
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260328-1734
+# Task file: QUEUE-TEMP-SPEC-EFEMERA-CONN-10-versioning-threading.md
+# Success: True
+# Duration: 902.9s
+# Files modified: 7 (verified)
+# Cost (USD): $13.211262
+# Turns: 63
+# API duration (ms): 498124
+# Session ID: 9f845825-13e0-44f7-b9f2-255a0a2f98b7
+# Boot injected: True
+
+---
+
+Perfect! SPEC-EFEMERA-CONN-10 is complete. Let me create a summary:
+
+## Summary
+
+**SPEC-EFEMERA-CONN-10: Message Versioning + Reply Threading — COMPLETE** ✅
+
+I successfully ported message edit versioning and reply threading from platform to hivenode following TDD approach:
+
+### What Was Built
+
+**Store Methods (hivenode/efemera/store.py):**
+- `edit_message()` — creates new version row with version++, parent_id=root_id
+- `get_message_history()` — returns all versions ordered by version ASC
+- `get_replies()` — returns all replies (latest version only) to a message
+- Updated `create_message()` to validate reply_to_id (exists, same channel)
+- Updated `list_messages()` to filter to latest version only using CTE
+
+**Routes (hivenode/efemera/message_routes.py — NEW FILE):**
+- `PUT /efemera/messages/{message_id}` — edit message
+- `GET /efemera/messages/{message_id}/history` — get all versions
+- `GET /efemera/messages/{message_id}/replies` — get threaded replies
+
+**Tests:**
+- `test_efemera_versioning.py` — 10 tests, all passing
+- `test_efemera_threading.py` — 10 tests, all passing
+- Fixed existing tests for system channel seeding changes
+
+### Test Results
+- **114 efemera tests passing** (0 failures)
+- All acceptance criteria met
+- No regressions
+
+### Key Design
+- Edit chain (parent_id) is separate from reply chain (reply_to_id)
+- Edits preserve original author, channel, type, and reply threading
+- Latest version filtering via CTE with COALESCE(parent_id, id) grouping
+- Reply validation prevents cross-channel replies and nonexistent targets
+
+The implementation follows platform logic exactly and integrates cleanly with the existing efemera system.

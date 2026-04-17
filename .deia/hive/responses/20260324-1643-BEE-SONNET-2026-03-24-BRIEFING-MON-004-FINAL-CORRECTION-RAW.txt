@@ -1,0 +1,46 @@
+# BEE RESPONSE: 2026-03-24-BRIEFING-MON-004-FINAL-CORRECTION
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260324-1643
+# Task file: 2026-03-24-BRIEFING-MON-004-FINAL-CORRECTION.md
+# Success: True
+# Duration: 74.7s
+# Files modified: 7 (verified)
+# Cost (USD): $1.419396
+# Turns: 11
+# API duration (ms): 66878
+# Session ID: b873c3c5-2aaf-4397-8f7e-330d429c0bf1
+# Boot injected: True
+
+---
+
+---
+
+## ✅ CORRECTION CYCLE 2 COMPLETE
+
+**Task File:** `.deia\hive\queue\_stage\2026-03-24-TASK-MON-004-code-egg.md`
+
+### Corrections Applied (Both Required Changes)
+
+**✅ CORRECTION #1: Absolute Paths (Rule 8 Compliance)**
+- Line 26: Scope section — both file paths now absolute
+- Lines 111-117: File Locations section — directory tree now absolute
+- Line 102: Import example — added absolute path comment
+
+**✅ CORRECTION #2: Subdomain Registration Wording**
+- Lines 95-97: Changed from "Add subdomain" to "Verify subdomain exists... If missing, add"
+- Now references specific file path and line number (~135)
+- Prevents duplicate key errors if subdomain already exists
+
+### Files Modified
+1 file corrected: `2026-03-24-TASK-MON-004-code-egg.md` (4 edits, all path-related)
+
+### Response File
+`.deia\hive\responses\20260324-QUEEN-2026-03-24-BRIEFING-MON-004-FI-RESPONSE.md`
+
+---
+
+**Ready for Q33NR Final Approval (Cycle 2 of 2)**
+
+The task file is now fully compliant with Rule 8 and has accurate subdomain verification instructions. All relative paths have been converted to absolute paths. The bee will now have unambiguous file locations and correct guidance about the subdomain registration step.

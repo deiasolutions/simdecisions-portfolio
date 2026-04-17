@@ -1,0 +1,58 @@
+# BEE RESPONSE: 2026-03-25-TASK-BUG-019-A-PALETTE-TREENODE-MARKER
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260325-1344
+# Task file: 2026-03-25-TASK-BUG-019-A-PALETTE-TREENODE-MARKER.md
+# Success: True
+# Duration: 1210.2s
+# Files modified: 20 (verified)
+# Cost (USD): $1.7101872000000002
+# Turns: 42
+# API duration (ms): 266433
+# Session ID: fbfdf846-b3f4-4af2-bbc2-93636c44fb27
+# Boot injected: True
+
+---
+
+Perfect! Let me create a summary of what was completed:
+
+## Summary
+
+I have successfully completed **TASK-BUG-019-A: Palette and TreeNode Canvas Internal Marker** 
+
+### ✅ Deliverables Completed
+
+1. **Test Files Created (TDD approach)**
+   - `browser/src/primitives/tree-browser/adapters/__tests__/paletteAdapter.canvasInternal.test.ts` (3 tests, all passing)
+   - `browser/src/primitives/tree-browser/__tests__/TreeNodeRow.canvasInternal.test.tsx` (4 tests, all passing)
+
+2. **Code Changes Implemented**
+   - `browser/src/primitives/tree-browser/adapters/paletteAdapter.ts`: Added `canvasInternal: true` to node meta (line 68)
+   - `browser/src/primitives/tree-browser/TreeNodeRow.tsx`: Updated `handleDragStart()` to set `canvas/internal` dataTransfer type and call `stopPropagation()` for canvas-internal drags (lines 70-77)
+
+3. **Test Results**
+   - ✅ paletteAdapter.canvasInternal.test.ts: **3/3 passed**
+   - ✅ TreeNodeRow.canvasInternal.test.tsx: **4/4 passed**
+   - ✅ TreeNodeRow.drag.test.tsx: **6/6 passed** (no regressions)
+   - **Total: 13 tests verified passing**
+
+### Key Implementation Details
+
+- **paletteAdapter.ts**: All palette leaf nodes now have `canvasInternal: true` marker
+- **TreeNodeRow.tsx**: When dragging a canvas-internal node:
+  - Sets `canvas/internal` dataTransfer type via `e.dataTransfer.setData('canvas/internal', 'true')`
+  - Calls `e.stopPropagation()` to prevent shell interception
+  - Preserves existing `application/phase-node` MIME type (unchanged)
+
+### Acceptance Criteria Met
+- [x] paletteAdapter sets canvasInternal: true
+- [x] TreeNodeRow checks node.meta.canvasInternal
+- [x] TreeNodeRow sets canvas/internal dataTransfer type
+- [x] TreeNodeRow calls stopPropagation for canvas drags
+- [x] Drag MIME type unchanged (application/phase-node)
+- [x] All test requirements met (3+ paletteAdapter tests, 4+ TreeNodeRow tests)
+- [x] No regressions in existing tests
+- [x] Non-canvas adapters unaffected
+
+**Response file:** `.deia/hive/responses/20260325-TASK-BUG-019-A-RESPONSE.md` ✅

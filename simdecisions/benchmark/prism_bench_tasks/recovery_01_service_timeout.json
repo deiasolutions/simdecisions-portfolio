@@ -1,0 +1,32 @@
+{
+  "id": "recovery_01_service_timeout",
+  "name": "Service Timeout Recovery",
+  "intent": "Test recovery from service node timeout with fallback path",
+  "phase_ir_version": "1.0.0",
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "primary_service", "type": "service", "name": "Primary Service", "config": {"duration": {"type": "exponential", "params": {"lambda": 0.5}}, "timeout": 5.0}},
+    {"id": "fallback_service", "type": "service", "name": "Fallback Service", "config": {"duration": {"type": "constant", "params": {"value": 1.0}}}},
+    {"id": "success_handler", "type": "service", "name": "Success Handler", "config": {"duration": {"type": "constant", "params": {"value": 0.5}}}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "primary_service", "type": "then"},
+    {"id": "e2", "from_node": "primary_service", "to_node": "success_handler", "type": "then"},
+    {"id": "e3", "from_node": "primary_service", "to_node": "fallback_service", "type": "timeout"},
+    {"id": "e4", "from_node": "fallback_service", "to_node": "success_handler", "type": "then"},
+    {"id": "e5", "from_node": "success_handler", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "recovery",
+    "description": "Primary service with 5s timeout, fallback on timeout",
+    "evaluation_criteria": "Timeout detected, fallback executed, workflow completes successfully",
+    "expected_runtime_seconds": 8,
+    "failure_injection": {
+      "node_id": "primary_service",
+      "failure_type": "timeout",
+      "injection_probability": 0.3,
+      "recovery_path": "fallback_service"
+    }
+  }
+}

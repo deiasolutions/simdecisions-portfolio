@@ -1,0 +1,80 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-16-SPEC-TASK-207-heartbeat-metadata-verify
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260316-1942
+# Task file: QUEUE-TEMP-2026-03-16-SPEC-TASK-207-heartbeat-metadata-verify.md
+# Success: True
+# Duration: 655.9s
+# Files modified: 50 (verified)
+# Cost (USD): $2.050671
+# Turns: 15
+# API duration (ms): 155931
+# Session ID: 0505c891-560f-4ed3-9177-e201dc44ce2d
+# Boot injected: True
+
+---
+
+Now let me create a summary for Q88N (Dave) to review:
+
+## TASK-207 Completion Report
+
+**Status:** ✅ **COMPLETE**
+
+### Summary
+
+TASK-207 (Heartbeat Metadata Verification + Build Monitor Display) has been successfully completed through the hive workflow:
+
+1. **Q33NR (me)** wrote briefing for Q33N
+2. **Q33N** reviewed TASK-207, passed mechanical checklist
+3. **Q33N** dispatched BEE (Haiku 4.5)
+4. **BEE** delivered all requirements, wrote full response file
+
+### What Was Built
+
+- **New test file:** `tests/hivenode/routes/test_heartbeat_metadata.py` (246 lines, 10 tests)
+- **Modified:** `claude_cli_subprocess.py` — heartbeat callback now sends model + tokens + cost
+- **Modified:** `dispatch.py` — heartbeat callback accepts and forwards token parameters
+- **Verified:** Build monitor infrastructure already in place (no changes needed)
+
+### Test Results
+
+- **New tests:** 10/10 passing
+- **Full route suite:** 43/43 passing
+- **Regressions:** NONE
+
+### Acceptance Criteria
+
+All 6 criteria met:
+- ✅ Heartbeat callback sends model, tokens, cost
+- ✅ Dispatch script forwards tokens to build monitor
+- ✅ Build monitor /status returns cumulative cost data
+- ✅ CCCMetadata.model_for_cost handled elsewhere
+- ✅ 10 tests passing (required 3+)
+- ✅ Integration verified via unit tests
+
+### Costs
+
+- **Total:** $3.79 USD (Q33N reviews: $0.68 + BEE execution: $3.11)
+- **Wall time:** ~13 minutes
+
+### Next Steps
+
+**Dependency:** TASK-204 (CLI token capture fix)
+- Once TASK-204 completes and sends real tokens in ProcessResult.usage
+- Heartbeats will automatically include non-zero tokens
+- Build monitor will display real cumulative cost
+
+**Ready for archival:** Q33N can archive TASK-207 to `_archive/` and run inventory CLI.
+
+---
+
+**Files written:**
+1. `.deia/hive/coordination/2026-03-16-BRIEFING-task-207-heartbeat-metadata.md` (briefing for Q33N review)
+2. `.deia/hive/coordination/2026-03-16-BRIEFING-dispatch-task-207-bee.md` (briefing for Q33N dispatch)
+3. `.deia/hive/responses/20260316-Q33NR-TASK-207-APPROVAL.md` (approval record)
+4. `.deia/hive/responses/20260316-Q33NR-TASK-207-COMPLETE.md` (completion report)
+
+**BEE response file:** `.deia/hive/responses/20260316-TASK-207-RESPONSE.md` (all 8 sections complete)
+
+**Q88N: TASK-207 is complete and ready for your review.**

@@ -1,0 +1,76 @@
+# BEE RESPONSE: 2026-03-15-BRIEFING-des-engine-routes
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260315-1101
+# Task file: 2026-03-15-BRIEFING-des-engine-routes.md
+# Success: False
+# Duration: 186.7s
+# Files modified: 3 (verified)
+# Cost (USD): $0
+# Turns: 22
+# API duration (ms): 131278
+# Session ID: 1b1b3bf7-6766-4482-ba37-81c423d03c15
+# Boot injected: True
+
+---
+
+Perfect! Now I'll return this task file to Q33NR for review:
+
+---
+
+## Q33N Report to Q33NR
+
+**Briefing:** `.deia/hive/coordination/2026-03-15-BRIEFING-des-engine-routes.md`
+**Spec:** `.deia/hive/queue/2026-03-15-1005-SPEC-w1-05-des-engine-routes.md`
+
+### Task File Created
+
+**File:** `.deia/hive/tasks/2026-03-15-TASK-146-port-des-engine-routes.md`
+
+### Summary
+
+I've written a comprehensive task file for a Haiku bee to port the DES engine routes from the platform repo. 
+
+**Key findings during research:**
+
+1. **Source located:** Platform file is at `C:\Users\davee\OneDrive\Documents\GitHub\platform\efemera\src\efemera\des\engine_routes.py` (265 lines)
+
+2. **DES engine already ported:** The `engine/des/` directory exists in shiftcenter with all necessary components (engine.py, core.py, replication.py, etc.)
+
+3. **Existing sim routes found:** There's already a `hivenode/routes/sim.py` (487 lines) with MORE advanced endpoints (pause/resume/step/fork/checkpoint/inject). The platform routes are simpler.
+
+4. **Decision made:** Port platform routes to `/api/des` prefix (as-is from platform). This gives us BOTH:
+   - Simple "run-to-completion" API at `/api/des` (4 endpoints: run, validate, replicate, status)
+   - Advanced "interactive control" API at `/sim` (existing 13+ endpoints)
+   - Different use cases, both valuable
+
+### Task File Contents
+
+**Deliverables:**
+- Create `hivenode/routes/des_routes.py` with 4 endpoints
+- Port Pydantic schemas (9 schema classes)
+- Port helper functions (2 converters)
+- Register routes in `__init__.py`
+- Write 15+ tests in `tests/hivenode/test_des_routes.py`
+
+**Test coverage:**
+- All 4 endpoints (run, validate, replicate, status)
+- Edge cases: empty flow, bad edge refs, no source nodes, custom configs
+- Error handling (HTTPException 400)
+
+**Constraints enforced:**
+- TDD (tests first)
+- No stubs
+- Max 500 lines per file
+- Heartbeat every 3 minutes
+- 8-section response file
+
+**Target size:** ~300 lines routes + ~200 lines tests = 500 total (well under limits)
+
+### Ready for Review
+
+Q33NR, please review the task file at:
+`.deia/hive/tasks/2026-03-15-TASK-146-port-des-engine-routes.md`
+
+After your approval, I will dispatch a Haiku bee with this task.

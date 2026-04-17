@@ -1,0 +1,13 @@
+{
+  "templates": [
+    {
+      "id": "sdlc-basic",
+      "name": "Software Development Lifecycle",
+      "description": "Standard SDLC with human gates at Requirements, Design, and Deployment. Implementation and Testing automated by AI agents.",
+      "domain": "software-engineering",
+      "nodeCount": 7,
+      "tags": ["sdlc", "software", "agile", "process"],
+      "file": "sdlc-basic.json"
+    }
+  ]
+}

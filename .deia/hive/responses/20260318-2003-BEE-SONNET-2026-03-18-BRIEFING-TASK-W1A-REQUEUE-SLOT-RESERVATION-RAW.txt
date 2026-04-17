@@ -1,0 +1,63 @@
+# BEE RESPONSE: 2026-03-18-BRIEFING-TASK-W1A-REQUEUE-slot-reservation
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260318-2003
+# Task file: 2026-03-18-BRIEFING-TASK-W1A-REQUEUE-slot-reservation.md
+# Success: True
+# Duration: 77.7s
+# Files modified: 4 (verified)
+# Cost (USD): $0.7684409999999999
+# Turns: 8
+# API duration (ms): 68990
+# Session ID: 340287f5-f45e-4543-b169-ccfd4dd90fa0
+# Boot injected: True
+
+---
+
+Perfect! I've created the task file. Now I'll return this to Q33NR for review before dispatching.
+
+---
+
+## Task File Created: TASK-W1A (Slot Reservation System)
+
+**File:** `.deia/hive/tasks/2026-03-18-TASK-W1A-SLOT-RESERVATION.md`
+
+### Summary
+
+I've written a task file for a **Haiku bee** to implement the slot reservation system in `BuildState`. The task is surgical and well-defined by the 26 existing TDD tests.
+
+### What the bee will implement:
+
+1. **Two attributes:**
+   - `slot_capacity = 10`
+   - `slot_reservations: dict[str, int]` (spec_id → bee_count)
+
+2. **Three methods:**
+   - `reserve_slots(spec_id, bee_count)` — overwrites (not increments), accepts any value, returns status
+   - `release_slots(spec_id, released)` — decrements, caps at 0, removes from dict when 0
+   - `get_slot_status()` — returns capacity/reserved/available/reservations
+
+3. **Persistence:**
+   - Load `slot_reservations` in `_load_from_disk()` (defaults to `{}` if missing)
+   - Save `slot_reservations` in `_save_to_disk()`
+
+### Key behaviors (from tests):
+- Reserving for same spec_id **overwrites** previous value (not increment)
+- Available slots can go negative (no hard rejection)
+- Release caps remaining at 0 (graceful handling)
+- Unknown spec_id on release returns gracefully (no crash)
+- When remaining reaches 0, spec_id is removed from dict
+- All operations persist to disk immediately
+
+### Test coverage:
+- 26 tests fully specify behavior (TDD approach)
+- Tests cover: basic reserve/release, persistence, edge cases (negative, zero, over-capacity), multiple specs
+
+### Constraints met:
+- Build_monitor.py is 568 lines — adding ~50 lines keeps it under 1000 hard limit
+- No stubs allowed
+- All absolute paths provided
+- Clear success criteria
+
+**Ready for Q33NR review.**

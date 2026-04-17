@@ -1,0 +1,39 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-04-13-1119-SPEC-fix-FLAPPY-100-self-learning-v2
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260413-1119
+# Task file: QUEUE-TEMP-2026-04-13-1119-SPEC-fix-FLAPPY-100-self-learning-v2.md
+# Success: False
+# Duration: 148.7s
+# Files modified: 22 (verified)
+# Cost (USD): $2.115633
+# Turns: 21
+# API duration (ms): 135489
+# Session ID: c5d03bc3-f184-49f6-80e4-780bd0d35000
+# Boot injected: True
+
+---
+
+Excellent! All 20 tests pass, including the 6 new tests for role detection. Let me create a summary of the fix:
+
+## Summary
+
+**Root Cause:** The `_detect_role_from_spec()` function in `dispatch_handler.py` did not parse YAML frontmatter and only recognized `## Role Override` (not `## Role`). SPEC-FLAPPY-100 has `role: queen` in its YAML frontmatter, so the function failed to detect it and defaulted to "bee", dispatching the coordination spec to a worker bee instead of Q33N.
+
+**Fix Applied:**
+1. Enhanced `_detect_role_from_spec()` to parse YAML frontmatter `role:` field
+2. Enhanced it to recognize `## Role` section (not just `## Role Override`)
+3. Correct priority order:
+   - `## Role Override` (highest priority)
+   - YAML frontmatter `role:` field
+   - `## Role` section
+   - `## Model Assignment` → defaults to "bee"
+   - No indicators → defaults to "bee"
+
+**Testing:**
+- Added 6 comprehensive tests covering all role detection scenarios
+- All 20 dispatch_handler tests pass
+- Verified fix works with actual FLAPPY-100 spec (correctly detects `queen`)
+
+**Result:** The queue runner will now correctly dispatch SPEC-FLAPPY-100 to Q33N (queen coordinator) instead of to a worker bee. This allows Q33N to create research and build specs and dispatch worker bees as originally intended.

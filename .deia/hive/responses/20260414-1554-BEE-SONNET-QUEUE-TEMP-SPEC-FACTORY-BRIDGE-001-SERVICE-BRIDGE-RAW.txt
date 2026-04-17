@@ -1,0 +1,63 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-FACTORY-BRIDGE-001-service-bridge
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-1554
+# Task file: QUEUE-TEMP-SPEC-FACTORY-BRIDGE-001-service-bridge.md
+# Success: True
+# Duration: 681.7s
+# Files modified: 22 (verified)
+# Cost (USD): $14.053731
+# Turns: 44
+# API duration (ms): 487342
+# Session ID: 05bc757b-5557-4b38-862f-30f0cdee2ce3
+# Boot injected: True
+
+---
+
+Perfect! Let me provide a summary of what was accomplished:
+
+## Summary
+
+I successfully implemented the ServiceBridge system for embedding external daemons in hivenode's lifespan. Here's what was delivered:
+
+### Core Implementation
+
+1. **ServiceBridge Base Class** (`hivenode/service_bridge.py`):
+   - Generic base class for embedding services
+   - Auto-restart with exponential backoff (5s → 10s → 20s → 40s → 60s capped)
+   - Rate limiting: max 5 restarts per 10 minutes
+   - Error notification to `/build/heartbeat` on rate limit
+   - Manual wake() resets rate limit and restarts service
+   - Wake event support for instant notifications
+
+2. **Refactored QueueRunnerBridge**:
+   - Now extends ServiceBridge
+   - Removed duplicate restart logic
+   - Simplified to ~50 lines vs original ~180 lines
+
+3. **New Bridges**:
+   - `SchedulerBridge`: Wraps scheduler daemon
+   - `DispatcherBridge`: Wraps dispatcher daemon
+   - Both use wake_event instead of internal MCP servers
+
+4. **Updated main.py**:
+   - Starts all three bridges on startup
+   - Queue watcher wakes all services on queue events
+   - Proper cleanup on shutdown
+
+### Testing
+
+- **9 comprehensive tests** covering all acceptance criteria
+- All tests pass (18.67s runtime)
+- Tests cover: lifecycle, wake propagation, crash handling, rate limiting, error notification
+
+### Smoke Test
+
+- All three services running and logging properly:
+  - Scheduler: polling every 30s, computing schedules
+  - Dispatcher: polling every 60s, dispatching specs
+  - Queue runner: processing specs, auto-committing results
+- Queue watcher successfully waking all services on events
+
+All acceptance criteria met. The system is production-ready and can easily be extended for future services (scan daemon, triage daemon, etc.).

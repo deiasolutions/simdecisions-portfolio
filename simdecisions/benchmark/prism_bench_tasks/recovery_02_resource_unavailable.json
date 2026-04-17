@@ -1,0 +1,33 @@
+{
+  "id": "recovery_02_resource_unavailable",
+  "name": "Resource Exhaustion Recovery",
+  "intent": "Test recovery when resource pool is exhausted (queue overflow or renege)",
+  "phase_ir_version": "1.0.0",
+  "resources": [
+    {"id": "limited_worker", "type": "human", "capacity": 1, "queue_discipline": "FIFO"}
+  ],
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "request_worker", "type": "service", "name": "Request Worker", "config": {"duration": {"type": "exponential", "params": {"lambda": 0.3}}, "resource": "limited_worker", "renege_timeout": 3.0}},
+    {"id": "alternate_path", "type": "service", "name": "Alternate Automated Path", "config": {"duration": {"type": "constant", "params": {"value": 1.5}}}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "request_worker", "type": "then"},
+    {"id": "e2", "from_node": "request_worker", "to_node": "end", "type": "then"},
+    {"id": "e3", "from_node": "request_worker", "to_node": "alternate_path", "type": "on", "trigger": "renege"},
+    {"id": "e4", "from_node": "alternate_path", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "recovery",
+    "description": "Single-capacity resource with 3s renege timeout, alternate path on abandonment",
+    "evaluation_criteria": "Renege detected when queue wait exceeds timeout, alternate path executed",
+    "expected_runtime_seconds": 10,
+    "failure_injection": {
+      "node_id": "request_worker",
+      "failure_type": "resource_exhaustion",
+      "injection_scenario": "high_load",
+      "recovery_path": "alternate_path"
+    }
+  }
+}

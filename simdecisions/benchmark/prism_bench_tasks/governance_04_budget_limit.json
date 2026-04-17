@@ -1,0 +1,52 @@
+{
+  "id": "governance_04_budget_limit",
+  "name": "Budget Limit Governance",
+  "intent": "Test governance overhead with budget enforcement",
+  "phase_ir_version": "1.0.0",
+  "variables": [
+    {"id": "budget_enforcement", "type": "flag", "default": false},
+    {"id": "spent_amount", "type": "number", "default": 0.0},
+    {"id": "budget_limit", "type": "number", "default": 100.0}
+  ],
+  "resources": [
+    {"id": "expensive_service", "type": "api", "capacity": 5, "cost_per_use": 25.0},
+    {"id": "moderate_service", "type": "api", "capacity": 10, "cost_per_use": 15.0}
+  ],
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "budget_check_1", "type": "decision", "name": "Budget Check Before Step 1", "mode": "exclusive"},
+    {"id": "step1", "type": "service", "name": "Step 1 Processing", "config": {"duration": {"type": "constant", "params": {"value": 1.0}}, "resource": "expensive_service"}},
+    {"id": "budget_check_2", "type": "decision", "name": "Budget Check Before Step 2", "mode": "exclusive"},
+    {"id": "step2", "type": "service", "name": "Step 2 Processing", "config": {"duration": {"type": "constant", "params": {"value": 1.5}}, "resource": "expensive_service"}},
+    {"id": "budget_check_3", "type": "decision", "name": "Budget Check Before Step 3", "mode": "exclusive"},
+    {"id": "step3", "type": "service", "name": "Step 3 Processing", "config": {"duration": {"type": "constant", "params": {"value": 1.2}}, "resource": "moderate_service"}},
+    {"id": "budget_exceeded", "type": "service", "name": "Budget Exceeded Handler", "config": {"duration": {"type": "constant", "params": {"value": 0.5}}}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "budget_check_1", "type": "switch", "guard": "budget_enforcement == true"},
+    {"id": "e2", "from_node": "start", "to_node": "step1", "type": "switch", "guard": "budget_enforcement == false"},
+    {"id": "e3", "from_node": "budget_check_1", "to_node": "step1", "type": "switch", "guard": "spent_amount + 25.0 <= budget_limit"},
+    {"id": "e4", "from_node": "budget_check_1", "to_node": "budget_exceeded", "type": "switch", "guard": "spent_amount + 25.0 > budget_limit"},
+    {"id": "e5", "from_node": "step1", "to_node": "budget_check_2", "type": "switch", "guard": "budget_enforcement == true"},
+    {"id": "e6", "from_node": "step1", "to_node": "step2", "type": "switch", "guard": "budget_enforcement == false"},
+    {"id": "e7", "from_node": "budget_check_2", "to_node": "step2", "type": "switch", "guard": "spent_amount + 25.0 <= budget_limit"},
+    {"id": "e8", "from_node": "budget_check_2", "to_node": "budget_exceeded", "type": "switch", "guard": "spent_amount + 25.0 > budget_limit"},
+    {"id": "e9", "from_node": "step2", "to_node": "budget_check_3", "type": "switch", "guard": "budget_enforcement == true"},
+    {"id": "e10", "from_node": "step2", "to_node": "step3", "type": "switch", "guard": "budget_enforcement == false"},
+    {"id": "e11", "from_node": "budget_check_3", "to_node": "step3", "type": "switch", "guard": "spent_amount + 15.0 <= budget_limit"},
+    {"id": "e12", "from_node": "budget_check_3", "to_node": "budget_exceeded", "type": "switch", "guard": "spent_amount + 15.0 > budget_limit"},
+    {"id": "e13", "from_node": "step3", "to_node": "end", "type": "then"},
+    {"id": "e14", "from_node": "budget_exceeded", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "governance",
+    "description": "3-step workflow with optional budget enforcement checks before each step",
+    "evaluation_criteria": "Budget enforcement correct, exceeded handler triggered when limit reached, ungoverned completes all steps",
+    "expected_runtime_seconds": 6,
+    "governance_mode": {
+      "ungoverned": {"budget_enforcement": false, "expected_time": 3.7, "expected_cost": 65.0},
+      "governed": {"budget_enforcement": true, "expected_time_success": 3.7, "expected_time_exceeded": 2.5, "budget_limit": 100.0}
+    }
+  }
+}

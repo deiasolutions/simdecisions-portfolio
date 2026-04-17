@@ -1,0 +1,40 @@
+{
+  "id": "recovery_03_guard_failure",
+  "name": "Guard Condition Failure Recovery",
+  "intent": "Test recovery when guard condition prevents edge traversal",
+  "phase_ir_version": "1.0.0",
+  "variables": [
+    {"id": "validation_passed", "type": "flag", "default": false},
+    {"id": "retry_count", "type": "counter", "default": 0}
+  ],
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "validate", "type": "service", "name": "Validation Check", "config": {"duration": {"type": "constant", "params": {"value": 0.5}}}},
+    {"id": "primary_path", "type": "service", "name": "Primary Processing", "config": {"duration": {"type": "constant", "params": {"value": 2.0}}}},
+    {"id": "retry_handler", "type": "service", "name": "Retry Handler", "config": {"duration": {"type": "constant", "params": {"value": 1.0}}}},
+    {"id": "escalation", "type": "service", "name": "Escalation Path", "config": {"duration": {"type": "constant", "params": {"value": 1.5}}}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "validate", "type": "then"},
+    {"id": "e2", "from_node": "validate", "to_node": "primary_path", "type": "switch", "guard": "validation_passed == true"},
+    {"id": "e3", "from_node": "validate", "to_node": "retry_handler", "type": "switch", "guard": "validation_passed == false and retry_count < 2"},
+    {"id": "e4", "from_node": "validate", "to_node": "escalation", "type": "switch", "guard": "validation_passed == false and retry_count >= 2"},
+    {"id": "e5", "from_node": "retry_handler", "to_node": "validate", "type": "repeat"},
+    {"id": "e6", "from_node": "primary_path", "to_node": "end", "type": "then"},
+    {"id": "e7", "from_node": "escalation", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "recovery",
+    "description": "Validation guard with retry logic (max 2 retries) before escalation",
+    "evaluation_criteria": "Guard evaluation correct, retry limit enforced, escalation path taken on persistent failure",
+    "expected_runtime_seconds": 7,
+    "failure_injection": {
+      "node_id": "validate",
+      "failure_type": "guard_false",
+      "injection_probability": 0.6,
+      "recovery_path": "retry_handler",
+      "escalation_path": "escalation"
+    }
+  }
+}

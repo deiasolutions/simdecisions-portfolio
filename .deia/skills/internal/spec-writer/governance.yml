@@ -1,0 +1,28 @@
+cert_tier: 3
+promoted_from: null
+promoted_at: null
+promoted_by: null
+
+capabilities:
+  filesystem_read: true
+  filesystem_write: true   # creates spec files in docs/specs/
+  network_access: false
+  shell_exec: false
+  user_data_access: false
+  model_invocation: true   # LLM generates spec content
+  event_ledger_write: true
+
+blast_radius: contained    # spec creation is local to docs/specs/
+
+budget:
+  clock_max_seconds: 600   # 10 minutes for comprehensive spec
+  coin_max_usd: 0.50       # medium LLM usage for design analysis
+  carbon_max_grams: 20.0   # medium carbon class
+
+last_scan:
+  timestamp: null
+  threats_detected: []
+  prompt_injection_risk: none
+  pii_exposure_risk: none
+
+event_ledger_id: null

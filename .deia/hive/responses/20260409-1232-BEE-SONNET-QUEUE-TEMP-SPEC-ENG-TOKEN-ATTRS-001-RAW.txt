@@ -1,0 +1,62 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-ENG-TOKEN-ATTRS-001
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260409-1232
+# Task file: QUEUE-TEMP-SPEC-ENG-TOKEN-ATTRS-001.md
+# Success: True
+# Duration: 367.1s
+# Files modified: 17 (verified)
+# Cost (USD): $6.897276000000001
+# Turns: 29
+# API duration (ms): 305847
+# Session ID: 5518cad3-0d47-4119-9d98-45179679aa65
+# Boot injected: True
+
+---
+
+Excellent! All tests pass. The implementation is complete. Let me create a summary:
+
+---
+
+## Summary
+
+I have successfully completed **SPEC-ENG-TOKEN-ATTRS-001**: Token Attribute Read/Write Access.
+
+### What Was Built
+
+1. **Token Attribute API** (3 methods on SimToken):
+   - `get_attr(key, default=None)` — read attribute
+   - `set_attr(key, value)` — write attribute  
+   - `attrs()` — return copy of all attributes
+
+2. **Executor Context Integration**:
+   - Added `token_attrs` to executor context (read-only snapshot)
+   - Token attributes accessible in every `executor(node, state, ctx)` call
+
+3. **Expression Evaluator Integration**:
+   - Added `token` key to guard expression scope
+   - Decision guards can now use `token.treatment == 'opus_solo'`
+
+4. **Checkpoint/Restore Support**:
+   - Token attributes survive checkpoint/restore cycles
+   - Updated TokenRegistry.get_state() and set_state()
+
+### Test Results
+
+✅ **15/15 tests pass** in `test_token_attrs.py`  
+✅ **All existing engine tests pass** (no regressions)  
+✅ **All smoke tests pass**
+
+### Files Modified
+
+- `engine/des/tokens.py` (+33 lines, 612 total)
+- `engine/des/core.py` (+4 lines)
+- `engine/des/edges.py` (+2 lines)
+- `engine/des/tests/test_token_attrs.py` (NEW, 215 lines)
+
+### Gap Closed
+
+This implementation closes **Gap 2** from the EXP-IR-READINESS survey, enabling experiment workflows to route tokens based on attributes like `treatment`, `run_number`, and `branch`.
+
+The response file has been written to `.deia/hive/responses/20260409-SPEC-ENG-TOKEN-ATTRS-001-RESPONSE.md`.

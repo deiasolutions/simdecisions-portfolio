@@ -1,0 +1,54 @@
+# BEE RESPONSE: 2026-04-05-TASK-SD-FIX-01-dispatcher-filename-match
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260405-2314
+# Task file: 2026-04-05-TASK-SD-FIX-01-dispatcher-filename-match.md
+# Success: True
+# Duration: 182.3s
+# Files modified: 7 (verified)
+# Cost (USD): $0.38385104999999997
+# Turns: 13
+# API duration (ms): 137816
+# Session ID: e736d0ae-6f43-4b40-a74a-88f103c47ce4
+# Boot injected: True
+
+---
+
+## Task Complete ✅
+
+I've successfully fixed the dispatcher's filename prefix matching issue. Here's what was done:
+
+### Summary
+
+**Problem:** The dispatcher was looking for exact filename matches (`SPEC-{task_id}.md`) but actual spec files in backlog/ use descriptive names like `SPEC-MW-S01-command-interpreter.md`, causing "spec_not_found" errors.
+
+**Solution:** Refactored the `_find_spec_file()` method to support three naming conventions with a preference hierarchy:
+1. `SPEC-{ID}.md` (exact match — preferred)
+2. `SPEC-{ID}-{description}.md` (prefix match)
+3. `2026-MM-DD-SPEC-{ID}-{description}.md` (dated prefix match)
+
+### Changes Made
+
+1. **Updated `dispatcher_daemon.py`** (lines 256-325)
+   - Implemented multi-pass matching strategy (exact → prefix → dated)
+   - Added multiple-match detection with warning logs
+   - Preserved case-insensitive behavior
+
+2. **Added 3 comprehensive tests** to `test_dispatcher_daemon.py`
+   - Prefix matching with description
+   - Dated prefix matching
+   - Multiple-match warning behavior
+
+### Test Results
+- **17/17 tests passed** (including 3 new tests)
+- All existing tests still pass (no regressions)
+- All edge cases covered
+
+### Files Modified
+- `hivenode/scheduler/dispatcher_daemon.py` (439 lines)
+- `tests/hivenode/scheduler/test_dispatcher_daemon.py` (621 lines)
+
+Response file written to: `.deia/hive/responses/20260405-TASK-SD-FIX-01-RESPONSE.md`
+
+The dispatcher will now correctly find and dispatch spec files regardless of whether they use short names, descriptive suffixes, or date prefixes.

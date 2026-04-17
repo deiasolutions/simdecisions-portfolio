@@ -1,0 +1,68 @@
+# BEE RESPONSE: 2026-03-14-BRIEFING-start-queue-runner
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260315-0022
+# Task file: 2026-03-14-BRIEFING-start-queue-runner.md
+# Success: True
+# Duration: 855.3s
+# Files modified: 18 (verified)
+# Cost (USD): $0
+# Turns: 22
+# API duration (ms): 119393
+# Session ID: c9f529f6-60b6-4d6b-a8ac-1febea560b77
+# Boot injected: True
+
+---
+
+## Queue Runner Failed — Unicode Encoding Error
+
+**Status:** FAILED
+
+The queue runner crashed when trying to read subprocess output from the dispatched Claude bot. 
+
+### What Happened
+
+✅ Pre-flight checks completed:
+- Hivenode running on port 8420 (healthy)
+- Pending specs identified: BL-126, ra96it
+- Orphaned spec moved to _done/
+
+❌ Queue runner crashed:
+- Started processing BL-126 spec
+- Dispatched Q88NR-bot (sonnet model)
+- Subprocess pipe reader encountered Unicode error
+- Cannot decode byte 0x9d using Windows default encoding (cp1252)
+
+### Root Cause
+
+File: `.deia/hive/scripts/queue/dispatch_handler.py:121`
+
+The `subprocess.Popen` call uses `text=True` without explicit encoding, defaulting to cp1252 on Windows. Claude's output contains UTF-8 characters that cp1252 cannot decode.
+
+### Fix Needed
+
+Add one line to the Popen call:
+```python
+proc = subprocess.Popen(
+    cmd,
+    stdout=subprocess.PIPE,
+    stderr=subprocess.PIPE,
+    text=True,
+    encoding='utf-8',  # ← ADD THIS
+    cwd=str(self.repo_root),
+)
+```
+
+### Next Steps
+
+As Q33NR, I cannot make code changes without your explicit approval (HIVE.md rule #2). 
+
+**Options:**
+1. I make the one-line fix directly (Q33NR-emergency override)
+2. I write a task file and dispatch a bee to fix it
+3. You make the fix manually
+
+The queue remains paused. Both specs (BL-126 and ra96it) are still pending.
+
+Response file written to: `.deia/hive/responses/20260315-BRIEFING-start-queue-runner-RESPONSE.md`

@@ -1,0 +1,59 @@
+# BEE RESPONSE: 2026-03-15-BRIEFING-rebuild-batch-03
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260315-2236
+# Task file: 2026-03-15-BRIEFING-rebuild-batch-03.md
+# Success: True
+# Duration: 182.1s
+# Files modified: 13 (verified)
+# Cost (USD): $0
+# Turns: 15
+# API duration (ms): 176881
+# Session ID: e7af5e36-bc9c-49e4-bd59-84f4d2a84b63
+# Boot injected: True
+
+---
+
+Perfect! Now let me provide a summary to Q33NR:
+
+---
+
+## ✅ Rebuild Batch 03 Task Files Complete — Ready for Q33NR Review
+
+**Q33N reporting:** I have completed task file preparation for rebuild batch 03. All files written and ready for your review.
+
+### What Was Delivered
+
+**2 New Rebuild Task Files:**
+1. **TASK-R11** (P0.55, Sonnet) — Wire canvas route target in terminal
+   - Restores `routeTarget='canvas'` functionality lost in git reset
+   - 73-line handler code block provided (copy-paste ready from TASK-166 response)
+   - Test file survived reset (10 tests already exist)
+   - File: `.deia/hive/tasks/2026-03-15-TASK-R11-wire-canvas-route-target.md`
+
+2. **TASK-R12** (P0.60, Haiku) — RAG indexer E2E verification
+   - Runs full RAG test suite after batch 1+2 rebuilds complete
+   - Target: 130+ core tests passing (scanner, storage, embedder, indexer, sync, models)
+   - Depends on: R02-R06, R09 (all batch 1+2 tasks)
+   - File: `.deia/hive/tasks/2026-03-15-TASK-R12-rag-indexer-e2e-verify.md`
+
+**4 Existing Task Files Identified:**
+- TASK-147 (P0.65, Haiku) — Port animation test suite ✅ EXISTS
+- TASK-148 (P0.70, Haiku) — Fix animation colors (depends on 147) ✅ EXISTS
+- TASK-159 (P0.75, Haiku) — Port entity archetypes ✅ EXISTS
+- TASK-160 (P0.80, Sonnet) — Port entity updates (depends on 159) ✅ EXISTS
+
+### Recommended Dispatch Order
+
+**Parallel batch 1:** R11, R12, TASK-147, TASK-159 (independent)  
+**Sequential batch 2:** TASK-148 (after 147), TASK-160 (after 159)
+
+**Total:** 6 bees (2 Sonnet, 4 Haiku)
+
+### Files Created
+- `.deia/hive/tasks/2026-03-15-TASK-R11-wire-canvas-route-target.md`
+- `.deia/hive/tasks/2026-03-15-TASK-R12-rag-indexer-e2e-verify.md`
+- `.deia/hive/responses/20260315-BRIEFING-rebuild-batch-03-COORDINATION-REPORT.md`
+
+**Standing by for your review and approval to dispatch.** Please review the two new task files for completeness, then green-light bee dispatch.

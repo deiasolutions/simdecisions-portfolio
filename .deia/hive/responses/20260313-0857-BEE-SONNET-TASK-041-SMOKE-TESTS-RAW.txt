@@ -1,0 +1,43 @@
+# BEE RESPONSE: TASK-041-smoke-tests
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260313-0857
+# Task file: TASK-041-smoke-tests.md
+# Success: True
+# Duration: 695.5s
+# Files modified: 12 (verified)
+# Cost (USD): $0
+# Turns: 57
+# API duration (ms): 478237
+# Session ID: 926a2786-093f-4f82-aab3-6f64514415d8
+# Boot injected: True
+
+---
+
+Perfect! All smoke tests are complete and passing. Let me create a summary of what was delivered:
+
+## Summary
+
+I've successfully completed **TASK-041: Smoke Tests** with all tests passing:
+
+### Backend Smoke Tests (15 tests) ✅
+Located in `tests/hivenode/test_smoke.py`:
+- **Health + Status (2 tests)**: Verify `/health` and `/status` endpoints
+- **Storage round-trip (3 tests)**: Write → Read, List, Stat operations
+- **Ledger integration (3 tests)**: Event logging, querying, filtering
+- **Shell exec (2 tests)**: Allowed and denied command execution
+- **Sync routes (2 tests)**: Status check and sync triggering
+- **Volumes + Node (3 tests)**: Volume listing, node status, full integration flow
+
+### Browser Smoke Tests (10 tests) ✅
+Located in `browser/src/__tests__/smoke.test.tsx`:
+- **Chat persistence (3 tests)**: Markdown serialization, updates, dual-write
+- **Shell parser (3 tests)**: Command detection, chat routing, mode switching  
+- **Relay bus (2 tests)**: Event publishing and handling
+- **Markdown round-trip (2 tests)**: Serialization/parsing, metadata preservation
+
+### Bug Fixed
+- Fixed `hivenode/main.py:91` - SyncQueue was being initialized with incorrect parameter
+
+All tests exercise **real integration paths** with minimal mocking, providing confidence that major flows work correctly across all 4 waves of SPEC-HIVENODE-E2E-001.

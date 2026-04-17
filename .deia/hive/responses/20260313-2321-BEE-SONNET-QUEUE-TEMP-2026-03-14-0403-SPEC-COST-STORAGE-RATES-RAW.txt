@@ -1,0 +1,79 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-14-0403-SPEC-cost-storage-rates
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260313-2321
+# Task file: QUEUE-TEMP-2026-03-14-0403-SPEC-cost-storage-rates.md
+# Success: True
+# Duration: 93.0s
+# Files modified: 1 (verified)
+# Cost (USD): $0
+# Turns: 17
+# API duration (ms): 90375
+# Session ID: 2ea3107f-c99e-44dd-949b-54c55c4d710d
+# Boot injected: True
+
+---
+
+Now let me create a summary of the task file for Q33NR/queue runner review:
+
+---
+
+## Q33N Task File Submission
+
+I have created **1 task file** for SPEC: BL-085 Cost Storage Format + Model Rate Lookup Table.
+
+### Task File Created
+
+**TASK-085: Cost Storage Format + Model Rate Lookup Table**
+- **File:** `.deia\hive\tasks\2026-03-14-TASK-085-rate-lookup-table.md`
+- **Model Assignment:** haiku
+- **Estimated Size:** Medium (multi-file, database schema + API)
+
+### Deliverables Summary
+
+The task implements:
+1. **New `model_rates` table** — stores per-million-token costs with effective dates
+2. **Schema migration** — adds 4 columns to events table: `cost_per_mtok_input`, `cost_per_mtok_output`, `model_name`, `rate_effective_date`
+3. **Seed data** — pre-populates rates for 6 models (4 Claude, 2 GPT)
+4. **Dynamic rate lookup** — `cost.py` reads from table instead of hardcoded dict
+5. **Staleness check** — warns when rates > 30 days old
+6. **Cost reporter module** — new `ledger/cost_reporter.py` with aggregation function
+7. **GET /ledger/cost endpoint** — returns tokens_up/down, cost_up/down_usd, by_model breakdown
+8. **Scientific notation** — SQLite REAL type handles precision natively
+
+### Files Modified (Estimated)
+- `hivenode\ledger\schema.py` — add model_rates table, migrate events table
+- `hivenode\ledger\writer.py` — accept 4 new parameters in write_event()
+- `hivenode\llm\cost.py` — read from model_rates table, add staleness_check()
+- `hivenode\ledger\cost_reporter.py` — NEW FILE
+- `hivenode\routes\ledger.py` — NEW FILE (or modify if exists)
+- `tests\hivenode\llm\test_cost.py` — update existing tests
+- `tests\hivenode\ledger\test_cost_reporter.py` — NEW FILE
+- `tests\hivenode\test_ledger_routes.py` — add GET /ledger/cost tests
+
+### Test Requirements
+- **Minimum 8 tests** per acceptance criteria
+- **TDD approach** — tests first, then implementation
+- **Edge cases covered:**
+  - Fresh database seeding
+  - Existing database preservation
+  - Zero events handling
+  - Missing model_name (old events)
+  - Staleness warnings
+  - API schema validation
+  - Model aggregation accuracy
+  - Unknown model fallback
+  - Scientific notation precision
+
+### Constraints Met
+- ✅ No file over 500 lines (modularized: schema, writer, cost, reporter, routes)
+- ✅ All file paths absolute
+- ✅ No stubs allowed
+- ✅ Backward compatibility (nullable columns, no breaking changes)
+- ✅ Three currencies tracked (CLOCK, COIN, CARBON)
+
+### Ready for Review
+This task file is ready for Q33NR/queue runner approval. Once approved, I will dispatch a Haiku bee with this task.
+
+**Awaiting approval to proceed with dispatch.**

@@ -1,0 +1,60 @@
+# BEE RESPONSE: 2026-03-12-TASK-025A-WIRE-PROCESS-SPEC
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260312-0902
+# Task file: 2026-03-12-TASK-025A-WIRE-PROCESS-SPEC.md
+# Success: True
+# Duration: 424.4s
+# Files modified: 8 (verified)
+# Cost (USD): $0
+# Turns: 36
+# API duration (ms): 405479
+# Session ID: b39f6438-b040-4ef4-b8c2-9afb090fbb51
+# Boot injected: True
+
+---
+
+Excellent! Let me provide a final summary:
+
+## Summary
+
+I've successfully completed **TASK-025A: Wire process_spec() to Real Dispatch Integration**.
+
+### What Was Accomplished
+
+✅ **Replaced the stub `process_spec()` function** (lines 165-245 in run_queue.py) with real dispatch.py integration via subprocess
+
+✅ **Created `DispatchHandler` class** in `dispatch_handler.py` (198 lines) to encapsulate all dispatch logic:
+- Loads regent-bot-prompt.md from config
+- Merges regent prompt with spec content
+- Creates temporary task files in .deia/hive/tasks/
+- Calls dispatch.py via subprocess with correct flags: `--model`, `--role queen`, `--inject-boot`, `--timeout 1800`
+- Parses response files to extract cost, duration, and success status
+- Cleans up temporary files after dispatch
+
+✅ **Implemented comprehensive error handling** for all failure modes:
+- Missing regent prompt → NEEDS_DAVE
+- Spec read failures → NEEDS_DAVE
+- Subprocess timeouts → NEEDS_DAVE with error details
+- Non-zero exit codes → NEEDS_DAVE with stderr captured
+- Missing response files → NEEDS_DAVE
+- Malformed response headers → graceful degradation with defaults
+
+✅ **Returns actual metrics** from dispatch.py response files:
+- status="CLEAN" when success=True
+- status="NEEDS_DAVE" when success=False (fix cycle logic deferred to TASK-025B)
+- cost_usd extracted from response header
+- duration_ms extracted and converted from seconds
+
+✅ **Modularized to meet line count constraint**: run_queue.py now 541 lines (with dispatch logic extracted to 198-line helper module)
+
+### Test Results
+
+**All 105 queue tests pass** (11 new tests added):
+- test_run_queue_dispatch.py: 11/11 ✅ (all new dispatch integration tests)
+- All pre-existing tests still pass with zero regressions
+
+### Next Steps
+
+Ready for **TASK-025B**: Implement fix cycle logic to generate fix specs and re-queue when dispatch reports success=False.

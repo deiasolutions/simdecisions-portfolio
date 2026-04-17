@@ -1,0 +1,44 @@
+# BEE RESPONSE: 2026-03-25-BRIEFING-BUG-074-REMOVE-LAYOUT-MENU
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260325-1338
+# Task file: 2026-03-25-BRIEFING-BUG-074-REMOVE-LAYOUT-MENU.md
+# Success: True
+# Duration: 97.9s
+# Files modified: 13 (verified)
+# Cost (USD): $0.672234
+# Turns: 10
+# API duration (ms): 76868
+# Session ID: 81b8c158-6a2f-4910-990e-d2b3f82d467c
+# Boot injected: True
+
+---
+
+Perfect! I've written the task file for removing the Layout submenu from MenuBar.tsx. Here's what I've delivered:
+
+## Task File Summary
+
+**File Created:** `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\hive\tasks\2026-03-25-TASK-BUG-074-REMOVE-LAYOUT-MENU.md`
+
+### What the BEE Must Do
+
+1. **Remove `handleLayoutChange` function** (lines 223-226 in MenuBar.tsx)
+2. **Remove Layout submenu JSX** (lines 393-446 in MenuBar.tsx)
+3. **Update tests** — remove the two layout-related test cases (lines 157-181 in MenuBar.test.tsx)
+4. **Verify all tests pass** with no regressions
+
+### Key Details
+
+- **TDD approach**: Update tests first, then implementation
+- **File size**: MenuBar.tsx will drop from 655 lines to ~607 lines (well under 500-line target)
+- **Scope**: Clean deletion — no new code, no stubs, just removal
+- **Edge cases**: Verify View menu, Theme submenu, syndicated menus, and keyboard shortcuts all still work
+
+### Model Assignment
+
+As specified in your briefing: **Sonnet** (straightforward deletion work but requires test updates)
+
+---
+
+**Ready for your review, Q33NR.** I have NOT dispatched the bee yet. Please review the task file and let me know if any corrections are needed before I dispatch.

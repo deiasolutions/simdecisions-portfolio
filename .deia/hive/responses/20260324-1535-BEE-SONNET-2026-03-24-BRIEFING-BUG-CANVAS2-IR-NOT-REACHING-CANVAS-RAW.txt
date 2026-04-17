@@ -1,0 +1,38 @@
+# BEE RESPONSE: 2026-03-24-BRIEFING-BUG-CANVAS2-IR-NOT-REACHING-CANVAS
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260324-1535
+# Task file: 2026-03-24-BRIEFING-BUG-CANVAS2-IR-NOT-REACHING-CANVAS.md
+# Success: True
+# Duration: 315.8s
+# Files modified: 26 (verified)
+# Cost (USD): $4.322328000000001
+# Turns: 25
+# API duration (ms): 303976
+# Session ID: acfd5da6-0ec2-462e-8edf-2bb82877fe8f
+# Boot injected: True
+
+---
+
+Perfect! Now let me create a summary for Q33NR:
+
+## Summary for Q33NR
+
+I've completed the diagnosis of BUG-058 (canvas2 IR pipeline not working). Here's what I found:
+
+**Root Cause:**
+The canvas2 EGG prompt block instructs the LLM to return bare JSON mutation arrays `[{...}]`, but `terminalResponseRouter.ts` expects envelope format `{ to_user: "...", to_ir: [...] }`. Without the envelope format, the router treats the response as plain text, sends it to `to_user` only, and the `to_ir` slot never gets populated. FlowDesigner never receives the `terminal:ir-deposit` event.
+
+**Architecture Review:**
+- ✓ FlowDesigner subscribes to `terminal:ir-deposit` correctly
+- ✓ Terminal routes envelope slots correctly via `routeEnvelope()`
+- ✓ PaneId routing is correct (`to_ir: "canvas-editor"` matches FlowDesigner's paneId)
+- ✗ **Prompt format is wrong** — instructs LLM to return bare arrays, not envelopes
+
+**Files Created:**
+1. **Response file:** `.deia/hive/responses/20260324-QUEEN-2026-03-24-BRIEFING-BUG-CANVAS-RESPONSE.md` — full diagnosis
+2. **Task file (updated):** `.deia/hive/tasks/2026-03-24-TASK-BUG-058-CANVAS-IR-HANDLER.md` — fix strategy with prompt template
+
+**Next Steps:**
+Ready for your approval to dispatch BEE-SONNET on TASK-BUG-058 to fix the prompt blocks in both canvas and canvas2 EGGs and add a regression test.

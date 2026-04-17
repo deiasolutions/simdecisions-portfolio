@@ -1,0 +1,45 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-KB-001B-keyboard-infrastructure-wiring
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260328-1824
+# Task file: QUEUE-TEMP-SPEC-KB-001B-keyboard-infrastructure-wiring.md
+# Success: True
+# Duration: 348.0s
+# Files modified: 9 (verified)
+# Cost (USD): $5.531751000000001
+# Turns: 36
+# API duration (ms): 295265
+# Session ID: 0c2852f6-28bd-4e34-836b-746d8b7a3dc1
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Let me create a summary:
+
+## Summary
+
+I've successfully completed **SPEC-KB-001B: SC Keyboard Infrastructure Wiring**. The keyboard primitive is now fully integrated into ShiftCenter's infrastructure:
+
+### ✅ Delivered
+
+1. **Bus Emission Hook** (`useKeyboardBus.ts`) — 5 emitters for keystrokes, buffer submit, RTD telemetry, command palette, and escape protocol
+2. **Theme Subscription Hook** (`useKeyboardTheme.ts`) — Automatic dark/light mode switching, theme accent colors, high contrast support
+3. **SCKeyboard Component Wiring** — All console.log stubs replaced with real bus emissions, theme system integrated
+4. **Fn Layer RTD** — Fn lock/unlock emits telemetry events
+5. **APP_REGISTRY Update** — Bus patterns registered (`keystroke`, `buffer:submit`, `keyboard:*`)
+6. **Tests** — 22 tests covering all bus emissions, theme subscription, and edge cases
+
+### ✅ Test Results
+- **22/22 tests pass** (10 bus tests + 12 theme tests)
+- **Build passes** with zero errors (24.32s)
+
+### ✅ Key Features
+- Every keypress emits to relay_bus with modifiers (shift, ctrl, alt, fn, meta_8os)
+- RTD events fire on state change (orientation, Fn lock, brightness, accent, sound)
+- Theme system controls glass vs backlit rendering automatically (no toggles)
+- High contrast mode forces max brightness
+- Null-safe: works without bus
+- User accent override (Fn+F3) takes precedence over theme
+
+All acceptance criteria met. Ready for Wave C (gestures, menu, minimization).

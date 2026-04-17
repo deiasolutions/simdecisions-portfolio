@@ -1,0 +1,58 @@
+# BEE RESPONSE: 2026-03-13-TASK-068-build-monitor-backend-role-buffering
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260314-1027
+# Task file: 2026-03-13-TASK-068-build-monitor-backend-role-buffering.md
+# Success: True
+# Duration: 187.5s
+# Files modified: 78 (verified)
+# Cost (USD): $0
+# Turns: 43
+# API duration (ms): 178942
+# Session ID: 07ae3b26-d84f-4494-89ac-ada835c8c575
+# Boot injected: True
+
+---
+
+Perfect! All tests pass. Let me create a quick summary of the changes:
+
+## Summary
+
+I have successfully completed **TASK-068: Build Monitor Backend — Role Labels + Python Buffering**.
+
+### Changes Made:
+
+#### 1. **Role Field Implementation** (hivenode/routes/build_monitor.py)
+- Added `role: Optional[str] = None` field to `HeartbeatPayload` schema
+- Updated `BuildState.record_heartbeat()` to store role in task state
+- Role is optional for backward compatibility with legacy heartbeats
+
+#### 2. **Dispatch Role Codes** (.deia/hive/scripts/dispatch/dispatch.py)
+- Updated `send_heartbeat()` signature to accept `role` parameter
+- Modified `dispatch_bee()` to pass:
+  - `role="B"` for bee dispatches
+  - `role="Q"` for queen dispatches
+  - Applies to all three heartbeat calls: initial "dispatched", mid-build callbacks, and completion heartbeats
+
+#### 3. **Python Buffering Fix**
+- Added `flush=True` to **all 13 print statements** in `spec_processor.py`
+- Added `flush=True` to watchdog print in `dispatch_handler.py`
+- `run_queue.py` already had `flush=True` on all prints
+- Ensures immediate stdout output without buffering delays
+
+#### 4. **Comprehensive Tests** (tests/hivenode/test_build_monitor.py)
+- `test_heartbeat_with_role_storage` — verifies role stored in task state ✅
+- `test_heartbeat_without_role` — verifies legacy heartbeats work ✅
+- `test_role_passthrough_in_status` — verifies role in GET /status ✅
+- `test_role_field_with_qr_code` — verifies queue runner role code ✅
+- `test_role_updates_on_new_heartbeat` — verifies role updates ✅
+
+### Test Results:
+**15/15 tests PASSED** (5 new role tests + 10 regression tests)
+
+### Deliverables Met:
+✅ All acceptance criteria completed
+✅ Role field is optional and backward-compatible
+✅ Python buffering fix applied throughout queue scripts
+✅ Response file created: `.deia/hive/responses/20260314-TASK-068-RESPONSE.md`

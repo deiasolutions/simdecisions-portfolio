@@ -1,0 +1,82 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-BUG-028-EFEMERA-CHANNELS
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260325-1335
+# Task file: QUEUE-TEMP-SPEC-BUG-028-EFEMERA-CHANNELS.md
+# Success: True
+# Duration: 3877.6s
+# Files modified: 77 (verified)
+# Cost (USD): $6.026324999999999
+# Turns: 38
+# API duration (ms): 303655
+# Session ID: d551bb8d-4dfc-4550-8a9b-9b8b3d2c7d90
+# Boot injected: True
+
+---
+
+The bee has been running for over 15 minutes. This is taking too long. Let me report the current status to Q88N (Dave).
+
+---
+
+## Q33NR Status Report: SPEC-BUG-028
+
+**Date:** 2026-03-25 14:02
+**Regent:** REGENT-QUEUE-TEMP-SPEC-BUG-028-EFEMER
+**Status:** IN PROGRESS (BEE TIMEOUT LIKELY)
+
+### Summary
+
+SPEC-BUG-028 (Efemera Channels Not Wired) processing has encountered a delay. The implementation is correct — the bug was already fixed. However, regression tests are failing and the bee dispatched to fix them has been running for 15+ minutes without completion.
+
+### Current State
+
+1. **Implementation:** ✅ COMPLETE — `treeBrowserAdapter.tsx:275-289` correctly emits `channel:selected` events
+2. **Regression tests:** ❌ FAILING — 3 of 5 tests failing
+3. **Fix bee (bf5b5a3):** ⏱️ RUNNING 15+ minutes (likely hung or struggling)
+
+### Test Failures
+
+```
+Test Files  1 failed (1)
+      Tests  3 failed | 2 passed (5)
+```
+
+**Failing tests:**
+1. "clicking a channel fires channel:selected bus event" — can't find `generalNode` 
+2. "non-channel tree-browser adapters do NOT send channel:selected" — improved but still failing
+3. "channel:selected event includes nonce and timestamp" — can't find event
+
+**Root cause:** Tests can't locate channel nodes in the tree. Channels are grouped under "Pinned"/"Channels"/"DMs" sections, but tests search flat tree structure.
+
+### Work Completed
+
+- ✅ Briefing written: `.deia/hive/coordination/2026-03-25-BRIEFING-BUG-028-FIX-TESTS.md`
+- ✅ Q33N dispatched: Completed in 234.7s, cost $1.71
+- ✅ Task file approved: `2026-03-25-TASK-BUG-028-FIX-TESTS.md`
+- ✅ Bee dispatched: bf5b5a3 (Sonnet, running 15+ mins)
+- ⏱️ Bee response: PENDING (no response file yet)
+
+### Next Steps (Awaiting Q88N Direction)
+
+**Option 1: Wait longer** — Give bee more time (risk: already at 15+ mins)
+
+**Option 2: Kill and restart** — Stop bf5b5a3, dispatch fresh bee with clearer instructions
+
+**Option 3: Direct fix** — Q33NR fixes tests directly (requires Q88N approval per Rule 2)
+
+**Option 4: Accept partial** — Mark implementation COMPLETE, defer test fixes to backlog
+
+### Recommendation
+
+**Option 2 (Kill and restart)** — The bee has had sufficient time. A fresh dispatch with more specific instructions about the grouped tree structure will likely resolve faster.
+
+### Costs
+
+- Q33N dispatch: $1.71
+- Bee bf5b5a3: Running (cost accumulating)
+- Total so far: ~$3-5 (estimated)
+
+---
+
+**Awaiting Q88N direction on how to proceed.**

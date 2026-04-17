@@ -1,0 +1,52 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-WAVE0-B-qa-dispatch-logic
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-1655
+# Task file: QUEUE-TEMP-SPEC-WAVE0-B-qa-dispatch-logic.md
+# Success: True
+# Duration: 41.0s
+# Files modified: 4 (verified)
+# Cost (USD): $0.5940270000000001
+# Turns: 5
+# API duration (ms): 29456
+# Session ID: 7ce5faa5-2a38-413c-a1a3-b7094a90837f
+# Boot injected: True
+
+---
+
+Good. Now let me present my plan to implement the QA bee dispatch logic:
+
+## Implementation Plan
+
+Based on the spec and existing code, I need to:
+
+### 1. **Create QA dispatch trigger in `run_queue.py`**
+   - Add check for IMPL doc existence after task completion
+   - Emit `qa_review_needed` event when IMPL exists
+   - Move task to `_code_complete/` directory
+   - Log warning when IMPL missing
+
+### 2. **Create `.deia/logs/` directory and initialize `qa_review_log.jsonl`**
+   - Create logs directory if missing
+   - Initialize empty qa_review_log.jsonl file
+
+### 3. **Create QA bee template at `.deia/hive/templates/QA-BEE-TEMPLATE.md`**
+   - Create templates directory
+   - Write complete QA bee task template with:
+     - Input file paths (SPEC, IMPL, code diff)
+     - Checklist (frontmatter, deltas, decisions, currencies, verification)
+     - Output format (qa_review_log.jsonl entry)
+
+### 4. **Add helper function to emit QA events**
+   - Create function to write to qa_review_log.jsonl
+   - Integrate into result handling flow
+
+### 5. **Write tests**
+   - Test: IMPL present → task moves to _code_complete/, event emitted
+   - Test: IMPL missing → warning logged, task completes normally
+   - Test: qa_review_log.jsonl written correctly
+
+This is an additive change - existing behavior unchanged unless IMPL doc exists. The IMPL doc check is optional (warns but doesn't block).
+
+**Ready to proceed?**

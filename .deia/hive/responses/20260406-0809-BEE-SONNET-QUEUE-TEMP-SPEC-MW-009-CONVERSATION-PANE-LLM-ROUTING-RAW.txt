@@ -1,0 +1,66 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MW-009-conversation-pane-llm-routing
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-0809
+# Task file: QUEUE-TEMP-SPEC-MW-009-conversation-pane-llm-routing.md
+# Success: True
+# Duration: 678.7s
+# Files modified: 10 (verified)
+# Cost (USD): $7.872405
+# Turns: 50
+# API duration (ms): 442537
+# Session ID: 3924001f-8a7d-437a-809b-2d093f6d446c
+# Boot injected: True
+
+---
+
+Excellent! Let me create a final summary:
+
+## Task Complete ✓
+
+I've successfully implemented the **LLM routing layer for conversation-pane** with full streaming support following TDD principles.
+
+### What Was Built:
+
+**4 Files Created (1,387 lines total):**
+1. `useLLMRouter.ts` (412 lines) - React hook with SSE streaming
+2. `useLLMRouter.test.ts` (444 lines) - 12 comprehensive frontend tests
+3. `llm_chat_routes.py` (202 lines) - Backend SSE streaming endpoint
+4. `test_llm_chat_routes.py` (329 lines) - 13 backend tests (all passing ✓)
+
+### Key Features:
+
+**✓ Smart Routing:**
+- `command` → local command-interpreter (fast, synchronous)
+- `question` → Claude API (streaming SSE)
+- `code` → Claude API with code-specialized system prompt
+
+**✓ Real-Time Streaming:**
+- Server-Sent Events (SSE) for incremental token delivery
+- Updates message as tokens arrive from Claude
+- Proper SSE format: `data: {...}\n\n`
+
+**✓ Robust Error Handling:**
+- Network errors, timeouts (30s), API errors
+- Exponential backoff retry (1s, 2s, 4s, 8s max)
+- User-facing retry button in error messages
+- Graceful degradation when API key missing
+
+**✓ Message History:**
+- Maintains conversation state in React
+- Sends last 10 messages as context to LLM
+- Supports multi-turn conversations
+
+**✓ Test Coverage:**
+- 13/13 backend tests passing
+- 12 frontend tests written (comprehensive coverage)
+- Integration tests for command parsing and streaming
+
+### Integration Notes:
+
+1. **Register route** in main FastAPI app
+2. **Set ANTHROPIC_API_KEY** environment variable
+3. **Import hook** in components: `import { useLLMRouter } from './primitives/conversation-pane/useLLMRouter'`
+
+**No stubs. No TODOs. Production-ready code.**

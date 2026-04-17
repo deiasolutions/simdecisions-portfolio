@@ -1,0 +1,25 @@
+v0.1.0-cutover — initial repository import
+
+First commit of simdecisions as a standalone git repository. This is
+the state at the end of Phase 1 cutover from shiftcenter: code moved
+into the packages/ monorepo, 3698 tests collected, 402 factory tasks
+lifetime on the cutover instance.
+
+Phase 1 shipped with known debt (documented in
+.deia/hive/responses/20260411-CUTOVER-COMPLETE.md):
+
+  - project-root and git-root discovery still hardcoded
+  - 4 scheduler daemons not yet consolidated into factory/ package
+  - Railway + Vercel deploy wiring unverified
+  - 37 pytest collection errors dismissed as pre-existing
+  - production/engine/ was not copied from shiftcenter (gap found
+    post-cutover; episode data present, engine code missing)
+
+This tag exists so Phase 2 has a rollback point. Phase 2 scope is
+defined in .deia/hive/coordination/2026-04-10-BRIEFING-cutover-phase-2-prereqs.md
+and will rename this tree to simdecisions-1 and build a new
+simdecisions from a clean scaffold with all upgrades applied.
+
+Factory runtime state (logs, jsonl event streams, SQLite ledgers,
+render output) is gitignored — only source, specs, hive history,
+and episode metadata are tracked.

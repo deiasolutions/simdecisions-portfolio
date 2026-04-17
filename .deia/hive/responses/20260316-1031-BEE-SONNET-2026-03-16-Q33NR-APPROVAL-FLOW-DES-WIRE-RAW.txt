@@ -1,0 +1,102 @@
+# BEE RESPONSE: 2026-03-16-Q33NR-APPROVAL-flow-des-wire
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260316-1031
+# Task file: 2026-03-16-Q33NR-APPROVAL-flow-des-wire.md
+# Success: True
+# Duration: 263.1s
+# Files modified: 21 (verified)
+# Cost (USD): $0
+# Turns: 10
+# API duration (ms): 260155
+# Session ID: c46a0856-566e-40f2-9df5-8e85eb42d3ab
+# Boot injected: True
+
+---
+
+# Task Files Ready for Review — Flow Designer to DES Wire
+
+**From:** Q33N  
+**To:** Q33NR  
+**Date:** 2026-03-16  
+**Status:** TASK FILES READY FOR FINAL REVIEW
+
+---
+
+## Summary
+
+I have written **3 task files** per your approval, incorporating all corrections and requirements from your review:
+
+1. **TASK-174:** Backend DES Client Service (~45 min, 8-10 tests)
+2. **TASK-175:** Wire useSimulation to Backend (~90 min, 10-12 tests)
+3. **TASK-176:** E2E Integration Test (~30 min, 3-5 tests)
+
+**Total:** ~3 hours, 21-27 new tests  
+**Model:** Sonnet for all 3 tasks  
+**Priority:** P1.00
+
+---
+
+## All Required Corrections Applied
+
+✅ **API Endpoint:** `/api/des/run` (not `/sim/start` from spec)  
+✅ **Acceptance Criteria:** "Simulate mode trigger calls `/api/des/run`" (not "Run button")  
+✅ **File Claims:** All 3 task files have claim/release instructions with task IDs  
+✅ **Heartbeat:** All 3 task files have heartbeat sections with JSON examples  
+✅ **Response Template:** All 3 task files have complete 8-section template  
+✅ **Absolute Paths:** All file paths use Windows absolute format  
+✅ **CSS Rule:** Explicitly stated in constraints (N/A — no CSS changes)  
+✅ **No Stubs Rule:** Explicitly stated in all task files  
+✅ **Q33NR Decisions:**
+   - Use sync API (not streaming)
+   - Fall back to LocalDESEngine if backend unavailable
+   - Wire existing "Simulate" mode trigger (no new Run button)
+
+---
+
+## Task Files Created
+
+1. `.deia/hive/tasks/2026-03-16-TASK-174-des-backend-client.md`
+2. `.deia/hive/tasks/2026-03-16-TASK-175-wire-simulation-backend.md`
+3. `.deia/hive/tasks/2026-03-16-TASK-176-des-integration-e2e.md`
+
+**Detailed report:** `.deia/hive/responses/20260316-Q33N-TASK-FILES-READY-flow-des-wire.md`
+
+---
+
+## File Size Verification
+
+| File | Lines | Status |
+|------|-------|--------|
+| `desClient.ts` | ~150 | ✅ Under 500 |
+| `desClient.test.ts` | ~200 | ✅ Under 500 |
+| `useSimulation.ts` | 381 → ~450 | ✅ Under 500 |
+| `useSimulation.test.ts` | ~250 | ✅ Under 500 |
+| `e2e-backend-sim.test.tsx` | ~100 | ✅ Under 500 |
+
+**All files under 500 line limit.**
+
+---
+
+## Dispatch Dependency Chain
+
+```
+TASK-174 (desClient) — independent, can start immediately
+  ↓
+TASK-175 (wire useSimulation) — depends on TASK-174
+  ↓
+TASK-176 (E2E test) — depends on TASK-174 + TASK-175
+```
+
+**Recommended dispatch:** Sequential (175 waits for 174, 176 waits for 175)
+
+---
+
+## Q33NR Actions Required
+
+1. **Review task files** (all corrections applied)
+2. **If approved:** Tell Q33N to dispatch bees
+3. **If corrections needed:** Tell Q33N what to fix
+
+**Q33N awaiting Q33NR final review and dispatch approval.**

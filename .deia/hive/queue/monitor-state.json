@@ -1,0 +1,3685 @@
+{
+  "tasks": {
+    "PING-TEST": {
+      "task_id": "PING-TEST",
+      "status": "timeout",
+      "model": null,
+      "role": null,
+      "first_seen": "2026-04-13T09:38:24.568150",
+      "last_seen": "2026-04-13T09:38:24.644764",
+      "last_heartbeat": "2026-04-13T09:38:24.644764",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "Processing...",
+          "at": "2026-04-13T09:38:24.568150"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-13T09:38:24.644764"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Processing..."
+    },
+    "SPEC-TEST-01": {
+      "task_id": "SPEC-TEST-01",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-13T09:38:27.946512",
+      "last_seen": "2026-04-13T09:38:27.946512",
+      "last_heartbeat": "2026-04-13T09:38:27.946512",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "Build complete",
+          "at": "2026-04-13T09:38:27.946512"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Build complete"
+    },
+    "SPEC-OLD": {
+      "task_id": "SPEC-OLD",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-13T09:38:28.032105",
+      "last_seen": "2026-04-13T09:38:28.032105",
+      "last_heartbeat": "2026-04-13T09:38:28.032105",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "Old build",
+          "at": "2026-04-13T09:38:28.032105"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Old build"
+    },
+    "SPEC-NEW": {
+      "task_id": "SPEC-NEW",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-13T09:38:28.136201",
+      "last_seen": "2026-04-13T09:38:28.136201",
+      "last_heartbeat": "2026-04-13T09:38:28.136201",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "New build",
+          "at": "2026-04-13T09:38:28.136201"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "New build"
+    },
+    "SPEC-STRUCT-TEST": {
+      "task_id": "SPEC-STRUCT-TEST",
+      "status": "failed",
+      "model": "haiku",
+      "role": "B",
+      "first_seen": "2026-04-13T09:38:28.383907",
+      "last_seen": "2026-04-13T09:38:28.383907",
+      "last_heartbeat": "2026-04-13T09:38:28.383907",
+      "cost_usd": 0.0,
+      "tests_passed": 5,
+      "tests_total": 10,
+      "messages": [
+        {
+          "msg": "Test failed",
+          "at": "2026-04-13T09:38:28.383907"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Test failed"
+    },
+    "SPEC-UNREAD-TEST": {
+      "task_id": "SPEC-UNREAD-TEST",
+      "status": "timeout",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-13T09:38:28.575796",
+      "last_seen": "2026-04-13T09:38:28.575796",
+      "last_heartbeat": "2026-04-13T09:38:28.575796",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "Starting work",
+          "at": "2026-04-13T09:38:28.575796"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Starting work"
+    },
+    "SPEC-TIME-TEST": {
+      "task_id": "SPEC-TIME-TEST",
+      "status": "timeout",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-13T09:38:28.627353",
+      "last_seen": "2026-04-13T09:38:28.627353",
+      "last_heartbeat": "2026-04-13T09:38:28.627353",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "Working",
+          "at": "2026-04-13T09:38:28.627353"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Working"
+    },
+    "QUEUE-TEMP-SPEC-AUDIT-BUILD-PROCESS-INFRA-001": {
+      "task_id": "QUEUE-TEMP-SPEC-AUDIT-BUILD-PROCESS-INFRA-001",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T15:42:52.107062",
+      "last_seen": "2026-04-14T16:35:31.689738",
+      "last_heartbeat": "2026-04-14T16:35:31.689738",
+      "cost_usd": 16.095143999999998,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T15:42:52.107062"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T15:45:54.780217"
+        },
+        {
+          "msg": "duration=200.4s",
+          "at": "2026-04-14T15:46:14.915981"
+        },
+        {
+          "msg": "duration=202.8s turns=28",
+          "at": "2026-04-14T15:46:17.012349"
+        },
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:27:15.590265"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:30:18.535235"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:33:21.414749"
+        },
+        {
+          "msg": "duration=491.6s",
+          "at": "2026-04-14T16:35:29.587993"
+        },
+        {
+          "msg": "duration=494.0s turns=34",
+          "at": "2026-04-14T16:35:31.689738"
+        }
+      ],
+      "input_tokens": 5105228,
+      "output_tokens": 51964,
+      "last_logged_message": "duration=494.0s turns=34"
+    },
+    "QUEUE-TEMP-SPEC-FLAPPY-FIX-001-first-death-crash": {
+      "task_id": "QUEUE-TEMP-SPEC-FLAPPY-FIX-001-first-death-crash",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T15:44:30.227280",
+      "last_seen": "2026-04-14T15:44:32.298229",
+      "last_heartbeat": "2026-04-14T15:44:32.298229",
+      "cost_usd": 3.2090460000000003,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "duration=161.4s",
+          "at": "2026-04-14T15:44:30.227280"
+        },
+        {
+          "msg": "duration=163.8s turns=12",
+          "at": "2026-04-14T15:44:32.298229"
+        }
+      ],
+      "input_tokens": 1009532,
+      "output_tokens": 12030,
+      "last_logged_message": "duration=163.8s turns=12"
+    },
+    "QUEUE-TEMP-SPEC-SWE-instance_qutebrowser-qutebrowser-0833b5f6f140d04200ec91605f88704dd18e2970-v059c6fdc75567943479b23ebca7c07b5e9a7f34c": {
+      "task_id": "QUEUE-TEMP-SPEC-SWE-instance_qutebrowser-qutebrowser-0833b5f6f140d04200ec91605f88704dd18e2970-v059c6fdc75567943479b23ebca7c07b5e9a7f34c",
+      "status": "running",
+      "model": null,
+      "role": "B",
+      "first_seen": "2026-04-14T15:44:43.185946",
+      "last_seen": "2026-04-14T17:28:12.868339",
+      "last_heartbeat": "2026-04-14T17:28:12.868339",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:30:22.925672"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:33:25.540676"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:36:28.329717"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:39:31.025156"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:42:33.386886"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:45:35.719764"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:48:38.247449"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:51:40.679403"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:54:43.490886"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:57:46.300826"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:00:49.346120"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:03:51.590320"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:06:53.696562"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:09:56.011240"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:12:58.549397"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:16:01.276648"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:19:03.723436"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:22:06.473833"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:25:09.030890"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:28:12.868339"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Processing..."
+    },
+    "QUEUE-TEMP-SPEC-SWE-instance_internetarchive-openlibrary-53e02a22972e9253aeded0e1981e6845e1e521fe-vfa6ff903cb27f336e17654595dd900fa943dcd91": {
+      "task_id": "QUEUE-TEMP-SPEC-SWE-instance_internetarchive-openlibrary-53e02a22972e9253aeded0e1981e6845e1e521fe-vfa6ff903cb27f336e17654595dd900fa943dcd91",
+      "status": "running",
+      "model": null,
+      "role": "B",
+      "first_seen": "2026-04-14T15:44:45.993146",
+      "last_seen": "2026-04-14T17:28:16.854130",
+      "last_heartbeat": "2026-04-14T17:28:16.854130",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:30:23.343953"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:33:26.114390"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:36:28.730025"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:39:31.026895"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:42:33.392930"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:45:35.796701"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:48:38.234863"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:51:40.663624"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:54:43.377380"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:57:46.354271"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:00:49.361685"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:03:51.626588"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:06:53.877606"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:09:56.443087"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:13:00.031997"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:16:02.900817"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:19:05.398567"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:22:07.971505"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:25:12.839412"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:28:16.854130"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Processing..."
+    },
+    "QUEUE-TEMP-SPEC-SWE-instance_ansible-ansible-c1f2df47538b884a43320f53e787197793b105e8-v906c969b551b346ef54a2c0b41e04f632b7b73c2": {
+      "task_id": "QUEUE-TEMP-SPEC-SWE-instance_ansible-ansible-c1f2df47538b884a43320f53e787197793b105e8-v906c969b551b346ef54a2c0b41e04f632b7b73c2",
+      "status": "running",
+      "model": null,
+      "role": "B",
+      "first_seen": "2026-04-14T15:45:20.530638",
+      "last_seen": "2026-04-14T17:25:48.224739",
+      "last_heartbeat": "2026-04-14T17:25:48.224739",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:27:57.366290"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:31:00.314137"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:34:02.849956"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:37:05.370050"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:40:08.263824"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:43:10.686250"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:46:13.042075"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:49:15.511399"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:52:18.042853"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:55:20.720765"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:58:23.735494"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:01:25.841274"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:04:28.002271"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:07:30.833334"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:10:33.549427"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:13:36.266132"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:16:39.165414"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:19:41.684039"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:22:44.291869"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:25:48.224739"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Processing..."
+    },
+    "QUEUE-TEMP-SPEC-SWE-instance_element-hq-element-web-f63160f38459fb552d00fcc60d4064977a9095a6-vnan": {
+      "task_id": "QUEUE-TEMP-SPEC-SWE-instance_element-hq-element-web-f63160f38459fb552d00fcc60d4064977a9095a6-vnan",
+      "status": "running",
+      "model": null,
+      "role": "B",
+      "first_seen": "2026-04-14T15:45:21.019038",
+      "last_seen": "2026-04-14T17:25:49.533121",
+      "last_heartbeat": "2026-04-14T17:25:49.533121",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:27:58.552783"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:31:01.492713"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:34:04.043925"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:37:06.609983"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:40:09.287131"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:43:11.703171"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:46:14.033884"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:49:16.499761"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:52:19.079321"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:55:21.850674"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:58:24.809425"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:01:27.775209"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:04:29.938959"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:07:32.835818"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:10:35.882146"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:13:38.172719"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:16:41.155401"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:19:43.645864"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:22:46.266775"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:25:49.533121"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Processing..."
+    },
+    "QUEUE-TEMP-SPEC-SWE-instance_element-hq-element-web-fe14847bb9bb07cab1b9c6c54335ff22ca5e516a-vnan": {
+      "task_id": "QUEUE-TEMP-SPEC-SWE-instance_element-hq-element-web-fe14847bb9bb07cab1b9c6c54335ff22ca5e516a-vnan",
+      "status": "running",
+      "model": null,
+      "role": "B",
+      "first_seen": "2026-04-14T15:45:25.062790",
+      "last_seen": "2026-04-14T17:25:51.396468",
+      "last_heartbeat": "2026-04-14T17:25:51.396468",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:28:02.630382"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:31:05.535324"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:34:08.070003"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:37:10.638023"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:40:13.346225"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:43:15.726812"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:46:18.044795"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:49:20.515569"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:52:23.103909"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:55:25.934510"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:58:28.783328"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:01:30.880706"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:04:32.991005"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:07:35.460100"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:10:37.875041"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:13:40.998720"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:16:43.714983"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:19:46.118641"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:22:48.498267"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:25:51.396468"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Processing..."
+    },
+    "QUEUE-TEMP-SPEC-RAIDEN-SET-001-mobile-game-wrapper": {
+      "task_id": "QUEUE-TEMP-SPEC-RAIDEN-SET-001-mobile-game-wrapper",
+      "status": "running",
+      "model": null,
+      "role": "B",
+      "first_seen": "2026-04-14T15:45:30.591610",
+      "last_seen": "2026-04-14T17:25:58.546200",
+      "last_heartbeat": "2026-04-14T17:25:58.546200",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:28:08.637571"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:31:11.597411"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:34:14.307565"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:37:16.799631"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:40:19.497235"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:43:22.060875"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:46:24.474813"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:49:26.826884"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:52:29.403353"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:55:32.204620"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:58:34.869300"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:01:36.962715"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:04:39.040412"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:07:42.184647"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:10:44.881143"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:13:47.882832"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:16:50.322483"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:19:52.704353"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:22:55.398565"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:25:58.546200"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Processing..."
+    },
+    "QUEUE-TEMP-SPEC-FACTORY-BRIDGE-001-service-bridge": {
+      "task_id": "QUEUE-TEMP-SPEC-FACTORY-BRIDGE-001-service-bridge",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T15:54:47.121355",
+      "last_seen": "2026-04-14T16:06:14.546531",
+      "last_heartbeat": "2026-04-14T16:06:14.546531",
+      "cost_usd": 28.107462,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T15:54:47.121355"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T15:57:50.452724"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:00:53.002462"
+        },
+        {
+          "msg": "duration=678.7s",
+          "at": "2026-04-14T16:06:08.771449"
+        },
+        {
+          "msg": "duration=681.7s turns=44",
+          "at": "2026-04-14T16:06:14.546531"
+        }
+      ],
+      "input_tokens": 9136424,
+      "output_tokens": 46546,
+      "last_logged_message": "duration=681.7s turns=44"
+    },
+    "QUEUE-TEMP-SPEC-FACTORY-MCP-HEARTBEAT-001-forward": {
+      "task_id": "QUEUE-TEMP-SPEC-FACTORY-MCP-HEARTBEAT-001-forward",
+      "status": "complete",
+      "model": "claude-sonnet-4-5-20250929",
+      "role": "B",
+      "first_seen": "2026-04-14T15:55:03.873599",
+      "last_seen": "2026-04-14T16:06:21.978362",
+      "last_heartbeat": "2026-04-14T16:06:21.978362",
+      "cost_usd": 7.409484,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T15:55:03.873599"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T15:58:06.715055"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:01:09.282656"
+        },
+        {
+          "msg": "duration=675.2s",
+          "at": "2026-04-14T16:06:21.978362"
+        }
+      ],
+      "input_tokens": 2414393,
+      "output_tokens": 11087,
+      "last_logged_message": "duration=675.2s"
+    },
+    "QUEUE-TEMP-SPEC-FACTORY-CLAIMS-001-persist-claims": {
+      "task_id": "QUEUE-TEMP-SPEC-FACTORY-CLAIMS-001-persist-claims",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T15:55:52.841404",
+      "last_seen": "2026-04-14T16:02:42.998114",
+      "last_heartbeat": "2026-04-14T16:02:42.998114",
+      "cost_usd": 8.462334,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T15:55:52.841404"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T15:58:55.764618"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:01:58.566569"
+        },
+        {
+          "msg": "duration=405.0s",
+          "at": "2026-04-14T16:02:40.403099"
+        },
+        {
+          "msg": "duration=407.6s turns=21",
+          "at": "2026-04-14T16:02:42.998114"
+        }
+      ],
+      "input_tokens": 2717798,
+      "output_tokens": 20596,
+      "last_logged_message": "duration=407.6s turns=21"
+    },
+    "QUEUE-TEMP-SPEC-FACTORY-WAKE-001-fix-wake-events": {
+      "task_id": "QUEUE-TEMP-SPEC-FACTORY-WAKE-001-fix-wake-events",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T15:55:53.400198",
+      "last_seen": "2026-04-14T16:00:46.113369",
+      "last_heartbeat": "2026-04-14T16:00:46.113369",
+      "cost_usd": 8.488782,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T15:55:53.400198"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T15:58:56.331033"
+        },
+        {
+          "msg": "duration=288.0s",
+          "at": "2026-04-14T16:00:43.951149"
+        },
+        {
+          "msg": "duration=290.6s turns=25",
+          "at": "2026-04-14T16:00:46.113369"
+        }
+      ],
+      "input_tokens": 2760764,
+      "output_tokens": 13766,
+      "last_logged_message": "duration=290.6s turns=25"
+    },
+    "QUEUE-TEMP-SPEC-FACTORY-SPECSUBMIT-001-fix-gate0": {
+      "task_id": "QUEUE-TEMP-SPEC-FACTORY-SPECSUBMIT-001-fix-gate0",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T15:56:15.055447",
+      "last_seen": "2026-04-14T16:09:32.770646",
+      "last_heartbeat": "2026-04-14T16:09:32.770646",
+      "cost_usd": 29.324129999999997,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T15:56:15.055447"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T15:59:17.954994"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:02:20.092366"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:05:22.690922"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:08:24.950832"
+        },
+        {
+          "msg": "duration=792.6s",
+          "at": "2026-04-14T16:09:30.396999"
+        },
+        {
+          "msg": "duration=795.4s turns=57",
+          "at": "2026-04-14T16:09:32.770646"
+        }
+      ],
+      "input_tokens": 9636280,
+      "output_tokens": 27686,
+      "last_logged_message": "duration=795.4s turns=57"
+    },
+    "QUEUE-TEMP-SPEC-FACTORY-NOTIFY-001-completion-notify": {
+      "task_id": "QUEUE-TEMP-SPEC-FACTORY-NOTIFY-001-completion-notify",
+      "status": "running",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T15:56:56.984079",
+      "last_seen": "2026-04-14T17:28:15.126445",
+      "last_heartbeat": "2026-04-14T17:28:15.126445",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:30:24.878915"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:33:27.544735"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:36:30.090721"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:39:33.053172"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:42:35.405685"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:45:37.827115"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:48:40.242036"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:51:42.699584"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:54:45.515171"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:57:48.349155"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:00:50.378171"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:03:52.627000"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:06:54.719852"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:09:57.732008"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:13:00.550871"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:16:03.551090"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:19:06.074490"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:22:08.702495"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:25:11.464004"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:28:15.126445"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Processing..."
+    },
+    "QUEUE-TEMP-SPEC-FACTORY-CLEANUP-001-dead-wiring": {
+      "task_id": "QUEUE-TEMP-SPEC-FACTORY-CLEANUP-001-dead-wiring",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T15:56:58.007810",
+      "last_seen": "2026-04-14T16:09:34.252349",
+      "last_heartbeat": "2026-04-14T16:09:34.252349",
+      "cost_usd": 28.213482,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T15:56:58.007810"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:00:00.790937"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:03:03.008255"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:06:05.317595"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:09:08.229929"
+        },
+        {
+          "msg": "duration=751.4s",
+          "at": "2026-04-14T16:09:32.106285"
+        },
+        {
+          "msg": "duration=754.1s turns=50",
+          "at": "2026-04-14T16:09:34.252349"
+        }
+      ],
+      "input_tokens": 9177634,
+      "output_tokens": 45372,
+      "last_logged_message": "duration=754.1s turns=50"
+    },
+    "TASK-TEST-002": {
+      "task_id": "TASK-TEST-002",
+      "status": "complete",
+      "model": "haiku",
+      "role": "B",
+      "first_seen": "2026-04-14T15:57:53.911106",
+      "last_seen": "2026-04-14T16:03:42.850265",
+      "last_heartbeat": "2026-04-14T16:03:42.850265",
+      "cost_usd": 0.2,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [],
+      "input_tokens": 4000,
+      "output_tokens": 2000,
+      "last_logged_message": null
+    },
+    "QUEUE-TEMP-SPEC-FACTORY-PAUSE-001-wire-pause-resume": {
+      "task_id": "QUEUE-TEMP-SPEC-FACTORY-PAUSE-001-wire-pause-resume",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T15:58:12.341191",
+      "last_seen": "2026-04-14T16:06:23.369162",
+      "last_heartbeat": "2026-04-14T16:06:23.369162",
+      "cost_usd": 14.434902,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T15:58:12.341191"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:01:15.056158"
+        },
+        {
+          "msg": "duration=486.1s",
+          "at": "2026-04-14T16:06:21.197287"
+        },
+        {
+          "msg": "duration=488.9s turns=33",
+          "at": "2026-04-14T16:06:23.369162"
+        }
+      ],
+      "input_tokens": 4628584,
+      "output_tokens": 36610,
+      "last_logged_message": "duration=488.9s turns=33"
+    },
+    "QUEUE-TEMP-SPEC-TEST-20260414-1600": {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1600",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:01:16.266699",
+      "last_seen": "2026-04-14T16:07:20.417363",
+      "last_heartbeat": "2026-04-14T16:07:20.417363",
+      "cost_usd": 7.301652000000001,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:01:16.266699"
+        },
+        {
+          "msg": "duration=359.5s",
+          "at": "2026-04-14T16:07:18.328448"
+        },
+        {
+          "msg": "duration=362.1s turns=22",
+          "at": "2026-04-14T16:07:20.417363"
+        }
+      ],
+      "input_tokens": 2360294,
+      "output_tokens": 14718,
+      "last_logged_message": "duration=362.1s turns=22"
+    },
+    "SMOKE-MCP-HEARTBEAT-1776200490": {
+      "task_id": "SMOKE-MCP-HEARTBEAT-1776200490",
+      "status": "timeout",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:01:34.750535",
+      "last_seen": "2026-04-14T16:01:34.750535",
+      "last_heartbeat": "2026-04-14T16:01:34.750535",
+      "cost_usd": 0.02,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "Smoke test - MCP heartbeat forwarding",
+          "at": "2026-04-14T16:01:34.750535"
+        }
+      ],
+      "input_tokens": 500,
+      "output_tokens": 200,
+      "last_logged_message": "Smoke test - MCP heartbeat forwarding"
+    },
+    "QUEUE-TEMP-SPEC-TEST-20260414-1601": {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1601",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:02:27.371683",
+      "last_seen": "2026-04-14T16:12:08.690457",
+      "last_heartbeat": "2026-04-14T16:12:08.690457",
+      "cost_usd": 10.78536,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:02:27.371683"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:05:29.690860"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:08:31.894035"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:11:34.849197"
+        },
+        {
+          "msg": "duration=576.8s",
+          "at": "2026-04-14T16:12:06.634454"
+        },
+        {
+          "msg": "duration=579.3s turns=38",
+          "at": "2026-04-14T16:12:08.690457"
+        }
+      ],
+      "input_tokens": 3510730,
+      "output_tokens": 16878,
+      "last_logged_message": "duration=579.3s turns=38"
+    },
+    "TASK-TEST-001": {
+      "task_id": "TASK-TEST-001",
+      "status": "timeout",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:03:33.572258",
+      "last_seen": "2026-04-14T16:03:33.572258",
+      "last_heartbeat": "2026-04-14T16:03:33.572258",
+      "cost_usd": 0.05,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "Building component",
+          "at": "2026-04-14T16:03:33.572258"
+        }
+      ],
+      "input_tokens": 1000,
+      "output_tokens": 500,
+      "last_logged_message": "Building component"
+    },
+    "QUEUE-TEMP-SPEC-TEST-20260414-1603": {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1603",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:03:33.785446",
+      "last_seen": "2026-04-14T16:05:11.854976",
+      "last_heartbeat": "2026-04-14T16:05:11.854976",
+      "cost_usd": 1.23315,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:03:33.785446"
+        },
+        {
+          "msg": "duration=91.0s",
+          "at": "2026-04-14T16:05:09.790942"
+        },
+        {
+          "msg": "duration=95.7s turns=7",
+          "at": "2026-04-14T16:05:11.854976"
+        }
+      ],
+      "input_tokens": 395510,
+      "output_tokens": 3108,
+      "last_logged_message": "duration=95.7s turns=7"
+    },
+    "TASK-TEST-003": {
+      "task_id": "TASK-TEST-003",
+      "status": "timeout",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:03:49.395259",
+      "last_seen": "2026-04-14T16:03:49.395259",
+      "last_heartbeat": "2026-04-14T16:03:49.395259",
+      "cost_usd": 8.5,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": null
+    },
+    "TASK-PROGRESS-001": {
+      "task_id": "TASK-PROGRESS-001",
+      "status": "timeout",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:04:50.646320",
+      "last_seen": "2026-04-14T16:04:50.646320",
+      "last_heartbeat": "2026-04-14T16:04:50.646320",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": null
+    },
+    "QUEUE-TEMP-SPEC-MCP-WAVE-5-TELEMETRY-LOOP": {
+      "task_id": "QUEUE-TEMP-SPEC-MCP-WAVE-5-TELEMETRY-LOOP",
+      "status": "timeout",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:04:55.458619",
+      "last_seen": "2026-04-14T16:04:55.458619",
+      "last_heartbeat": "2026-04-14T16:04:55.458619",
+      "cost_usd": 9.5,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "Testing telemetry dual-loop",
+          "at": "2026-04-14T16:04:55.458619"
+        }
+      ],
+      "input_tokens": 50000,
+      "output_tokens": 25000,
+      "last_logged_message": "Testing telemetry dual-loop"
+    },
+    "SMOKE-MCP-HEARTBEAT-1776200699": {
+      "task_id": "SMOKE-MCP-HEARTBEAT-1776200699",
+      "status": "timeout",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:05:04.805363",
+      "last_seen": "2026-04-14T16:05:04.805363",
+      "last_heartbeat": "2026-04-14T16:05:04.805363",
+      "cost_usd": 0.02,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "Smoke test - MCP heartbeat forwarding",
+          "at": "2026-04-14T16:05:04.805363"
+        }
+      ],
+      "input_tokens": 500,
+      "output_tokens": 200,
+      "last_logged_message": "Smoke test - MCP heartbeat forwarding"
+    },
+    "QUEUE-TEMP-SPEC-FEATURE-20260414-1604": {
+      "task_id": "QUEUE-TEMP-SPEC-FEATURE-20260414-1604",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:05:09.681814",
+      "last_seen": "2026-04-14T16:06:56.827395",
+      "last_heartbeat": "2026-04-14T16:06:56.827395",
+      "cost_usd": 1.55397,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:05:09.681814"
+        },
+        {
+          "msg": "duration=102.1s",
+          "at": "2026-04-14T16:06:54.736898"
+        },
+        {
+          "msg": "duration=105.3s turns=8",
+          "at": "2026-04-14T16:06:56.827395"
+        }
+      ],
+      "input_tokens": 496460,
+      "output_tokens": 4306,
+      "last_logged_message": "duration=105.3s turns=8"
+    },
+    "QUEUE-TEMP-SPEC-TEST-20260414-1605": {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1605",
+      "status": "failed",
+      "model": "claude-sonnet-4-5-20250929",
+      "role": "B",
+      "first_seen": "2026-04-14T16:05:35.228986",
+      "last_seen": "2026-04-14T16:06:23.332903",
+      "last_heartbeat": "2026-04-14T16:06:23.332903",
+      "cost_usd": 0.31112700000000004,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:05:35.228986"
+        },
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:06:07.035891"
+        },
+        {
+          "msg": "duration=45.3s",
+          "at": "2026-04-14T16:06:23.332903"
+        }
+      ],
+      "input_tokens": 97709,
+      "output_tokens": 1200,
+      "last_logged_message": "duration=45.3s"
+    },
+    "QUEUE-TEMP-SPEC-TEST-20260414-1606": {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1606",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:07:11.490901",
+      "last_seen": "2026-04-14T16:09:33.784102",
+      "last_heartbeat": "2026-04-14T16:09:33.784102",
+      "cost_usd": 3.5243759999999997,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:07:11.490901"
+        },
+        {
+          "msg": "duration=137.7s",
+          "at": "2026-04-14T16:09:31.694479"
+        },
+        {
+          "msg": "duration=140.2s turns=14",
+          "at": "2026-04-14T16:09:33.784102"
+        }
+      ],
+      "input_tokens": 1146212,
+      "output_tokens": 5716,
+      "last_logged_message": "duration=140.2s turns=14"
+    },
+    "QUEUE-TEMP-SPEC-TEST-20260414-1607": {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1607",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:08:05.455800",
+      "last_seen": "2026-04-14T16:11:44.350778",
+      "last_heartbeat": "2026-04-14T16:11:44.350778",
+      "cost_usd": 4.127394000000001,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:08:05.455800"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:11:07.640635"
+        },
+        {
+          "msg": "duration=214.2s",
+          "at": "2026-04-14T16:11:42.254265"
+        },
+        {
+          "msg": "duration=216.8s turns=17",
+          "at": "2026-04-14T16:11:44.350778"
+        }
+      ],
+      "input_tokens": 1322518,
+      "output_tokens": 10656,
+      "last_logged_message": "duration=216.8s turns=17"
+    },
+    "QUEUE-TEMP-SPEC-TEST-20260414-1609": {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1609",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:10:05.961803",
+      "last_seen": "2026-04-14T16:12:12.878693",
+      "last_heartbeat": "2026-04-14T16:12:12.878693",
+      "cost_usd": 2.409234,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:10:05.961803"
+        },
+        {
+          "msg": "duration=122.4s",
+          "at": "2026-04-14T16:12:10.744876"
+        },
+        {
+          "msg": "duration=124.8s turns=12",
+          "at": "2026-04-14T16:12:12.878693"
+        }
+      ],
+      "input_tokens": 784318,
+      "output_tokens": 3752,
+      "last_logged_message": "duration=124.8s turns=12"
+    },
+    "QUEUE-TEMP-SPEC-DES-AUDIT-001-implementation-survey": {
+      "task_id": "QUEUE-TEMP-SPEC-DES-AUDIT-001-implementation-survey",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:20:14.571714",
+      "last_seen": "2026-04-14T16:25:51.992357",
+      "last_heartbeat": "2026-04-14T16:25:51.992357",
+      "cost_usd": 5.3126999999999995,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:20:14.571714"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:23:17.264267"
+        },
+        {
+          "msg": "duration=332.6s",
+          "at": "2026-04-14T16:25:49.860485"
+        },
+        {
+          "msg": "duration=335.3s turns=31",
+          "at": "2026-04-14T16:25:51.992357"
+        }
+      ],
+      "input_tokens": 1628310,
+      "output_tokens": 28518,
+      "last_logged_message": "duration=335.3s turns=31"
+    },
+    "QUEUE-TEMP-SPEC-AI-EXPOSURE-SCORES-001": {
+      "task_id": "QUEUE-TEMP-SPEC-AI-EXPOSURE-SCORES-001",
+      "status": "running",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:35:51.257439",
+      "last_seen": "2026-04-14T17:27:34.684428",
+      "last_heartbeat": "2026-04-14T17:27:34.684428",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:35:51.257439"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:38:53.845998"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:41:56.279584"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:44:58.799692"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:48:01.253243"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:51:03.800773"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:54:06.658093"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:57:09.452617"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:00:11.489169"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:03:13.700225"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:06:15.842283"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:09:18.430836"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:12:21.263306"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:15:23.505125"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:18:26.033921"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:21:28.586179"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:24:31.198453"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:27:34.684428"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Processing..."
+    },
+    "QUEUE-TEMP-SPEC-HYG-008-SPLIT-001": {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008-SPLIT-001",
+      "status": "running",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:52:47.511092",
+      "last_seen": "2026-04-14T17:26:15.933274",
+      "last_heartbeat": "2026-04-14T17:26:15.933274",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:52:47.511092"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:55:50.361159"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T16:58:53.214304"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:01:55.302407"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:04:57.406356"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:08:00.105202"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:11:02.793723"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:14:05.101525"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:17:08.020320"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:20:10.504414"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:23:12.920880"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:26:15.933274"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Processing..."
+    },
+    "QUEUE-TEMP-SPEC-IDENTITY-001-unify-node-id": {
+      "task_id": "QUEUE-TEMP-SPEC-IDENTITY-001-unify-node-id",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:58:47.386665",
+      "last_seen": "2026-04-14T17:11:07.712223",
+      "last_heartbeat": "2026-04-14T17:11:07.712223",
+      "cost_usd": 21.273246000000004,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:58:47.386665"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:01:49.588236"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:04:51.755504"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:07:54.728091"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:11:01.822217"
+        },
+        {
+          "msg": "duration=733.1s",
+          "at": "2026-04-14T17:11:04.194543"
+        },
+        {
+          "msg": "duration=737.1s turns=47",
+          "at": "2026-04-14T17:11:07.712223"
+        }
+      ],
+      "input_tokens": 6883072,
+      "output_tokens": 41602,
+      "last_logged_message": "duration=737.1s turns=47"
+    },
+    "QUEUE-TEMP-SPEC-RAG-DEDUP-001-fix-dual-routing": {
+      "task_id": "QUEUE-TEMP-SPEC-RAG-DEDUP-001-fix-dual-routing",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:59:03.074942",
+      "last_seen": "2026-04-14T17:13:50.862253",
+      "last_heartbeat": "2026-04-14T17:13:50.862253",
+      "cost_usd": 10.524162,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:59:03.074942"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:02:05.222602"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:06:00.033024"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:08:13.132967"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:11:16.248931"
+        },
+        {
+          "msg": "duration=882.3s",
+          "at": "2026-04-14T17:13:48.218401"
+        },
+        {
+          "msg": "duration=885.2s turns=42",
+          "at": "2026-04-14T17:13:50.862253"
+        }
+      ],
+      "input_tokens": 3377564,
+      "output_tokens": 26098,
+      "last_logged_message": "duration=885.2s turns=42"
+    },
+    "QUEUE-TEMP-SPEC-HYG-010-hardcoded-colors": {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-010-hardcoded-colors",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:59:54.302562",
+      "last_seen": "2026-04-14T17:06:43.987887",
+      "last_heartbeat": "2026-04-14T17:06:43.987887",
+      "cost_usd": 9.820866,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:59:54.302562"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:02:56.489007"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:06:00.302377"
+        },
+        {
+          "msg": "duration=403.6s",
+          "at": "2026-04-14T17:06:41.133751"
+        },
+        {
+          "msg": "duration=406.9s turns=30",
+          "at": "2026-04-14T17:06:43.987887"
+        }
+      ],
+      "input_tokens": 3148282,
+      "output_tokens": 25068,
+      "last_logged_message": "duration=406.9s turns=30"
+    },
+    "QUEUE-TEMP-SPEC-REPO-001-readme-alignment": {
+      "task_id": "QUEUE-TEMP-SPEC-REPO-001-readme-alignment",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T16:59:55.298669",
+      "last_seen": "2026-04-14T17:02:48.243918",
+      "last_heartbeat": "2026-04-14T17:02:48.243918",
+      "cost_usd": 3.986082,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T16:59:55.298669"
+        },
+        {
+          "msg": "duration=168.4s",
+          "at": "2026-04-14T17:02:46.106257"
+        },
+        {
+          "msg": "duration=170.8s turns=17",
+          "at": "2026-04-14T17:02:48.243918"
+        }
+      ],
+      "input_tokens": 1283044,
+      "output_tokens": 9130,
+      "last_logged_message": "duration=170.8s turns=17"
+    },
+    "QUEUE-TEMP-SPEC-HYG-008A-ts-2322": {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008A-ts-2322",
+      "status": "running",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T17:06:00.116968",
+      "last_seen": "2026-04-14T17:26:31.150752",
+      "last_heartbeat": "2026-04-14T17:26:31.150752",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T17:06:00.116968"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:08:13.855327"
+        },
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T17:10:24.550095"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:11:16.083719"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:13:27.107790"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:14:18.536319"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:16:29.251884"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:17:20.995222"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:19:31.835481"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:20:23.476195"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:22:34.324439"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:23:28.480556"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:25:38.441145"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:26:31.150752"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Processing..."
+    },
+    "QUEUE-TEMP-SPEC-HYG-008D-ts-2741": {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008D-ts-2741",
+      "status": "running",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T17:06:21.778787",
+      "last_seen": "2026-04-14T17:27:40.956174",
+      "last_heartbeat": "2026-04-14T17:27:40.956174",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T17:06:21.778787"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:09:24.699054"
+        },
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T17:12:08.726900"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:12:27.297499"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:15:11.206274"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:15:30.254373"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:18:13.856340"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:18:32.685801"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:21:16.378702"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:21:34.765844"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:24:19.258521"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:24:37.772323"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:27:34.655653"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:27:40.956174"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Processing..."
+    },
+    "QUEUE-TEMP-SPEC-HYG-008B-ts-2304": {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008B-ts-2304",
+      "status": "running",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T17:06:21.810411",
+      "last_seen": "2026-04-14T17:27:42.704668",
+      "last_heartbeat": "2026-04-14T17:27:42.704668",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T17:06:21.810411"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:09:24.455456"
+        },
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T17:11:39.632888"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:12:27.562665"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:14:42.518840"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:15:30.054464"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:17:44.668505"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:18:32.559854"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:20:47.429902"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:21:35.064270"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:23:50.433229"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:24:39.536203"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:27:31.322243"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:27:42.704668"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Processing..."
+    },
+    "QUEUE-TEMP-SPEC-HYG-008C-ts-2345": {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008C-ts-2345",
+      "status": "running",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T17:06:21.887103",
+      "last_seen": "2026-04-14T17:27:41.712225",
+      "last_heartbeat": "2026-04-14T17:27:41.712225",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T17:06:21.887103"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:09:24.902886"
+        },
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T17:11:40.328895"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:12:27.414920"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:14:42.949969"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:15:29.516291"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:17:45.895711"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:18:32.083459"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:20:48.919858"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:21:35.000830"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:23:52.140545"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:24:38.028271"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:27:34.585288"
+        },
+        {
+          "msg": "Testing: \u26a0\ufe0f  [BashTool] Pre-flight check is taking longer than expected. Run with ANTHROP",
+          "at": "2026-04-14T17:27:34.636454"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:27:41.712225"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Testing: \u26a0\ufe0f  [BashTool] Pre-flight check is taking longer than expected. Run with ANTHROP"
+    },
+    "QUEUE-TEMP-SPEC-HYG-008E-ts-2353": {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008E-ts-2353",
+      "status": "running",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T17:07:35.339469",
+      "last_seen": "2026-04-14T17:27:36.966615",
+      "last_heartbeat": "2026-04-14T17:27:36.966615",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T17:07:35.339469"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:10:37.947747"
+        },
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T17:12:22.421938"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:13:40.944485"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:15:25.465137"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:16:43.924923"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:18:28.061200"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:19:46.416500"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:21:30.977407"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:22:49.598684"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:24:33.819775"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:25:51.818119"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:27:36.966615"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Processing..."
+    },
+    "QUEUE-TEMP-SPEC-HYG-008G-ts-2739": {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008G-ts-2739",
+      "status": "running",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T17:07:37.361276",
+      "last_seen": "2026-04-14T17:25:53.669695",
+      "last_heartbeat": "2026-04-14T17:25:53.669695",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T17:07:37.361276"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:10:40.076527"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:13:43.048684"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:16:45.934854"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:19:48.432481"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:22:50.529761"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:25:53.669695"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Processing..."
+    },
+    "QUEUE-TEMP-SPEC-HYG-008H-ts-2683": {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008H-ts-2683",
+      "status": "running",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T17:08:01.563337",
+      "last_seen": "2026-04-14T17:27:52.398176",
+      "last_heartbeat": "2026-04-14T17:27:52.398176",
+      "cost_usd": 0.0,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T17:08:01.563337"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:11:04.113194"
+        },
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T17:12:38.268456"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:14:06.828423"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:15:40.716064"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:17:09.242761"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:18:43.281588"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:20:11.956108"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:21:46.018393"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:23:15.069676"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:24:49.067632"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:26:18.226353"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:27:52.398176"
+        }
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "last_logged_message": "Processing..."
+    },
+    "QUEUE-TEMP-SPEC-RESEARCH-CLOUDNODE-AUDIT-001": {
+      "task_id": "QUEUE-TEMP-SPEC-RESEARCH-CLOUDNODE-AUDIT-001",
+      "status": "complete",
+      "model": "sonnet",
+      "role": "B",
+      "first_seen": "2026-04-14T17:16:10.405446",
+      "last_seen": "2026-04-14T17:22:23.511546",
+      "last_heartbeat": "2026-04-14T17:22:23.511546",
+      "cost_usd": 4.810794,
+      "tests_passed": null,
+      "tests_total": null,
+      "messages": [
+        {
+          "msg": "role=bee",
+          "at": "2026-04-14T17:16:10.405446"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:19:12.978690"
+        },
+        {
+          "msg": "Processing...",
+          "at": "2026-04-14T17:22:15.061865"
+        },
+        {
+          "msg": "duration=360.9s",
+          "at": "2026-04-14T17:22:17.302019"
+        },
+        {
+          "msg": "duration=366.9s turns=23",
+          "at": "2026-04-14T17:22:23.511546"
+        }
+      ],
+      "input_tokens": 1524428,
+      "output_tokens": 15834,
+      "last_logged_message": "duration=366.9s turns=23"
+    }
+  },
+  "log": [
+    {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1606",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T16:07:11.490901"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1600",
+      "status": "complete",
+      "model": "claude-sonnet-4-5-20250929",
+      "message": "duration=359.5s",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 3.6508260000000003,
+      "role": "B",
+      "timestamp": "2026-04-14T16:07:18.328448"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1600",
+      "status": "complete",
+      "model": "sonnet",
+      "message": "duration=362.1s turns=22",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 3.6508260000000003,
+      "role": "B",
+      "timestamp": "2026-04-14T16:07:20.417363"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T16:08:05.455800"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1607",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T16:08:05.455800"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-FACTORY-SPECSUBMIT-001-fix-gate0",
+      "status": "complete",
+      "model": "claude-sonnet-4-5-20250929",
+      "message": "duration=792.6s",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 14.662064999999998,
+      "role": "B",
+      "timestamp": "2026-04-14T16:09:30.396999"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1606",
+      "status": "complete",
+      "model": "claude-sonnet-4-5-20250929",
+      "message": "duration=137.7s",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 1.7621879999999999,
+      "role": "B",
+      "timestamp": "2026-04-14T16:09:31.694479"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-FACTORY-CLEANUP-001-dead-wiring",
+      "status": "complete",
+      "model": "claude-sonnet-4-5-20250929",
+      "message": "duration=751.4s",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 14.106741,
+      "role": "B",
+      "timestamp": "2026-04-14T16:09:32.106285"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-FACTORY-SPECSUBMIT-001-fix-gate0",
+      "status": "complete",
+      "model": "sonnet",
+      "message": "duration=795.4s turns=57",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 14.662064999999998,
+      "role": "B",
+      "timestamp": "2026-04-14T16:09:32.770646"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1606",
+      "status": "complete",
+      "model": "sonnet",
+      "message": "duration=140.2s turns=14",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 1.7621879999999999,
+      "role": "B",
+      "timestamp": "2026-04-14T16:09:33.784102"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-FACTORY-CLEANUP-001-dead-wiring",
+      "status": "complete",
+      "model": "sonnet",
+      "message": "duration=754.1s turns=50",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 14.106741,
+      "role": "B",
+      "timestamp": "2026-04-14T16:09:34.252349"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T16:10:05.961803"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1609",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T16:10:05.961803"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1607",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T16:11:07.640635"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1607",
+      "status": "complete",
+      "model": "claude-sonnet-4-5-20250929",
+      "message": "duration=214.2s",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 2.0636970000000003,
+      "role": "B",
+      "timestamp": "2026-04-14T16:11:42.254265"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1607",
+      "status": "complete",
+      "model": "sonnet",
+      "message": "duration=216.8s turns=17",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 2.0636970000000003,
+      "role": "B",
+      "timestamp": "2026-04-14T16:11:44.350778"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1601",
+      "status": "complete",
+      "model": "claude-sonnet-4-5-20250929",
+      "message": "duration=576.8s",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 5.39268,
+      "role": "B",
+      "timestamp": "2026-04-14T16:12:06.634454"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1601",
+      "status": "complete",
+      "model": "sonnet",
+      "message": "duration=579.3s turns=38",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 5.39268,
+      "role": "B",
+      "timestamp": "2026-04-14T16:12:08.690457"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1609",
+      "status": "complete",
+      "model": "claude-sonnet-4-5-20250929",
+      "message": "duration=122.4s",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 1.204617,
+      "role": "B",
+      "timestamp": "2026-04-14T16:12:10.744876"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-TEST-20260414-1609",
+      "status": "complete",
+      "model": "sonnet",
+      "message": "duration=124.8s turns=12",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 1.204617,
+      "role": "B",
+      "timestamp": "2026-04-14T16:12:12.878693"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T16:20:14.571714"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-DES-AUDIT-001-implementation-survey",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T16:20:14.571714"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-DES-AUDIT-001-implementation-survey",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T16:23:17.264267"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-DES-AUDIT-001-implementation-survey",
+      "status": "complete",
+      "model": "claude-sonnet-4-5-20250929",
+      "message": "duration=332.6s",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 2.6563499999999998,
+      "role": "B",
+      "timestamp": "2026-04-14T16:25:49.860485"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-DES-AUDIT-001-implementation-survey",
+      "status": "complete",
+      "model": "sonnet",
+      "message": "duration=335.3s turns=31",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 2.6563499999999998,
+      "role": "B",
+      "timestamp": "2026-04-14T16:25:51.992357"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T16:27:15.590265"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-AUDIT-BUILD-PROCESS-INFRA-001",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T16:27:15.590265"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-AUDIT-BUILD-PROCESS-INFRA-001",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T16:30:18.535235"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-AUDIT-BUILD-PROCESS-INFRA-001",
+      "status": "complete",
+      "model": "claude-sonnet-4-5-20250929",
+      "message": "duration=491.6s",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 5.012919,
+      "role": "B",
+      "timestamp": "2026-04-14T16:35:29.587993"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-AUDIT-BUILD-PROCESS-INFRA-001",
+      "status": "complete",
+      "model": "sonnet",
+      "message": "duration=494.0s turns=34",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 5.012919,
+      "role": "B",
+      "timestamp": "2026-04-14T16:35:31.689738"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T16:35:51.257439"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-AI-EXPOSURE-SCORES-001",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T16:35:51.257439"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-AI-EXPOSURE-SCORES-001",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T16:38:53.845998"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T16:52:47.511092"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008-SPLIT-001",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T16:52:47.511092"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008-SPLIT-001",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T16:55:50.361159"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T16:58:47.386665"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-IDENTITY-001-unify-node-id",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T16:58:47.386665"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T16:59:03.074942"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-RAG-DEDUP-001-fix-dual-routing",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T16:59:03.074942"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T16:59:54.302562"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-010-hardcoded-colors",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T16:59:54.302562"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T16:59:55.298669"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-REPO-001-readme-alignment",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T16:59:55.298669"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-IDENTITY-001-unify-node-id",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:01:49.588236"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-RAG-DEDUP-001-fix-dual-routing",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:02:05.222602"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-REPO-001-readme-alignment",
+      "status": "complete",
+      "model": "claude-sonnet-4-5-20250929",
+      "message": "duration=168.4s",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 1.993041,
+      "role": "B",
+      "timestamp": "2026-04-14T17:02:46.106257"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-REPO-001-readme-alignment",
+      "status": "complete",
+      "model": "sonnet",
+      "message": "duration=170.8s turns=17",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 1.993041,
+      "role": "B",
+      "timestamp": "2026-04-14T17:02:48.243918"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-010-hardcoded-colors",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:02:56.489007"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T17:06:00.116968"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008A-ts-2322",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:06:00.116968"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T17:06:21.778787"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008D-ts-2741",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:06:21.778787"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T17:06:21.810411"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008B-ts-2304",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:06:21.810411"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T17:06:21.887103"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008C-ts-2345",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:06:21.887103"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-010-hardcoded-colors",
+      "status": "complete",
+      "model": "claude-sonnet-4-5-20250929",
+      "message": "duration=403.6s",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 4.910433,
+      "role": "B",
+      "timestamp": "2026-04-14T17:06:41.133751"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-010-hardcoded-colors",
+      "status": "complete",
+      "model": "sonnet",
+      "message": "duration=406.9s turns=30",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 4.910433,
+      "role": "B",
+      "timestamp": "2026-04-14T17:06:43.987887"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T17:07:35.339469"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008E-ts-2353",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:07:35.339469"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T17:07:37.361276"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008G-ts-2739",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:07:37.361276"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T17:08:01.563337"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008H-ts-2683",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:08:01.563337"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008A-ts-2322",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:08:13.855327"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008B-ts-2304",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:09:24.455456"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008D-ts-2741",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:09:24.699054"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008C-ts-2345",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:09:24.902886"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T17:10:24.550095"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008A-ts-2322",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:10:24.550095"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008E-ts-2353",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:10:37.947747"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008G-ts-2739",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:10:40.076527"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008H-ts-2683",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:11:04.113194"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-IDENTITY-001-unify-node-id",
+      "status": "complete",
+      "model": "claude-sonnet-4-5-20250929",
+      "message": "duration=733.1s",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 10.636623000000002,
+      "role": "B",
+      "timestamp": "2026-04-14T17:11:04.194543"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-IDENTITY-001-unify-node-id",
+      "status": "complete",
+      "model": "sonnet",
+      "message": "duration=737.1s turns=47",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 10.636623000000002,
+      "role": "B",
+      "timestamp": "2026-04-14T17:11:07.712223"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008A-ts-2322",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:11:16.083719"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T17:11:39.632888"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008B-ts-2304",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:11:39.632888"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T17:11:40.328895"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008C-ts-2345",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:11:40.328895"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T17:12:08.726900"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008D-ts-2741",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:12:08.726900"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T17:12:22.421938"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008E-ts-2353",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:12:22.421938"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008D-ts-2741",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:12:27.297499"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008C-ts-2345",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:12:27.414920"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008B-ts-2304",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:12:27.562665"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T17:12:38.268456"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008H-ts-2683",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:12:38.268456"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008E-ts-2353",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:13:40.944485"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-RAG-DEDUP-001-fix-dual-routing",
+      "status": "complete",
+      "model": "claude-sonnet-4-5-20250929",
+      "message": "duration=882.3s",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 5.262081,
+      "role": "B",
+      "timestamp": "2026-04-14T17:13:48.218401"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-RAG-DEDUP-001-fix-dual-routing",
+      "status": "complete",
+      "model": "sonnet",
+      "message": "duration=885.2s turns=42",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 5.262081,
+      "role": "B",
+      "timestamp": "2026-04-14T17:13:50.862253"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008H-ts-2683",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:14:06.828423"
+    },
+    {
+      "task_id": "---",
+      "status": "separator",
+      "model": null,
+      "message": "============================================================",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": null,
+      "timestamp": "2026-04-14T17:16:10.405446"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-RESEARCH-CLOUDNODE-AUDIT-001",
+      "status": "dispatched",
+      "model": "sonnet",
+      "message": "role=bee",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:16:10.405446"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-RESEARCH-CLOUDNODE-AUDIT-001",
+      "status": "running",
+      "model": null,
+      "message": "Processing...",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:19:12.978690"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-RESEARCH-CLOUDNODE-AUDIT-001",
+      "status": "complete",
+      "model": "claude-sonnet-4-5-20250929",
+      "message": "duration=360.9s",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 2.405397,
+      "role": "B",
+      "timestamp": "2026-04-14T17:22:17.302019"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-RESEARCH-CLOUDNODE-AUDIT-001",
+      "status": "complete",
+      "model": "sonnet",
+      "message": "duration=366.9s turns=23",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": 2.405397,
+      "role": "B",
+      "timestamp": "2026-04-14T17:22:23.511546"
+    },
+    {
+      "task_id": "QUEUE-TEMP-SPEC-HYG-008C-ts-2345",
+      "status": "running",
+      "model": null,
+      "message": "Testing: \u26a0\ufe0f  [BashTool] Pre-flight check is taking longer than expected. Run with ANTHROP",
+      "tests_passed": null,
+      "tests_total": null,
+      "cost_usd": null,
+      "role": "B",
+      "timestamp": "2026-04-14T17:27:34.636454"
+    }
+  ],
+  "total_cost": 249.00887900000006,
+  "total_input_tokens": 74601088,
+  "total_output_tokens": 500141,
+  "last_task_id": "QUEUE-TEMP-SPEC-SWE-instance_internetarchive-openlibrary-53e02a22972e9253aeded0e1981e6845e1e521fe-vfa6ff903cb27f336e17654595dd900fa943dcd91",
+  "slot_reservations": {},
+  "claims": {},
+  "notifications": [
+    {
+      "timestamp": "2026-04-14T16:05:23.868665",
+      "spec_file": "SPEC-TEST-20260414-1603.md",
+      "task_id": "TEST-20260414",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T16:06:17.341136",
+      "spec_file": "SPEC-SMOKE-TEST-notify.md",
+      "task_id": "SMOKE-TEST",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T16:06:57.292052",
+      "spec_file": "SPEC-TEST-20260414-1605.md",
+      "task_id": "TEST-20260414",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T16:07:08.790818",
+      "spec_file": "SPEC-SMOKE-DONE-001.md",
+      "task_id": "SMOKE-DONE",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T16:07:23.858048",
+      "spec_file": "SPEC-FAIL-002.rejection.md",
+      "task_id": "FAIL-002.REJECTION",
+      "status": "failed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T16:07:24.095083",
+      "spec_file": "SPEC-FAIL-002.md",
+      "task_id": "FAIL-002",
+      "status": "failed",
+      "message": "Tests failed: 3/10 passed\n"
+    },
+    {
+      "timestamp": "2026-04-14T16:07:38.067435",
+      "spec_file": "SPEC-TEST-20260414-1600.md",
+      "task_id": "TEST-20260414",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T16:09:43.150818",
+      "spec_file": "SPEC-TEST-20260414-1606.md",
+      "task_id": "TEST-20260414",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T16:10:02.825965",
+      "spec_file": "SPEC-FACTORY-SPECSUBMIT-001-fix-gate0.md",
+      "task_id": "FACTORY-SPECSUBMIT",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T16:25:46.225315",
+      "spec_file": "SPEC-AUDIT-BUILD-PROCESS-INFRA-001.md",
+      "task_id": "AUDIT-BUILD",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T16:25:48.211909",
+      "spec_file": "SPEC-FACTORY-PAUSE-001-wire-pause-resume.md",
+      "task_id": "FACTORY-PAUSE",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T16:25:59.562753",
+      "spec_file": "SPEC-DES-AUDIT-001-implementation-survey.md",
+      "task_id": "DES-AUDIT",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T16:35:39.786605",
+      "spec_file": "SPEC-AUDIT-BUILD-PROCESS-INFRA-001.md",
+      "task_id": "AUDIT-BUILD",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T16:35:41.103905",
+      "spec_file": "SPEC-FACTORY-PAUSE-001-wire-pause-resume.md",
+      "task_id": "FACTORY-PAUSE",
+      "status": "failed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T16:40:44.752959",
+      "spec_file": "SPEC-FACTORY-PAUSE-001-wire-pause-resume.md",
+      "task_id": "FACTORY-PAUSE",
+      "status": "failed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T16:49:56.869289",
+      "spec_file": "SPEC-RAIDEN-SET-001-mobile-game-wrapper.md",
+      "task_id": "RAIDEN-SET",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T16:50:24.284670",
+      "spec_file": "SPEC-HYG-008-ts-remaining-errors.md",
+      "task_id": "HYG-008",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T17:02:58.890372",
+      "spec_file": "SPEC-REPO-001-readme-alignment.md",
+      "task_id": "REPO-001",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T17:07:09.320923",
+      "spec_file": "SPEC-HYG-008F-ts-1355.md",
+      "task_id": "HYG-008F",
+      "status": "failed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T17:07:20.829159",
+      "spec_file": "SPEC-HYG-010-hardcoded-colors.md",
+      "task_id": "HYG-010",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T17:11:42.162217",
+      "spec_file": "SPEC-IDENTITY-001-unify-node-id.md",
+      "task_id": "IDENTITY-001",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T17:14:02.618616",
+      "spec_file": "SPEC-RAG-DEDUP-001-fix-dual-routing.md",
+      "task_id": "RAG-DEDUP",
+      "status": "completed",
+      "message": null
+    },
+    {
+      "timestamp": "2026-04-14T17:23:24.594849",
+      "spec_file": "SPEC-RESEARCH-CLOUDNODE-AUDIT-001.md",
+      "task_id": "RESEARCH-CLOUDNODE",
+      "status": "completed",
+      "message": null
+    }
+  ]
+}

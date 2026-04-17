@@ -1,0 +1,80 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-INFRA-01-queue-runner-crash-investigation
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-1708
+# Task file: QUEUE-TEMP-SPEC-INFRA-01-queue-runner-crash-investigation.md
+# Success: True
+# Duration: 58.0s
+# Files modified: 4 (verified)
+# Cost (USD): $1.229763
+# Turns: 6
+# API duration (ms): 41990
+# Session ID: 64041eea-4cf9-4032-ae39-75b360eb845d
+# Boot injected: True
+
+---
+
+Now let me look at the root cause. Based on my analysis, I've identified **5 critical issues**:
+
+## Root Cause Analysis
+
+### Issue 1: **Race Condition in `is_running` Check**
+The `is_running` property checks `self._running and self._task is not None and not self._task.done()`, but:
+- `self._running = True` is set BEFORE the task is created (line 95)
+- If the task fails immediately during `asyncio.to_thread()` creation, `is_running` returns `False` even though `_running=True`
+
+### Issue 2: **Silent Failure on Early Return**
+In `queue_bridge.py` lines 76-93, if config/queue_dir don't exist or module load fails, the method returns early WITHOUT setting `app.state.queue_bridge`. The `/build/queue-runner-status` endpoint then reports `running: false` forever.
+
+### Issue 3: **`queue-wake` Restart Logic Bug**
+In `build_monitor.py:625-650`, the restart logic has a flaw:
+- It checks `bridge.is_running` first
+- If runner died silently (task done, `_running=False`), it tries to restart
+- BUT: it calls `bridge.start()` which checks `_config_path.exists()` again
+- If config doesn't exist (or any early-return condition), restart fails silently
+
+### Issue 4: **No Structured Logging for Lifecycle Events**
+The bridge logs start/stop/errors, but NOT:
+- "Config missing: {path}"
+- "Queue dir missing: {path}"
+- "Module load succeeded"
+- "Task created successfully"
+- "Task failed during creation"
+
+### Issue 5: **Auto-Restart Race Condition**
+In `_on_task_done` (lines 138-149), auto-restart uses `loop.call_later()` with a lambda that calls `asyncio.ensure_future(self.start())`. This can race with manual restarts from `/build/queue-wake`.
+
+---
+
+## My Proposed Fix Plan
+
+1. **Add structured lifecycle logging** with explicit log levels:
+   - `INFO`: Start attempt, config check, module load, task creation success
+   - `WARNING`: Config missing, queue dir missing, module load fail
+   - `ERROR`: Task creation failed, task died with exception
+
+2. **Fix `is_running` race condition**:
+   - Only set `self._running = True` AFTER task is successfully created
+   - Add `_starting` flag to prevent double-start
+
+3. **Improve `/build/queue-wake` restart logic**:
+   - Check WHY runner is dead (config missing? module load fail? crash?)
+   - Return detailed error message explaining what's wrong
+   - Add force-restart flag to bypass early-return checks
+
+4. **Add health check endpoint** `/build/queue-runner-health`:
+   - Returns detailed diagnostic info (config exists? queue dir exists? module loadable? task state?)
+
+5. **Fix auto-restart race** - use a restart lock to prevent concurrent restarts
+
+6. **Comprehensive tests**:
+   - Runner starts on fresh boot
+   - Runner recovers from transient error
+   - Wake endpoint restarts dead runner
+   - Runner doesn't double-start
+   - Runner reports accurate state
+
+---
+
+Should I proceed with implementing these fixes?

@@ -1,0 +1,110 @@
+{
+  "benchmark": "prism-bench",
+  "total_results": 8,
+  "tracks": {
+    "baseline": {
+      "clock_seconds": {
+        "mean": 0.01193910837173462,
+        "std_dev": 0.006966643797862698,
+        "min": 0.0,
+        "max": 0.01738715171813965,
+        "count": 4
+      },
+      "coin_usd": {
+        "mean": 0.0,
+        "std_dev": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "count": 4
+      },
+      "carbon_kg": {
+        "mean": 0.0,
+        "std_dev": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "count": 4
+      }
+    },
+    "simdecisions": {
+      "clock_seconds": {
+        "mean": 0.003997683525085449,
+        "std_dev": 0.006924190978029049,
+        "min": 0.0,
+        "max": 0.015990734100341797,
+        "count": 4
+      },
+      "coin_usd": {
+        "mean": 0.0,
+        "std_dev": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "count": 4
+      },
+      "carbon_kg": {
+        "mean": 0.0,
+        "std_dev": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "count": 4
+      }
+    }
+  },
+  "comparison": {
+    "deltas": {
+      "clock_seconds": -0.00794142484664917,
+      "coin_usd": 0.0,
+      "carbon_kg": 0.0
+    },
+    "p_values": {
+      "clock_seconds": 0.312321421676216,
+      "coin_usd": 1.0,
+      "carbon_kg": 1.0
+    },
+    "baseline_stats": {
+      "clock_seconds": {
+        "mean": 0.01193910837173462,
+        "std_dev": 0.006966643797862698,
+        "min": 0.0,
+        "max": 0.01738715171813965,
+        "count": 4
+      },
+      "coin_usd": {
+        "mean": 0.0,
+        "std_dev": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "count": 4
+      },
+      "carbon_kg": {
+        "mean": 0.0,
+        "std_dev": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "count": 4
+      }
+    },
+    "simdecisions_stats": {
+      "clock_seconds": {
+        "mean": 0.003997683525085449,
+        "std_dev": 0.006924190978029049,
+        "min": 0.0,
+        "max": 0.015990734100341797,
+        "count": 4
+      },
+      "coin_usd": {
+        "mean": 0.0,
+        "std_dev": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "count": 4
+      },
+      "carbon_kg": {
+        "mean": 0.0,
+        "std_dev": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "count": 4
+      }
+    }
+  }
+}

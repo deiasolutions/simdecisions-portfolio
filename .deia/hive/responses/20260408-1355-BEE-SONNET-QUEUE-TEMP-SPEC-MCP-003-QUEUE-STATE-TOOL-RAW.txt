@@ -1,0 +1,45 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MCP-003-queue-state-tool
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260408-1355
+# Task file: QUEUE-TEMP-SPEC-MCP-003-queue-state-tool.md
+# Success: True
+# Duration: 306.3s
+# Files modified: 19 (verified)
+# Cost (USD): $4.167195
+# Turns: 25
+# API duration (ms): 262050
+# Session ID: 484eb417-8a74-46a1-9537-733879a4c1a1
+# Boot injected: True
+
+---
+
+Excellent! The file is 358 lines, well under the 500-line limit.
+
+## Summary
+
+**Task QUEUE-TEMP-SPEC-MCP-003 COMPLETE ✅**
+
+Successfully implemented the `queue_state` tool with grouped format:
+
+**Files Modified:**
+1. `hivenode/hive_mcp/tools/queue.py` — Added 70-line `queue_state()` function
+2. `hivenode/hive_mcp/local_server.py` — Registered tool in MCP server (2 locations)
+3. `hivenode/hive_mcp/tests/test_tools_queue.py` — Added 7 comprehensive tests
+
+**Key Features:**
+- Returns queue contents grouped by status: `{"active": [...], "pending": [...], "done": [...]}`
+- Scans `_active/`, `backlog/`, and `_done/` directories
+- Optional `include_done` parameter (default: false)
+- Backward compatible — existing `queue_list` unchanged
+- Handles missing directories gracefully
+- Ignores non-markdown files
+
+**Tests:** 19/19 passed (12 existing + 7 new)
+
+**Constraints Met:**
+- ✅ No file over 500 lines (queue.py is 358 lines)
+- ✅ TDD: tests written first
+- ✅ Added to existing file, no new file created
+- ✅ queue_list behavior unchanged

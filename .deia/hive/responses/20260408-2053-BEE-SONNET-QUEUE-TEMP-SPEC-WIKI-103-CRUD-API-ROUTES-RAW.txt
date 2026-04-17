@@ -1,0 +1,66 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-WIKI-103-crud-api-routes
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260408-2053
+# Task file: QUEUE-TEMP-SPEC-WIKI-103-crud-api-routes.md
+# Success: True
+# Duration: 260.5s
+# Files modified: 11 (verified)
+# Cost (USD): $3.564081
+# Turns: 22
+# API duration (ms): 217621
+# Session ID: e79a75ea-7a93-45e6-ac52-5af864d5ff88
+# Boot injected: True
+
+---
+
+Excellent! All tests pass. Let me create a quick summary of what was delivered:
+
+## Task Summary
+
+**SPEC-WIKI-103: Wiki CRUD API Routes** - ✅ COMPLETE
+
+### Deliverables
+
+**Created 3 new files:**
+1. `hivenode/wiki/routes.py` (425 lines) - All 6 CRUD API endpoints
+2. `hivenode/wiki/schemas.py` (66 lines) - Pydantic request/response models  
+3. `hivenode/wiki/tests/test_routes.py` (315 lines) - 9 integration tests
+
+**Modified 1 file:**
+- `hivenode/main.py` - Mounted wiki router and initialized wiki store
+
+### API Endpoints Implemented
+
+1. **POST /api/wiki/pages** - Create new wiki page
+2. **GET /api/wiki/pages** - List all current pages
+3. **GET /api/wiki/pages/{path}** - Get single page by path
+4. **PUT /api/wiki/pages/{path}** - Update page (creates new version)
+5. **DELETE /api/wiki/pages/{path}** - Soft delete page
+6. **GET /api/wiki/pages/{path}/history** - Get version history
+
+### Key Features
+
+✅ Automatic frontmatter parsing on create/update
+✅ Automatic wikilink extraction on create/update  
+✅ Version control system (creates new row on update, preserves history)
+✅ Soft delete (is_deleted flag, not hard deletion)
+✅ SQLAlchemy Core pattern (matches existing store.py)
+✅ JWT auth via `verify_jwt_or_local` dependency
+✅ 9 comprehensive integration tests (all passing)
+
+### Test Results
+
+All 9 tests pass in ~2 seconds:
+- ✅ Create page basic
+- ✅ Create with frontmatter and wikilinks (parsing verified)
+- ✅ Get page by path
+- ✅ Get page not found (404)
+- ✅ List pages
+- ✅ Update creates new version
+- ✅ Update marks old version not current
+- ✅ Soft delete
+- ✅ Get full version history
+
+**Response file:** `.deia/hive/responses/20260408-WIKI-103-RESPONSE.md`

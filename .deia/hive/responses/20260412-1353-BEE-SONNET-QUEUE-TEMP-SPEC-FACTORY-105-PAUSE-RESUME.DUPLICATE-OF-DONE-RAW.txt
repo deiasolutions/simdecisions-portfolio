@@ -1,0 +1,52 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-FACTORY-105-PAUSE-RESUME.duplicate-of-done
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260412-1353
+# Task file: QUEUE-TEMP-SPEC-FACTORY-105-PAUSE-RESUME.duplicate-of-done.md
+# Success: True
+# Duration: 70.7s
+# Files modified: 8 (verified)
+# Cost (USD): $0.8537309999999999
+# Turns: 9
+# API duration (ms): 57849
+# Session ID: ed4a8ad6-f562-488f-b90e-34abdb02dbdb
+# Boot injected: True
+
+---
+
+## Task Rejection: SPEC-FACTORY-105 is a Duplicate
+
+This task was **already completed on 2026-04-09** with full implementation and testing. I've created a rejection response file documenting this.
+
+### Evidence
+
+1. **Original completion**: `.deia/hive/queue/_done/SPEC-FACTORY-105-PAUSE-RESUME.md`
+2. **Original response**: `.deia/hive/responses/20260409-FACTORY-105-RESPONSE.md` (complete, 216 lines)
+3. **Current dispatch**: `.deia/hive/queue/_active/SPEC-FACTORY-105-PAUSE-RESUME.duplicate-of-done.md`
+
+The file name itself contains "duplicate-of-done" — suggesting the triage system detected this but still dispatched it.
+
+### What Was Delivered (April 9, 2026)
+
+**Backend:**
+- Queue pause/resume/state endpoints (+161 lines)
+- Task reassignment endpoint
+- State persistence to queue_state.json
+
+**Frontend:**
+- QueueControls component (43 lines)
+- TaskContextMenu component (78 lines)
+- Queue store updates (+76 lines)
+- QueuePane integration (~120 lines)
+- CSS styling (+165 lines)
+
+All acceptance criteria met except voice integration (out of scope).
+
+### Recommended Actions
+
+1. **Delete duplicate file** from `_active/`
+2. **Review triage logic** — why was a `_done` spec re-queued?
+3. **Check for other duplicates** in the queue
+
+**Response file created:** `.deia/hive/responses/20260412-SPEC-FACTORY-105-DUPLICATE-REJECTION.md`

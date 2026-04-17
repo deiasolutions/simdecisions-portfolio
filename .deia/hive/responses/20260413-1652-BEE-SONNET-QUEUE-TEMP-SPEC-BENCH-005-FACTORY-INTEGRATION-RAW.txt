@@ -1,0 +1,53 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-BENCH-005-factory-integration
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260413-1652
+# Task file: QUEUE-TEMP-SPEC-BENCH-005-factory-integration.md
+# Success: True
+# Duration: 544.1s
+# Files modified: 8 (verified)
+# Cost (USD): $8.124954
+# Turns: 43
+# API duration (ms): 503036
+# Session ID: 15386d9f-ba30-4567-9a02-6373f061f5c5
+# Boot injected: True
+
+---
+
+Perfect! TASK-BENCH-005 is now complete. Let me provide a summary:
+
+## TASK-BENCH-005: Factory Integration — COMPLETE ✅
+
+I've successfully completed the factory integration task for the benchmark suite. Here's what was delivered:
+
+### Files Created (6 new files):
+1. **`simdecisions/benchmark/executor.py`** (293 lines) - BenchmarkTaskExecutor class
+2. **`simdecisions/benchmark/ledger_utils.py`** (157 lines) - Ledger query utilities
+3. **`hivenode/ledger/benchmark_events.py`** (77 lines) - 3 benchmark event types
+4. **`tests/simdecisions/benchmark/test_executor.py`** (15 tests)
+5. **`tests/simdecisions/benchmark/test_ledger_utils.py`** (10 tests)
+6. **`tests/hivenode/ledger/test_benchmark_events.py`** (6 tests)
+
+### Files Modified (1 file):
+- **`hivenode/ledger/schema.py`** - Registered benchmark event types
+
+### Test Results:
+- **31 tests total** (15 + 10 + 6)
+- **All passing** ✅
+- **TDD approach** - tests written first, then implementation
+
+### Key Features Implemented:
+- ✅ Three currencies captured: **CLOCK** (wall time), **COIN** (USD from ledger), **CARBON** (computed via carbon.yml)
+- ✅ Model calls counted from ledger LLM_CALL events
+- ✅ Ledger events emitted: `benchmark_task_start`, `benchmark_task_complete`, `benchmark_task_failed`
+- ✅ Results written to YAML matching RESULT_SCHEMA
+- ✅ Both baseline and SimDecisions tracks supported
+- ✅ All files under 500 lines (executor: 293, ledger_utils: 157, events: 77)
+
+### Wave A Status:
+- BENCH-001 through BENCH-003: ✅ Complete
+- BENCH-005 (this task): ✅ Complete
+- End-to-end validation requires CLI integration (not in spec scope)
+
+The benchmark executor is ready to process tasks through the factory queue and capture all required metrics!

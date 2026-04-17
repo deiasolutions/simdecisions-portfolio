@@ -1,0 +1,51 @@
+# BEE RESPONSE: 2026-03-24-BRIEFING-AUTH-REBRAND-RA96IT-TO-HODEIA
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260324-1521
+# Task file: 2026-03-24-BRIEFING-AUTH-REBRAND-RA96IT-TO-HODEIA.md
+# Success: True
+# Duration: 212.8s
+# Files modified: 10 (verified)
+# Cost (USD): $1.467207
+# Turns: 24
+# API duration (ms): 205542
+# Session ID: 964e7cab-3f2b-4dbc-af6f-133cc24d0029
+# Boot injected: True
+
+---
+
+## Summary
+
+I've completed the briefing analysis and written **6 task files** for the auth rebrand (ra96it → hodeia). All task files are ready for Q33NR review before dispatch.
+
+### Task Files Created:
+
+**Wave 1 (4 tasks, parallel, haiku model):**
+1. **TASK-AUTH-A**: LoginPage rebrand — VITE_RA96IT_API → VITE_AUTH_API, UI text ra96it → hodeia
+2. **TASK-AUTH-B**: authStore rebrand — localStorage keys with backwards-compatible migration
+3. **TASK-AUTH-D**: hivenode config rebrand — auth_* fields + dual-issuer JWT validation
+4. **TASK-AUTH-F**: eggResolver cleanup — mark ra96it entries as deprecated
+
+**Wave 2 (2 tasks, parallel after Wave 1, haiku model):**
+5. **TASK-AUTH-C**: login.egg.md docs update
+6. **TASK-AUTH-E**: deployment-env.md docs update
+
+### Key Design Decisions:
+
+✅ **Backwards compatibility**: localStorage migration (old → new keys), dual-issuer JWT validation (accept both "ra96it" and "hodeia")  
+✅ **Generic naming**: VITE_AUTH_API (not tied to any brand), sd_auth_* localStorage keys (matches existing sd_user_settings pattern)  
+✅ **No backend service changes**: ra96it service stays on platform repo at api.ra96it.com  
+✅ **All haiku model**: Straightforward find-and-replace scope, cost-effective  
+✅ **TDD for all code tasks**: Tests first, no stubs, all acceptance criteria measurable
+
+### Review Items for Q33NR:
+
+1. Is the localStorage migration strategy clear in TASK-AUTH-B?
+2. Is the dual-issuer JWT strategy clear in TASK-AUTH-D?
+3. Should TASK-AUTH-E document DNS nameserver status?
+4. Should App.shouldShowLanding.test.tsx be updated to check hodeia.me domains?
+
+**Response file:** `.deia/hive/responses/20260324-QUEEN-2026-03-24-BRIEFING-AUTH-REBRAND-RA96IT-TO-HODEIA-RESPONSE.md`
+
+Awaiting your review and approval to dispatch bees.

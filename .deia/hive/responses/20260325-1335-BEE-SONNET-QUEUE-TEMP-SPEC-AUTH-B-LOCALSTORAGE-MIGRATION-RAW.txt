@@ -1,0 +1,91 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-AUTH-B-LOCALSTORAGE-MIGRATION
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260325-1335
+# Task file: QUEUE-TEMP-SPEC-AUTH-B-LOCALSTORAGE-MIGRATION.md
+# Success: True
+# Duration: 301.1s
+# Files modified: 24 (verified)
+# Cost (USD): $1.445796
+# Turns: 12
+# API duration (ms): 129908
+# Session ID: c7b5ff92-04d8-42a0-8685-aa37de3a5437
+# Boot injected: True
+
+---
+
+Perfect! Now I need to review Q33N's task file using the mechanical checklist from the system prompt. Let me go through each item:
+
+## Mechanical Review Checklist
+
+- [x] **Deliverables match spec.** ✅ Every acceptance criterion in the spec has a corresponding deliverable in the task.
+- [x] **File paths are absolute.** ✅ All file paths use `C:\Users\davee\...` format
+- [x] **Test requirements present.** ✅ Task specifies 6 new migration tests + edge cases + smoke tests
+- [N/A] **CSS uses var(--sd-*)** only. N/A — no UI changes
+- [x] **No file over 500 lines.** ✅ Task notes authStore.ts is 137 lines, will remain under 200
+- [x] **No stubs or TODOs.** ✅ Constraint explicitly states "No stubs: Migration function must be fully implemented"
+- [x] **Response file template present.** ✅ Task includes the 8-section response file requirement with absolute path
+
+**ADDITIONAL FINDINGS:**
+
+1. Q33N correctly identified that the actual keys are `hodeia_*` not `ra96it_*` (good codebase review!)
+2. Q33N found all 3 files that reference the keys
+3. Migration logic is clearly specified and idempotent
+4. Test coverage is comprehensive (6 migration tests + 3 edge cases)
+5. All acceptance criteria from the original spec are covered
+
+**VERDICT: ✅ APPROVED FOR DISPATCH**
+
+Now I'll approve the task file and tell Q33N to dispatch the bee:
+
+I've reviewed Q33N's task file for AUTH-B localStorage migration. Here's my assessment:
+
+## ✅ TASK FILE APPROVED
+
+### Review Results
+
+**All checklist items passed:**
+
+- ✅ Deliverables match spec — all 8 acceptance criteria covered
+- ✅ File paths are absolute — all use `C:\Users\davee\...` format
+- ✅ Test requirements present — 6 migration tests + 3 edge cases specified
+- ✅ No file over 500 lines — authStore.ts currently 137 lines, will stay under 200
+- ✅ No stubs — constraint explicitly stated
+- ✅ Response file template present — all 8 sections required
+
+### Notable Findings
+
+**Q33N did good codebase research:**
+- Corrected the spec: keys are actually `hodeia_*` not `ra96it_*` 
+- Found all 3 files that need updating
+- Identified authStore.ts is 137 lines (well under limit)
+
+**Migration logic is sound:**
+- Handles all 4 scenarios correctly
+- Idempotent design (safe to run multiple times)
+- Session preservation tested explicitly
+
+**Test coverage is comprehensive:**
+- 6 core migration tests
+- 3 edge case tests (token-only, user-only, malformed JSON)
+- Smoke tests specified
+
+---
+
+## 📋 Dispatch Approved
+
+Q33N may now dispatch the bee with:
+
+```bash
+python .deia/hive/scripts/dispatch/dispatch.py .deia/hive/tasks/2026-03-25-TASK-AUTH-B-LOCALSTORAGE-MIGRATION.md --model sonnet --role bee --inject-boot
+```
+
+**Expected outcome:**
+- BEE will write 6 migration tests (TDD)
+- BEE will implement `migrateAuthKeys()` function
+- BEE will update 3 files with new key names
+- BEE will run full test suite and verify no regressions
+- BEE will write 8-section response file
+
+I'll wait for the bee to complete and then review the results.

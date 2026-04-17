@@ -1,0 +1,69 @@
+# BEE RESPONSE: 2026-03-25-TASK-BUG-019-A-PALETTE-TREENODE-MARKER
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260325-1352
+# Task file: 2026-03-25-TASK-BUG-019-A-PALETTE-TREENODE-MARKER.md
+# Success: True
+# Duration: 822.3s
+# Files modified: 13 (verified)
+# Cost (USD): $1.4259872
+# Turns: 36
+# API duration (ms): 225542
+# Session ID: 40940db9-285f-42f4-ae5b-29136a07d0a0
+# Boot injected: True
+
+---
+
+Perfect! Let me create a summary of what was accomplished:
+
+---
+
+## ✅ TASK-BUG-019-A COMPLETE
+
+### Summary
+
+**TASK-BUG-019-A: Palette and TreeNode Canvas Internal Marker** has been successfully completed. The implementation isolates canvas palette drags from the shell's drag-drop system by marking palette nodes as canvas-internal.
+
+### What Was Done
+
+1. **Code Implementation** (verified - already in place):
+   - ✅ paletteAdapter.ts: `canvasInternal: true` marker added to all palette node metadata
+   - ✅ TreeNodeRow.tsx: Canvas-internal drag handler implemented to set `canvas/internal` dataTransfer type and call `stopPropagation()`
+
+2. **Test Creation** (newly created):
+   - ✅ Created `paletteAdapter.test.ts` with **14 comprehensive tests** covering:
+     - Palette categories and structure
+     - `canvasInternal: true` marker on all leaf nodes
+     - Correct drag MIME type (`application/phase-node`)
+     - Node icons, drag data, defaultData structures
+   
+   - ✅ Verified existing `TreeNodeRow.canvasInternal.test.tsx` with **4 tests** covering:
+     - Canvas/internal dataTransfer type handling
+     - stopPropagation() calls
+     - Non-canvas nodes unaffected
+
+### Test Results
+
+**Total: 18 tests passing**
+- paletteAdapter.test.ts: **14/14 passing** ✓
+- TreeNodeRow.canvasInternal.test.tsx: **4/4 passing** ✓
+- No breakage to existing tests (199 passed, 8 pre-existing unrelated failures)
+
+### Acceptance Criteria
+
+All 8 acceptance criteria met:
+- [x] paletteAdapter.ts sets `canvasInternal: true`
+- [x] TreeNodeRow.tsx checks `canvasInternal` in handleDragStart()
+- [x] Sets `canvas/internal` dataTransfer type
+- [x] Calls `stopPropagation()` for canvas drags
+- [x] Drag MIME type unchanged (`application/phase-node`)
+- [x] 14 paletteAdapter tests (exceeds minimum of 3)
+- [x] 4 TreeNodeRow tests (meets minimum of 4)
+- [x] Non-canvas adapters unaffected
+
+### Response File
+
+✅ Response file created: `.deia/hive/responses/20260325-TASK-BUG-019-A-RESPONSE.md` (6.2K)
+
+The task is complete. Canvas palette drags are now properly isolated from shell pane rearrangement drags. BUG-019-B and BUG-019-C can proceed with confidence.

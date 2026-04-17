@@ -1,0 +1,92 @@
+# BEE RESPONSE: 2026-03-15-BRIEFING-canvas-tests
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260315-1319
+# Task file: 2026-03-15-BRIEFING-canvas-tests.md
+# Success: True
+# Duration: 167.8s
+# Files modified: 2 (verified)
+# Cost (USD): $0
+# Turns: 30
+# API duration (ms): 157696
+# Session ID: 2bc5285a-9fda-40ac-a16b-279ab7ea9521
+# Boot injected: True
+
+---
+
+Perfect! Now I'll write a summary report to Q33NR for review before dispatching.
+
+## Q33N Summary Report to Q33NR
+
+**Task File Created:** `.deia/hive/tasks/2026-03-15-TASK-150-port-canvas-tests.md`
+
+### Analysis Summary
+
+I've mapped the platform/simdecisions-2 canvas directory structure to shiftcenter. Here's what I found:
+
+**Components that exist in shiftcenter:**
+- ✅ `FlowCanvas` (equivalent to platform's `Canvas`, but different API)
+- ✅ `GroupNode` (direct match)
+- ✅ Animation module (CheckpointFlash, NodePulse, QueueBadge, ResourceBar, SimClock, TokenAnimation)
+
+**Components that DO NOT exist in shiftcenter:**
+- ❌ `BPMNNode` (and all BPMN node variants)
+- ❌ `AnnotationImageNode`
+- ❌ `AnnotationLineNode`
+- ❌ Other annotation nodes (Rect, Ellipse, Text, Callout, StickyNote)
+
+### Porting Strategy
+
+**12 test files, broken into 3 categories:**
+
+1. **Full port (2 files, ~265 lines):**
+   - `GroupNode.test.tsx` (38 lines) — GroupNode exists, direct port
+   - `animation.test.tsx` (227 lines) — animation module exists, direct port
+
+2. **Adapt with skips (6 files, ~1,048 lines):**
+   - `Canvas.drop.test.tsx` (226 lines) — adapt Canvas → FlowCanvas, skip incompatible features
+   - `Canvas.lasso.test.tsx` (126 lines) — check if lasso exists in FlowCanvas
+   - `Canvas.minimap.test.tsx` (79 lines) — check if minimap exists
+   - `Canvas.pan.test.tsx` (111 lines) — check if pan exists
+   - `canvas.test.tsx` (293 lines) — core FlowCanvas tests
+   - `Canvas.broadcast.test.tsx` (213 lines) — check if broadcast exists
+
+3. **Skip all tests (4 files, ~546 lines):**
+   - `BPMNNode.test.tsx` (234 lines) — BPMN nodes don't exist
+   - `nodes.test.tsx` (84 lines) — tests BPMN nodes
+   - `AnnotationImageNode.test.tsx` (122 lines) — annotation nodes don't exist
+   - `AnnotationLineNode.test.tsx` (106 lines) — annotation nodes don't exist
+
+### Task File Highlights
+
+**Objective:** Port all 12 files, skip tests for missing components, ensure portable tests pass.
+
+**Key instructions to bee:**
+- Update imports: `Canvas` → `FlowCanvas`
+- Map relative paths to shiftcenter structure
+- Use `it.skip()` with clear comments for missing components
+- No stubs — if it doesn't exist, skip it
+- p5 mock already exists in setup.ts (no additional config needed)
+
+**Acceptance criteria:**
+- All 12 test files created
+- GroupNode tests: all pass
+- Animation tests: all pass
+- Canvas tests: portable tests pass, incompatible tests skipped
+- BPMN/annotation tests: all skipped with clear comments
+- No new failures in existing tests
+
+**Model assignment:** haiku (mechanical porting task)
+
+### Ready for Review
+
+The task file is complete with:
+- ✅ All 8 required sections (Objective, Context, Files to Read, Deliverables, Test Requirements, Constraints, Smoke Test, Response Requirements)
+- ✅ Absolute file paths throughout
+- ✅ Clear component mapping table
+- ✅ Specific skip criteria
+- ✅ No stubs allowed
+- ✅ Response file format template
+
+**Awaiting Q33NR approval to dispatch.**

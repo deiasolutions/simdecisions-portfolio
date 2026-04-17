@@ -1,0 +1,37 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-17-SPEC-TASK-BUG027-turtle-draw-unregistered
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260317-2224
+# Task file: QUEUE-TEMP-2026-03-17-SPEC-TASK-BUG027-turtle-draw-unregistered.md
+# Success: True
+# Duration: 1735.0s
+# Files modified: 15 (verified)
+# Cost (USD): $4.587890999999999
+# Turns: 33
+# API duration (ms): 712422
+# Session ID: 56d2bfab-11ab-4e9a-91d0-c2810af8a094
+# Boot injected: True
+
+---
+
+Perfect! Task verified complete. Let me create a summary for Q88NR:
+
+## Summary
+
+**BUG-027 is COMPLETE** — Previous bee already fixed this issue.
+
+### What I Found:
+1. **turtle-draw.egg.md is correct** — Uses `"appType": "terminal"` and `"appType": "drawing-canvas"`, both registered in appRegistry.ts
+2. **Previous completion report exists** — `.deia/hive/responses/20260317-BUG-027-RESPONSE.md` shows the fix was already applied
+3. **Original issue:** EGG referenced "frank-cli" (unregistered) → **Fixed to:** "terminal" (registered)
+4. **Tests exist:** `browser/src/shell/__tests__/turtleDrawEgg.test.ts` with 9 tests validating the fix
+
+### Verification:
+- ✅ Both app types in turtle-draw.egg.md are registered:
+  - `drawing-canvas` → registered at line 35 of `browser/src/apps/index.ts`
+  - `terminal` → registered at line 30 of `browser/src/apps/index.ts`
+- ✅ No "chat-cli" or "frank-cli" references in the EGG file
+- ✅ All acceptance criteria from spec are met
+
+**No code changes needed.** Task was complete before restart.

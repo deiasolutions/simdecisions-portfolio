@@ -1,0 +1,90 @@
+# BEE RESPONSE: 2026-04-05-BRIEFING-SCHEDULER-DAEMONS
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260405-2231
+# Task file: 2026-04-05-BRIEFING-SCHEDULER-DAEMONS.md
+# Success: True
+# Duration: 147.9s
+# Files modified: 3 (verified)
+# Cost (USD): $0.37682954999999996
+# Turns: 13
+# API duration (ms): 147406
+# Session ID: 242d19e9-9721-410a-a119-6a9da8b817e9
+# Boot injected: True
+
+---
+
+Perfect. I've created all three task files. Now let me write a summary report for Q33NR:
+
+---
+
+## Q33N Report to Q33NR
+
+I've read the briefing and created 3 task files for the Scheduler + Dispatcher Daemon System. Here's the breakdown:
+
+### Task Files Created
+
+1. **TASK-SD-01: Scheduler Daemon** (`2026-04-05-TASK-SD-01-scheduler-daemon.md`)
+   - **File:** `hivenode/scheduler/scheduler_daemon.py` (max 500 lines)
+   - **Model:** sonnet
+   - **What:** Daemon that computes task schedules with time windows using OR-Tools CP-SAT solver
+   - **Key features:**
+     - Imports from scheduler_mobile_workdesk.py (no copy/paste)
+     - Threading.Thread daemon pattern (30s loop)
+     - Reads: dispatched.jsonl, _done/ (for velocity updates)
+     - Writes: schedule.json, schedule_log.jsonl
+     - Time windows: earliest_start, latest_start as ISO timestamps
+     - CLI: --dry-run flag (shows schedule, waits for 'y' before loop)
+     - Graceful SIGINT shutdown (Windows-compatible)
+   - **Tests:** 10+ pytest tests, TDD required
+
+2. **TASK-SD-02: Dispatcher Daemon** (`2026-04-05-TASK-SD-02-dispatcher-daemon.md`)
+   - **File:** `hivenode/scheduler/dispatcher_daemon.py` (max 500 lines)
+   - **Model:** sonnet
+   - **What:** Daemon that reads schedule.json, manages bee slots, moves spec files from backlog/ to queue/
+   - **Key features:**
+     - Threading.Thread daemon pattern (10s loop)
+     - Slot calculation: max_bees - active - queued
+     - Moves files (does NOT create them)
+     - Writes: dispatched.jsonl, dispatcher_log.jsonl
+     - CLI: --dry-run flag (logs but doesn't move files)
+     - Case-insensitive task_id matching
+     - Handles missing schedule.json gracefully
+   - **Tests:** 12+ pytest tests, TDD required
+
+3. **TASK-SD-03: Backlog Seed** (`2026-04-05-TASK-SD-03-backlog-seed.md`)
+   - **Files:** Create `backlog/` directory + 3 test specs
+   - **Model:** haiku (simple file creation)
+   - **What:** Creates backlog/ and seeds it with 3 minimal but real specs:
+     - SPEC-MW-S01-command-interpreter.md
+     - SPEC-MW-S02-voice-input.md
+     - SPEC-MW-S03-quick-actions.md
+   - **Format:** Each spec 50-100 lines, real content (not stubs), includes Priority, Depends On, Model Assignment, Acceptance Criteria, Smoke Test, Constraints
+   - **No tests:** File creation only, verification via ls
+
+### Dependencies
+- **TASK-SD-01 and TASK-SD-02 can run in parallel** (different files, communicate via files)
+- **TASK-SD-03 depends on TASK-SD-02** (needs dispatcher logic to test pipeline)
+
+### Key Design Decisions
+1. **Import, don't duplicate:** Both daemons import from scheduler_mobile_workdesk.py to reuse solve_schedule(), Task, TASKS, state management
+2. **Threading.Thread pattern:** Matches sync_daemon.py (not asyncio)
+3. **Windows-compatible:** SIGINT only (no SIGTERM), ASCII fallback for icons
+4. **datetime.now(datetime.UTC):** Fixes datetime.utcnow() deprecation
+5. **File-based communication:** schedule.json, dispatched.jsonl, dispatcher_log.jsonl, schedule_log.jsonl (append-only logs)
+6. **Graceful degradation:** Missing schedule.json → dispatcher logs warning and retries; missing spec file → dispatcher skips and logs warning
+
+### What Needs Q33NR Review
+- [ ] Are time windows correctly specified? (earliest_start, latest_start logic)
+- [ ] Is 30s (scheduler) / 10s (dispatcher) the right loop frequency?
+- [ ] Should TASK-SD-03 be dispatched with TASK-SD-02, or wait until SD-02 completes?
+- [ ] Any missing edge cases in test requirements?
+- [ ] Should we test the full pipeline (scheduler → dispatcher → queue-runner) or just unit tests?
+
+### Ready for Bee Dispatch?
+**Not yet.** Waiting for Q33NR to review these task files and approve dispatch.
+
+---
+
+**Q33N standing by for Q33NR feedback.**

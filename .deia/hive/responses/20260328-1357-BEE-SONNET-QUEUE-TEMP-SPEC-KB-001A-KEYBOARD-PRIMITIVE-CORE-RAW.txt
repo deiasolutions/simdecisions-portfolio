@@ -1,0 +1,58 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-KB-001A-keyboard-primitive-core
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260328-1357
+# Task file: QUEUE-TEMP-SPEC-KB-001A-keyboard-primitive-core.md
+# Success: True
+# Duration: 731.2s
+# Files modified: 17 (verified)
+# Cost (USD): $10.430019000000001
+# Turns: 63
+# API duration (ms): 607574
+# Session ID: d149d13a-fc88-40e7-a9c6-bb404e2d506e
+# Boot injected: True
+
+---
+
+Perfect! All work complete. Let me create a brief summary:
+
+---
+
+## SPEC-KB-001A: SC Keyboard Primitive — COMPLETE ✅
+
+**Status:** All acceptance criteria met
+**Tests:** 25/25 passing
+**Build:** ✓ Success (38.07s)
+
+### Deliverables Created
+1. **Core component** (`SCKeyboard.tsx`, 423 lines) — Orientation-reactive dual-layout keyboard
+2. **Sub-components** — BacklitKey, TrayGlowLayer, ComposeBuffer
+3. **Hooks** — useFnLayer, useFlare, useClickSound
+4. **Constants** — Layout arrays, accent colors, Fn actions
+5. **Adapter** — keyboardAdapter.tsx
+6. **Tests** — 25 comprehensive tests (387 lines)
+7. **Registration** — apps/index.ts + shell/constants.ts
+
+### Key Features Implemented
+- ✅ Portrait renders compact 4-row layout
+- ✅ Landscape renders full 104-key layout
+- ✅ Orientation detection + auto-switching
+- ✅ Fn layer with F1-F7 actions + Fn+Arrows → Home/End/PgUp/PgDn
+- ✅ Return lock (double-tap toggles CR/send)
+- ✅ 8OS tap = command palette, hold = modifier
+- ✅ Backlit physics (cap #0e0f13, tray #060810, 500ms flare)
+- ✅ Cherry MX Blue click synthesis
+- ✅ Buffer bar with sliding window, no native inputs
+- ✅ All CSS uses var(--sd-*) variables
+
+### Stubs for Wave B
+- Bus integration (bus prop accepted but unused)
+- Escape Protocol, command palette, navigation keys (console.log stubs)
+- Dark/glass mode switching (hardcoded dark=true)
+
+### Stubs for Wave C
+- Tray gestures (pinch-zoom, swipe-minimize)
+- Options menu (context menu on tray)
+
+**Ready for Wave B relay_bus wiring.**

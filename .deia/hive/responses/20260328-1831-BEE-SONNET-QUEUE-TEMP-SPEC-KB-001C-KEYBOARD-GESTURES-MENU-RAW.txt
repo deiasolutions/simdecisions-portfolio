@@ -1,0 +1,52 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-KB-001C-keyboard-gestures-menu
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260328-1831
+# Task file: QUEUE-TEMP-SPEC-KB-001C-keyboard-gestures-menu.md
+# Success: True
+# Duration: 392.3s
+# Files modified: 11 (verified)
+# Cost (USD): $6.365279999999999
+# Turns: 39
+# API duration (ms): 345861
+# Session ID: a0b88b98-5783-4f8e-a5f0-0ba20318ce61
+# Boot injected: True
+
+---
+
+Perfect! The task is complete. Let me create a quick summary:
+
+## Summary
+
+**SPEC-KB-001C: SC Keyboard — Gestures, Menu & Physical Keyboard — COMPLETE**
+
+I successfully completed Wave C of the SC Keyboard primitive, adding:
+
+### New Files (7)
+1. **useTrayGestures.ts** — Unified hook for swipe-to-minimize and long-press-to-menu gestures
+2. **useOptionsMenu.ts** — Menu state and 5 hardware settings items
+3. **OptionsMenu.tsx** — Presentational component for the options menu
+4. **usePhysicalKeyboard.ts** — Physical keyboard detection and auto-hide
+5. **trayGestures.test.ts** — 8 tests for gesture handling
+6. **optionsMenu.test.ts** — 11 tests for menu functionality
+7. **physicalKeyboard.test.ts** — 5 tests for physical keyboard detection
+
+### Updated Files (2)
+1. **SCKeyboard.tsx** — Integrated all Wave C hooks, added touch/context handlers, rendered menu
+2. **useFnLayer.ts** — Exposed `setFnLocked` for options menu control
+
+### Features Delivered
+- ✅ Swipe down (>60px) minimizes keyboard to glass pill
+- ✅ Long-press (600ms) opens options menu (mobile)
+- ✅ Right-click opens options menu (desktop)
+- ✅ Physical keyboard auto-hide detection
+- ✅ 5-item hardware settings menu (readout position, return lock, Fn lock, F-row visibility, buffer window)
+- ✅ All gesture guards (data-key check, movement cancellation)
+- ✅ RTD event emissions (minimized, restored, physical-detected)
+
+### Test Results
+- **24 tests** — All passing (8 + 11 + 5)
+- **Build** — ✓ Zero errors
+
+The SC Keyboard primitive is now feature-complete per SPEC-SC-KEYBOARD-001 v3.

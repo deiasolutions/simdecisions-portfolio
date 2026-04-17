@@ -1,0 +1,4 @@
+
+> @shiftcenter/browser@0.1.0 test
+> vitest src/primitives/terminal/__tests__/useTerminal.chatPersist.test.ts --run
+

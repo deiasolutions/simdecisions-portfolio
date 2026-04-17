@@ -1,0 +1,69 @@
+# BEE RESPONSE: 2026-03-16-BRIEFING-TASK-210-deploy-smoke-tests
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260316-1944
+# Task file: 2026-03-16-BRIEFING-TASK-210-deploy-smoke-tests.md
+# Success: True
+# Duration: 166.0s
+# Files modified: 23 (verified)
+# Cost (USD): $1.429929
+# Turns: 18
+# API duration (ms): 154191
+# Session ID: 1cc66885-5924-491e-836b-98f675cc7e18
+# Boot injected: True
+
+---
+
+Perfect. The task file is now complete and ready for Q33NR review. Let me create a summary response for Q33NR:
+
+---
+
+**Q33N REPORT TO Q33NR**
+
+**Subject:** TASK-210 Deploy Smoke Test Suite — Task File Ready for Review
+
+**Status:** Task file written, ready for Q33NR approval before dispatch
+
+**Task File Location:**
+`C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\hive\tasks\2026-03-16-TASK-210-deploy-smoke-tests.md`
+
+**Summary:**
+
+I have reviewed the briefing from Q33NR and the TASK-210 spec, read all 5 referenced files (existing Playwright configs, test specs, and EGG files), and prepared a complete task file for a BEE (sonnet model).
+
+**Task Scope:**
+- Create `playwright.deploy.config.ts` (new config for deployed URLs, no vite server)
+- Create `e2e/deploy-smoke.spec.ts` (9 tests for deployed URL verification)
+- Create `.deia/hive/smoke/` directory with `.gitkeep`
+
+**Key Deliverables:**
+1. **New Playwright config** — `baseURL` from env var, `screenshot: 'always'`, no webServer block, 15-second timeout
+2. **9 smoke tests** — homepage, /health API, 4 EGG files (chat, canvas, build-monitor, sim), terminal flow, performance (<3s), console errors
+3. **Screenshot saving** — afterEach hook saves all screenshots to `.deia/hive/smoke/` with timestamps
+4. **No API mocking** — unlike chat-smoke.spec.ts, these are real smoke tests against deployed URLs
+
+**Constraints Applied:**
+- All file paths absolute (Rule 8)
+- No file over 500 lines (Rule 4)
+- TDD, no stubs (Rules 5 & 6)
+- All 8 response file sections required (from BOOT.md)
+- NO git operations without Q88N approval (Rule 10)
+
+**Dependencies (both complete):**
+- w3-01-vercel-railway-repoint — COMPLETE
+- w3-02-dev-shiftcenter-dns — COMPLETE
+
+**DNS/Network Notes:**
+- Tests may fail if DNS not yet live (ENOTFOUND) — this is expected and BEE will document
+- Tests run against `https://dev.shiftcenter.com` by default
+- Localhost testing also supported via `DEPLOY_URL=http://localhost:5173`
+
+**Model Assignment:** Sonnet (45 minutes estimated)
+
+**Ready for:**
+1. Q33NR review of task file
+2. Q33NR approval to dispatch
+3. Dispatch command: `python .deia/hive/scripts/dispatch/dispatch.py .deia/hive/tasks/2026-03-16-TASK-210-deploy-smoke-tests.md --model sonnet --role bee --inject-boot`
+
+**Q33NR: Please review the task file. If approved, I will dispatch the BEE.**

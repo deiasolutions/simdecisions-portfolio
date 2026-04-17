@@ -1,0 +1,36 @@
+# BEE RESPONSE: 2026-03-13-TASK-060-dns-config-docs
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260313-1825
+# Task file: 2026-03-13-TASK-060-dns-config-docs.md
+# Success: True
+# Duration: 134.2s
+# Files modified: 6 (verified)
+# Cost (USD): $0
+# Turns: 13
+# API duration (ms): 127651
+# Session ID: f9fc9a47-ba67-444b-8af1-29388077b7e4
+# Boot injected: True
+
+---
+
+Perfect! All 8 mandatory sections are present (header is # not ##, so it doesn't show in this grep, but it's there). 
+
+## Summary
+
+**TASK-060 is COMPLETE.**
+
+I've successfully documented the DNS configuration steps for Cloudflare in `docs/DEPLOYMENT-WIRING-NOTES.md`. The comprehensive DNS section includes:
+
+1. **Overview** — 3 objectives (add dev.shiftcenter.com, verify api.shiftcenter.com, leave production unchanged)
+2. **Prerequisites** — Cloudflare access, CNAME targets from Vercel and Railway
+3. **DNS Records Checklist** — Table with 3 records and their status
+4. **Step-by-step for dev.shiftcenter.com** — Login, add record, verify propagation
+5. **Step-by-step for api.shiftcenter.com** — Check existing, update if needed, verify
+6. **Production DNS table** — 3 records explicitly marked "Do NOT change"
+7. **Rollback plan** — Revert procedures for both dev and api subdomains
+
+All markdown formatting is valid (18 code blocks, 3 properly formatted tables, no broken links). The section is positioned between the Railway section and the smoke test placeholder (to be added by TASK-062).
+
+Response file written to: `.deia\hive\responses\20260313-TASK-060-RESPONSE.md`

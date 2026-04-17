@@ -1,0 +1,73 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-EST-02-data-collection
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-0947
+# Task file: QUEUE-TEMP-SPEC-EST-02-data-collection.md
+# Success: True
+# Duration: 763.4s
+# Files modified: 16 (verified)
+# Cost (USD): $7.8336630000000005
+# Turns: 35
+# API duration (ms): 432266
+# Session ID: 377eb21e-e28b-4bbf-af5b-7f2832c20ab1
+# Boot injected: True
+
+---
+
+Excellent! All tests pass. Let me create a quick summary document:
+
+## Task Complete ✅
+
+I've successfully completed **TASK-EST-02: Data Collection CLI for Estimation Calibration** as b33 (worker bee).
+
+### Summary
+
+Built a comprehensive CLI tool (`_tools/estimates.py`) for importing estimation data from three sources:
+
+1. **Scheduler TASKS list** → Original estimates with cost/carbon derivation
+2. **Build monitor API** → Actuals from completed tasks
+3. **Response files** → Manual Clock/Cost/Carbon data
+
+### Deliverables
+
+**3 Files Created:**
+- `_tools/estimates.py` (181 lines) — CLI with 5 commands
+- `_tools/estimates_db.py` (499 lines) — Database operations layer
+- `tests/hivenode/inventory/test_estimates_import.py` (464 lines) — 14 comprehensive tests
+
+### Test Results
+
+✅ **14/14 tests passed** (100% pass rate)
+
+### Smoke Test Results
+
+```bash
+# Import 66 tasks from scheduler
+$ python _tools/estimates.py import-scheduler hivenode/scheduler/scheduler_mobile_workdesk.py
+Imported 66 tasks
+
+# Manual commands work correctly
+$ python _tools/estimates.py record TEST-001 --est-hours 2.0 --est-cost 0.08 --est-carbon 4500 --type test --model haiku
+Recorded estimate for TEST-001
+
+$ python _tools/estimates.py actual TEST-001 --actual-hours 2.2 --actual-cost 0.09 --actual-carbon 4950 --completed-at "2026-04-06T12:00:00Z"
+Updated actuals for TEST-001
+```
+
+### Key Features
+
+- ✅ Cost derivation via `rate_loader.get_rate()` (haiku: $0.084, sonnet: $0.7875)
+- ✅ Carbon derivation via `carbon.yml` (model_energy × region_intensity)
+- ✅ Task ID extraction from 3 filename formats
+- ✅ Response files override build monitor data (source of truth)
+- ✅ Handles incomplete/missing data gracefully
+- ✅ Full TDD approach (tests written first)
+- ✅ All acceptance criteria met
+- ✅ No files over 500 lines
+
+### Response File
+
+Full response written to: `.deia/hive/responses/20260406-TASK-EST-02-RESPONSE.md`
+
+**Work complete. Ready for Q33N review.**

@@ -1,0 +1,48 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-CANVAS-IR-PIPELINE
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260324-1816
+# Task file: QUEUE-TEMP-SPEC-CANVAS-IR-PIPELINE.md
+# Success: True
+# Duration: 82.5s
+# Files modified: 13 (verified)
+# Cost (USD): $0.950484
+# Turns: 7
+# API duration (ms): 71423
+# Session ID: 7db33a05-4496-45ee-aabb-85752501fb48
+# Boot injected: True
+
+---
+
+Perfect! My work is complete. Let me report to Q88N (Dave):
+
+---
+
+## Q33NR Report: Canvas IR Pipeline Spec — COMPLETE
+
+**What I Did:**
+✅ Read `.deia/BOOT.md` and `.deia/HIVE.md` as required  
+✅ Checked queue runner status — **ACTIVE**  
+✅ Wrote spec file to `.deia/hive/queue/SPEC-CANVAS-IR-PIPELINE.md`  
+
+**Spec Details:**
+- **Priority:** P0 (regression fix)
+- **Type:** BUG_FIX  
+- **Model:** Sonnet
+- **Related Bugs:** BUG-018, BUG-058
+
+**Key Points in Spec:**
+- Emphasizes **DO NOT rewrite from scratch** — find working code via git history
+- Includes all key file paths (useTerminal.ts, CanvasApp.tsx, irRouting.ts, etc.)
+- Lists 8 acceptance criteria covering end-to-end flow
+- Notes investigation findings (terminal sends `terminal:ir-deposit`, canvas receives by data shape)
+
+**Next Steps:**
+The queue runner will automatically pick up this P0 spec and process it according to the queue workflow. No manual dispatch needed.
+
+**Files Written:**
+1. `.deia/hive/queue/SPEC-CANVAS-IR-PIPELINE.md`
+2. `.deia/hive/responses/20260324-REGENT-QUEUE-TEMP-SPEC-CANVAS-IR-PIPE-RESPONSE.md`
+
+The spec is now in the queue and ready for processing. The queue runner will coordinate Q33N → bees → completion automatically.

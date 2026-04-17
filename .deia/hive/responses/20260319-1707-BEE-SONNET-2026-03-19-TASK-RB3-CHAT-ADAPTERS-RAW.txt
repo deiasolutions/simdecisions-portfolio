@@ -1,0 +1,54 @@
+# BEE RESPONSE: 2026-03-19-TASK-RB3-CHAT-ADAPTERS
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260319-1707
+# Task file: 2026-03-19-TASK-RB3-CHAT-ADAPTERS.md
+# Success: True
+# Duration: 571.6s
+# Files modified: 14 (verified)
+# Cost (USD): $7.258782
+# Turns: 41
+# API duration (ms): 399360
+# Session ID: c23190c2-636a-483b-8b5a-d40d90ede082
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Let me create a summary for the user:
+
+## Task Complete: RB-3 Chat Adapter Rebuild ✅
+
+Both issues have been resolved:
+
+### Fix A: BUG-030 — Chat Tree Browser Empty ✅
+**Problem:** Date group headers showed but no conversation items underneath.
+
+**Solution:**
+1. Added deduplication logic to handle duplicate conversation IDs (keeps most recent)
+2. Added `chat-history` to `AUTO_EXPAND_ADAPTERS` so date groups auto-expand on load
+3. Fixed integration test timing to properly wait for auto-expansion
+
+**Result:** Conversations now appear under their date group headers immediately when the Chat EGG loads.
+
+### Fix B: BUG-022B — Click-to-Place Chat History Wiring ✅
+**Problem:** Chat history adapter not wired into bus for component placement events.
+
+**Solution:**
+- Added `conversation:selected` bus event broadcast when user clicks a conversation
+- Event includes conversationId, path, and volume metadata
+- Follows the same pattern as `channel:selected` and `file:selected` events
+
+**Result:** Other components can now listen for and react to conversation selection events.
+
+### Test Results
+- **chatHistoryAdapter.test.ts:** 11/11 passing ✅
+- **treeBrowserAdapter.chatHistory.test.tsx:** 4/4 passing ✅
+- **Vite build:** ✅ PASSING (28s)
+
+### Files Modified
+1. `browser/src/primitives/tree-browser/adapters/chatHistoryAdapter.ts` — deduplication
+2. `browser/src/apps/treeBrowserAdapter.tsx` — auto-expand + bus events
+3. `browser/src/apps/__tests__/treeBrowserAdapter.chatHistory.test.tsx` — test timing fix
+
+All acceptance criteria met. No files over 500 lines. No stubs. All tests passing.

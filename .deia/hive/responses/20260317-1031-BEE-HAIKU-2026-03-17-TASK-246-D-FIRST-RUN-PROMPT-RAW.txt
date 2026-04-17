@@ -1,0 +1,58 @@
+# BEE RESPONSE: 2026-03-17-TASK-246-D-first-run-prompt
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260317-1031
+# Task file: 2026-03-17-TASK-246-D-first-run-prompt.md
+# Success: True
+# Duration: 624.9s
+# Files modified: 17 (verified)
+# Cost (USD): $5.847116
+# Turns: 71
+# API duration (ms): 408290
+# Session ID: 01d8109f-c0d4-4b3e-8189-4c7f6cc6a160
+# Boot injected: True
+
+---
+
+## Summary
+
+I have successfully completed **TASK-246-D: First-Run Prompt — No API Key Configured**. Here's what was delivered:
+
+### ✅ Deliverables Completed
+
+1. **FirstRunPromptModal Component** — A reusable React component that:
+   - Shows on first application load when no API key is configured
+   - Displays "Welcome to Fr@nk" with CTA text
+   - Has "Open Settings" and "Dismiss" buttons
+   - Closes on Escape key and backdrop click
+   - Renders via portal to `.hhp-root`
+   - All styling uses CSS variables (no hardcoded colors)
+
+2. **TerminalApp Integration** — Added first-run logic:
+   - Checks `getApiKey(llmProvider)` on mount
+   - Sets/clears `sd_first_run_dismissed` localStorage flag
+   - Shows modal only if no API key AND not dismissed
+   - Clears dismissal flag when user adds API key (so prompt shows again if key is deleted)
+   - Opens SettingsModal with `initialTab="keys"` when user clicks "Open Settings"
+
+3. **CSS Styling** (77 lines) — All using CSS variables:
+   - Fade-in and slide-in animations
+   - Centered card design with semi-transparent backdrop
+   - Primary/secondary button variants
+   - Responsive design for mobile
+
+4. **Test Suite** (5 tests, all passing):
+   - ✅ Shows modal when no API key
+   - ✅ Dismiss sets localStorage flag
+   - ✅ Does not show after dismiss
+   - ✅ Closes on Escape key
+   - ✅ Shows API warning after dismissal
+
+### Files Created/Modified
+- Created: `FirstRunPromptModal.tsx` (145 lines)
+- Created: `TerminalApp.firstRun.test.tsx` (139 lines, 5 tests)
+- Modified: `TerminalApp.tsx` (added imports, state, useEffect, JSX)
+- Modified: `terminal.css` (added 77 lines of styling)
+
+**All acceptance criteria met. Response file written to:** `.deia/hive/responses/20260317-TASK-246-D-RESPONSE.md`

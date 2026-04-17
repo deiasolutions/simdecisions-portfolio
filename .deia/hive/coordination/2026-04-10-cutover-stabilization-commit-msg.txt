@@ -1,0 +1,55 @@
+fix(cutover): stabilize factory boot — paths, imports, deps
+
+Post-v0.1.0-cutover stabilization pass. Four real bugs + two missing
+deps found while verifying the factory could fire up in the new repo.
+All 6 services from ecosystem.config.js now import clean.
+
+ecosystem.config.js — four stale paths from the shiftcenter era:
+  - Service 2 hivenode-mcp:  hivenode.hive_mcp.local_server
+                           → simdecisions.core.hive_mcp.local_server
+  - Service 3 queue-runner:  packages/core/src/simdecisions/core/factory/
+                             adapters/cli/run_queue.py  (does not exist)
+                           → .deia/hive/scripts/queue/run_queue.py
+                             (minimum viable — the factory/ package is
+                              still a stub, proper relocation is Phase 2
+                              refactor scope)
+  - Service 5 dispatcher:    hivenode/scheduler/dispatcher_daemon.py
+                           → packages/core/src/simdecisions/core/
+                             scheduler/dispatcher_daemon.py
+  - Service 6 health-monitor: hivenode/scripts/health_monitor.py
+                           → packages/core/src/simdecisions/core/
+                             scripts/health_monitor.py
+
+packages/core/src/simdecisions/core/hive_mcp/__init__.py — the lazy
+import guard was triggering infinite recursion. The old
+`from simdecisions.core.hive_mcp import local_server` inside
+`__getattr__` re-entered attribute lookup on the same package, looping
+forever. Replaced with `importlib.import_module(...)` which bypasses
+parent-package attribute lookup. Preserves the lazy-load intent; the
+`mcp` dependency is now installed (see below) so it actually runs.
+
+.deia/hive/scripts/queue/des_integration.py — 8 stale imports pointing
+at old flat shiftcenter modules (`engine.des.*`, `hivenode.llm.*`,
+`hivenode.ledger.*`). Rewritten to the packages/ monorepo layout
+(`simdecisions.engine.des.*`, `simdecisions.core.llm.*`,
+`simdecisions.core.ledger.*`). This unblocks `run_queue.py` which
+transitively imported through `spec_processor.py → des_integration.py`.
+
+packages/core/pyproject.toml + uv.lock — added two deps that were
+referenced in code but undeclared:
+  - ortools ≥ 9.15  — hard requirement of
+    scheduler_mobile_workdesk.solve_schedule, called by scheduler_daemon
+  - mcp ≥ 1.27       — hard requirement of hive_mcp.local_server and
+    the MCP StreamableHTTP manager embedded in simdecisions.core.main
+
+Discovery, not a fix: simdecisions.core.main already embeds
+queue_watcher, queue_bridge (the run_queue logic), sync worker,
+temp_cleanup, and an MCP server via FastAPI lifespan. The 6-service
+PM2 model in ecosystem.config.js is stale — the real factory is one
+process. Reconciling the two is Phase 2 refactor scope.
+
+Also killed during this session (not code-tracked, noted for record):
+  - Zombie shiftcenter hivenode (PID 7900) holding port 8420
+  - Zombie shiftcenter run_queue (PID 94844)
+  - ShiftCenter-Watchdog Windows scheduled task (disabled, not
+    unregistered — kept as undo lever until Phase 2 cleanup)

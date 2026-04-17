@@ -1,0 +1,54 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-RAG-DEDUP-001-fix-dual-routing
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-1658
+# Task file: QUEUE-TEMP-SPEC-RAG-DEDUP-001-fix-dual-routing.md
+# Success: True
+# Duration: 885.2s
+# Files modified: 33 (verified)
+# Cost (USD): $5.262081
+# Turns: 42
+# API duration (ms): 329804
+# Session ID: c226ab27-d9cd-4e13-a8fc-7de78839b03c
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Let me create a summary:
+
+## Summary
+
+Successfully fixed the dual RAG route registration issue:
+
+### What Was Done
+1. **Identified the collision**: Two RAG routers were mounted at `/api/rag`:
+   - Old: `hivenode/routes/rag_routes.py` (TF-IDF, 4 endpoints, TASK-157)
+   - New: `hivenode/rag/routes.py` (vector embeddings, 7 endpoints, production)
+
+2. **Consolidated to single implementation**:
+   - ✅ Removed `hivenode/routes/rag_routes.py` (365 lines deleted)
+   - ✅ Removed import and mount from `hivenode/routes/__init__.py`
+   - ✅ Kept `hivenode/rag/routes.py` (more complete, better quality)
+   - ✅ Removed old tests `tests/hivenode/test_rag_routes.py`
+
+3. **Verified functionality preserved**:
+   - All RAG endpoints working (`/api/rag/index`, `/search`, `/status`, `/reset`, `/query`, `/ingest-chat`)
+   - BOK sub-router intact (`/rag/bok/search`, `/rag/bok/enrich`)
+   - Indexer sub-router intact (`/rag/index-repo`, `/rag/index-file`, etc.)
+
+4. **Test coverage**:
+   - ✅ Created 7 new deduplication tests — all passing
+   - ✅ Existing 14 RAG tests still passing
+   - ✅ Verified no duplicate routes in OpenAPI spec
+   - ✅ Verified all expected endpoints respond correctly
+
+### Files Modified
+- `hivenode/routes/__init__.py` - removed duplicate import/mount
+- `hivenode/routes/rag_routes.py` - DELETED
+- `tests/hivenode/test_rag_routes.py` - DELETED
+- `tests/hivenode/rag/test_rag_route_dedup.py` - NEW (176 lines)
+
+**Net: -556 lines (cleanup with improved tests)**
+
+All acceptance criteria met. Ready for server restart to load new configuration.

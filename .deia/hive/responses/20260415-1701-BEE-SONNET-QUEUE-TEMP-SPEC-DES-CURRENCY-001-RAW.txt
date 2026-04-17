@@ -1,0 +1,53 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-DES-CURRENCY-001
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260415-1701
+# Task file: QUEUE-TEMP-SPEC-DES-CURRENCY-001.md
+# Success: True
+# Duration: 26465.6s
+# Files modified: 18 (verified)
+# Cost (USD): $18.925148999999998
+# Turns: 64
+# API duration (ms): 536414
+# Session ID: 53abd956-4d87-4c81-b3c2-09197c577031
+# Boot injected: True
+
+---
+
+Perfect! I've successfully implemented COIN (USD) currency computation in the DES engine. Here's a summary of what was accomplished:
+
+## Summary
+
+I implemented USD cost computation for the DES engine, allowing simulation nodes to compute and track costs based on their operator type:
+
+### Key Features Implemented:
+
+1. **Operator-based cost computation**:
+   - **LLM nodes**: Cost from token estimates × rates (flow-level or node-level override)
+   - **HTTP nodes**: Per-call cost from node config
+   - **Human nodes**: Duration × hourly rate from resource
+   - **Script nodes**: Per-call cost from node config
+
+2. **Cost tracking at multiple levels**:
+   - Token-level accumulation (tracks cost per token across nodes)
+   - Node-level statistics (cost per node)
+   - Operator-type breakdown (cost by llm/http/human/script)
+   - Flow-level total cost
+
+3. **Statistics enhancements**:
+   - Replaced cent-based Counter with USD-based RunningStats
+   - Added `mean_cost_per_token()`, `cost_by_node()`, `cost_by_operator_type()` methods
+   - Updated summary to include nested cost dict
+
+4. **Integration**:
+   - Cost computed in `handle_node_end()` after node processing
+   - Passed to ledger for event recording
+   - Persisted in checkpoints
+
+### All Tests Pass:
+- **12 new tests** in `test_des_currency.py` covering all operator types
+- **888+ existing DES tests** still pass (verified backward compatibility)
+- Fixed 2 existing tests that used old API
+
+The implementation is complete, fully tested, and ready for use!

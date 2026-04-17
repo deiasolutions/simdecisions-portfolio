@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://shiftcenter.com/schemas/prism-ir/mobile/v1.json",
+  "title": "PRISM-IR Mobile Command Schema",
+  "description": "Intermediate representation schema for Mobile Workdesk commands. Bridges natural language input to executable primitives.",
+  "type": "object",
+  "required": ["command", "confidence"],
+  "properties": {
+    "command": {
+      "type": "string",
+      "description": "The action verb to execute (e.g., open, close, navigate, execute, search, toggle)",
+      "minLength": 1,
+      "maxLength": 50
+    },
+    "target": {
+      "type": "string",
+      "description": "The object or primitive the command operates on (e.g., terminal, file, pane, notification)",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "arguments": {
+      "type": "object",
+      "description": "Key-value parameters for the command execution",
+      "additionalProperties": true
+    },
+    "confidence": {
+      "type": "number",
+      "description": "Confidence score from the command interpreter (0.0 = no confidence, 1.0 = certain)",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "alternatives": {
+      "type": "array",
+      "description": "Alternative interpretations when confidence is low",
+      "items": {
+        "type": "object",
+        "required": ["command", "confidence"],
+        "properties": {
+          "command": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1
+          },
+          "arguments": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "reason": {
+            "type": "string",
+            "description": "Why this alternative interpretation was generated"
+          }
+        }
+      }
+    },
+    "raw_input": {
+      "type": "string",
+      "description": "The original user input that generated this IR"
+    },
+    "timestamp": {
+      "type": "string",
+      "description": "ISO 8601 timestamp when the command was parsed",
+      "format": "date-time"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata for debugging and telemetry",
+      "properties": {
+        "parser_version": {
+          "type": "string"
+        },
+        "input_method": {
+          "type": "string",
+          "enum": ["voice", "text", "gesture", "shortcut"]
+        },
+        "session_id": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

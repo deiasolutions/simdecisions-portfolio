@@ -1,0 +1,50 @@
+[project]
+name = "simdecisions"
+version = "0.1.0"
+description = "SimDecisions monorepo — flat layout"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn>=0.30.0",
+    "sqlalchemy>=2.0",
+    "pydantic[email]>=2.0",
+    "pyjwt[crypto]>=2.8",
+    "bcrypt>=4.0.0",
+    "cryptography>=42.0",
+    "pydantic-settings>=2.0",
+    "twilio>=9.0",
+    "aiosqlite>=0.20",
+    "pyyaml>=6.0",
+    "click>=8.0",
+    "psutil>=5.0",
+    "pathspec>=0.12",
+    "numpy>=1.26",
+    "watchdog>=4.0",
+    "psycopg2-binary>=2.9",
+    "jsonschema>=4.0",
+    "slowapi>=0.1.9",
+    "httpx>=0.27",
+    "ortools>=9.15.6755",
+    "mcp>=1.27.0",
+    "feedparser>=6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "types-PyYAML>=6.0",
+    "types-requests>=2.0",
+]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["hivenode*", "simdecisions*", "_tools*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]

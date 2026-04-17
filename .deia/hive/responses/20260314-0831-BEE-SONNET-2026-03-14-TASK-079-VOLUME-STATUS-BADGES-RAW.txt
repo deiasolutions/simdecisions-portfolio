@@ -1,0 +1,41 @@
+# BEE RESPONSE: 2026-03-14-TASK-079-volume-status-badges
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260314-0831
+# Task file: 2026-03-14-TASK-079-volume-status-badges.md
+# Success: True
+# Duration: 596.4s
+# Files modified: 41 (verified)
+# Cost (USD): $0
+# Turns: 61
+# API duration (ms): 401068
+# Session ID: 24bbbaa1-6cdf-4d1b-b138-b495d765aadc
+# Boot injected: True
+
+---
+
+Excellent! Task TASK-079 is complete. Here's a summary:
+
+## TASK-079: Volume Status Badges for Chat History — COMPLETE ✓
+
+**What was delivered:**
+- New `volumeStatus.ts` service that checks volume node status via `/node/discover`
+- Volume status badges (🟢 online, 🔄 syncing, ⚠️ conflict, 🔴 offline) on conversation nodes
+- Combined status + message count badges (e.g., "🟢 15")
+- 60-second caching to reduce API calls
+- 28 tests total (8 for volumeStatus, 9 for chatHistoryAdapter, 11 for conversationNavigator)
+
+**Test results:**
+- Volume status tests: 8/8 ✓
+- Chat history adapter tests: 9/9 ✓
+- Conversation navigator tests: 11/11 ✓
+- Full browser suite: 1391/1392 ✓ (1 skipped)
+
+**Files:**
+- Created: `volumeStatus.ts`, `volumeStatus.test.ts`
+- Modified: `chatHistoryAdapter.ts`, `chatHistoryAdapter.test.ts`, `ChatNavigatorPane.tsx`, `conversationNavigator.test.tsx`
+
+**Response file:** `.deia/hive/responses/20260314-TASK-079-RESPONSE.md`
+
+The feature is fully implemented, tested, and integrated. All acceptance criteria met or exceeded.

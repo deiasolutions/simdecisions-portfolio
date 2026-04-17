@@ -1,0 +1,62 @@
+# BEE RESPONSE: 2026-03-16-BRIEFING-add-embedder-storage-exports
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: queen
+# Timestamp: 20260316-0952
+# Task file: 2026-03-16-BRIEFING-add-embedder-storage-exports.md
+# Success: True
+# Duration: 28.7s
+# Files modified: 4 (verified)
+# Cost (USD): $0
+# Turns: 7
+# API duration (ms): 26007
+# Session ID: 1da03b3e-fd5e-49de-92ea-b4f013d752f2
+# Boot injected: True
+
+---
+
+Excellent. Now I'll return to Q33NR for review. Let me write a summary for Q33NR:
+
+---
+
+## Summary for Q33NR
+
+I have completed briefing analysis and written **one task file** for BEE dispatch:
+
+### Task File Written
+
+**File:** `.deia/hive/tasks/2026-03-16-TASK-R05-add-embedder-storage-exports.md`
+
+**Objective:** Add three missing exports to `hivenode/rag/indexer/__init__.py`:
+- `TFIDFEmbedder` (from embedder.py:16)
+- `IndexStorage` (from storage.py:47)
+- `compute_content_hash` (from storage.py:35)
+
+**Scope:** Single file modification with existing test coverage
+
+**Test Plan:**
+- Run embedder tests (34 tests)
+- Run storage tests (confirm all pass)
+- No regressions expected — this is purely an export addition
+
+**Estimated Complexity:** Low (straightforward API surface expansion)
+
+---
+
+### Briefing Alignment
+
+✅ All acceptance criteria from the briefing are reflected in the task:
+- TFIDFEmbedder exported
+- IndexStorage and compute_content_hash exported
+- All 34 embedder tests + storage tests to be run
+- Alphabetical ordering maintained
+- Follows existing pattern
+
+### Ready for Q33NR Review
+
+The task file is ready for your review. Please check:
+1. Are deliverables clear and concrete?
+2. Are test requirements complete?
+3. Does the scope match the briefing?
+
+Once you approve, I will dispatch the BEE to execute.

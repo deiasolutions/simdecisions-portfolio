@@ -1,0 +1,44 @@
+{
+  "id": "governance_02_audit_trail",
+  "name": "Audit Trail Governance",
+  "intent": "Test governance overhead with audit trail logging",
+  "phase_ir_version": "1.0.0",
+  "variables": [
+    {"id": "audit_enabled", "type": "flag", "default": false}
+  ],
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "log_start", "type": "service", "name": "Log Audit Start", "config": {"duration": {"type": "constant", "params": {"value": 0.2}}}},
+    {"id": "process_step1", "type": "service", "name": "Process Step 1", "config": {"duration": {"type": "constant", "params": {"value": 1.0}}}},
+    {"id": "log_step1", "type": "service", "name": "Log Step 1", "config": {"duration": {"type": "constant", "params": {"value": 0.2}}}},
+    {"id": "process_step2", "type": "service", "name": "Process Step 2", "config": {"duration": {"type": "constant", "params": {"value": 1.5}}}},
+    {"id": "log_step2", "type": "service", "name": "Log Step 2", "config": {"duration": {"type": "constant", "params": {"value": 0.2}}}},
+    {"id": "process_step3", "type": "service", "name": "Process Step 3", "config": {"duration": {"type": "constant", "params": {"value": 1.2}}}},
+    {"id": "log_end", "type": "service", "name": "Log Audit End", "config": {"duration": {"type": "constant", "params": {"value": 0.2}}}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "log_start", "type": "switch", "guard": "audit_enabled == true"},
+    {"id": "e2", "from_node": "start", "to_node": "process_step1", "type": "switch", "guard": "audit_enabled == false"},
+    {"id": "e3", "from_node": "log_start", "to_node": "process_step1", "type": "then"},
+    {"id": "e4", "from_node": "process_step1", "to_node": "log_step1", "type": "switch", "guard": "audit_enabled == true"},
+    {"id": "e5", "from_node": "process_step1", "to_node": "process_step2", "type": "switch", "guard": "audit_enabled == false"},
+    {"id": "e6", "from_node": "log_step1", "to_node": "process_step2", "type": "then"},
+    {"id": "e7", "from_node": "process_step2", "to_node": "log_step2", "type": "switch", "guard": "audit_enabled == true"},
+    {"id": "e8", "from_node": "process_step2", "to_node": "process_step3", "type": "switch", "guard": "audit_enabled == false"},
+    {"id": "e9", "from_node": "log_step2", "to_node": "process_step3", "type": "then"},
+    {"id": "e10", "from_node": "process_step3", "to_node": "log_end", "type": "switch", "guard": "audit_enabled == true"},
+    {"id": "e11", "from_node": "process_step3", "to_node": "end", "type": "switch", "guard": "audit_enabled == false"},
+    {"id": "e12", "from_node": "log_end", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "governance",
+    "description": "3-step workflow with optional audit logging between each step",
+    "evaluation_criteria": "Audit overhead measured, log entry count correct, outcome identical",
+    "expected_runtime_seconds": 6,
+    "governance_mode": {
+      "ungoverned": {"audit_enabled": false, "expected_time": 3.7, "log_entries": 0},
+      "governed": {"audit_enabled": true, "expected_time": 4.5, "log_entries": 4}
+    }
+  }
+}

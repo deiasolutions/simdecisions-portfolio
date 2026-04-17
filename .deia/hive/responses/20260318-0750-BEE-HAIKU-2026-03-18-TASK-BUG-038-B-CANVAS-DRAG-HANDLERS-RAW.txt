@@ -1,0 +1,65 @@
+# BEE RESPONSE: 2026-03-18-TASK-BUG-038-B-CANVAS-DRAG-HANDLERS
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260318-0750
+# Task file: 2026-03-18-TASK-BUG-038-B-CANVAS-DRAG-HANDLERS.md
+# Success: True
+# Duration: 842.8s
+# Files modified: 13 (verified)
+# Cost (USD): $1.247369
+# Turns: 22
+# API duration (ms): 163453
+# Session ID: c288c6b4-3c10-4802-befd-30e555438b9f
+# Boot injected: True
+
+---
+
+Perfect! Everything is complete and working. Let me create a final summary:
+
+---
+
+## ✅ TASK-BUG-038-B COMPLETE
+
+**All deliverables finished successfully:**
+
+### D1 ✓ Tests Written First (TDD)
+- **5 new tests added** to `canvas.dragDrop.test.tsx`:
+  1. Parse JSON dragData correctly (`JSON.stringify({ nodeType: 'Task' })`)
+  2. Fallback to plain string (backwards compatibility)
+  3. Handle JSON parse errors gracefully
+  4. Don't create node with empty dataTransfer
+  5. Don't create node when reactFlow is missing
+- **5 existing tests still passing** (stopPropagation behavior)
+- **Total: 10/10 tests passing** ✓
+
+### D2 ✓ Modified onDragOver Handler
+- Added `event.stopPropagation()` at line 418
+- Prevents drag events from bubbling to shell's pane swap system
+
+### D3 ✓ Modified onDrop Handler  
+- Added `event.stopPropagation()` at line 424
+- Implemented JSON parsing with fallback:
+  ```typescript
+  try {
+    const parsed = JSON.parse(rawData);
+    nodeType = parsed.nodeType;
+  } catch {
+    nodeType = rawData as CanvasNodeType;
+  }
+  ```
+- Handles both JSON format (from TreeNodeRow) and plain string (backwards compat)
+
+### D4 ✓ All Tests Pass
+- 10/10 tests passing with comprehensive coverage
+- Edge cases tested: empty data, missing reactFlow, invalid JSON, etc.
+
+### Acceptance Criteria
+- [x] AC1-AC8: All met
+- [x] No TypeScript errors
+- [x] No stubs or partial implementations
+- [x] Response file created with all 8 required sections
+
+**Response file:** `.deia/hive/responses/20260318-TASK-BUG-038-B-RESPONSE.md`
+
+Ready for **TASK-BUG-038-C** (end-to-end integration tests).

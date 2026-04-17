@@ -1,0 +1,81 @@
+# BEE RESPONSE: 2026-03-15-TASK-165-phase-nl-to-ir-endpoint
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260315-1639
+# Task file: 2026-03-15-TASK-165-phase-nl-to-ir-endpoint.md
+# Success: True
+# Duration: 610.0s
+# Files modified: 24 (verified)
+# Cost (USD): $0
+# Turns: 43
+# API duration (ms): 441153
+# Session ID: 8eceb129-1224-428b-b9c1-ba1103c47978
+# Boot injected: True
+
+---
+
+## Task Complete
+
+I have successfully implemented **TASK-165: Create /api/phase/nl-to-ir endpoint for NL-to-PHASE-IR conversion**.
+
+### Summary
+
+**Created:**
+- `hivenode/routes/phase_nl_routes.py` (447 lines) - Full implementation of POST /api/phase/nl-to-ir endpoint
+- `tests/hivenode/test_phase_nl_routes.py` (609 lines) - Comprehensive test suite with 15 tests
+
+**Modified:**
+- `hivenode/routes/__init__.py` - Registered the new route
+
+### Key Features
+
+The endpoint accepts natural language descriptions and converts them to structured PHASE-IR flow JSON:
+
+**Request:**
+```json
+{
+  "text": "Create a flow with a review task and approval decision",
+  "model": "claude-sonnet-4-5-20250929",
+  "api_key": "optional-override",
+  "intent": "optional-description"
+}
+```
+
+**Response:**
+```json
+{
+  "flow_data": {/* PHASE-IR flow JSON */},
+  "metadata": {
+    "model": "claude-sonnet-4-5-20250929",
+    "input_tokens": 250,
+    "output_tokens": 180,
+    "cost_usd": 0.0025,
+    "clock_ms": 1200
+  },
+  "validation_result": {
+    "valid": true,
+    "errors": []
+  }
+}
+```
+
+### Test Results
+
+**All 15 tests passed** covering:
+- Valid Anthropic and OpenAI requests
+- Empty/whitespace validation (422 errors)
+- LLM API errors (500)
+- Missing API keys (401)
+- Timeout handling (504)
+- Malformed JSON extraction (422)
+- Invalid PHASE-IR validation (returns flow with errors)
+- Complex flows, BPMN gateways, annotations
+- API key override, intent field
+- Markdown fence extraction, cost calculation
+
+### Integration
+
+The endpoint is ready for canvas chatbot integration. The terminal's `routeTarget='ir'` logic will extract IR blocks and send `terminal:ir-deposit` events to the canvas for rendering.
+
+**Response file:** `.deia/hive/responses/20260315-TASK-165-RESPONSE.md`

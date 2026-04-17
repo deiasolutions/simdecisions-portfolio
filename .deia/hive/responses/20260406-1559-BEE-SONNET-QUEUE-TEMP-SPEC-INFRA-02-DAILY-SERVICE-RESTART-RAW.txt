@@ -1,0 +1,62 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-INFRA-02-daily-service-restart
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-1559
+# Task file: QUEUE-TEMP-SPEC-INFRA-02-daily-service-restart.md
+# Success: True
+# Duration: 19.1s
+# Files modified: 3 (verified)
+# Cost (USD): $0.20197800000000002
+# Turns: 1
+# API duration (ms): 13632
+# Session ID: aeb99a82-f138-4521-af51-5d84ab57abbf
+# Boot injected: True
+
+---
+
+I'll analyze this task and present my plan before proceeding.
+
+## Task Analysis
+
+I need to create a maintenance script (`_tools/restart-services.sh`) that cleanly restarts three local development services:
+
+1. **hivenode** (port 8420) - FastAPI backend
+2. **vite** (port 5173) - Frontend dev server  
+3. **scheduler daemon** - Standalone Python process
+
+## Implementation Plan
+
+1. **Create restart script structure**
+   - Add shebang and error handling
+   - Make idempotent (safe to run when services already stopped)
+   - Use MSYS_NO_PATHCONV=1 for Git Bash compatibility
+
+2. **Implement service shutdown**
+   - Find and kill processes on ports 8420, 5173
+   - Find and kill scheduler_daemon.py processes
+   - Wait for ports to be free
+   - Handle cases where services aren't running
+
+3. **Implement service startup**
+   - Start hivenode: `python -m uvicorn hivenode.main:app --host 127.0.0.1 --port 8420`
+   - Start vite: `cd browser && npx vite --port 5173`
+   - Start scheduler: `python hivenode/scheduler/scheduler_daemon.py --schedule-dir .deia/hive --queue-dir .deia/hive/queue`
+
+4. **Add health checks**
+   - Poll `/health` endpoint (30s timeout)
+   - Check `/build/queue-runner-status` for `running: true`
+   - Report status of each service
+
+5. **Safety measures**
+   - No hardcoded absolute paths (use relative from repo root)
+   - Graceful handling of port conflicts
+   - Avoid killing unrelated processes
+   - Clear status reporting
+
+## Deliverables
+
+- `_tools/restart-services.sh` - Main restart script
+- Response file with 8 sections documenting completion
+
+**Ready to proceed?** Type 'go' to start implementation.

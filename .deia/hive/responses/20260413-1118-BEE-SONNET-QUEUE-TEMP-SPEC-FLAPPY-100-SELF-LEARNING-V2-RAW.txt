@@ -1,0 +1,38 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-FLAPPY-100-self-learning-v2
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260413-1118
+# Task file: QUEUE-TEMP-SPEC-FLAPPY-100-self-learning-v2.md
+# Success: False
+# Duration: 54.1s
+# Files modified: 4 (verified)
+# Cost (USD): $0.362751
+# Turns: 3
+# API duration (ms): 42704
+# Session ID: 8293bec6-14e3-44da-ad71-e6fb78106c48
+# Boot injected: True
+
+---
+
+## Task Blocked — Role Mismatch
+
+I've completed my analysis and written a blocker report to:
+```
+.deia/hive/responses/20260413-QUEUE-TEMP-SPEC-FLAPPY-100-self-learning-v2-RESPONSE.md
+```
+
+**Issue:** SPEC-FLAPPY-100 is a coordination spec (role: queen) that was dispatched to me, a worker bee (b33). 
+
+**Why I cannot proceed:**
+- The spec asks me to "dispatch research and build bees"
+- Worker bees cannot dispatch other bees (Hard Rule #7: Stay in your lane)
+- Only Q33N coordinates and dispatches other bees
+- Only Q33NR dispatches Q33N
+
+**Correct process:**
+1. Q88NR should dispatch this spec to Q33N (not to a worker bee)
+2. Q33N will create research and build specs
+3. Q33N will dispatch worker bees for implementation
+
+**This needs Q88NR (regent) review** to re-route the spec to the correct role.

@@ -1,0 +1,55 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-24-SPEC-BUG-071-canvas-pointer-resize
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260324-1729
+# Task file: QUEUE-TEMP-2026-03-24-SPEC-BUG-071-canvas-pointer-resize.md
+# Success: True
+# Duration: 323.4s
+# Files modified: 12 (verified)
+# Cost (USD): $2.1688050000000003
+# Turns: 17
+# API duration (ms): 148934
+# Session ID: fbc3a969-16a1-4da1-a392-64552e6989b0
+# Boot injected: True
+
+---
+
+Perfect! Now I'll report to Q88N (Dave) that the task file has been reviewed and approved:
+
+---
+
+## REGENT REPORT: SPEC-BUG-071 Canvas Node Resize
+
+**Status:** Task file reviewed and approved ✅
+
+### What Happened
+
+1. **Briefing written** → `.deia/hive/coordination/2026-03-24-BRIEFING-BUG-071-CANVAS-NODE-RESIZE.md`
+2. **Q33N dispatched** → Completed in 134.9s, $0.91, 14 turns
+3. **Task file created** → `.deia/hive/tasks/2026-03-24-TASK-BUG-071-CANVAS-NODE-RESIZE.md`
+4. **Mechanical review** → All 7 checklist items pass
+5. **Dispatch approved** → Q33N authorized to dispatch Haiku bee
+
+### Task File Quality
+
+**Deliverables:**
+- Add `NodeResizer` from `@xyflow/react` to 7 annotation node types
+- Configure min dimensions for each type (rect: 60x40, image: 80x60, sticky: 100x80, etc.)
+- Add CSS styles using `var(--sd-*)` variables only
+- Explicitly exclude 9 process flow nodes + all BPMN nodes
+- Write 5+ tests (NodeResizer rendering, process flow exclusion, CSS variables, all 7 types, min dimensions)
+
+**All paths absolute.** All constraints enforced. No stubs. Response template included.
+
+### Next Steps
+
+Q33N will now dispatch Haiku bee with the task file. Estimated completion: 30-40 minutes.
+
+When bee completes, Q33N will report results to me. I will review:
+- Test pass/fail counts
+- Response file completeness (8 sections)
+- Acceptance criteria met
+- No stubs shipped
+
+**Awaiting bee results.**

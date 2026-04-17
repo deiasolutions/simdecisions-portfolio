@@ -1,0 +1,86 @@
+# BEE RESPONSE: 2026-03-17-BRIEFING-TASK-237-canvas-egg-verified
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260317-0923
+# Task file: 2026-03-17-BRIEFING-TASK-237-canvas-egg-verified.md
+# Success: True
+# Duration: 199.2s
+# Files modified: 28 (verified)
+# Cost (USD): $1.5401789999999997
+# Turns: 21
+# API duration (ms): 180949
+# Session ID: b2a19e09-74d2-4826-b37b-71c1a3432bfd
+# Boot injected: True
+
+---
+
+Perfect! Now I need to write a summary to return to Q33NR for review. Let me create a summary response:
+
+# Task File Created for TASK-237 (Canvas EGG Verified)
+
+**Status:** Task file ready for Q33NR review  
+**Task File:** `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\hive\tasks\2026-03-17-TASK-237-canvas-egg-verified.md`
+
+## Summary
+
+I have created a task file for verifying the canvas EGG. The task covers:
+
+### What the Bee Will Do
+
+1. **Read existing files** to understand:
+   - Canvas EGG layout definition (eggs/canvas.egg.md — 290 lines, already exists)
+   - EGG loading and parsing logic (eggLoader.ts, eggToShell.ts)
+   - Existing test patterns (eggToShell.test.ts)
+   - Canvas primitive implementation (CanvasApp.tsx)
+   - Palette and properties adapters (already exist)
+
+2. **Write integration test** (`browser/src/eggs/__tests__/canvasEgg.test.ts`) to verify:
+   - Canvas EGG parses into correct shell state
+   - 5 panes present with correct types (palette tree-browser, canvas, text-pane, terminal, properties tree-browser)
+   - 3-level nested split structure (vertical 18% → vertical 82% → horizontal 65% → horizontal 75%)
+   - Ratios preserved correctly: 0.18, 0.82, 0.65, 0.75
+   - Seamless border flag on chat/terminal split
+   - All pane configs correct (adapter names, routeTarget, zoomEnable, gridSnap, links, renderMode)
+
+3. **Fix any issues** found in canvas.egg.md (if layout doesn't match expected structure)
+
+4. **Run all browser tests** to ensure no regressions
+
+### Test Coverage
+
+The test will verify:
+- Terminal has `routeTarget: "ir"`
+- Canvas has `zoomEnable: true` and `gridSnap: true`
+- Palette has `adapter: "palette"`
+- Properties has `adapter: "properties"`
+- Text-pane has `renderMode: "chat"`
+- Seamless borders set correctly between center panes
+
+### Model Assignment
+
+**Haiku** — This is verification + light testing work. Suitable for Haiku as requested in the briefing.
+
+### Constraints Applied
+
+- TDD: tests first, then fixes (Rule 5)
+- No stubs (Rule 6)
+- No file over 500 lines (Rule 4)
+- CSS variables only (Rule 3)
+- All 8 sections required in response file
+
+### Files the Bee Will Create/Modify
+
+**Create:**
+- `browser/src/eggs/__tests__/canvasEgg.test.ts` (new test file)
+
+**Potentially Modify:**
+- `eggs/canvas.egg.md` (only if layout issues found)
+
+## Ready for Review
+
+The task file is complete and ready for Q33NR review. After approval, I will dispatch the bee with:
+
+```bash
+python .deia/hive/scripts/dispatch/dispatch.py .deia/hive/tasks/2026-03-17-TASK-237-canvas-egg-verified.md --model haiku --role bee --inject-boot
+```

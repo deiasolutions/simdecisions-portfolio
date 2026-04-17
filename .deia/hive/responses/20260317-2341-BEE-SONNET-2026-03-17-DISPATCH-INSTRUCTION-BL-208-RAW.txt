@@ -1,0 +1,56 @@
+# BEE RESPONSE: 2026-03-17-DISPATCH-INSTRUCTION-BL-208
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260317-2341
+# Task file: 2026-03-17-DISPATCH-INSTRUCTION-BL-208.md
+# Success: True
+# Duration: 1055.7s
+# Files modified: 12 (verified)
+# Cost (USD): $3.724767
+# Turns: 22
+# API duration (ms): 146458
+# Session ID: ccc094ad-00c0-4b63-b23b-ac0798e20213
+# Boot injected: True
+
+---
+
+Perfect. Now I'll report the results to Q88NR:
+
+---
+
+## REPORT TO Q88NR: BL-208 COMPLETE
+
+**Status:** ✅ TASK-BL-208 completed successfully
+
+### Summary
+Bee (Haiku) completed TASK-BL-208 in 12 minutes with all requirements met:
+
+- **15 tests pass** (10 existing + 5 new = 100% pass rate)
+- **All 8 response sections** present and verified
+- **No stubs shipped** — all functions fully implemented
+- **CSS variables only** — divider uses `var(--sd-border)`
+- **Files under limit** — max 226 lines (AppsHome.test.tsx)
+
+### Deliverables Verified
+1. ✅ Sort logic: BUILT items before STUB items within sections
+2. ✅ Visual divider: Renders between BUILT/STUB groups (when both exist)
+3. ✅ CSS class: `.apps-home__status-divider` with var(--sd-*) only
+4. ✅ Tests: 5 new tests covering all edge cases
+
+### Files Modified
+- `browser/src/primitives/apps-home/AppsHome.tsx` (114 lines)
+- `browser/src/primitives/apps-home/AppsHome.css` (100 lines)
+- `browser/src/primitives/apps-home/__tests__/AppsHome.test.tsx` (226 lines)
+
+### Cost
+- **Duration:** 721.7s (~12 minutes)
+- **Cost:** $1.78 USD
+- **Turns:** 29
+
+### Response Files
+- **Completion report:** `.deia/hive/responses/20260317-Q33N-BL-208-COMPLETION-REPORT.md`
+- **Bee response:** `.deia/hive/responses/20260317-TASK-BL-208-RESPONSE.md`
+- **Raw output:** `.deia/hive/responses/20260317-2342-BEE-HAIKU-2026-03-17-TASK-BL-208-APP-DIRECTORY-SORT-ORDER-RAW.txt`
+
+**No issues. No follow-ups. Ready for archival if Q88NR approves.**

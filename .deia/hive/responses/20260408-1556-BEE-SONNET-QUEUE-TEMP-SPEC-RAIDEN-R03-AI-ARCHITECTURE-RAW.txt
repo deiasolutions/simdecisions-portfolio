@@ -1,0 +1,39 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-RAIDEN-R03-ai-architecture
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260408-1556
+# Task file: QUEUE-TEMP-SPEC-RAIDEN-R03-ai-architecture.md
+# Success: True
+# Duration: 309.0s
+# Files modified: 10 (verified)
+# Cost (USD): $1.099008
+# Turns: 11
+# API duration (ms): 319465
+# Session ID: efe1de06-eb90-4773-a8cb-2c4f06a63f31
+# Boot injected: True
+
+---
+
+Excellent! Task complete. I've successfully researched and documented a comprehensive AI architecture for the Raiden-style shmup.
+
+## Summary
+
+**RAIDEN-R03: Self-Learning AI Research — COMPLETE**
+
+I've created a detailed AI architecture document (13 sections, ~850 lines) covering:
+
+✅ **Network Topology**: 21-16-4 neural network (input-hidden-output)
+✅ **State Representation**: Complete 21-dimensional state vector with normalization
+✅ **Action Space**: 4 outputs (move left/right, fire, bomb) with thresholds
+✅ **Reward Function**: 7-component fitness formula balancing survival vs aggression
+✅ **NEAT Parameters**: Population 100, mutation 10%, crossover 75% (research-backed)
+✅ **Training Loop**: Background/manual modes with 1x-10x speed multipliers
+✅ **Visualization**: HUD dashboard, fitness graphs, AI visual distinction
+✅ **Hybrid Modes**: 4 assist modes (auto-dodge, auto-fire, co-pilot, takeover)
+
+The architecture builds on the existing Flappy Bird AI (`browser/public/games/flappy-bird-ai-v1-20260407.html`) but scales up for shmup complexity. All systems include implementation code examples and specific numerical parameters.
+
+**Web Research**: 36 sources cited across NEAT, reinforcement learning, game AI, and hybrid systems.
+
+**Ready for Build**: Document provides complete specifications for follow-up implementation specs (RAIDEN-R101, R102, R103).

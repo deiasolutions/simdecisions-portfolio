@@ -1,0 +1,60 @@
+# BEE RESPONSE: 2026-03-16-BRIEFING-rate-limiting
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: queen
+# Timestamp: 20260316-1505
+# Task file: 2026-03-16-BRIEFING-rate-limiting.md
+# Success: True
+# Duration: 58.5s
+# Files modified: 2 (verified)
+# Cost (USD): $0.18887040000000002
+# Turns: 8
+# API duration (ms): 44832
+# Session ID: eac18e68-1fd9-4004-b95e-fa189a39005c
+# Boot injected: True
+
+---
+
+Perfect. The task file is ready. Now I'll write my coordinator summary for Q33NR:
+
+---
+
+## Q33N COORDINATOR SUMMARY
+
+I have read the briefing and the rate limiter implementation. The spec acceptance criteria identifies **one missing piece**: rate limit headers in successful responses.
+
+### Current Implementation Status
+✅ **Already built and tested:**
+- Sliding window rate limiter (10 req/min per IP)
+- 429 response with Retry-After header
+- In-memory storage with TTL cleanup
+- Configuration via `HIVENODE_RATE_LIMIT_AUTH` env var
+- 9 comprehensive tests covering all scenarios
+
+❌ **Missing from spec acceptance:**
+- `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset` headers on successful responses
+
+### Task File Created
+
+**File:** `.deia/hive/tasks/2026-03-16-TASK-W3-04-rate-limit-headers.md`
+
+**What the bee will deliver:**
+1. New test verifying all 3 headers present on successful /auth/ responses
+2. Modify `_is_rate_limited()` to return reset timestamp
+3. Add helper method `_add_rate_limit_headers()` 
+4. Modify `dispatch()` to add headers to 200-299 responses
+5. Verify all 10 tests pass (9 existing + 1 new)
+6. File stays under 500 lines (~240 lines final)
+
+**Model:** Haiku (small, focused enhancement to existing code)
+
+**Constraints enforced:**
+- TDD (test first)
+- No stubs
+- Headers only on successful /auth/ responses
+- All 9 existing tests must still pass
+- Accurate calculation of Remaining and Reset per IP
+
+---
+
+I'm ready for your review. **Please review the task file and approve dispatch.**

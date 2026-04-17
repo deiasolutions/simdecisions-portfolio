@@ -1,0 +1,83 @@
+# BEE RESPONSE: 2026-04-05-TASK-A-DISPATCHER-STALE-FIX
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260405-2351
+# Task file: 2026-04-05-TASK-A-DISPATCHER-STALE-FIX.md
+# Success: True
+# Duration: 325.9s
+# Files modified: 9 (verified)
+# Cost (USD): $3.69693
+# Turns: 22
+# API duration (ms): 265085
+# Session ID: a6f08be2-0203-4699-a660-8d95ad2fd5f6
+# Boot injected: True
+
+---
+
+Perfect! The implementation is complete and correct. Let me create a quick summary for the user:
+
+---
+
+## Task Complete ✓
+
+I've successfully fixed the dispatcher daemon's stale slot detection issue. Here's what was done:
+
+### Changes Made
+
+**1. Modified `_count_specs_in()` method** (`dispatcher_daemon.py:332-377`):
+- Added optional `stale_threshold_minutes` parameter (default: `None`)
+- Uses `Path.stat().st_mtime` to check file modification times
+- Files modified ≥ threshold minutes ago are excluded from count
+- Backward compatible: if threshold is `None`, counts all files (existing behavior)
+- Graceful error handling for stat() failures
+
+**2. Updated `_dispatch_cycle()` method** (`dispatcher_daemon.py:139-142`):
+- Now calls `_count_specs_in(self.active_dir, stale_threshold_minutes=30)`
+- Only active specs use the 30-minute threshold
+- Queued specs still counted normally (no change)
+
+**3. Added 7 new tests** (TDD approach):
+- Fresh file counting (5 min old) ✓
+- Stale file exclusion (45 min old) ✓
+- Edge case: exactly 30 minutes (excluded) ✓
+- Empty directory handling ✓
+- Missing directory handling ✓
+- Backward compatibility (threshold=None) ✓
+- Integration test: dispatcher cycle ✓
+
+### Test Results
+
+```
+✅ 24/24 tests PASSED in 20.19s
+✅ 17 existing tests still pass (backward compatible)
+✅ 7 new stale detection tests pass
+```
+
+### File Sizes
+- `dispatcher_daemon.py`: 475 lines (under 500 ✓)
+- `test_dispatcher_daemon.py`: 840 lines
+
+### Key Logic
+
+```python
+# Files older than 30 minutes are considered stale
+now = datetime.now(UTC).timestamp()
+threshold_seconds = 30 * 60
+age_seconds = now - file_mtime
+
+if age_seconds < threshold_seconds:  # Use < not <=
+    count_as_active()
+```
+
+### Impact
+
+**Before:** Dispatcher counted ALL specs in `_active/`, including stale ones from crashed sessions → negative slot counts like `"slots": -4`
+
+**After:** Dispatcher counts only specs modified within 30 minutes → accurate slot calculations → no more negative slots
+
+### Response File
+
+Created: `C:/Users/davee/OneDrive/Documents/GitHub/shiftcenter/.deia/hive/responses/20260405-TASK-A-DISPATCHER-STALE-FIX-RESPONSE.md`
+
+**Task complete. All acceptance criteria met. No blockers.**

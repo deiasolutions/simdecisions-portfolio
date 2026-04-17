@@ -1,0 +1,59 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MOBILE-SUBMIT-001-phone-spec-submit-flow
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260416-0846
+# Task file: QUEUE-TEMP-SPEC-MOBILE-SUBMIT-001-phone-spec-submit-flow.md
+# Success: True
+# Duration: 379.8s
+# Files modified: 7 (verified)
+# Cost (USD): $4.189032
+# Turns: 37
+# API duration (ms): 354681
+# Session ID: 0d862552-2b59-4caa-a833-26f611f6442e
+# Boot injected: True
+
+---
+
+Perfect! I've completed the comprehensive research audit for the phone → chat → factory spec submission flow. 
+
+## Summary
+
+The research audit is **COMPLETE** and has identified:
+
+### Key Findings:
+
+1. **ConversationPane is NOT functional for chat** — it's a display-only component with no message sending capability, no service integration, and no LLM routing.
+
+2. **The actual working chat uses the Terminal primitive**, which routes to `hivenode /api/llm/chat/stream` (SSE streaming endpoint backed by Claude API).
+
+3. **Spec submission works today** — `SpecSubmitForm` POSTs directly to `localhost:8420/factory/spec-submit`, which writes to `.deia/hive/queue/backlog/`. This works on desktop but **NOT from phone → cloud → local**.
+
+4. **NO cloud → local relay exists** — Railway cloudnode cannot dispatch specs to your local hivenode. All 7 recommended relay specs from the 2026-04-14 audit are **NOT implemented**.
+
+5. **The critical gap**: Railway runs in `mode=cloud` with NO `.deia/` directory. Spec-submit on Railway writes to ephemeral filesystem and is non-functional for factory use.
+
+### Wire-Level Design:
+
+I designed the complete 5-hop flow:
+1. Phone → Vercel (same-origin POST)
+2. Vercel → Railway (proxy rewrite)
+3. Railway → Local hivenode (**polling MVP** - 30s latency, NAT-friendly)
+4. Local hivenode → `.deia/hive/queue/backlog/`
+5. ACK response back up the chain
+
+### Follow-On Specs (9 total):
+
+**MVP Path (4 specs, ~8-10 hours):**
+1. SPEC-CLOUDNODE-QUEUE-001 — Offline command queue table
+2. SPEC-CLOUDNODE-DISPATCH-001 — Cloud relay endpoints with JWT auth
+3. SPEC-CLOUDNODE-POLLING-001 — Local polling daemon (30s interval)
+4. SPEC-MOBILE-FRONTEND-001 — Wire form to cloud endpoint
+
+**Full-Featured Path (3 additional specs):**
+- WebSocket relay, status queries, load balancing
+
+**Alternative (2 specs):**
+- Chat-based spec paste detection (local-only, no cloud relay)
+
+The response file is written to `.deia/hive/responses/20260416-SPEC-MOBILE-SUBMIT-001-RESPONSE.md` with all evidence, file paths, line numbers, and architectural recommendations.

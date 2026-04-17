@@ -1,0 +1,54 @@
+# BEE RESPONSE: TASK-PERF-INVESTIGATE-001
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260408-0829
+# Task file: TASK-PERF-INVESTIGATE-001.md
+# Success: True
+# Duration: 243.5s
+# Files modified: 4 (verified)
+# Cost (USD): $2.767401
+# Turns: 28
+# API duration (ms): 220227
+# Session ID: ce9d38a6-3387-46aa-94b4-9e13f291cdb3
+# Boot injected: True
+
+---
+
+## Investigation Complete
+
+I've identified the root cause of the browser performance degradation when loading `?set=code`. The diagnosis is written to:
+
+`.deia/hive/responses/20260408-PERF-INVESTIGATE-001-RESPONSE.md`
+
+### TL;DR — The Perfect Storm
+
+**Primary culprit:** ResizeObserver infinite loop in `ShellNodeRenderer.tsx`
+
+- **14 ResizeObservers** (2 per pane × 7 panes) all firing on every layout change
+- Each observer dispatches a Redux action → full shell re-render → triggers all observers again
+- **No debouncing, no throttling, no early exit**
+- Combined with **2 unthrottled window resize listeners** in `Shell.tsx`
+- Creates a **layout thrashing loop** that saturates the main thread at 100%
+
+### Evidence Trail
+
+1. Traced loading path from URL param → EGG fetch → tree inflation → Shell mount
+2. Found 7 simultaneous panes loading (top-bar, menu-bar, sidebar, editor, terminal, status-bar, settings)
+3. Discovered **TWO ResizeObservers per AppNode** (lines 119-165 in ShellNodeRenderer.tsx)
+4. Found **unthrottled resize listeners** in Shell.tsx triggering full re-renders
+5. Confirmed **no debouncing** anywhere in the resize/observer chain
+
+### Quick Wins (< 5 min fixes)
+
+1. Throttle window resize listeners to 250ms
+2. Debounce ResizeObserver callbacks with `requestAnimationFrame`
+3. Add early exit if dimensions haven't changed
+
+### Recommended Priority
+
+🔴 **P0** (urgent): Fix ResizeObserver loop + throttle resize listeners
+🟠 **P1** (high): Remove console logging from hot paths
+🟡 **P2** (medium): Replace spinner intervals with CSS animations
+
+The response file includes code examples, impact estimates, and a detailed loading trace.

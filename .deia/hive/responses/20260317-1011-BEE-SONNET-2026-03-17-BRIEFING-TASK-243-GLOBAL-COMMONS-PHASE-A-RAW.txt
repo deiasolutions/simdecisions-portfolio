@@ -1,0 +1,68 @@
+# BEE RESPONSE: 2026-03-17-BRIEFING-TASK-243-global-commons-phase-a
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260317-1011
+# Task file: 2026-03-17-BRIEFING-TASK-243-global-commons-phase-a.md
+# Success: True
+# Duration: 114.4s
+# Files modified: 7 (verified)
+# Cost (USD): $0.6500400000000001
+# Turns: 10
+# API duration (ms): 98894
+# Session ID: 63a0ba05-21ec-4853-a8f5-49797099b5bc
+# Boot injected: True
+
+---
+
+Perfect. I've written the task file for TASK-243. Now I'll prepare a summary for Q33NR review.
+
+---
+
+## Q33N Report to Q33NR
+
+**Task:** TASK-243 — Global Commons Phase A: Static Content Foundation
+
+**Status:** Task file written, ready for your review
+
+**What I Created:**
+
+One task file: `.deia/hive/tasks/2026-03-17-TASK-243-global-commons-phase-a.md`
+
+**Task Breakdown:**
+
+The bee will create 7 markdown files in `docs/global-commons/`:
+
+1. **README.md** (<100 lines) — Build/deploy instructions
+2. **index.md** (<200 lines) — Landing page: What is DEIA? What is Global Commons?
+3. **ethics.md** (<500 lines) — Human-readable version of `ethics-default.yml` (all fields explained)
+4. **carbon.md** (<500 lines) — Human-readable version of `carbon.yml` + `grace.yml` (carbon methodology, model energy, regional intensity, budgets, grace periods)
+5. **design-tokens.md** (<500 lines) — CSS variable reference (default theme: colors, typography, shadows, gradients, glass effects, usage patterns)
+6. **design-tokens-themes.md** (<500 lines) — Theme variants (depth, light, monochrome, high-contrast)
+7. **governance.md** (<500 lines) — Constitutional framework: ethics → governance → execution (the "Federalist Papers")
+
+**Key Constraints:**
+
+- **No code.** Pure markdown documentation only.
+- **No fabrication.** Every statement must be traceable to actual config files or code.
+- **No tests.** Documentation-only task, TDD does not apply.
+- **File limit:** All files scoped to stay under 500 lines (Rule 4).
+- **Quality bar:** Wave 5 (Ship) work — must be ready for strangers.
+
+**Acceptance Criteria:**
+
+- All 7 files created with absolute paths
+- Every field in ethics-default.yml documented
+- Every field in carbon.yml documented
+- Every field in grace.yml documented
+- All CSS variables from shell-themes.css documented
+- governance.md explains constitutional framework without inventing rules
+- No file exceeds 500 lines
+
+**Model Recommendation:** Sonnet (requires high-quality writing and synthesis)
+
+**Estimated Effort:** 2 hours (from WAVE-5-SHIP.md)
+
+---
+
+**Q33NR: Please review the task file. If approved, I will dispatch a bee to execute this work.**

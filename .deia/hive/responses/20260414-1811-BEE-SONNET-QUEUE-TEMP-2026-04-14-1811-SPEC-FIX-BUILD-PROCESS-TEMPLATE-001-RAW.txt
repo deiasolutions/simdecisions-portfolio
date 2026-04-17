@@ -1,0 +1,52 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-04-14-1811-SPEC-fix-BUILD-PROCESS-TEMPLATE-001
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-1811
+# Task file: QUEUE-TEMP-2026-04-14-1811-SPEC-fix-BUILD-PROCESS-TEMPLATE-001.md
+# Success: True
+# Duration: 139.9s
+# Files modified: 12 (verified)
+# Cost (USD): $1.4999790000000002
+# Turns: 17
+# API duration (ms): 115173
+# Session ID: 9498fe3e-1d10-4a61-aec3-dc22fdb093f9
+# Boot injected: True
+
+---
+
+I see - the previous bee added tests but didn't actually change the dispatch_handler.py implementation. Looking at the git diff output, the dispatch_handler.py was marked as Modified (M) but the actual diff shows no changes. This might be a file mode or whitespace change.
+
+Now I understand the situation fully:
+
+1. SPEC-BUILD-PROCESS-TEMPLATE-001 was dispatched directly to a bee
+2. The bee correctly identified it should have gone through Q33N
+3. The bee wrote a response and stopped (correct behavior)
+4. The queue runner auto-generated this fix spec with vague "Dispatch reported failure"
+5. But there's no code fix needed - it's a workflow routing issue
+
+My response is complete. Let me now create a summary for Q88N (Dave):
+
+## Summary
+
+**This fix spec is solving the wrong problem.** 
+
+The "error" from SPEC-BUILD-PROCESS-TEMPLATE-001 was not a code failure - it was a **correct workflow stop** by a bee who identified role mismatch. The bee correctly identified that a 9-hour, 6-task spec should have been routed through Q33N for task breakdown, not dispatched directly to a single bee.
+
+**No code fix is possible** because there's nothing broken. The queue runner auto-generated this fix spec from a workflow issue, not a test failure.
+
+### What Should Happen
+
+**Option 1 (Recommended):** Route SPEC-BUILD-PROCESS-TEMPLATE-001 through Q33NR → Q33N for proper task breakdown into 6 bee-sized tasks.
+
+**Option 2:** Delete the original spec if it's not needed anymore.
+
+**Option 3:** Rewrite SPEC-BUILD-PROCESS-TEMPLATE-001 as a single bee-sized task (but it's currently 6 distinct tasks totaling ~9 hours, so this doesn't make sense).
+
+### Immediate Actions
+
+1. **Delete this fix spec** (it's solving the wrong problem)
+2. **Route the original spec to Q33NR** or archive it
+3. **Review queue runner's fix spec generation logic** - it should detect workflow issues vs code failures
+
+The response file has been written with full details for your review.

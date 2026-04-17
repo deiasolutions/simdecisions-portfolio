@@ -1,0 +1,66 @@
+# BEE RESPONSE: 2026-03-19-BRIEFING-REQUEUE-BUG030-chat-duplicates
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260319-0853
+# Task file: 2026-03-19-BRIEFING-REQUEUE-BUG030-chat-duplicates.md
+# Success: True
+# Duration: 101.2s
+# Files modified: 10 (verified)
+# Cost (USD): $1.192842
+# Turns: 9
+# API duration (ms): 94587
+# Session ID: c941d2d4-459e-4566-b981-1592d412461e
+# Boot injected: True
+
+---
+
+Now let me prepare my response to Q33NR:
+
+## Task File Ready for Review
+
+I've written a task file for BUG-030 (chat duplicate conversations). Here's my analysis and what I've prepared:
+
+### Analysis of the Problem
+
+After reading the adapter source code, I found:
+
+1. **chatApi.ts** (lines 192-213) DOES have deduplication logic using a Map when merging home:// and cloud:// indices
+2. **chatHistoryAdapter.ts** (lines 80-124) trusts the API and does NOT have defensive deduplication
+3. The adapter sorts conversations (line 87-89) then groups them (line 99-103) WITHOUT checking for duplicates
+
+**Root cause:** If the chatApi's deduplication fails (bug in Map logic, race condition, caching issue), the adapter blindly processes whatever it receives. The adapter needs defensive deduplication.
+
+### Task File Created
+
+**File:** `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\hive\tasks\2026-03-19-TASK-BUG030-chat-duplicate-conversations.md`
+
+**Approach:**
+- Add explicit deduplication by `conv.id` in the adapter (after sort, before grouping)
+- Use Map to track seen IDs and prefer most recent `updated_at`
+- Add 2 new test cases: duplicate conversations from API, same ID different volumes
+- TDD approach: write tests first, then implement
+
+**Changes required:**
+- ~8 lines of dedup logic in `chatHistoryAdapter.ts` (between lines 89-91)
+- ~60 lines of new tests in `chatHistoryAdapter.test.ts`
+- Total file sizes stay well under 500 lines
+
+**Model assignment:** sonnet (as specified in spec)
+
+### What I Verified
+
+✅ File paths are absolute (Windows format)  
+✅ Test requirements are specific (2 new test cases named)  
+✅ Deduplication algorithm is specified (Map-based, prefer recent)  
+✅ No stubs — full implementation required  
+✅ Response file template included (8 sections)  
+✅ TDD approach mandated (tests first)  
+✅ Acceptance criteria are concrete and measurable  
+
+### Ready for Your Review
+
+The task file is ready at:
+`C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\.deia\hive\tasks\2026-03-19-TASK-BUG030-chat-duplicate-conversations.md`
+
+Please review and let me know if you want any adjustments before I dispatch the bee.

@@ -1,0 +1,57 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-USAGE-ANALYTICS-001
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260416-2221
+# Task file: QUEUE-TEMP-SPEC-USAGE-ANALYTICS-001.md
+# Success: True
+# Duration: 445.7s
+# Files modified: 8 (verified)
+# Cost (USD): $6.669597
+# Turns: 58
+# API duration (ms): 417678
+# Session ID: d311c1ea-a985-4fbe-a3e4-e3ba3b696c5f
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Let me create a summary for verification:
+
+## Task Summary
+
+**SPEC-USAGE-ANALYTICS-001** has been completed successfully. All acceptance criteria met, all smoke tests passed.
+
+### Deliverables Created
+
+1. **`_tools/usage_analytics.py`** (570 lines)
+   - Re-runnable Python script
+   - Collects data from 5 sources
+   - Generates comprehensive markdown report
+   - Handles errors gracefully
+
+2. **`docs/portfolio/usage-analytics-report.md`** (358 lines)
+   - Activity timeline (repo/month, hour-of-day, heatmap, gaps)
+   - Token usage analysis (interactive + factory)
+   - Verification vs design ratio
+   - Benchmark comparison table
+   - Data quality assessment
+
+### Key Statistics Found
+
+- **26,027** activity events (Sep 2025 → Apr 2026)
+- **201** interactive sessions, 20.1 sessions/day average
+- **952** factory builds, $3,192.07 total cost
+- **210.5M** input tokens (factory), 140.3M output tokens
+- **1.50:1** input:output ratio (factory) vs 1.19:1 (interactive)
+- **201 consecutive days** active, only 4 gaps >24h
+
+### All Smoke Tests Passed ✓
+
+1. Script exits with code 0
+2. Report file exists
+3. Contains "Data Quality" section
+4. Uses CDT timezone (not UTC)
+5. Contains activity-by-hour histogram
+6. Does NOT contain SWE-bench or ChatDev
+
+The script can be re-run anytime via `python _tools/usage_analytics.py` to refresh the report with the latest data.

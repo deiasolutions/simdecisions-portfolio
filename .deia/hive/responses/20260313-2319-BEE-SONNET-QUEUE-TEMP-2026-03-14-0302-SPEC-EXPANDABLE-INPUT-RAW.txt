@@ -1,0 +1,78 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-14-0302-SPEC-expandable-input
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260313-2319
+# Task file: QUEUE-TEMP-2026-03-14-0302-SPEC-expandable-input.md
+# Success: True
+# Duration: 94.4s
+# Files modified: 1 (verified)
+# Cost (USD): $0
+# Turns: 19
+# API duration (ms): 92135
+# Session ID: 5e6277c7-dff0-4bf3-9e38-052737b223c3
+# Boot injected: True
+
+---
+
+Perfect! Now let me write a summary response for Q33NR (or Q88NR) reviewing the task file:
+
+---
+
+## Task File Created: TASK-084
+
+**File:** `.deia/hive/tasks/2026-03-14-TASK-084-expandable-input-overlay.md`
+
+### Summary
+
+I've created a task file for **BL-003 Expandable Input Overlay** implementing the expand-up behavior for terminal input.
+
+### Deliverables Breakdown
+
+**1. Type Updates (1 file)**
+- Add `expandMode` config option to `TerminalEggConfig`
+
+**2. Component Changes (2 files)**
+- `TerminalApp.tsx`: State management, prop passing, submit handler reset
+- `TerminalPrompt.tsx`: Line counting logic, expand/collapse state updates
+
+**3. CSS Changes (1 file)**
+- `terminal.css`: Absolute positioning, z-index overlay, 50vh max-height, transitions
+
+**4. Tests (2 files)**
+- 6 unit tests in `TerminalPrompt.expand.test.tsx`
+- 1 integration test in `TerminalApp.expand.test.tsx`
+
+### Spec Compliance
+
+✅ All 9 acceptance criteria from spec mapped to deliverables  
+✅ Config flag: `expandMode: 'expand-up' | 'fixed'`  
+✅ Expansion triggers at 3+ lines  
+✅ 50vh max-height (viewport-based, not container-based)  
+✅ Smooth 150ms CSS transitions  
+✅ Position: absolute overlay (no split resize)  
+✅ Submit handler resets expand state  
+✅ 6+ tests required  
+✅ CSS var(--sd-*) only  
+✅ Model assignment: haiku (from spec)
+
+### Constraints Met
+
+✅ Absolute file paths throughout  
+✅ No files exceed 500 lines (changes are small)  
+✅ No stubs — all logic fully specified  
+✅ TDD required (tests first)  
+✅ Does NOT modify SplitContainer or shell reducer  
+✅ Response file template included  
+
+### Risk Assessment
+
+**Low risk.** This is a pure visual enhancement:
+- No split resize logic touched
+- No shell state changes
+- CSS overlay only
+- Controlled by opt-in config flag (default: 'fixed')
+
+### Ready for Review
+
+The task file is complete and ready for Q33NR/Q88NR approval. Once approved, this can be dispatched to BEE-HAIKU per the spec's model assignment.

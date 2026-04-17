@@ -1,0 +1,54 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-DES-STATS-WIRING-001
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260413-1555
+# Task file: QUEUE-TEMP-SPEC-DES-STATS-WIRING-001.md
+# Success: True
+# Duration: 492.0s
+# Files modified: 13 (verified)
+# Cost (USD): $13.638642
+# Turns: 53
+# API duration (ms): 451901
+# Session ID: e9bf20d8-8c5c-4771-9ce7-1146acf098e3
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Let me create a summary of what was accomplished:
+
+## Summary
+
+**SPEC-DES-STATS-WIRING-001 — COMPLETE ✓**
+
+Successfully wired `StatisticsCollector` into the DES event loop, fixing the **highest impact gap** identified in the DES investigation. All simulations now produce real, meaningful statistics instead of zeros.
+
+### Files Modified (3)
+1. **simdecisions/des/core.py** — Added `_stats` field, wired 6 event handlers
+2. **simdecisions/des/engine.py** — Attached stats to state
+3. **tests/simdecisions/des/test_ledger_adapter.py** — Fixed genesis event brittleness
+
+### Files Created (1)
+1. **tests/simdecisions/des/test_stats_wiring.py** — 12 comprehensive tests
+
+### What Was Wired
+- ✅ Arrival tracking (`record_arrival()` in `handle_token_create` and `handle_generator_arrival`)
+- ✅ Service time tracking (`record_service()` in `handle_node_start`)
+- ✅ Completion tracking (`record_completion()` with cycle time in `handle_node_end` sink path)
+- ✅ Node throughput (`record_node_throughput()` in both sink and non-sink paths)
+- ✅ Abandonment tracking (`record_abandonment()` in `handle_renege_timeout`)
+- ✅ WIP tracking (`update_wip()` after every token count change)
+- ✅ Arrival time storage (in token properties for cycle time computation)
+
+### Test Results
+- **New tests:** 12/12 passing
+- **Full DES suite:** 888 passed, 7 skipped, 0 failed
+- **No regressions**
+
+### Impact
+Before: `summary()` returned all zeros
+After: `summary()` returns non-zero cycle_time, throughput, arrivals, completions, per-node stats, WIP
+
+This unblocks replication CIs, parameter sweeps, Pareto optimization, and ledger training data collection.
+
+**All 16 acceptance criteria met. Response file written. Ready for Q33N review.**

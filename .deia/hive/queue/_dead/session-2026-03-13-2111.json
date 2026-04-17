@@ -1,0 +1,25 @@
+[
+  {
+    "event_type": "QUEUE_SPEC_STARTED",
+    "timestamp": "2026-03-13T21:04:39.379492",
+    "spec_id": "2026-03-13-2100-SPEC-build-monitor-v2",
+    "cost_usd": 0.0,
+    "duration_ms": 0,
+    "model_used": "sonnet",
+    "details": {
+      "priority": "P0"
+    }
+  },
+  {
+    "event_type": "QUEUE_BEES_COMPLETE",
+    "timestamp": "2026-03-13T21:11:03.858570",
+    "spec_id": "2026-03-13-2100-SPEC-build-monitor-v2",
+    "cost_usd": 0.0,
+    "duration_ms": 376200,
+    "model_used": "sonnet",
+    "details": {
+      "status": "CLEAN",
+      "response_file": "20260313-2104-BEE-SONNET-QUEUE-TEMP-2026-03-13-2100-SPEC-BUILD-MONITOR-V2-RAW.txt"
+    }
+  }
+]

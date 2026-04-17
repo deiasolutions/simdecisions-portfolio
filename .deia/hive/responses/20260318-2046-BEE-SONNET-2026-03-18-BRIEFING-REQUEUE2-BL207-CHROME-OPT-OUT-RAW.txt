@@ -1,0 +1,68 @@
+# BEE RESPONSE: 2026-03-18-BRIEFING-REQUEUE2-BL207-CHROME-OPT-OUT
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260318-2046
+# Task file: 2026-03-18-BRIEFING-REQUEUE2-BL207-CHROME-OPT-OUT.md
+# Success: True
+# Duration: 165.3s
+# Files modified: 14 (verified)
+# Cost (USD): $1.693524
+# Turns: 13
+# API duration (ms): 157417
+# Session ID: 386f207d-782b-40e0-a963-0f279249db3e
+# Boot injected: True
+
+---
+
+Perfect! Now I'll report to Q33NR (which is you, the user in this session):
+
+---
+
+## Task File Ready for Review
+
+Q33NR, I have completed the BL-207 Re-Queue 2 briefing analysis and created a task file.
+
+### Task File Location
+
+`.deia/hive/tasks/2026-03-18-TASK-BL207-EGG-CHROME-OPT-OUT.md`
+
+### What Makes This Different
+
+This is the **THIRD** attempt at this task. The previous two attempts failed because:
+- **Re-queue 1:** Bee wrote a briefing instead of changing code
+- **Re-queue 2:** (We are here now)
+
+I made the task file **IMPOSSIBLE to misunderstand**:
+
+1. **CRITICAL section at the top** with all-caps warnings
+2. **Exact BEFORE/AFTER code** for both line 33 and line 115
+3. **Five explicit warnings** that only writing tests = FAILURE
+4. **Success checklist** that forces verification of source code changes
+5. **Complete deliverables** with checkboxes for each requirement
+
+### The Required Change
+
+Two lines in `browser/src/shell/eggToShell.ts`:
+
+**Line 33:** `chrome: true,` → `chrome: eggNode.chrome !== false,`
+**Line 115:** `chrome: true,` → `chrome: node.chrome !== false,`
+
+### Test Case
+
+`eggs/build-monitor.egg.md` line 37 has `"chrome": false` on the build-service pane. This is currently ignored. After the fix, the title bar will be hidden.
+
+### Review Request
+
+Please review the task file and let me know if:
+- [ ] Deliverables are clear and complete
+- [ ] Warnings are strong enough
+- [ ] Test requirements are sufficient
+- [ ] I should dispatch the bee
+
+**If approved, I will dispatch with:**
+```bash
+python .deia/hive/scripts/dispatch/dispatch.py .deia/hive/tasks/2026-03-18-TASK-BL207-EGG-CHROME-OPT-OUT.md --model sonnet --role bee --inject-boot
+```
+
+Awaiting your review.

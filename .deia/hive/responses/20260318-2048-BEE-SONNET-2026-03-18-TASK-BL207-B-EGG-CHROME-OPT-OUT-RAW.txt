@@ -1,0 +1,41 @@
+# BEE RESPONSE: 2026-03-18-TASK-BL207-B-EGG-CHROME-OPT-OUT
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260318-2048
+# Task file: 2026-03-18-TASK-BL207-B-EGG-CHROME-OPT-OUT.md
+# Success: True
+# Duration: 127.6s
+# Files modified: 11 (verified)
+# Cost (USD): $1.614471
+# Turns: 12
+# API duration (ms): 97576
+# Session ID: 7f63a13c-e581-4dd2-9a62-ac9bdeb0b872
+# Boot injected: True
+
+---
+
+Perfect! The change is confirmed on line 33: `chrome: eggNode.chrome !== false,`
+
+---
+
+# TASK-BL207-B: EGG Chrome Opt-Out (SOURCE CODE FIX) — COMPLETE ✅
+
+## Summary
+
+Successfully modified `eggToShell.ts` to read the `chrome` field from EGG pane configs instead of hardcoding `chrome: true`. 
+
+**Key Changes:**
+- **Line 33** changed from `chrome: true,` to `chrome: eggNode.chrome !== false,`
+- **Line 115** left unchanged (fallback handler for unknown nodes)
+- **Added 3 new tests** for chrome field behavior
+- **All 18 tests pass** (15 existing + 3 new)
+
+**Logic:** 
+- `chrome: false` in EGG → `chrome: false` in AppNode (opt-out)
+- `chrome: true` in EGG → `chrome: true` in AppNode (explicit opt-in)
+- `chrome` undefined in EGG → `chrome: true` in AppNode (default behavior)
+
+**Impact:** EGG files like `build-monitor.egg.md` can now hide chrome on specific panes by setting `"chrome": false` in the pane config.
+
+**Response file written:** `.deia/hive/responses/20260318-TASK-BL207-B-RESPONSE.md`

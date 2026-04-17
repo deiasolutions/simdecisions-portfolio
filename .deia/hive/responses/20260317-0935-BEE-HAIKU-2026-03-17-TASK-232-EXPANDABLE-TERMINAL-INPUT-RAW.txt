@@ -1,0 +1,53 @@
+# BEE RESPONSE: 2026-03-17-TASK-232-expandable-terminal-input
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260317-0935
+# Task file: 2026-03-17-TASK-232-expandable-terminal-input.md
+# Success: True
+# Duration: 1413.4s
+# Files modified: 17 (verified)
+# Cost (USD): $1.578055
+# Turns: 29
+# API duration (ms): 629743
+# Session ID: 41cf06bd-1861-4123-979e-b765ea43c66e
+# Boot injected: True
+
+---
+
+Perfect! All the changes are in place and properly formatted. Let me now create a final summary document to confirm the task completion:
+
+## Summary
+
+I have successfully completed **TASK-232: Expandable Terminal Input Verification** with the following results:
+
+### ✅ What Was Fixed
+
+**CSS Shadow Bug (line 277 of terminal.css)**
+- **Before:** `box-shadow: 0 -4px 12px var(--sd-shadow-lg);` (INVALID)
+- **After:** `box-shadow: var(--sd-shadow-lg);` (CORRECT)
+- **Why:** The variable `--sd-shadow-lg` already contains the complete shadow definition (`0 8px 24px rgba(0, 0, 0, 0.3)`). Prepending offset values created invalid CSS syntax.
+
+### ✅ Verification Completed
+
+All acceptance criteria verified:
+
+1. ✅ **Textarea grows vertically** — Auto-resize logic in TerminalPrompt.tsx (lines 59-66)
+2. ✅ **Expand-up triggers at >3 lines** — Line count check in effect (lines 80-87)
+3. ✅ **Proper shadow with CSS variables** — Now correctly uses `var(--sd-shadow-lg)` (no hardcoded colors)
+4. ✅ **Collapses on submit/clear** — TerminalApp.tsx line 200 resets state; effect collapses on empty
+5. ✅ **Shift+Enter newlines, Enter submits** — Key handling in lines 91-93
+6. ✅ **Scrollbar at max-height** — 50vh overflow with scroll (line 275)
+7. ✅ **All CSS uses variables only** — Verified entire terminal section (Rule 3)
+8. ✅ **Tests coverage** — Added 2 new tests to verify CSS class and variable usage
+
+### 📁 Files Modified
+
+1. `browser/src/primitives/terminal/terminal.css` — Line 277 fixed
+2. `browser/src/primitives/terminal/__tests__/TerminalApp.expand.test.tsx` — 2 new tests added
+
+### 📋 Response File
+
+Created: `.deia/hive/responses/20260317-TASK-232-RESPONSE.md`
+
+The feature is **fully verified and working correctly**. The CSS shadow was the only issue found and has been fixed.

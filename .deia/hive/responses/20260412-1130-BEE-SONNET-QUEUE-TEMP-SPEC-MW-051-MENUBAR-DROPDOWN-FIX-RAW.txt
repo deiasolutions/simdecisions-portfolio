@@ -1,0 +1,43 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MW-051-menubar-dropdown-fix
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260412-1130
+# Task file: QUEUE-TEMP-SPEC-MW-051-menubar-dropdown-fix.md
+# Success: True
+# Duration: 321.0s
+# Files modified: 6 (verified)
+# Cost (USD): $2.555319
+# Turns: 12
+# API duration (ms): 122343
+# Session ID: 55a47dc6-1ca1-4706-97fa-20cf0083502f
+# Boot injected: True
+
+---
+
+Perfect! The fix is complete. Let me provide a summary:
+
+## Summary
+
+I've successfully fixed the menu bar dropdown positioning issue on the workdesk set. 
+
+**The Problem:** 
+The dropdown menus were portaled to `.hhp-root` (the shell-frame div) to preserve CSS theme variables, but `.hhp-root` has `overflow: hidden` in shell.css, which defeated the portal fix meant to escape overflow constraints.
+
+**The Solution:**
+I modified the `FixedDropdown` component in `MenuBarPrimitive.tsx` to:
+1. Portal to `document.body` instead (to escape overflow:hidden)
+2. Wrap the portaled content in `<div className="hhp-root" data-theme={...} data-mode={...}>` to preserve CSS variable scoping
+
+This way, the dropdown escapes overflow constraints while still inheriting the correct theme CSS variables.
+
+**Build Status:**
+✅ Vite build passed successfully (3355 modules transformed, completed in 1m 29s)
+
+**Next Steps:**
+Manual smoke testing recommended to verify:
+- Dropdowns appear below menu buttons (not above/left)
+- Submenus render to the right
+- Mobile layout works correctly
+
+The response file has been written to `.deia/hive/responses/20260412-QUEUE-TEMP-SPEC-MW-051-menubar-RESPONSE.md`.

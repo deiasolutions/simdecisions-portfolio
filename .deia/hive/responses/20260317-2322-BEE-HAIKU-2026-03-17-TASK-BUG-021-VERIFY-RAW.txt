@@ -1,0 +1,49 @@
+# BEE RESPONSE: 2026-03-17-TASK-BUG-021-VERIFY
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260317-2322
+# Task file: 2026-03-17-TASK-BUG-021-VERIFY.md
+# Success: True
+# Duration: 186.9s
+# Files modified: 30 (verified)
+# Cost (USD): $0.8683660000000001
+# Turns: 18
+# API duration (ms): 74625
+# Session ID: 80b9e289-55ba-4330-ba9a-0f974c7faf35
+# Boot injected: False
+
+---
+
+Perfect! I have successfully completed TASK-BUG-021-VERIFY. Here's a summary of my findings:
+
+## ✅ TASK COMPLETE: BUG-021 VERIFIED AS FIXED
+
+### Key Findings
+
+**BUG-021 is ALREADY FIXED** as of commit `6bfe271` on **2026-03-15**
+
+### Evidence
+
+1. **CSS Variables (All Theme-Aware)**
+   - Minimap background: `var(--sd-surface)`
+   - Minimap border: `var(--sd-border)`
+   - Viewport mask stroke: `var(--sd-purple)` with `!important` override
+   - Mask fill: `none !important` (prevents white fill on dark backgrounds)
+
+2. **Test Results: 8/8 PASSING**
+   - All critical color verification tests passing
+   - No hardcoded white, #fff, or rgb(255,255,255) colors found
+   - Dash pattern and stroke width properly configured
+
+3. **Root Causes Addressed**
+   - **White zone issue**: Fixed by using `var(--sd-purple)` stroke instead of white
+   - **Corner misalignment**: Fixed by proper CSS properties and theme-aware colors
+
+### Recommendation
+
+**CLOSE BUG-021 as ALREADY_FIXED**
+
+The bug was addressed during the canvas EGG porting/enhancement phase (2026-03-15). Both reported issues (white visible zone and corner misalignment) are resolved through proper theme-aware CSS variable usage.
+
+**Response file saved to:** `.deia/hive/responses/20260317-TASK-BUG-021-VERIFY-RESPONSE.md`

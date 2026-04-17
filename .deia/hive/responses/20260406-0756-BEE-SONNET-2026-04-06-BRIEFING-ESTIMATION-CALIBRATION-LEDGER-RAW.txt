@@ -1,0 +1,64 @@
+# BEE RESPONSE: 2026-04-06-BRIEFING-ESTIMATION-CALIBRATION-LEDGER
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260406-0756
+# Task file: 2026-04-06-BRIEFING-ESTIMATION-CALIBRATION-LEDGER.md
+# Success: True
+# Duration: 317.4s
+# Files modified: 19 (verified)
+# Cost (USD): $2.824752
+# Turns: 25
+# API duration (ms): 303341
+# Session ID: 92cb50bc-5dd1-433c-b954-307de820374d
+# Boot injected: True
+
+---
+
+Perfect! I've completed the design for the estimation calibration ledger system. Here's what I delivered:
+
+## Summary
+
+I've designed a comprehensive **estimation calibration ledger** system that tracks Clock, Cost, and Carbon for every dispatched task, computes calibration factors by task type, and provides budget projections. The design includes:
+
+### **Architecture:**
+- **Two new tables**: `inv_estimates` (per-task records) and `inv_calibration` (per-type factors)
+- **Data flow**: Scheduler TASKS → estimates → build monitor/response files → actuals → calibration → projections
+- **SQLAlchemy Core pattern** (matches existing inventory tables)
+- **Works on both SQLite and PostgreSQL** (Railway)
+
+### **Data Collection:**
+1. **Estimates** from `scheduler_mobile_workdesk.py` TASKS list (hours directly, cost/carbon derived)
+2. **Actuals** from build monitor API + response file Clock/Cost/Carbon sections
+3. **Token rates** from `model_rates.yml`
+4. **Carbon factors** from `carbon.yml` (energy × carbon intensity)
+
+### **Calibration Algorithm:**
+- Simple rolling average: `factor = mean(actual / estimate)` per task type
+- Groups: spec, build, test, verify, css
+- Auto-updates after each completed task
+- Applied to new estimates: `calibrated = original × factor`
+
+### **CLI Interface (`_tools/estimates.py`):**
+- `import-scheduler` - bulk import from TASKS list
+- `import-actuals` - pull from build monitor API
+- `import-responses` - bulk import from response files
+- `calibration` - show per-type factors
+- `compare` - per-task original → calibrated → actual
+- `budget --remaining` - project remaining work with calibrated estimates
+- `trend` - accuracy improvement over time
+
+### **Task Breakdown (4 tasks):**
+1. **TASK-EST-01**: Schema + migration (3h, Haiku)
+2. **TASK-EST-02**: Data collection (6h, Sonnet)
+3. **TASK-EST-03**: Calibration engine + CLI (5h, Sonnet)
+4. **TASK-EST-04**: Integration tests + docs (3h, Haiku)
+
+### **Key Design Decisions:**
+- Simple rolling average (not Bayesian) for Phase 1
+- Fixed token estimates per task type (not proportional to hours)
+- Real-time calibration updates (not batched)
+- New `estimates.py` script (not extending `inventory.py`)
+- Bulk import on first run, incremental thereafter
+
+The design is **ready for Q33NR review**. Once approved, I can write the four task files and dispatch bees.

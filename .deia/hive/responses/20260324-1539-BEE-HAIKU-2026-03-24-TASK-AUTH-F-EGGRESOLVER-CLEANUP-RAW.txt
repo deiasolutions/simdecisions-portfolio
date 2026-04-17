@@ -1,0 +1,48 @@
+# BEE RESPONSE: 2026-03-24-TASK-AUTH-F-EGGRESOLVER-CLEANUP
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260324-1539
+# Task file: 2026-03-24-TASK-AUTH-F-EGGRESOLVER-CLEANUP.md
+# Success: True
+# Duration: 114.6s
+# Files modified: 11 (verified)
+# Cost (USD): $0.6823504
+# Turns: 19
+# API duration (ms): 71644
+# Session ID: f417ff02-fea9-4d6c-ae17-282f4fe2f56a
+# Boot injected: True
+
+---
+
+## Summary
+
+**TASK-AUTH-F: eggResolver routing cleanup — COMPLETE** ✓
+
+I have successfully completed this task:
+
+### What Was Done
+1. **Added deprecation comments** to `eggResolver.ts` marking ra96it.com entries as legacy:
+   - Section comment: `// ── Legacy (DEPRECATED — use hodeia.me) ──` (line 140)
+   - Inline comments on all three ra96it entries: `// DEPRECATED: use hodeia.me` (lines 141-143)
+
+2. **Maintained backwards compatibility** — both `hodeia.me` and `ra96it.com` hostname mappings remain active in the hostnameMap
+
+3. **Verified all tests pass** — 32/32 tests passing, including:
+   - `hodeia.me` → `login` 
+   - `www.hodeia.me` → `login`
+   - `ra96it.com` → `login` (backwards compat)
+   - `www.ra96it.com` → `login` (backwards compat)
+   - `dev.ra96it.com` → `login` (backwards compat)
+
+### Files Modified
+- `browser/src/eggs/eggResolver.ts` — 4 lines added (deprecation comments)
+
+### Test Results
+- **32 tests passed** (no failures)
+- All existing hostname routing tests continue to pass
+- No changes to functional routing behavior
+
+**Response file:** `.deia/hive/responses/20260324-TASK-AUTH-F-RESPONSE.md`
+
+Ready for next task. 🐝

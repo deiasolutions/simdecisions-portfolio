@@ -1,0 +1,70 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-18-0819-SPEC-fix-TASK-BUG039-code-explorer-click-bad-request
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260318-0819
+# Task file: QUEUE-TEMP-2026-03-18-0819-SPEC-fix-TASK-BUG039-code-explorer-click-bad-request.md
+# Success: True
+# Duration: 194.5s
+# Files modified: 7 (verified)
+# Cost (USD): $1.446675
+# Turns: 11
+# API duration (ms): 137620
+# Session ID: f5e1918f-1c0a-454b-908e-44efe41cdc75
+# Boot injected: True
+
+---
+
+Now let me report to Q88N:
+
+---
+
+## Q33NR Report: BUG039 Fix Spec Path Error
+
+**Status:** PROBLEM IDENTIFIED — AWAITING YOUR DECISION
+
+### The Issue
+
+You asked me to process a fix spec for BUG039. I discovered the fix spec has an incorrect file path:
+
+**Fix spec says the original is here:**
+`\.deia\hive\queue\2026-03-18-SPEC-TASK-BUG039-code-explorer-click-bad-request.md`
+
+**But the original is actually here:**
+`\.deia\hive\queue\_hold\2026-03-18-SPEC-TASK-BUG039-code-explorer-click-bad-request.md`
+
+The original BUG-039 spec is in the `_hold/` directory, not the main queue.
+
+### What BUG-039 Is About
+
+Code EGG file explorer: clicking a file shows "error loading file: bad request" (HTTP 400). BUG-031 claimed to fix this but the error persists at runtime. The spec asks for full flow tracing: tree click → bus event → SDEditor → HTTP request → backend endpoint.
+
+### Two Options
+
+**Option A: Fix the fix spec** (my recommendation)
+- I dispatch Q33N to correct the path in the fix spec
+- Q33N adds full context from BUG-039 to the fix spec
+- Then we proceed to dispatch a bee to actually fix BUG-039
+- **Time:** ~20 minutes (Q33N edit + review + bee dispatch)
+
+**Option B: Skip the fix spec, move BUG-039 out of hold**
+- Move `2026-03-18-SPEC-TASK-BUG039-code-explorer-click-bad-request.md` from `_hold/` to main queue
+- Delete the broken fix spec
+- Let the queue runner process BUG-039 directly
+- **Time:** Manual file move + queue runner picks it up
+
+### Questions for You
+
+1. **Why is BUG-039 in `_hold/`?** Is there a reason it's on hold?
+2. **Which option do you prefer?** Fix the fix spec (A) or skip it (B)?
+3. **Should I investigate why the queue runner generated a bad path?** This might be a queue runner bug.
+
+### What I've Done
+
+- ✅ Read BOOT.md and HIVE.md
+- ✅ Analyzed the error
+- ✅ Found the original spec in `_hold/`
+- ✅ Created briefing for Q33N (if you choose Option A)
+- ✅ Created response file documenting the situation
+
+**Awaiting your decision before proceeding.**

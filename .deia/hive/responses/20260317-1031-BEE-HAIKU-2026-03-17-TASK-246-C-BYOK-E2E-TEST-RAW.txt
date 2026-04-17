@@ -1,0 +1,62 @@
+# BEE RESPONSE: 2026-03-17-TASK-246-C-byok-e2e-test
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260317-1031
+# Task file: 2026-03-17-TASK-246-C-byok-e2e-test.md
+# Success: True
+# Duration: 428.3s
+# Files modified: 11 (verified)
+# Cost (USD): $3.647679
+# Turns: 47
+# API duration (ms): 287463
+# Session ID: 82c195ec-5210-46d4-b3dd-1177724960d7
+# Boot injected: True
+
+---
+
+Perfect! All 14 tests pass with verbose output showing each test. The work is complete. Let me create a summary for you:
+
+## Summary
+
+I have successfully completed **TASK-246-C: E2E Test — BYOK Flow** by creating a comprehensive end-to-end test suite that verifies the complete Bring Your Own Key flow.
+
+### Deliverables
+
+**Test File Created:**
+- `browser/src/__tests__/byok-flow.e2e.test.tsx` (373 lines, within 500-line limit)
+
+**Test Suite: 14 Tests, All Passing ✅**
+
+1. **Settings Store & Persistence (6 tests)**
+   - Save/load API keys to localStorage
+   - Validate key format per provider (Anthropic, OpenAI, Groq)
+   - Mask keys for display
+   - Delete keys
+   - Persist default model selection
+
+2. **Multi-Provider Support (2 tests)**
+   - Support multiple providers simultaneously
+   - Provide status info (hasKey, maskedKey) for UI
+
+3. **LLM API Integration (4 tests)**
+   - Make fetch calls with correct Anthropic headers (`x-api-key`, `anthropic-version`, etc.)
+   - Parse API responses (content, usage, model)
+   - Calculate metrics (clock_ms, cost_usd, carbon_g)
+
+4. **Error Handling (2 tests)**
+   - Handle 401 Unauthorized (invalid key)
+   - Handle network errors
+   - Handle missing API key
+
+### Key Features
+
+✅ **Full BYOK Flow Coverage** — Settings → Storage → Terminal → API Call → Response  
+✅ **Fetch Header Verification** — Confirms API key is passed correctly  
+✅ **Multi-Provider Support** — Tests Anthropic, OpenAI, Groq  
+✅ **Error Cases** — 401 auth errors, network failures, missing keys  
+✅ **Metrics Display** — Clock, cost, carbon calculations  
+✅ **Test Isolation** — No pollution between tests, proper cleanup  
+✅ **Vitest Best Practices** — Proper mocking, clear assertions, organized structure  
+
+**Response File:** `.deia/hive/responses/20260317-TASK-246-C-RESPONSE.md`

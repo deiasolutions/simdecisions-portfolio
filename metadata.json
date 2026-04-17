@@ -1,0 +1,35 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "simdecisions",
+  "author": {
+    "@type": "Person",
+    "name": "Dave Eichler",
+    "sameAs": [
+      "https://linkedin.com/in/daaaave-atx",
+      "https://github.com/DAAAAVE-ATX"
+    ]
+  },
+  "programmingLanguage": [
+    "Python",
+    "TypeScript",
+    "JavaScript"
+  ],
+  "runtimePlatform": [
+    "Python 3.12+",
+    "Node.js 18+"
+  ],
+  "description": "Full-stack discrete event simulation platform with AI agent coordination system",
+  "keywords": [
+    "discrete event simulation",
+    "phase-ir",
+    "ai agent coordination",
+    "fastapi",
+    "react",
+    "typescript",
+    "python"
+  ],
+  "url": "https://github.com/DAAAAVE-ATX/simdecisions-portfolio",
+  "codeRepository": "https://github.com/DAAAAVE-ATX/simdecisions-portfolio",
+  "license": "Proprietary"
+}

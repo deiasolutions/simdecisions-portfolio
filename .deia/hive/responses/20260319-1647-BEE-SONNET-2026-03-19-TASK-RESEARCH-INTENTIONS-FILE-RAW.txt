@@ -1,0 +1,40 @@
+# BEE RESPONSE: 2026-03-19-TASK-RESEARCH-INTENTIONS-FILE
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260319-1647
+# Task file: 2026-03-19-TASK-RESEARCH-INTENTIONS-FILE.md
+# Success: True
+# Duration: 104.4s
+# Files modified: 1 (verified)
+# Cost (USD): $0.8353590000000001
+# Turns: 10
+# API duration (ms): 96629
+# Session ID: 52573dc0-6a48-4fa8-b5f5-74c958cf22bc
+# Boot injected: True
+
+---
+
+Perfect! I've completed the research task and produced a comprehensive digest of the `intentions.txt` file. Here's what I found:
+
+## Summary
+
+**File Structure:** Line-delimited text file with 6,711 entries in format:
+```
+[TAG] (confidence) INT-#####: text content  <- source_file
+```
+
+**Key Findings:**
+- **10 category tags** used: CON (constraints), UC (use cases), AP (prohibitions), AD (architecture), IC (interfaces), etc.
+- **3 sources:** 65% from task files, 25% from tests, 10% from docs/config/code
+- **Purpose:** Knowledge base for rules/constraints, enables grep-able search, RAG context for LLMs, quality gates
+
+**Sibling files:**
+- `intentions.json` — source of truth (structured data with full metadata)
+- `intentions.txt` — derived export (grep-able, human-readable)
+- `code_elements.jsonl` — parallel index of code structure
+- `raw_finds.jsonl` — pre-deduplication scan results
+
+**Recommendation:** **Maintain as auto-generated artifact.** Never hand-edit. Regenerate from JSON when running intention scans (major refactors, rule changes, releases).
+
+The full digest with all 8 sections has been written to `.deia/hive/responses/20260319-RESEARCH-INTENTIONS-RESPONSE.md` per BOOT.md requirements.

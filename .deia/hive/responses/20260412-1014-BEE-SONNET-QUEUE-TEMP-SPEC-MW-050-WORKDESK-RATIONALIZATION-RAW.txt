@@ -1,0 +1,45 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MW-050-workdesk-rationalization
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260412-1014
+# Task file: QUEUE-TEMP-SPEC-MW-050-workdesk-rationalization.md
+# Success: True
+# Duration: 380.6s
+# Files modified: 10 (verified)
+# Cost (USD): $6.451362
+# Turns: 54
+# API duration (ms): 278401
+# Session ID: ea1748bb-8864-4ab9-a8b9-70bdd9990cc6
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Let me provide a summary:
+
+## Task Complete ✓
+
+All acceptance criteria met for SPEC-MW-050 workdesk mobile navigation rationalization:
+
+### Changes Made:
+
+1. **Fixed Shell.tsx import** — Now imports MobileNav from `./MobileNav` (correct working implementation) instead of `../../primitives/mobile-nav/MobileNav` (broken duplicate)
+
+2. **Removed seamless flag** — Deleted `"seamless": true` from workdesk terminal pane so it appears in mobile navigation
+
+3. **Created 3 new adapters** (following QueuePaneAdapter pattern):
+   - `conversationPaneAdapter.tsx` (14 lines)
+   - `diffViewerAdapter.tsx` (29 lines)  
+   - `voiceOverlayAdapter.tsx` (20 lines)
+
+4. **Registered adapters** — Added imports and `registerApp()` calls in `apps/index.ts`
+
+5. **Deleted duplicate/broken files**:
+   - `primitives/mobile-nav/` directory (3 files)
+   - `MobileNavHub.tsx` and related files (3 files)
+
+6. **Fixed orphaned import** — Updated test file to use correct MobileNav path
+
+7. **Verified** — Zero new TypeScript errors, no orphaned imports
+
+The workdesk egg will now render correctly in mobile viewports with the working MobileNav implementation that auto-discovers panes and dispatches SET_FOCUS events.

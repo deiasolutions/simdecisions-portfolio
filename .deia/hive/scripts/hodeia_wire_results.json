@@ -1,0 +1,57 @@
+{
+  "hodeia.one": {
+    "zone_id": "349b409f7ae259a98e63574e63bc7ba7",
+    "a_record": true,
+    "www": true
+  },
+  "hodeia.ai": {
+    "zone_id": "49009b3792bd4f5ead89cff316459fc9",
+    "a_record": true,
+    "www": true
+  },
+  "hodeia.dev": {
+    "zone_id": "69169bceef2ac2cb49394b6d92e907db",
+    "a_record": true,
+    "www": true
+  },
+  "hodeia.app": {
+    "zone_id": "f64c64217281c9edb51e410dabe8db18",
+    "a_record": true,
+    "www": true
+  },
+  "hodeia.cloud": {
+    "zone_id": "c5aa6e11ba5d2897f246d018c89de63b",
+    "a_record": true,
+    "www": true
+  },
+  "hodeia.run": {
+    "zone_id": "b4d17120210d9ab923fe45c449ce71a5",
+    "a_record": true,
+    "www": true
+  },
+  "hodeia.org": {
+    "zone_id": "f42139341233fc239dbe254ccc5c1fd9",
+    "a_record": true,
+    "www": true
+  },
+  "hodeia.io": {
+    "zone_id": "1b7cadc2fe43427f6e98bb9015cb1213",
+    "a_record": true,
+    "www": true
+  },
+  "hodeia.network": {
+    "zone_id": "9444eccdee5bbc3d73abf9b7e51bb89c",
+    "a_record": true,
+    "www": true
+  },
+  "hodeia.studio": {
+    "zone_id": "523fbc53340c2873cddb9d3ce2b34d00",
+    "a_record": true,
+    "www": true
+  },
+  "hodeia.win": {
+    "zone_id": "3352ea21021a3824db1bcbd95e22e88e",
+    "a_record": true,
+    "www": true
+  }
+}

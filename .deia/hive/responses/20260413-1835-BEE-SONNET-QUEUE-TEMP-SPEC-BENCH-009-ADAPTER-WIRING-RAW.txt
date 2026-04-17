@@ -1,0 +1,71 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-BENCH-009-adapter-wiring
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260413-1835
+# Task file: QUEUE-TEMP-SPEC-BENCH-009-adapter-wiring.md
+# Success: True
+# Duration: 363.0s
+# Files modified: 4 (verified)
+# Cost (USD): $7.853619
+# Turns: 33
+# API duration (ms): 340000
+# Session ID: fcb2f1b3-53aa-47a1-8ca8-b661d844f675
+# Boot injected: True
+
+---
+
+Perfect! Let me create a quick summary to present to you:
+
+---
+
+## SPEC-BENCH-009: PRISM-bench Adapter Wiring - COMPLETE ✓
+
+I've successfully wired the PRISM-bench adapter to use real DES execution. Here's what was accomplished:
+
+### Implementation Summary
+
+**Files Modified:**
+- `simdecisions/benchmark/adapters/prism_bench.py` - Real DES execution wiring
+- `tests/simdecisions/benchmark/test_prism_bench_adapter.py` - Integration tests
+
+**Key Changes:**
+
+1. **load_tasks()** - Now loads all 20 tasks from `prism_bench_tasks/` directory ✓
+2. **run_baseline()** - Real DES execution with:
+   - SimulationEngine execution
+   - Wall clock timing (CLOCK)
+   - DES statistics capture
+   - CARBON computation via carbon.compute_carbon()
+   - Complete BaselineResult with all 6 currency fields ✓
+3. **run_simdecisions()** - Delegates to baseline for Wave B (real DEF→SIM→BRA→COMP loop deferred to later wave as specified) ✓
+4. **evaluate()** - PRISMBenchHarness integration with category-specific scoring ✓
+
+### Test Results
+
+```
+✓ 11/11 integration tests pass
+✓ All smoke tests pass
+✓ Loads 20 tasks from prism_bench_tasks/
+✓ DES statistics captured in result.metadata
+✓ All 6 currency fields present
+✓ PRISMBenchHarness evaluation working
+```
+
+### Acceptance Criteria: 14/14 ✓
+
+All 14 acceptance criteria from the spec are met:
+- Load tasks from correct directory
+- Execute through SimulationEngine
+- Capture DES statistics
+- Compute all currencies (CLOCK, COIN, CARBON, tokens, model_calls)
+- Evaluate using PRISMBenchHarness
+- Return complete result objects
+
+### Notes
+
+- COIN and model_calls are 0 in sim mode (no Event Ledger integration yet)
+- run_simdecisions() mirrors baseline per spec (real loop comes later)
+- No stubs, TDD followed, all tests passing
+
+The adapter is now ready for real benchmark execution. Wave B complete! 🚀

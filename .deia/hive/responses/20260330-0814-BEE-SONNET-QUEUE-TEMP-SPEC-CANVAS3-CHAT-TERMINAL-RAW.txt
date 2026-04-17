@@ -1,0 +1,35 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-CANVAS3-CHAT-TERMINAL
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260330-0814
+# Task file: QUEUE-TEMP-SPEC-CANVAS3-CHAT-TERMINAL.md
+# Success: True
+# Duration: 65.9s
+# Files modified: 2 (verified)
+# Cost (USD): $0.49905299999999997
+# Turns: 5
+# API duration (ms): 43735
+# Session ID: 53d57e02-f3af-40de-ad64-1b5924da010e
+# Boot injected: True
+
+---
+
+## Task Complete ✓
+
+Successfully changed the canvas3 third pane from text-pane to terminal.
+
+### What Changed
+- **File modified:** `eggs/canvas3.set.md`
+- **Pane config updated:** canvas-chat now uses `appType: "terminal"` instead of `appType: "text-pane"`
+- **New configuration:**
+  - Label: "Fr@nk"
+  - Prompt: `canvas>`
+  - Routes to AI (`routeTarget: "ai"`)
+  - Links to canvas editor for IR deposits
+  - Shows welcome banner on load
+
+### Ready for Smoke Test
+The terminal primitive is already implemented. When canvas3 loads, the third column will now show an interactive terminal with the `canvas>` prompt that routes user messages to the AI provider and applies IR mutations to the canvas editor pane.
+
+**Response file:** `.deia/hive/responses/20260330-QUEUE-TEMP-SPEC-CANVAS3-CHAT-TERMINAL-RESPONSE.md`

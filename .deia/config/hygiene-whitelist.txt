@@ -1,0 +1,40 @@
+# Code Hygiene Whitelist — False Positives
+# Generated: 2026-04-12
+
+## CLI Entry Points
+# These are legitimate entry points, not dead code
+*/__main__.py:*
+*/cli.py:if __name__ == "__main__"
+
+## Test Fixtures (pytest)
+# Fixtures are detected as unused but are used by pytest magic
+**/conftest.py:*
+**/test_*.py:*reset_rate_limiter*
+**/test_*.py:*sample_specs*
+**/test_*.py:*sample_tasks*
+**/test_*.py:*mock_jwt_keys*
+**/test_*.py:*mock_google_apis*
+**/test_*.py:*mock_github_apis*
+
+## Exception Handlers
+# exc_type, exc_val, exc_tb are standard exception handler signatures
+*:unused variable 'exc_type'
+*:unused variable 'exc_val'
+*:unused variable 'exc_tb'
+*:unused variable '__context'
+
+## Signal Handlers
+# frame is standard signal handler signature
+*:unused variable 'frame'
+
+## Framework Conventions
+*/__init__.py:*
+*/index.ts:*
+
+## Queue Runner Internals
+# Non-standard import patterns
+.deia/hive/scripts/**
+
+## Intentionally Unused Public API Exports
+# These are exported for external consumers
+hivenode/entities/vectors_core.py:unused import 'pg_insert'

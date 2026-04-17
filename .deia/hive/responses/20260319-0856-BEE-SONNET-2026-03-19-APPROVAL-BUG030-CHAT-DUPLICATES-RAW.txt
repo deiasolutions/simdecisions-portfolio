@@ -1,0 +1,70 @@
+# BEE RESPONSE: 2026-03-19-APPROVAL-BUG030-chat-duplicates
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260319-0856
+# Task file: 2026-03-19-APPROVAL-BUG030-chat-duplicates.md
+# Success: True
+# Duration: 794.6s
+# Files modified: 42 (verified)
+# Cost (USD): $0.8812139999999999
+# Turns: 9
+# API duration (ms): 57338
+# Session ID: b4500737-a67e-4f07-8ebd-d329e9915f27
+# Boot injected: True
+
+---
+
+## ✅ DISPATCH COMPLETE — TASK-BUG030
+
+**Status:** BEE DISPATCHED AND RUNNING  
+**Task ID:** TASK-BUG030  
+**Model:** Sonnet  
+**Background Task:** b4de579  
+
+---
+
+### What I Did
+
+1. **Read required files** — BOOT.md, HIVE.md, and the task file
+2. **Verified approval** — Q33NR's mechanical review and quality assessment passed
+3. **Dispatched bee** — Command executed successfully in background mode
+4. **Created dispatch confirmation** — Written to `.deia/hive/coordination/2026-03-19-DISPATCH-CONFIRMATION-BUG030.md`
+
+---
+
+### Task Summary
+
+**Objective:** Fix chat tree showing duplicate conversations (40+ copies of same conversation)
+
+**Root Cause:** chatHistoryAdapter trusts API to deduplicate, but needs defensive dedup logic
+
+**Solution:** Add Map-based deduplication by `conv.id` after sorting, before grouping
+
+**Expected Deliverables:**
+- Dedup logic in `chatHistoryAdapter.ts` (~8 lines)
+- 2 new test cases in `chatHistoryAdapter.test.ts`
+- 11/11 tests passing (9 existing + 2 new)
+- No regressions
+
+---
+
+### Next Steps
+
+**When the bee completes, I will:**
+
+1. Read response file: `.deia/hive/responses/20260319-TASK-BUG030-RESPONSE.md`
+2. Verify all 8 sections present
+3. Verify all acceptance criteria met
+4. Check for stubs, test failures, or regressions
+5. Report results to Q33NR
+
+**If issues found:**
+- Create fix task
+- Dispatch again
+- Max 2 fix cycles before escalating to Q88N
+
+---
+
+**Awaiting:** Bee completion (~45 minutes estimated)  
+**Next Action:** Report to Q33NR when bee finishes

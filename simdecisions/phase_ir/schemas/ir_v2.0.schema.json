@@ -1,0 +1,981 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://simdecisions.com/schemas/ir_v2.0.schema.json",
+  "title": "PHASE-IR v2.0",
+  "description": "Process, Hierarchy, Action, State, Event Intermediate Representation v2.0",
+  "type": "object",
+  "required": [
+    "v",
+    "id",
+    "nodes",
+    "edges"
+  ],
+  "properties": {
+    "v": {
+      "type": "string",
+      "const": "2.0",
+      "description": "PHASE-IR version"
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this IR definition"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name"
+    },
+    "domain": {
+      "type": "string",
+      "description": "Domain or industry context"
+    },
+    "intention": {
+      "type": "string",
+      "description": "Purpose or goal of this process"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the process"
+    },
+    "params": {
+      "type": "object",
+      "description": "Process-level parameters",
+      "additionalProperties": true
+    },
+    "generators": {
+      "type": "array",
+      "description": "Entity generators for simulation",
+      "items": {
+        "$ref": "#/$defs/Generator"
+      }
+    },
+    "queues": {
+      "type": "array",
+      "description": "Queue definitions",
+      "items": {
+        "$ref": "#/$defs/Queue"
+      }
+    },
+    "resource_pools": {
+      "type": "array",
+      "description": "Resource pool definitions",
+      "items": {
+        "$ref": "#/$defs/ResourcePool"
+      }
+    },
+    "entities": {
+      "type": "array",
+      "description": "Entity type definitions",
+      "items": {
+        "$ref": "#/$defs/Entity"
+      }
+    },
+    "events": {
+      "type": "array",
+      "description": "Event type definitions",
+      "items": {
+        "$ref": "#/$defs/Event"
+      }
+    },
+    "imports": {
+      "type": "array",
+      "description": "External imports",
+      "items": {
+        "type": "object",
+        "properties": {
+          "entity": {
+            "type": "string"
+          },
+          "pattern": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "nodes": {
+      "type": "object",
+      "description": "Process nodes (keyed by node ID)",
+      "additionalProperties": {
+        "$ref": "#/$defs/Node"
+      }
+    },
+    "edges": {
+      "type": "object",
+      "description": "Process edges (keyed by edge ID)",
+      "additionalProperties": {
+        "$ref": "#/$defs/Edge"
+      }
+    },
+    "variables": {
+      "type": "array",
+      "description": "Process variables",
+      "items": {
+        "$ref": "#/$defs/Variable"
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "description": "Process constraints",
+      "items": {
+        "$ref": "#/$defs/Constraint"
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "description": "Metrics to collect",
+      "items": {
+        "type": "string"
+      }
+    },
+    "termination": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object"
+        }
+      ],
+      "description": "Termination conditions"
+    },
+    "ledger": {
+      "type": "object",
+      "description": "Ledger configuration for audit trail"
+    }
+  },
+  "$defs": {
+    "Distribution": {
+      "type": "object",
+      "required": [
+        "type",
+        "params"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "constant",
+            "uniform",
+            "normal",
+            "lognormal",
+            "exponential",
+            "poisson",
+            "triangular",
+            "erlang",
+            "discrete",
+            "batch",
+            "object"
+          ]
+        },
+        "params": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "Generator": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "params",
+        "target"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "exponential",
+            "poisson",
+            "constant",
+            "batch",
+            "trace"
+          ]
+        },
+        "params": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "per_hour",
+            "per_minute",
+            "per_second"
+          ]
+        },
+        "target": {
+          "type": "string",
+          "description": "Target node ID"
+        },
+        "entity": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "attrs": {
+              "type": "object",
+              "additionalProperties": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/Distribution"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "boolean"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "entity_attrs": {
+          "type": "object",
+          "description": "Alternative attrs format",
+          "additionalProperties": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/Distribution"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              }
+            ]
+          }
+        },
+        "active": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "to": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "trigger": {
+              "type": "string"
+            }
+          }
+        },
+        "run_once": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "Queue": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "discipline": {
+          "type": "string",
+          "enum": [
+            "fifo",
+            "lifo",
+            "priority",
+            "sjf"
+          ]
+        },
+        "priority_expr": {
+          "type": "string"
+        },
+        "capacity": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reneging": {
+          "type": "object",
+          "properties": {
+            "timeout": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "action": {
+              "type": "string"
+            },
+            "emit": {
+              "type": "string"
+            }
+          }
+        },
+        "balking": {
+          "type": "object",
+          "properties": {
+            "condition": {
+              "type": "string"
+            },
+            "action": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "ResourcePool": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "capacity": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dispatch": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": [
+                "longest_idle",
+                "scored",
+                "matrix",
+                "decision_tree"
+              ]
+            },
+            "factors": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "weight": {
+                    "type": "number"
+                  },
+                  "expr": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "profile": {
+          "type": "object",
+          "properties": {
+            "\u03c3": {
+              "$ref": "#/$defs/Distribution"
+            },
+            "sigma": {
+              "$ref": "#/$defs/Distribution"
+            },
+            "\u03c0": {
+              "$ref": "#/$defs/Distribution"
+            },
+            "pi": {
+              "$ref": "#/$defs/Distribution"
+            },
+            "\u03b1": {
+              "$ref": "#/$defs/Distribution"
+            },
+            "alpha": {
+              "$ref": "#/$defs/Distribution"
+            },
+            "\u03c1": {
+              "$ref": "#/$defs/Distribution"
+            },
+            "rho": {
+              "$ref": "#/$defs/Distribution"
+            }
+          }
+        },
+        "reneging": {
+          "type": "object",
+          "properties": {
+            "timeout": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            "action": {
+              "type": "string"
+            }
+          }
+        },
+        "schedule": {
+          "type": "object",
+          "properties": {
+            "shifts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "hours": {
+                    "type": "string"
+                  },
+                  "capacity": {
+                    "type": "integer"
+                  }
+                }
+              }
+            },
+            "breaks": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "config": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "Entity": {
+      "type": "object",
+      "required": [
+        "type",
+        "attrs"
+      ],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "attrs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "dtype"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "dtype": {
+                "type": "string"
+              },
+              "values": {
+                "type": "array"
+              },
+              "range": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "default": true
+            }
+          }
+        },
+        "lifecycle": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Event": {
+      "type": "object",
+      "required": [
+        "id",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "payload": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "dtype": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Node": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "oneOf": [
+        {
+          "required": [
+            "t"
+          ]
+        },
+        {
+          "required": [
+            "type"
+          ]
+        }
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "t": {
+          "type": "string",
+          "enum": [
+            "start",
+            "end",
+            "task",
+            "decision",
+            "checkpoint",
+            "split",
+            "join",
+            "queue"
+          ],
+          "description": "Node type (legacy - use 'type' instead)"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "start",
+            "end",
+            "task",
+            "decision",
+            "checkpoint",
+            "split",
+            "join",
+            "queue"
+          ],
+          "description": "Node type (canonical field)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Node name (used for display labels)"
+        },
+        "pos": {
+          "type": "object",
+          "description": "Node position (legacy format)",
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ]
+        },
+        "position": {
+          "type": "object",
+          "description": "Node position (canonical format - preferred)",
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ]
+        },
+        "g": {
+          "oneOf": [
+            {
+              "type": "string",
+              "description": "Guard expression (simple format)"
+            },
+            {
+              "$ref": "#/$defs/GuardConfig",
+              "description": "Guard configuration (object format)"
+            }
+          ],
+          "description": "Guard expression or configuration"
+        },
+        "o": {
+          "type": "object",
+          "description": "Operator definition",
+          "properties": {
+            "op": {
+              "type": "string",
+              "enum": [
+                "rule",
+                "llm",
+                "human",
+                "api",
+                "python",
+                "solver"
+              ]
+            },
+            "tier": {
+              "type": "integer"
+            }
+          }
+        },
+        "a": {
+          "type": "array",
+          "description": "Actions",
+          "items": {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "set",
+                  "emit",
+                  "spawn",
+                  "increment"
+                ]
+              },
+              "var": {
+                "type": "string"
+              },
+              "value": true,
+              "event": {
+                "type": "string"
+              },
+              "payload": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "exclusive",
+            "inclusive",
+            "parallel"
+          ]
+        },
+        "duration": {
+          "$ref": "#/$defs/Distribution"
+        },
+        "resource": {
+          "type": "string",
+          "description": "Resource pool ID"
+        },
+        "queue": {
+          "type": "string",
+          "description": "Queue ID"
+        },
+        "prompt": {
+          "type": "string",
+          "description": "LLM prompt template"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "critical_section": {
+              "type": "string",
+              "description": "Mutex group ID — only one node per critical_section can execute at a time"
+            },
+            "execution_mode": {
+              "type": "string",
+              "enum": ["parallel", "interleaved", "sequential"],
+              "description": "Execution constraint for this node"
+            },
+            "interleave_group": {
+              "type": "string",
+              "description": "Group ID for interleaved execution — nodes in same group execute in any order but not concurrently"
+            }
+          },
+          "additionalProperties": true
+        },
+        "joinPolicy": {
+          "type": "string",
+          "enum": [
+            "all",
+            "any",
+            "N_of_M",
+            "resource_available"
+          ],
+          "description": "Join synchronization strategy"
+        },
+        "intent": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "Edge": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string",
+          "description": "Source node ID (canonical field)"
+        },
+        "target": {
+          "type": "string",
+          "description": "Target node ID (canonical field)"
+        },
+        "s": {
+          "type": "string",
+          "description": "Source node ID (legacy - use 'source' instead)"
+        },
+        "t": {
+          "type": "string",
+          "description": "Target node ID (legacy - use 'target' instead)"
+        },
+        "from_node": {
+          "type": "string",
+          "description": "Source node ID (legacy - use 'source' instead)"
+        },
+        "to_node": {
+          "type": "string",
+          "description": "Target node ID (legacy - use 'target' instead)"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "then",
+            "fork",
+            "switch",
+            "join",
+            "any",
+            "repeat",
+            "wait",
+            "timeout",
+            "emit",
+            "on"
+          ]
+        },
+        "label": {
+          "type": "string",
+          "description": "Edge label for display (canonical format)"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "c": {
+          "type": "string",
+          "description": "Condition/guard expression"
+        },
+        "guard": {
+          "type": "string",
+          "description": "Alternative to 'c' field"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "delay": {
+          "type": "string"
+        },
+        "timeout": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "integer",
+          "default": 1
+        },
+        "trigger": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "source",
+            "target"
+          ]
+        },
+        {
+          "required": [
+            "s",
+            "t"
+          ]
+        },
+        {
+          "required": [
+            "from_node",
+            "to_node"
+          ]
+        }
+      ]
+    },
+    "Variable": {
+      "type": "object",
+      "required": [
+        "name",
+        "type"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Variable name (canonical format)"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "int",
+            "float",
+            "string",
+            "bool",
+            "number"
+          ],
+          "description": "Variable data type"
+        },
+        "default": {
+          "description": "Default value for the variable"
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description"
+        },
+        "range": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "Min/max range for numeric variables"
+        },
+        "enum": {
+          "type": "array",
+          "description": "Allowed values for enumerated variables"
+        }
+      }
+    },
+    "Constraint": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "soft",
+            "hard",
+            "observation"
+          ]
+        },
+        "expr": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "GuardConfig": {
+      "type": "object",
+      "required": [
+        "if"
+      ],
+      "properties": {
+        "if": {
+          "type": "string",
+          "description": "Guard condition expression"
+        },
+        "fail": {
+          "type": "string",
+          "description": "Optional target node if guard fails"
+        },
+        "continuous": {
+          "type": "boolean",
+          "default": false,
+          "description": "If true, guard is re-evaluated continuously during execution (milestone pattern)"
+        },
+        "abort_on_fail": {
+          "type": "boolean",
+          "default": false,
+          "description": "If true and continuous guard fails, abort task execution"
+        }
+      }
+    }
+  }
+}

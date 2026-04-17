@@ -1,0 +1,10 @@
+{
+  "scan_id": "scan-2026-03-18-164045",
+  "source_repo": "C:\\Users\\davee\\OneDrive\\Documents\\GitHub\\shiftcenter",
+  "scan_timestamp": "2026-03-18T16:42:36.090992",
+  "total_files_scanned": 15491,
+  "total_files_skipped": 0,
+  "total_raw_finds": 10282,
+  "total_code_elements": 24506,
+  "errors": []
+}

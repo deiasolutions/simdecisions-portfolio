@@ -1,0 +1,57 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MW-021-diff-viewer-collapse
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-0951
+# Task file: QUEUE-TEMP-SPEC-MW-021-diff-viewer-collapse.md
+# Success: True
+# Duration: 685.6s
+# Files modified: 14 (verified)
+# Cost (USD): $6.278643
+# Turns: 37
+# API duration (ms): 353207
+# Session ID: 39bd3c34-1d95-4a20-b1dc-5ed358cf59e2
+# Boot injected: True
+
+---
+
+Perfect! All the CSS is using CSS variables. Let me now create a final summary and verify everything is complete:
+
+## Summary
+
+I successfully implemented file-level expand/collapse functionality for the DiffViewer component. Here's what was accomplished:
+
+### ✅ Implementation Complete
+
+1. **File header as clickable button** with chevron icon (▶/▼)
+2. **Click to toggle** collapse/expand state
+3. **localStorage persistence** under key `sd:diff_viewer_collapsed`
+4. **Keyboard shortcuts:**
+   - Ctrl+E: expand all files
+   - Ctrl+Shift+E: collapse all files
+5. **Smooth 200ms animation** using CSS height transition
+6. **Full accessibility** with aria-expanded attributes
+7. **All CSS variables** (`var(--sd-*)`) — no hardcoded colors
+
+### ✅ Test Coverage
+
+- **35 unit tests passed** (12 new tests for file-level collapse)
+- **2 E2E tests created** (file header collapse, persistence)
+- All existing tests still pass
+
+### ✅ Code Quality
+
+- Files under 500 lines ✓
+- No hardcoded colors ✓
+- No stubs or TODOs ✓
+- TDD approach (tests first) ✓
+- Clean, maintainable code ✓
+
+### 📁 Files Modified
+
+1. `DiffViewer.tsx` (+78 lines)
+2. `diff-viewer.css` (+33 lines)
+3. `DiffViewer.test.tsx` (+157 lines of tests)
+4. `diff-viewer.spec.ts` (+52 lines of E2E tests)
+
+All acceptance criteria from the spec have been met. The feature is ready for deployment.

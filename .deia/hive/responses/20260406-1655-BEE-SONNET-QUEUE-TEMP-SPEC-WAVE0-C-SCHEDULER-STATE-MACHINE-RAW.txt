@@ -1,0 +1,52 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-WAVE0-C-scheduler-state-machine
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-1655
+# Task file: QUEUE-TEMP-SPEC-WAVE0-C-scheduler-state-machine.md
+# Success: True
+# Duration: 49.2s
+# Files modified: 5 (verified)
+# Cost (USD): $0.8676179999999999
+# Turns: 7
+# API duration (ms): 37197
+# Session ID: 76351b30-29d3-4615-8e73-892c26a4300e
+# Boot injected: True
+
+---
+
+Based on my analysis, I'll now create an implementation plan. Let me present it before proceeding:
+
+## Implementation Plan for SPEC-WAVE0-C
+
+I need to extend the scheduler to recognize the new DDD state directories from PROCESS-DOC-DRIVEN-DEVELOPMENT.md and track them in velocity/capacity calculations.
+
+### Steps:
+
+1. **Add state directory recognition** in `scheduler_daemon.py`:
+   - Add constants for new directories: `_code_complete/`, `_qa_review/`, `_q33n_review/`, `_needs_revision/`
+   - Update `compute_schedule()` to read task counts from these directories
+
+2. **Update capacity calculation** in `compute_schedule()`:
+   - Count tasks in `_code_complete/` and `_qa_review/` as "in flight"
+   - These should count against active capacity (not schedulable over)
+   - Tasks in `_needs_revision/` re-enter queue at elevated priority (P0.5)
+
+3. **Add pipeline_state section to schedule.json**:
+   - Extend schedule output with new section tracking all 8 states
+   - Include counts: backlog, queue, running, code_complete, qa_review, q33n_review, needs_revision, done_today
+
+4. **Update schedule_log.jsonl**:
+   - Include pipeline_state snapshot in each scheduler cycle event
+
+5. **Write comprehensive tests**:
+   - Test new state directory recognition
+   - Test capacity calculation with tasks in new states
+   - Test priority boost for `_needs_revision/` tasks
+   - Test schedule.json pipeline_state output
+   - Test scheduler doesn't crash on empty new directories
+
+6. **Verify existing behavior unchanged**:
+   - Ensure standard states (backlog, queue, _active, _done) still work correctly
+
+Ready to proceed?

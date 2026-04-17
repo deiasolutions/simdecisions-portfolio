@@ -1,0 +1,65 @@
+# BEE RESPONSE: 2026-03-16-BRIEFING-vercel-railway-repoint
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260316-1505
+# Task file: 2026-03-16-BRIEFING-vercel-railway-repoint.md
+# Success: True
+# Duration: 154.1s
+# Files modified: 10 (verified)
+# Cost (USD): $1.5434370000000002
+# Turns: 17
+# API duration (ms): 131863
+# Session ID: 1260cb3f-1fd3-4f1e-b048-e5683044b567
+# Boot injected: True
+
+---
+
+Perfect! Now let me report to Q33NR (Dave, since this is a live session):
+
+---
+
+## Q33N Report: Vercel + Railway Repoint Analysis
+
+**Status:** ✅ **ANALYSIS COMPLETE — NO NEW WORK NEEDED**
+
+### Summary
+
+The briefing requested breaking down the Vercel/Railway repoint into 5 tasks (TASK-191 through TASK-195). However, **all required files and documentation already exist**. The only remaining work is **manual execution** via dashboards/CLI.
+
+### What Already Exists
+
+1. ✅ **`browser/vercel.json`** — SPA fallback rewrites (complete, working)
+2. ✅ **CORS configuration** — `hivenode/main.py` already includes `dev.shiftcenter.com`, `code.shiftcenter.com`, etc.
+3. ✅ **Deployment docs** — `docs/DEPLOYMENT-WIRING-NOTES.md` (765 lines, comprehensive)
+   - Vercel repoint procedure (8 steps)
+   - Railway repoint procedure (6 steps)
+   - DNS configuration (Cloudflare)
+   - 7 smoke tests with verification steps
+4. ✅ **Environment variables** — `.deia/config/deployment-env.md` (161 lines, complete checklist)
+
+### What the Briefing Requested (Now Unnecessary)
+
+- **TASK-191:** Create `vercel.json` → ❌ **Already exists**
+- **TASK-192:** Document Vercel procedure → ❌ **Already documented**
+- **TASK-193:** Document Railway procedure → ❌ **Already documented**
+- **TASK-194:** Document DNS config → ❌ **Already documented**
+- **TASK-195:** Document smoke tests → ❌ **Already documented**
+
+### Recommendation
+
+**No task files needed.** You (Q88N) can execute the repoint directly using the existing documentation:
+- Follow `docs/DEPLOYMENT-WIRING-NOTES.md` step-by-step
+- Use `.deia/config/deployment-env.md` for env var checklist
+- Run smoke tests from lines 425-740 of DEPLOYMENT-WIRING-NOTES.md
+
+### If You Want a Summary
+
+I can create a single condensed checklist file (`.deia/hive/coordination/2026-03-16-REPOINT-CHECKLIST.md`) that summarizes all manual steps with checkboxes. This would be a convenience file, not a task for bees.
+
+**Your call:** Should I create the summary checklist, or is the existing documentation sufficient?
+
+---
+
+**Coordination report written to:**
+`.deia/hive/responses/20260316-Q33N-BRIEFING-vercel-railway-repoint-COORDINATION-REPORT.md`

@@ -1,0 +1,52 @@
+# BEE RESPONSE: 2026-03-18-TASK-BL213-queue-runner-auto-commit
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260318-0813
+# Task file: 2026-03-18-TASK-BL213-queue-runner-auto-commit.md
+# Success: True
+# Duration: 1102.3s
+# Files modified: 22 (verified)
+# Cost (USD): $15.753597
+# Turns: 52
+# API duration (ms): 642118
+# Session ID: 2ad36812-81f7-475c-a58d-b36fb6df59cb
+# Boot injected: True
+
+---
+
+Excellent! Task complete. Let me provide a summary:
+
+## Summary
+
+**BL-213: Queue runner auto-commits bee output on file release** — ✅ COMPLETE
+
+I've successfully implemented the auto-commit feature for the queue runner following TDD methodology. Here's what was delivered:
+
+### Files Created/Modified:
+1. **New:** `.deia/hive/scripts/queue/auto_commit.py` (142 lines)
+   - `auto_commit_bee_output()` function queries `/build/claims` API
+   - Runs `git add` + `git commit` with format `[BEE-MODEL] SPEC-ID: objective (STATUS)`
+   - Graceful error handling — logs warnings, never crashes
+
+2. **Modified:** `.deia/hive/scripts/queue/run_queue.py`
+   - Added import for `auto_commit_bee_output`
+   - Added auto-commit calls in `_handle_spec_result()` for CLEAN, NEEDS_DAVE, and FAILED paths
+   - Commits happen BEFORE moving specs to `_done/` or `_needs_review/`
+
+3. **New:** `.deia/hive/scripts/queue/tests/test_run_queue_auto_commit.py` (442 lines, 7 tests)
+   - All tests passing ✓
+   - Covers CLEAN/NEEDS_DAVE/FAILED statuses
+   - Tests failure handling (git add fails, git commit fails)
+   - Verifies no git push or destructive operations
+
+### Key Features:
+- ✅ Auto-commits on CLEAN, NEEDS_DAVE, FAILED results
+- ✅ Commit format: `[BEE-HAIKU] 2026-03-18-SPEC-TASK-BUG022: Fix canvas palette icon clicks`
+- ✅ Status suffix for failures: `(NEEDS_DAVE)` or `(FAILED)`
+- ✅ No git push (commit only — crash recovery checkpoint)
+- ✅ No destructive git operations
+- ✅ Graceful failure handling (warns but doesn't crash queue runner)
+- ✅ 7/7 tests passing, no regressions
+
+This is now active in the queue runner — all future bee completions will be auto-committed as crash-recovery checkpoints.

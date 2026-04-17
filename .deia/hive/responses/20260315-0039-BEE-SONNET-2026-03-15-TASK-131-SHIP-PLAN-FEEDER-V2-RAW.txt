@@ -1,0 +1,55 @@
+# BEE RESPONSE: 2026-03-15-TASK-131-ship-plan-feeder-v2
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260315-0039
+# Task file: 2026-03-15-TASK-131-ship-plan-feeder-v2.md
+# Success: True
+# Duration: 158.8s
+# Files modified: 3 (verified)
+# Cost (USD): $0
+# Turns: 14
+# API duration (ms): 115801
+# Session ID: 3161dd0b-91f5-49a3-8865-3135a4a946e8
+# Boot injected: True
+
+---
+
+## Summary
+
+I've analyzed TASK-131 (Ship Plan Queue Feeder) and identified a role/sequencing issue that needs your clarification:
+
+### Current State
+- ✅ Ship plan read and understood (6 waves, ~54 hours of bee work)
+- ✅ Build monitor heartbeat working
+- ❌ Queue runner NOT running (needs `--watch` flag)
+- ⚠️ 2 existing specs in queue (kanban-backlog-db, ra96it-sso-federation)
+
+### The Issue
+
+**Wave 0 (CLEAN THE HOUSE)** has 10 tasks, but **only 1 is bee-dispatchable** (fix import paths). The other 9 are Q33NR-direct work:
+- Run test suites
+- Resolve file conflicts  
+- Commit code
+- Clean bug entries
+- Verify features work
+
+As Q33NR, I should NOT code, but I SHOULD do verification/testing/commits. This is contradictory to being a "queue feeder" that just dispatches bees.
+
+### Questions for You
+
+**Q1:** Should I start the queue runner first?
+
+**Q2:** Should I DO Wave 0 tasks myself (as Q33NR verification work), or skip to Wave 1 (ports)?
+
+**Q3:** What about the 2 existing queue specs — process them first, or move them aside?
+
+**Q4:** "1-2 items at a time" vs "Max 3 bees overnight" — which limit applies?
+
+### My Recommendation
+
+Let me do Wave 0 myself as Q33NR work (it's verification/testing, not coding), then start feeding Wave 1 port tasks to bees. Wave 0 is the foundation — it ensures the repo is clean before we start porting.
+
+I've written a full analysis to `.deia/hive/responses/20260315-TASK-131-RESPONSE.md` with 3 options laid out.
+
+What's your call?

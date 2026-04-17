@@ -1,0 +1,37 @@
+{
+  "id": "branch_01_cost_vs_speed",
+  "name": "Cost vs Speed Tradeoff",
+  "intent": "Test branch selection between fast/expensive and slow/cheap paths",
+  "phase_ir_version": "1.0.0",
+  "variables": [
+    {"id": "budget_limit", "type": "number", "default": 100.0}
+  ],
+  "resources": [
+    {"id": "premium_api", "type": "api", "capacity": 10, "cost_per_use": 5.0},
+    {"id": "standard_api", "type": "api", "capacity": 5, "cost_per_use": 1.0}
+  ],
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "choose_strategy", "type": "decision", "name": "Choose Strategy", "mode": "exclusive"},
+    {"id": "fast_path", "type": "service", "name": "Premium Fast Path", "config": {"duration": {"type": "constant", "params": {"value": 1.0}}, "resource": "premium_api"}},
+    {"id": "slow_path", "type": "service", "name": "Standard Slow Path", "config": {"duration": {"type": "constant", "params": {"value": 5.0}}, "resource": "standard_api"}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "choose_strategy", "type": "then"},
+    {"id": "e2", "from_node": "choose_strategy", "to_node": "fast_path", "type": "switch", "guard": "budget_limit >= 5.0"},
+    {"id": "e3", "from_node": "choose_strategy", "to_node": "slow_path", "type": "switch", "guard": "budget_limit < 5.0"},
+    {"id": "e4", "from_node": "fast_path", "to_node": "end", "type": "then"},
+    {"id": "e5", "from_node": "slow_path", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "branch-comparison",
+    "description": "Choose between fast premium path (1s, $5) or slow standard path (5s, $1)",
+    "evaluation_criteria": "Branch selection matches budget constraint, cost vs time tradeoff quantified",
+    "expected_runtime_seconds": 3,
+    "strategies": [
+      {"name": "fast_expensive", "path": "fast_path", "expected_time": 1.0, "expected_cost": 5.0},
+      {"name": "slow_cheap", "path": "slow_path", "expected_time": 5.0, "expected_cost": 1.0}
+    ]
+  }
+}

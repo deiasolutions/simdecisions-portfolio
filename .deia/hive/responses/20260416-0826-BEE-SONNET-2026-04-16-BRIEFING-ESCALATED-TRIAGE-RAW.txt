@@ -1,0 +1,70 @@
+# BEE RESPONSE: 2026-04-16-BRIEFING-escalated-triage
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260416-0826
+# Task file: 2026-04-16-BRIEFING-escalated-triage.md
+# Success: True
+# Duration: 201.9s
+# Files modified: 5 (verified)
+# Cost (USD): $2.118612
+# Turns: 23
+# API duration (ms): 183418
+# Session ID: 19901f1c-c543-4b4a-ab73-8fafc79c6850
+# Boot injected: True
+
+---
+
+Perfect! Investigation complete. Let me summarize what I found for Q88N:
+
+---
+
+## Investigation Complete: 4 Escalated Specs Analyzed
+
+**TL;DR:** All 4 specs were **already killed on 2026-04-10** per your decision during ESC-001 cleanup. They're not "persistently failing" — they're **structurally dead from birth**. The briefing's premise is obsolete.
+
+### Key Findings
+
+**Root Cause Pattern (all 4 specs):**
+- **SPEC-BL-146:** References `hivenode/efemera/` directory that **doesn't exist** post-flatten
+- **SPEC-MW-058:** Backend never wired to emit `build:runner-updated` bus events
+- **SPEC-TRIAGE-ESCALATED-001:** **Ironically escalated itself** while trying to triage the escalated queue
+- **SPEC-WIKI-108:** References `efemera.egg.md` (doesn't exist, repo uses `.set.md` now) + missing dependency WIKI-107
+
+**Not a dispatcher bug.** Bees received specs correctly, found structural blockers (missing files, phantom deps, missing backend wiring), produced no output. Triage daemon correctly escalated after 3 retries.
+
+### Reports Written
+
+1. **Main investigation report:** `.deia/hive/responses/2026-04-16-Q33N-ESCALATED-TRIAGE-REPORT.md` (378 lines)
+   - Executive summary
+   - Per-spec detailed analysis
+   - 4 systemic recommendations
+   - Concrete bash commands to move specs to `_dead/`
+
+2. **Standard response:** `.deia/hive/responses/2026-04-16-Q33N-ESCALATED-TRIAGE-REPORT-RESPONSE.md` (8-section format)
+
+### Recommended Actions
+
+**Immediate:**
+```bash
+mkdir -p .deia/hive/queue/_dead
+mv .deia/hive/queue/_escalated/SPEC-BL-146-BOT-ACTIVITY-PORT.md .deia/hive/queue/_dead/
+mv .deia/hive/queue/_escalated/SPEC-MW-058-queue-data-connection.md .deia/hive/queue/_dead/
+mv .deia/hive/queue/_escalated/SPEC-TRIAGE-ESCALATED-001.md .deia/hive/queue/_dead/
+mv .deia/hive/queue/_escalated/SPEC-WIKI-108-egg-integration.md .deia/hive/queue/_dead/
+```
+
+**Systemic (optional specs to prevent future waste):**
+1. Add Gate 0 file existence validation ("Files to Read First" must exist)
+2. Triage daemon: detect phantom `depends_on` targets, move directly to `_dead/`
+3. Create `.deia/POST-FLATTEN-PATH-MAP.md` to document old → new paths
+4. Formalize `_dead/` directory for terminated specs (vs `_escalated/` for recoverable ones)
+
+### Decisions Needed
+
+1. **Move these 4 specs to `_dead/`?** (Recommended: YES)
+2. **Implement systemic improvements?** (Recommended: Gate 0 file validation = P1, others = P2)
+3. **MW-058 (workdesk queue pane):** Still wanted? If yes, write clean SPEC-MW-100. If no, stays dead.
+4. **WIKI-108 (wiki EGG):** Still on roadmap? If yes, write clean SPEC-WIKI-200. If no, stays dead.
+
+**Time:** 18 minutes | **Cost:** ~$0.15 USD

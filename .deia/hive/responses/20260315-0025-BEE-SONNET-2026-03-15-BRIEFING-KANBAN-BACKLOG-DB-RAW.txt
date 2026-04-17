@@ -1,0 +1,129 @@
+# BEE RESPONSE: 2026-03-15-BRIEFING-kanban-backlog-db
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260315-0025
+# Task file: 2026-03-15-BRIEFING-kanban-backlog-db.md
+# Success: True
+# Duration: 138.9s
+# Files modified: 4 (verified)
+# Cost (USD): $0
+# Turns: 16
+# API duration (ms): 136842
+# Session ID: ae847801-8be7-4943-936c-f6d9b7514087
+# Boot injected: True
+
+---
+
+Perfect. Now let me create a summary for Q33NR:
+
+---
+
+## Q33N Report to Q33NR
+
+**Briefing:** BL-126 - Connect Kanban to Railway PostgreSQL Backlog Database
+
+**Task Files Created:** 3
+
+### Task Breakdown
+
+**TASK-126A: Kanban Routes - Connect to Railway PostgreSQL**
+- **Scope:** Add CSV fallback logic to kanban routes (`kanban_routes.py`)
+- **Deliverables:** Helper functions for CSV parsing, fallback on PG connection error, read-only mode in CSV mode
+- **Tests:** 4 new tests + all existing tests pass
+- **Model:** Haiku (backend CRUD + CSV parsing)
+- **Dependencies:** None
+
+**TASK-126B: Hivenode Config - Default to Railway PostgreSQL for Inventory**
+- **Scope:** Update `hivenode/config.py` to default `inventory_database_url` to Railway PG
+- **Deliverables:** Add Railway PG URL constant, handle "local" keyword for SQLite fallback
+- **Tests:** 4 new tests in new test file `test_config_inventory_url.py`
+- **Model:** Haiku (config update + tests)
+- **Dependencies:** None (can run parallel with TASK-126A)
+
+**TASK-126C: Kanban Frontend - Verify No Regression**
+- **Scope:** Run frontend tests, smoke test kanban board, verify API contract unchanged
+- **Deliverables:** Test verification, smoke test documentation, fix any regressions
+- **Tests:** All existing frontend tests + manual smoke test
+- **Model:** Sonnet (verification + debugging if needed)
+- **Dependencies:** TASK-126A and TASK-126B must complete first (sequential)
+
+### Key Design Decisions
+
+1. **No changes to store.py or main.py** — these files are working correctly. We only change:
+   - `kanban_routes.py` (add CSV fallback)
+   - `config.py` (add Railway PG default)
+   - Frontend verification (TASK-126C)
+
+2. **CSV fallback is READ-ONLY** — POST /move returns 501 in CSV mode. This prevents data inconsistency.
+
+3. **Railway PG URL hardcoded in config.py as constant** — same pattern as `inventory_db.py`. Override via `HIVENODE_INVENTORY_DATABASE_URL` env var.
+
+4. **Special value "local"** — allows offline work: `HIVENODE_INVENTORY_DATABASE_URL=local` uses SQLite at `docs/feature-inventory.db`.
+
+5. **No API contract changes** — frontend should work without modification. TASK-126C verifies this.
+
+### Test Coverage
+
+- **Backend tests:** 8 new tests (4 in TASK-126A, 4 in TASK-126B)
+- **Frontend tests:** All existing tests + smoke test
+- **Total:** ~13 new/updated tests
+
+### Execution Plan
+
+**Parallel Phase:**
+- TASK-126A (Haiku)
+- TASK-126B (Haiku)
+
+**Sequential Phase:**
+- TASK-126C (Sonnet) — waits for A+B to complete
+
+### Files Modified (Expected)
+
+**TASK-126A:**
+- `hivenode/routes/kanban_routes.py` (add CSV fallback)
+- `tests/hivenode/test_kanban_routes.py` (add 4 tests)
+
+**TASK-126B:**
+- `hivenode/config.py` (add Railway PG default)
+- `tests/hivenode/test_config_inventory_url.py` (new file, 4 tests)
+
+**TASK-126C:**
+- None expected (verification only)
+- If API contract broke: TBD based on root cause
+
+### Acceptance Criteria (from Briefing)
+
+All criteria addressed across 3 tasks:
+
+- [x] Kanban routes read from Railway PG → TASK-126B (config default) + TASK-126A (use get_engine)
+- [x] Items display with correct metadata → TASK-126C (verification)
+- [x] Move operation persists to PG → TASK-126C (verification)
+- [x] Local fallback to CSV if PG unreachable → TASK-126A
+- [x] No regression in kanban tests → TASK-126C
+- [x] No regression in route tests → TASK-126A
+- [x] API contract unchanged or backward-compatible → TASK-126C
+- [x] Smoke test: kanban loads with real data → TASK-126C
+
+### Constraints Compliance
+
+- [x] No file over 500 lines — all task files specify this
+- [x] TDD — all tasks require tests first
+- [x] No stubs — all tasks explicitly forbid stubs
+- [x] Absolute paths — all task files use absolute paths
+- [x] 8-section response template — all tasks specify this
+
+### Risks / Open Questions
+
+**Risk:** Railway PG connection string contains password in plaintext
+- **Mitigation:** Already accepted pattern from `inventory_db.py`. If Q88N wants to change this, it's a separate task.
+
+**Risk:** Large CSV file (100+ backlog items) could slow down CSV fallback
+- **Mitigation:** CSV fallback is for emergencies only (PG down). Performance acceptable.
+
+**Risk:** Frontend might show stale data if PG down and CSV fallback is old
+- **Mitigation:** TASK-126A logs warning when CSV fallback active. UI shows this in status bar (line 352 of KanbanPane.tsx).
+
+### Ready for Review
+
+All task files written to `.deia/hive/tasks/`. Ready for Q33NR review and approval before dispatch.

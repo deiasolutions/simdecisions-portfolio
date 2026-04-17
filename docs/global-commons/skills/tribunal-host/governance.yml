@@ -1,0 +1,35 @@
+# governance.yml — DEIA governance metadata for tribunal-host skill
+
+cert_tier: 3              # Certified — internal skill, fully trusted
+promoted_from: null
+promoted_at: null
+promoted_by: Q88N
+
+# Capability grants
+capabilities:
+  filesystem_read: true   # Reads episode files (topic.md, context.md, transcript.md)
+  filesystem_write: true  # Writes render output (manifest.json, WAV files)
+  network_access: false   # No network — local TTS rendering only
+  shell_exec: true        # Runs python -m production.engine commands
+  user_data_access: false # No user data — operates on episode content only
+  model_invocation: false # Does not invoke LLM APIs (debate generation is manual/external)
+  event_ledger_write: false
+
+# Blast radius classification
+blast_radius: local       # Creates files in production/episodes/tribunal/ only
+
+# Three currencies — budget caps per invocation
+budget:
+  clock_max_seconds: 1200  # 20 minutes max (TTS rendering for long episodes)
+  coin_max_usd: 0.00       # No API cost (debate generation is external, TTS is local)
+  carbon_max_grams: 50.0   # Heavy — TTS rendering is CPU-intensive
+
+# TASaaS scan results
+last_scan:
+  timestamp: null
+  threats_detected: []
+  prompt_injection_risk: none    # No LLM invocation
+  pii_exposure_risk: none        # Operates on public episode content
+
+# Audit
+event_ledger_id: null

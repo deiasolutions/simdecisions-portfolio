@@ -1,0 +1,46 @@
+# BEE RESPONSE: 2026-03-18-BRIEFING-P0-TEST-FIX-SPECS
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260318-0931
+# Task file: 2026-03-18-BRIEFING-P0-TEST-FIX-SPECS.md
+# Success: True
+# Duration: 327.7s
+# Files modified: 17 (verified)
+# Cost (USD): $1.157382
+# Turns: 10
+# API duration (ms): 124557
+# Session ID: ca318914-ad6b-433f-b0f3-7120c5685941
+# Boot injected: True
+
+---
+
+Perfect! I've completed the briefing. Here's what I did:
+
+## Summary
+
+I wrote **3 lightweight spec files** for the P0 test failures and dropped them directly in `.deia/hive/queue/` for the queue runner to pick up:
+
+### 1. **BUG-042: BUS ledger_publisher signature** 
+- **Problem:** 58+ tests broken (governance, dispositions, heartbeat, cloud storage)
+- **Error:** `BUS.__init__()` now requires `ledger_publisher` argument
+- **Fix:** Make it optional with default value (recommended approach)
+
+### 2. **BUG-043: E2E server startup timeout**
+- **Problem:** 28 integration tests timing out with httpx.ConnectTimeout
+- **Likely cause:** Server crash on startup (possibly related to BUG-042)
+- **Fix:** Debug server init logs, check if BUS signature broke startup
+
+### 3. **BUG-044: RAG ReliabilityMetadata missing**
+- **Problem:** All RAG tests blocked with import error
+- **Error:** `cannot import name 'ReliabilityMetadata'`
+- **Fix:** Add class to `hivenode/rag/indexer/models.py` or check platform repo
+
+All specs:
+- Reference the full test sweep report (`.deia/hive/responses/20260318-FULL-TEST-SWEEP-REPORT.md`)
+- Include absolute file paths
+- Set to P0 priority and sonnet model
+- Kept under 50 lines as requested
+- Ready for queue runner pickup
+
+**Next BUG IDs available:** BUG-045, BUG-046, BUG-047...

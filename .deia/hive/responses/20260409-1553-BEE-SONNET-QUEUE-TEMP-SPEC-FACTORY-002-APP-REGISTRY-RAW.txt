@@ -1,0 +1,44 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-FACTORY-002-APP-REGISTRY
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260409-1553
+# Task file: QUEUE-TEMP-SPEC-FACTORY-002-APP-REGISTRY.md
+# Success: True
+# Duration: 259.0s
+# Files modified: 18 (verified)
+# Cost (USD): $1.944
+# Turns: 25
+# API duration (ms): 126692
+# Session ID: 1218e4fa-ce6a-4c7b-9282-c87f48644592
+# Boot injected: True
+
+---
+
+## Task Complete
+
+I have successfully completed **SPEC-FACTORY-002: Register Factory Primitives in App Registry**.
+
+### Summary
+
+**Files Created:**
+- `browser/src/apps/queuePaneAdapter.tsx` (17 lines)
+- `browser/src/apps/notificationPaneAdapter.tsx` (15 lines)
+
+**Files Modified:**
+- `browser/src/apps/index.ts` (+4 lines: 2 imports, 2 registrations)
+
+### What Was Accomplished
+
+1. ✅ Created adapter for `queue-pane` primitive following existing patterns
+2. ✅ Created adapter for `notification-pane` primitive (pass-through since it already uses AppRendererProps)
+3. ✅ Registered both adapters in the app registry
+4. ✅ All smoke tests passed
+5. ✅ No TypeScript errors in new files
+6. ✅ Existing registrations not affected
+
+### Result
+
+Both `queue-pane` and `notification-pane` are now registered as app types and can be instantiated via EGG configs. The primitives are ready for use in the Factory EGG (SPEC-FACTORY-001).
+
+**Response file:** `.deia/hive/responses/20260409-FACTORY-002-RESPONSE.md`

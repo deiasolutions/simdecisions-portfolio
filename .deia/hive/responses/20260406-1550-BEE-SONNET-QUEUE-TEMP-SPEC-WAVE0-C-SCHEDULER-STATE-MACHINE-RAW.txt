@@ -1,0 +1,76 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-WAVE0-C-scheduler-state-machine
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-1550
+# Task file: QUEUE-TEMP-SPEC-WAVE0-C-scheduler-state-machine.md
+# Success: True
+# Duration: 169.7s
+# Files modified: 9 (verified)
+# Cost (USD): $4.48152
+# Turns: 25
+# API duration (ms): 154957
+# Session ID: 83b9fdf9-36f2-4a40-8b4a-478a30e20ae2
+# Boot injected: True
+
+---
+
+Now I need to report this blocker clearly to the user (Q88N):
+
+## BLOCKER REPORT: SPEC-WAVE0-C Cannot Proceed
+
+**Task:** SPEC-WAVE0-C-scheduler-state-machine (Scheduler State Machine Extension)  
+**Status:** ❌ **BLOCKED** - Dependency failure
+
+### Problem
+
+This task depends on **SPEC-WAVE0-A** (Directory Structure + Task Template Update), which shows as "complete" in `monitor-state.json`, but **none of its deliverables exist** on disk or in git.
+
+### Missing Deliverables
+
+WAVE0-A was supposed to create 8 directories:
+- `.deia/docs/spec/` ❌
+- `.deia/docs/impl/` ❌  
+- `.deia/docs/test/` ❌
+- `.deia/docs/ir/` ❌
+- `.deia/hive/queue/_code_complete/` ❌
+- `.deia/hive/queue/_qa_review/` ❌
+- `.deia/hive/queue/_q33n_review/` ❌
+- `.deia/hive/queue/_needs_revision/` ❌
+
+**All 8 directories are MISSING.**
+
+### Verification
+
+```bash
+# Confirmed missing via multiple checks:
+git ls-files | grep "\.deia/docs/"           # No matches
+find .deia -type d -name "_code_complete"    # No results
+ls -la .deia/docs/                            # No such file or directory
+```
+
+### Why This Blocks SPEC-WAVE0-C
+
+My task requires these directories to exist so I can:
+1. Add code to recognize the 4 new state directories in the scheduler
+2. Update velocity calculation to count tasks in these states
+3. Add `pipeline_state` section to schedule.json tracking tasks across all 8 states
+4. Write tests that verify the scheduler handles tasks in these states
+
+**Cannot implement scheduler changes for directories that don't exist.**
+
+### Response File
+
+Full blocker report written to:  
+`.deia/hive/responses/20260406-SPEC-WAVE0-C-RESPONSE.md`
+
+### Recommended Action
+
+Before retrying SPEC-WAVE0-C:
+1. **Q33N should investigate why WAVE0-A shows complete but has no output**
+2. **Re-run WAVE0-A** with explicit verification, OR
+3. **Create directories manually** and mark WAVE0-A as truly complete
+
+---
+
+**Per bee protocol: Blocked at step 0, reported immediately. Awaiting Q33N coordination.**

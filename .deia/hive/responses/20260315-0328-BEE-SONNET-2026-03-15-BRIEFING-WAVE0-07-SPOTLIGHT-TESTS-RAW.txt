@@ -1,0 +1,47 @@
+# BEE RESPONSE: 2026-03-15-BRIEFING-WAVE0-07-spotlight-tests
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260315-0328
+# Task file: 2026-03-15-BRIEFING-WAVE0-07-spotlight-tests.md
+# Success: True
+# Duration: 45.8s
+# Files modified: 2 (verified)
+# Cost (USD): $0
+# Turns: 6
+# API duration (ms): 43492
+# Session ID: de2093d9-a31e-4760-9efd-f5804e99f65c
+# Boot injected: True
+
+---
+
+Task file written. Now I'll prepare my summary for Q33NR review.
+
+---
+
+## Summary for Q33NR Review
+
+I've read the briefing and investigated the test failures. The root cause is clear:
+
+**Problem:** The component uses `data-testid="spotlight-overlay"` (line 36 of SpotlightOverlay.tsx), but the tests query for `data-spotlight-overlay` using `container.querySelector('[data-spotlight-overlay]')`. This returns null, causing all 3 failures.
+
+**Solution:** Update the 3 affected tests to use `screen.getByTestId('spotlight-overlay')` instead of querySelector with the wrong attribute.
+
+**Task File Created:**
+- `.deia/hive/tasks/2026-03-15-TASK-133-fix-spotlight-overlay-test-selectors.md`
+
+**Scope:**
+- One bee (haiku model as assigned)
+- Three line changes in test file (lines 56, 83, 137)
+- No component changes needed
+- Expected result: all 11 tests pass
+
+**Deliverables in task file:**
+- Update 3 test lines to use correct selector
+- Verify all 11 tests pass
+- Response file with all 8 required sections
+
+**Ready for your review.** If approved, I will dispatch the bee using:
+```bash
+python .deia/hive/scripts/dispatch/dispatch.py .deia/hive/tasks/2026-03-15-TASK-133-fix-spotlight-overlay-test-selectors.md --model haiku --role bee --inject-boot
+```

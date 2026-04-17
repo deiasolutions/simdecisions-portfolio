@@ -1,0 +1,51 @@
+# BEE RESPONSE: 2026-03-18-TASK-BUG-036-build-monitor-tree-layout
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260318-0645
+# Task file: 2026-03-18-TASK-BUG-036-build-monitor-tree-layout.md
+# Success: True
+# Duration: 133.3s
+# Files modified: 5 (verified)
+# Cost (USD): $1.1225239999999999
+# Turns: 18
+# API duration (ms): 87059
+# Session ID: cbde484f-2765-4f5f-871f-19fd66ddb95d
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Let me summarize what was done:
+
+## Summary
+
+**TASK-BUG-036: Build Monitor Tree Layout Fix** is **COMPLETE**.
+
+### Changes Made
+
+1. **`buildStatusMapper.ts` - `mapActiveBees()` function:**
+   - Moved detail information (model, elapsed time, cost) from child node to main label
+   - Last message still appears as optional child when present
+   - No detail child node anymore
+
+2. **`buildStatusMapper.ts` - `mapCompletedTasks()` function:**
+   - Moved detail information (time, duration, cost) from child node to main label
+   - Removed all children (set to empty array)
+
+3. **`buildStatusMapper.test.ts` - Test Updates:**
+   - Updated 3 mapActiveBees tests to verify detail in label and children structure
+   - Updated 5 mapCompletedTasks tests to verify detail in label and empty children
+
+### Test Results
+
+✅ **All 38 tests passing** (10 mapActiveBees, 6 mapRunnerQueue, 16 mapBuildLog, 6 mapCompletedTasks)
+
+### Deliverables Checklist
+
+- [x] Active bee detail appears in label, not as child
+- [x] Active bee lastMsg still appears as child (if present)
+- [x] Completed task detail appears in label, no children
+- [x] All tests updated and passing
+- [x] Response file written
+
+Response file: `.deia/hive/responses/20260318-TASK-BUG-036-RESPONSE.md`

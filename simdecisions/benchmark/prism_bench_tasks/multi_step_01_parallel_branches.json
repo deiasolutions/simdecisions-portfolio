@@ -1,0 +1,115 @@
+{
+  "id": "multi_step_01_parallel_branches",
+  "name": "Parallel Branches Workflow",
+  "intent": "Test parallel execution with fork-join synchronization pattern",
+  "phase_ir_version": "1.0.0",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "start",
+      "name": "Workflow Start"
+    },
+    {
+      "id": "fork_point",
+      "type": "decision",
+      "name": "Fork to Parallel Branches",
+      "config": {
+        "duration": {
+          "type": "constant",
+          "params": {"value": 0.1}
+        }
+      }
+    },
+    {
+      "id": "branch_a1",
+      "type": "service",
+      "name": "Branch A Step 1",
+      "config": {
+        "duration": {
+          "type": "exponential",
+          "params": {"lambda": 0.5}
+        }
+      }
+    },
+    {
+      "id": "branch_a2",
+      "type": "service",
+      "name": "Branch A Step 2",
+      "config": {
+        "duration": {
+          "type": "exponential",
+          "params": {"lambda": 0.5}
+        }
+      }
+    },
+    {
+      "id": "branch_b1",
+      "type": "service",
+      "name": "Branch B Step 1",
+      "config": {
+        "duration": {
+          "type": "exponential",
+          "params": {"lambda": 0.7}
+        }
+      }
+    },
+    {
+      "id": "branch_b2",
+      "type": "service",
+      "name": "Branch B Step 2",
+      "config": {
+        "duration": {
+          "type": "exponential",
+          "params": {"lambda": 0.7}
+        }
+      }
+    },
+    {
+      "id": "branch_c",
+      "type": "service",
+      "name": "Branch C Single Step",
+      "config": {
+        "duration": {
+          "type": "exponential",
+          "params": {"lambda": 1.0}
+        }
+      }
+    },
+    {
+      "id": "join_point",
+      "type": "service",
+      "name": "Join All Branches",
+      "config": {
+        "duration": {
+          "type": "constant",
+          "params": {"value": 0.5}
+        }
+      }
+    },
+    {
+      "id": "end",
+      "type": "sink",
+      "name": "Workflow End"
+    }
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "fork_point", "type": "then"},
+    {"id": "e2", "from_node": "fork_point", "to_node": "branch_a1", "type": "fork"},
+    {"id": "e3", "from_node": "fork_point", "to_node": "branch_b1", "type": "fork"},
+    {"id": "e4", "from_node": "fork_point", "to_node": "branch_c", "type": "fork"},
+    {"id": "e5", "from_node": "branch_a1", "to_node": "branch_a2", "type": "then"},
+    {"id": "e6", "from_node": "branch_b1", "to_node": "branch_b2", "type": "then"},
+    {"id": "e7", "from_node": "branch_a2", "to_node": "join_point", "type": "join"},
+    {"id": "e8", "from_node": "branch_b2", "to_node": "join_point", "type": "join"},
+    {"id": "e9", "from_node": "branch_c", "to_node": "join_point", "type": "join"},
+    {"id": "e10", "from_node": "join_point", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "multi-step",
+    "description": "Fork-join workflow with 3 parallel branches of varying lengths",
+    "evaluation_criteria": "All branches complete, join synchronization correct, total time reflects longest branch",
+    "expected_runtime_seconds": 8,
+    "node_count": 9,
+    "branch_count": 3
+  }
+}

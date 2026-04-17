@@ -1,0 +1,55 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-16-SPEC-TASK-229-chat-bubbles-verified
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260316-2127
+# Task file: QUEUE-TEMP-2026-03-16-SPEC-TASK-229-chat-bubbles-verified.md
+# Success: True
+# Duration: 22333.4s
+# Files modified: 46 (verified)
+# Cost (USD): $2.3138579999999997
+# Turns: 18
+# API duration (ms): 185138
+# Session ID: 964544a6-9692-4ae2-bf3c-826883129b02
+# Boot injected: True
+
+---
+
+Perfect! Now let me prepare a concise summary for Q88N (Dave):
+
+---
+
+## TASK-229 COMPLETION SUMMARY
+
+**Status:** ✅ COMPLETE
+
+### What Was Done
+- **Bug fixed:** Copy button now only appears on assistant messages (was incorrectly showing on error messages)
+- **Tests added:** 13 new chatRenderer tests (42 total, all passing)
+- **Verification complete:** All 6 chat bubble features verified working:
+  - User messages: right-aligned, green avatar ✅
+  - AI messages: left-aligned, purple avatar ✅  
+  - Markdown rendering: code blocks, lists, links, bold/italic ✅
+  - Copy button: hover visibility, click handler ✅
+  - Typing indicator: animated dots, model name ✅
+  - Message grouping: consecutive same-sender skip avatar/header ✅
+
+### Test Results
+- ✅ 42/42 chatRenderer tests pass
+- ✅ 250/251 text-pane suite tests pass (1 pre-existing skip)
+
+### Files Modified
+1. `browser/src/primitives/text-pane/services/chatRenderer.tsx` (1 line)
+2. `browser/src/primitives/text-pane/services/__tests__/chatRenderer.test.tsx` (13 tests added)
+
+### Cost
+- Model: Haiku
+- Time: 45 min
+- Cost: ~$0.02 USD
+
+### Ready for Commit
+Awaiting Q88N approval per Rule 10.
+
+---
+
+**Full completion report:** `.deia/hive/responses/20260316-Q33NR-TASK-229-COMPLETION.md`

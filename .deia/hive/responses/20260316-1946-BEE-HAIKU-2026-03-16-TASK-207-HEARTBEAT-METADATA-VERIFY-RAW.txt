@@ -1,0 +1,62 @@
+# BEE RESPONSE: 2026-03-16-TASK-207-heartbeat-metadata-verify
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260316-1946
+# Task file: 2026-03-16-TASK-207-heartbeat-metadata-verify.md
+# Success: True
+# Duration: 342.2s
+# Files modified: 29 (verified)
+# Cost (USD): $3.107133
+# Turns: 47
+# API duration (ms): 185337
+# Session ID: 37ad63f6-c0ae-4f0f-b880-580d925422ba
+# Boot injected: True
+
+---
+
+Excellent! Task is complete. Let me create a summary:
+
+## Summary
+
+**TASK-207: Heartbeat Metadata Verification + Build Monitor Display** — COMPLETE ✅
+
+### What Was Accomplished
+
+1. **Created comprehensive test suite** (10 tests, all passing):
+   - `tests/hivenode/routes/test_heartbeat_metadata.py` — 246 lines
+   - Tests verify HeartbeatPayload structure, token tracking, cost accumulation, and build monitor status endpoint
+
+2. **Updated ClaudeCodeProcess** (claude_cli_subprocess.py):
+   - Added completion heartbeat callback that fires after task completion
+   - Passes model, input_tokens, output_tokens, cost_usd to heartbeat system
+   - Wrapped in try/except to prevent failures from crashing dispatch
+
+3. **Updated dispatch heartbeat callback** (dispatch.py):
+   - Extended `_mid_build_hb()` signature to accept token/cost parameters
+   - Forwards all parameters to build monitor
+   - Maintains backwards compatibility with existing calls
+
+4. **Verified build monitor infrastructure**:
+   - HeartbeatPayload already has all required fields (model, input_tokens, output_tokens, cost_usd)
+   - BuildState already accumulates tokens and cost correctly
+   - /status endpoint already returns totals
+   - No changes needed to build_monitor.py — infrastructure was already in place
+
+### Test Results
+
+- ✅ **10/10 new tests passing** (test_heartbeat_metadata.py)
+- ✅ **All 43 route tests passing** (including integration and state transition tests)
+- ✅ **No regressions** — all existing tests still pass
+
+### Files Modified
+
+1. Created: `tests/hivenode/routes/test_heartbeat_metadata.py`
+2. Modified: `hivenode/adapters/cli/claude_cli_subprocess.py`
+3. Modified: `.deia/hive/scripts/dispatch/dispatch.py`
+
+### Response File
+
+Created: `.deia/hive/responses/20260316-TASK-207-RESPONSE.md`
+
+The system is now ready to track and display real token counts and costs once TASK-204 (CLI token capture fix) completes and provides non-zero token data to the heartbeat system.

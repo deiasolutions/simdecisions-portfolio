@@ -1,0 +1,82 @@
+# BEE RESPONSE: 2026-03-14-TASK-085-rate-limiting
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260313-2328
+# Task file: 2026-03-14-TASK-085-rate-limiting.md
+# Success: True
+# Duration: 783.4s
+# Files modified: 8 (verified)
+# Cost (USD): $0
+# Turns: 39
+# API duration (ms): 246884
+# Session ID: bb8bab3f-681d-474f-b6f0-649e6bd851ff
+# Boot injected: True
+
+---
+
+Perfect! Now let me create a summary of what was completed:
+
+---
+
+## ✅ TASK-085: Rate Limiting on Auth Routes — COMPLETE
+
+I have successfully implemented sliding window rate limiting on auth routes. Here's what was delivered:
+
+### 📋 Deliverables (All Complete)
+
+1. **Rate Limiter Middleware** (`hivenode/middleware/rate_limiter.py` — 194 lines)
+   - ✅ Sliding window rate limiter: 10 requests/60 seconds per IP
+   - ✅ In-memory storage with `asyncio.Lock` for thread safety
+   - ✅ Only rate limits `/auth/*` routes (skips `/`, `/health`, `/status`)
+   - ✅ Returns 429 with `Retry-After: <seconds>` header
+   - ✅ Logs `RATE_LIMITED` events to Event Ledger
+   - ✅ Background cleanup task (every 60s) removes stale IP entries
+
+2. **Config Addition** (`hivenode/config.py`)
+   - ✅ Added `rate_limit_auth: int = 10` field to `HivenodeConfig`
+   - ✅ Env var: `HIVENODE_RATE_LIMIT_AUTH`
+
+3. **Middleware Registration** (`hivenode/main.py`)
+   - ✅ Imported and registered after CORS middleware
+   - ✅ Passes `max_requests=settings.rate_limit_auth`
+
+4. **Test Suite** (`tests/hivenode/test_rate_limiter.py` — 276 lines, 10 tests)
+   - ✅ TDD: Tests written first, then implementation
+   - ✅ All 10 tests PASSED:
+     - Normal flow (10 requests pass)
+     - Rate exceeded (429 on 11th request)
+     - Retry-After header validation
+     - Window reset after 60 seconds
+     - Separate IP tracking via X-Forwarded-For
+     - Non-auth routes not limited
+     - Root endpoint not limited
+     - Sliding window (time-spread requests)
+     - Concurrent request handling
+     - Edge case (limit=1)
+
+### ✅ Test Results
+
+**Rate Limiter Tests:** 10/10 PASSED ✓  
+**Auth Routes Tests:** 8/8 PASSED ✓ (no regressions)  
+**Total:** 18/18 PASSED ✓
+
+### 📊 Key Features
+
+- **Sliding window algorithm**: Tracks Unix timestamps, removes old entries
+- **Per-IP tracking**: Different IPs get independent limits (via X-Forwarded-For)
+- **Async-safe**: Uses `asyncio.Lock` for concurrent request handling
+- **Event logging**: Writes `RATE_LIMITED` events to ledger with IP and route info
+- **Graceful degradation**: Doesn't block if ledger unavailable (tests pass without initialized ledger)
+- **Memory efficient**: Cleanup task removes stale IP entries every 60 seconds
+
+### 📁 Files Modified
+
+- ✅ Created: `hivenode/middleware/__init__.py`
+- ✅ Created: `hivenode/middleware/rate_limiter.py` (194 lines)
+- ✅ Created: `tests/hivenode/test_rate_limiter.py` (276 lines, 10 tests)
+- ✅ Modified: `hivenode/config.py` (added `rate_limit_auth`)
+- ✅ Modified: `hivenode/main.py` (import + middleware registration)
+- ✅ Created: `.deia/hive/responses/20260314-TASK-085-RESPONSE.md` (8 sections)
+
+All constraints met: ✅ TDD ✅ In-memory only ✅ No stubs ✅ Thread-safe ✅ Config-driven ✅ No file over 500 lines

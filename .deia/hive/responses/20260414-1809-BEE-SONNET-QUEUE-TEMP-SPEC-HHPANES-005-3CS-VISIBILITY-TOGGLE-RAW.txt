@@ -1,0 +1,62 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-HHPANES-005-3cs-visibility-toggle
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-1809
+# Task file: QUEUE-TEMP-SPEC-HHPANES-005-3cs-visibility-toggle.md
+# Success: True
+# Duration: 631.3s
+# Files modified: 25 (verified)
+# Cost (USD): $8.535552
+# Turns: 45
+# API duration (ms): 420200
+# Session ID: 5b133a15-ebec-4d82-8497-22fd66a250d0
+# Boot injected: True
+
+---
+
+Perfect! The task is complete. Let me create a summary of what was delivered:
+
+## Summary
+
+I successfully completed SPEC-HHPANES-005 to add a Three Currencies (3Cs) visibility toggle feature. Here's what was implemented:
+
+### Core Implementation
+
+1. **Settings Store Updates** (`settingsStore.ts` & `types.ts`):
+   - Added `three_cs_visibility` field with options: `'top-menu'`, `'dashboard-widget'`, `'hidden'`
+   - Default: `'top-menu'` (preserves current behavior)
+   - Getter/setter functions: `getThreeCsVisibility()` and `setThreeCsVisibility()`
+   - Settings persist in localStorage
+
+2. **CurrencyChip Component** (new file):
+   - Subscribes to RTD bus events for CLOCK, COIN, CARBON
+   - Formats values: CLOCK (`X.Xs`), COIN (`$X.XX`), CARBON (`X.Xg`)
+   - Includes emoji icons (⏱💰🌿)
+   - Expandable on click
+   - 96 lines (well under 500 limit)
+
+3. **TopBar Integration**:
+   - Conditionally renders CurrencyChip based on settings
+   - Listens for storage events for immediate updates (no reload needed)
+   - When hidden, chip doesn't render (no RTD subscriptions)
+
+### Test Coverage
+
+**26 tests, all passing:**
+- 8 tests for settings store functions
+- 8 tests for CurrencyChip component
+- 10 tests for TopBar visibility behavior
+
+### Key Features
+
+✅ Setting options: top-menu, dashboard-widget, hidden  
+✅ Default: top-menu (current behavior preserved)  
+✅ Immediate updates without reload  
+✅ Data collection continues (RTD events at backend level)  
+✅ No hardcoded colors (all `var(--sd-*)`)  
+✅ No files over 500 lines  
+✅ No stubs - all functions complete  
+✅ Comprehensive smoke test document created
+
+The implementation is ready for integration. All acceptance criteria met, all tests passing, code quality standards maintained.

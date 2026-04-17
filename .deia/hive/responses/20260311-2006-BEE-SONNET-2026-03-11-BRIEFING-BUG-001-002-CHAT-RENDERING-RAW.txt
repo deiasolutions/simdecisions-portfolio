@@ -1,0 +1,59 @@
+# BEE RESPONSE: 2026-03-11-BRIEFING-BUG-001-002-CHAT-RENDERING
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260311-2006
+# Task file: 2026-03-11-BRIEFING-BUG-001-002-CHAT-RENDERING.md
+# Success: True
+# Duration: 183.1s
+# Files modified: 2 (verified)
+# Cost (USD): $0
+# Turns: 16
+# API duration (ms): 176457
+# Session ID: af7402ef-8ed7-4488-9b3d-13c78d6c0ade
+# Boot injected: True
+
+---
+
+Perfect! I've created two comprehensive task specifications:
+
+## Task Files Created
+
+### 1. **TASK-022: Inline Markdown Rendering in Text-Pane**
+- **Location:** `.deia/hive/tasks/2026-03-11-TASK-022-INLINE-MARKDOWN.md`
+- **Scope:** Fix BUG-001 — add inline formatting support (bold, italic, code, links) to SDEditor's markdown renderer
+- **Key deliverables:**
+  - Extract `renderMarkdown()` to new module `markdownRenderer.tsx` (bring SDEditor.tsx under 500 lines)
+  - Implement inline parser for `**bold**`, `*italic*`, `` `code` ``, `[link](url)`
+  - Add CSS classes using `var(--sd-*)` variables only
+  - Write tests first (TDD), minimum 10 new test cases
+
+### 2. **TASK-023: Fix Chat Mode Terminal Display**
+- **Location:** `.deia/hive/tasks/2026-03-11-TASK-023-CHAT-TERMINAL-DISPLAY.md`
+- **Scope:** Fix BUG-002 — debug why `isChatMode` logic isn't working, add `to_terminal` envelope slot, fix metrics format
+- **Key deliverables:**
+  - Debug `isChatMode` evaluation (step-by-step investigation plan included)
+  - Add `to_terminal?: string` to `TerminalEnvelope` type
+  - Add `formatChatMetrics()` with token count display
+  - Verify `hidden` and `metricsOnly` flags work correctly
+  - Write tests first (TDD), minimum 4 new test cases
+
+## What Makes These Tasks Ready for Dispatch
+
+Both tasks include:
+
+✅ **Complete file lists** (absolute paths)  
+✅ **Test requirements** (TDD, specific test cases)  
+✅ **Root cause investigation plan** (TASK-023)  
+✅ **Implementation notes** (algorithms, code examples)  
+✅ **Verification checklists** (concrete pass/fail criteria)  
+✅ **Q&A sections** (preemptively answer bee questions)  
+✅ **Hard constraints** (500-line limit, CSS variables, no stubs, TDD)  
+✅ **Definition of done** (explicit completion criteria)
+
+Both tasks are **dispatchable in parallel** — they touch different codebases (text-pane vs terminal) and have no interdependencies.
+
+**Ready for your approval to dispatch!** Would you like me to:
+1. Proceed with dispatch using `dispatch.py`?
+2. Make any adjustments to the task specs first?
+3. Create coordination tracking files?

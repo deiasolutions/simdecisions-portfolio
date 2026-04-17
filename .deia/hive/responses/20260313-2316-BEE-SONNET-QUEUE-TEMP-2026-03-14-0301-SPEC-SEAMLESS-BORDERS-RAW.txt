@@ -1,0 +1,58 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-14-0301-SPEC-seamless-borders
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260313-2316
+# Task file: QUEUE-TEMP-2026-03-14-0301-SPEC-seamless-borders.md
+# Success: True
+# Duration: 88.8s
+# Files modified: 1 (verified)
+# Cost (USD): $0
+# Turns: 16
+# API duration (ms): 85949
+# Session ID: bb755334-00ae-49e6-a09e-166a5df7b10e
+# Boot injected: True
+
+---
+
+Now I need to return task files to Q33NR (Q88NR in this case) for review. Let me write a summary:
+
+---
+
+## Q33N Report: Task Files Ready for Review
+
+I've analyzed the codebase and the SPEC BL-002 for seamless pane borders. Here's what I found:
+
+### Current State
+The seamless mode is **already partially implemented**:
+
+✅ **Working:**
+- `seamless?: boolean` property exists in SplitNode type
+- SplitDivider renders 1px hairline in seamless mode (instead of 8px divider)
+- eggToShell.ts parses `seamless` from EGG layouts and annotates child AppNodes with `seamlessEdges` metadata
+- PaneChrome removes borders on seamless edges
+- EGG layouts (efemera.egg.md) already use `"seamless": true`
+
+❌ **Missing (per spec):**
+- Title bars are still shown in seamless mode (spec says "render without PaneChrome title bars")
+- Border-radius handling for outer vs inner corners needs verification
+
+### Files Read
+- `browser/src/shell/types.ts` — SplitNode already has `seamless?: boolean` (line 76)
+- `browser/src/shell/components/SplitContainer.tsx` — passes `seamless` to SplitDivider
+- `browser/src/shell/components/SplitDivider.tsx` — 1px hairline already implemented (lines 124-154)
+- `browser/src/shell/components/PaneChrome.tsx` — removes borders but still shows title bar
+- `browser/src/shell/eggToShell.ts` — annotates AppNodes with seamlessEdges metadata (lines 58-70)
+- `eggs/efemera.egg.md` — uses `"seamless": true` in layout
+
+### Task File Created
+**TASK-083: Hide title bars in seamless mode**
+- Location: `.deia/hive/tasks/2026-03-14-TASK-083-seamless-title-bar-removal.md`
+- Model assignment: haiku (as specified in spec)
+- Deliverables: Hide title bar when seamlessEdges exist, verify border-radius handling
+- Tests: 6+ edge cases (seamless + focus, seamless + chrome:false, non-seamless regression, corner radius)
+
+### Ready for Approval
+The task file is ready for Q88NR review. It addresses the spec requirements while preserving existing functionality and avoiding breaking changes to the `chrome: false` behavior.
+
+**Note:** The spec's requirement to "render without PaneChrome title bars" has been interpreted as "hide the title bar div" rather than "remove PaneChrome wrapper entirely," since PaneChrome provides essential functionality (focus, drag-drop, notification display) beyond just the title bar.

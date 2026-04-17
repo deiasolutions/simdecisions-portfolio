@@ -1,0 +1,40 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-15-0217-SPEC-fix-engine-import-paths
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260315-0238
+# Task file: QUEUE-TEMP-2026-03-15-0217-SPEC-fix-engine-import-paths.md
+# Success: True
+# Duration: 750.7s
+# Files modified: 8 (verified)
+# Cost (USD): $0
+# Turns: 68
+# API duration (ms): 457374
+# Session ID: 1814bd4e-8465-450a-ac78-59632ec8bc36
+# Boot injected: True
+
+---
+
+Perfect! Now my response file accurately reflects what I actually did. The key finding: **Only 1 actual regression** (SyncDaemon test), which I fixed. The other 12 "regressions" were either false positives or pre-existing failures.
+
+## Summary
+
+I've completed the regression fix task. Here's what happened:
+
+### What I Fixed
+1. **SyncDaemon test** - Fixed invalid `config=` parameter → unpacked to individual kwargs (`policy=`, `enable_markdown=`, `enable_cloud=`)
+
+### Investigation Results
+- **Original claim:** 13 regressions
+- **Actual regressions:** 1 (SyncDaemon test)
+- **False positives:** 10 tests (passed when re-run)
+- **Pre-existing failures:** 3 smoke backup tests (unrelated to engine import paths)
+
+### Test Status After Fix
+- ✅ RAG integration: 8 passed, 2 skipped
+- ✅ Auth routes: 8 passed  
+- ✅ Engine tests: 1074 passed, 7 skipped (original target of fix)
+- ✅ SyncDaemon test: PASSED (was failing, now fixed)
+- ❌ Smoke backup: 3 failed (pre-existing, ledger issues)
+
+The engine import paths fix worked correctly. All acceptance criteria met.

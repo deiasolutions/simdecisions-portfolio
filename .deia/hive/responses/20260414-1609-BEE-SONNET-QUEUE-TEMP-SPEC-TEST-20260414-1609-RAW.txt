@@ -1,0 +1,28 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-TEST-20260414-1609
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-1609
+# Task file: QUEUE-TEMP-SPEC-TEST-20260414-1609.md
+# Success: True
+# Duration: 124.8s
+# Files modified: 10 (verified)
+# Cost (USD): $1.204617
+# Turns: 12
+# API duration (ms): 85022
+# Session ID: 20132740-4238-43fa-b3fc-ae8d963664d6
+# Boot injected: True
+
+---
+
+Perfect! The test is complete. 
+
+## Summary
+
+✅ **All acceptance criteria met:**
+
+1. **Request succeeds** - The curl POST to `/factory/spec-submit` returned HTTP 200 with `success: true`
+2. **Spec ID is returned** - Response included `specId: SPEC-TEST-20260414-1610`
+3. **Path is returned** - Response included full path: `.deia\hive\queue\backlog\SPEC-TEST-20260414-1610.md`
+
+The spec-submit endpoint is working correctly. The generated spec file was created and subsequently processed by the queue runner, which confirms the full integration is functioning.

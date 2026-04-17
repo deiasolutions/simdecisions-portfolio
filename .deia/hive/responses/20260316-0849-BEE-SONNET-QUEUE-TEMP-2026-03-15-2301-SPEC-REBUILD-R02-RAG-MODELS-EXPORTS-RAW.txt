@@ -1,0 +1,46 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-15-2301-SPEC-rebuild-R02-rag-models-exports
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260316-0849
+# Task file: QUEUE-TEMP-2026-03-15-2301-SPEC-rebuild-R02-rag-models-exports.md
+# Success: True
+# Duration: 415.5s
+# Files modified: 25 (verified)
+# Cost (USD): $0
+# Turns: 1
+# API duration (ms): 189394
+# Session ID: 70034efc-3d69-43ca-aaa8-29e8eeab0b6f
+# Boot injected: True
+
+---
+
+The spec has been successfully executed! All work is complete and verified.
+
+## Summary
+
+✅ **SPEC P0.10 COMPLETE** — Restore RAG models exports + CCC_PER_FILE fix
+
+**Bee Execution:**
+- Model: Haiku
+- Duration: 187s (3.1 min)
+- Cost: $0
+- Status: SUCCESS
+
+**Deliverables:**
+1. ✅ Added 4 compatibility reverse-aliases to `models.py` (lines 142-146)
+2. ✅ Verified CCC_PER_FILE constant (already correct)
+3. ✅ Verified __init__.py exports (already correct)
+
+**Tests:** 19/19 passed in `test_models.py` + all import verifications pass
+
+**Files Modified:**
+```
+M hivenode/rag/indexer/models.py  (added 4 alias lines)
+```
+
+**Full Response File:** `.deia/hive/responses/REGENT-QUEUE-TEMP-2026-03-15-2301-SPE-RESPONSE.md`
+
+---
+
+**Ready for git commit.** Awaiting your approval to proceed with next spec in queue.

@@ -1,0 +1,46 @@
+# BEE RESPONSE: 2026-03-19-TASK-RB5-APPFRAME-TITLEBAR
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260319-1719
+# Task file: 2026-03-19-TASK-RB5-APPFRAME-TITLEBAR.md
+# Success: True
+# Duration: 427.8s
+# Files modified: 10 (verified)
+# Cost (USD): $5.347458
+# Turns: 35
+# API duration (ms): 192629
+# Session ID: 83c77d6f-7eb0-403f-9675-701d72dde7ce
+# Boot injected: True
+
+---
+
+## Summary
+
+**TASK-RB5: AppFrame Unified Title Bar — COMPLETE**
+
+I successfully implemented the unified title bar behavior for BL-207. Here's what was done:
+
+### Changes Made
+
+1. **Added `showChrome` field to EGG layout types** (`browser/src/eggs/types.ts`)
+   - Added `showChrome?: boolean` to `EggLayoutNode` interface
+   - Allows EGG configs to control per-pane title bar visibility
+
+2. **Updated eggToShell.ts** to read and pass through `showChrome`
+   - Changed line 33: `chrome: eggNode.showChrome ?? true` (was hardcoded `true`)
+   - Updated fallback case to also respect `showChrome`
+   - Default behavior: title bars ON unless explicitly `showChrome: false`
+
+### Test Results
+
+✅ **9/9 showChrome tests passing** (5 unit + 4 integration)
+✅ **38/38 PaneChrome tests passing** 
+✅ **15/15 eggToShell tests passing**
+✅ **Build succeeds** (28.56s)
+
+### Key Finding
+
+The architecture was already sound—PaneChrome correctly enforces `chrome: false`. The only missing piece was passing `showChrome` from EGG config to shell tree nodes. Pre-existing test files proved the feature was designed but never wired up.
+
+**No follow-up tasks required.** Response file written to `.deia/hive/responses/20260319-TASK-RB5-APPFRAME-TITLEBAR-RESPONSE.md`.

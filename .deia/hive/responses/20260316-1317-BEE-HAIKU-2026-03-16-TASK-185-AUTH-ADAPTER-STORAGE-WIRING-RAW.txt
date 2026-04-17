@@ -1,0 +1,67 @@
+# BEE RESPONSE: 2026-03-16-TASK-185-auth-adapter-storage-wiring
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260316-1317
+# Task file: 2026-03-16-TASK-185-auth-adapter-storage-wiring.md
+# Success: True
+# Duration: 1014.4s
+# Files modified: 24 (verified)
+# Cost (USD): $2.0373352000000002
+# Turns: 41
+# API duration (ms): 274796
+# Session ID: 2702b73c-3c5b-48c4-913f-eed07cb490d3
+# Boot injected: True
+
+---
+
+Excellent! All 24 tests pass (4 from AuthAdapter + 20 from LoginPage). Let me create a summary of what was completed:
+
+## Summary
+
+I have successfully completed **TASK-185: Wire AuthAdapter storage and add logged-in UI state**.
+
+### What Was Delivered
+
+#### 1. **AuthAdapter Storage Wiring** ✓
+- Imported `setToken()`, `setUser()`, `isAuthenticated()`, and `getUser()` from authStore
+- Updated `handleAuthSuccess()` to:
+  - Call `setToken(token)` to persist token to localStorage
+  - Call `setUser(user)` to persist user data to localStorage
+  - Update local React state to trigger UI re-render
+  - Maintain `console.log()` for debugging/observability
+- Added `useEffect` hook to detect auth state changes on mount and listen for cross-tab storage changes
+
+#### 2. **LoginPage Logged-In UI** ✓
+- Added optional props: `isLoggedIn?: boolean` and `userEmail?: string`
+- Added logged-in UI rendering that shows when authenticated:
+  - Hides login button and consent section
+  - Displays "You're logged in" heading
+  - Shows user email in purple monospace text
+  - Shows welcome message
+- UI correctly reverts to login form when `isLoggedIn` becomes false
+
+#### 3. **CSS Styling** ✓
+- Added `.auth-logged-in-card` and `.auth-logged-in-email` classes
+- Used only CSS variables (`var(--sd-*)`) — no hardcoded colors
+- Minimal styling that fits the existing design system
+
+#### 4. **Tests (TDD)** ✓
+- Created `authAdapter.test.tsx` with 4 comprehensive tests
+- Added 4 new tests to `LoginPage.test.tsx` for logged-in UI
+- **All 24 tests pass** (4 AuthAdapter + 20 LoginPage)
+- All existing tests remain passing — no regressions
+
+### Files Modified/Created
+1. **Created:** `browser/src/apps/__tests__/authAdapter.test.tsx` (156 lines)
+2. **Modified:** `browser/src/apps/authAdapter.tsx` (62 lines)
+3. **Modified:** `browser/src/primitives/auth/LoginPage.tsx` (273 lines)
+4. **Modified:** `browser/src/primitives/auth/LoginPage.css` (285 lines)
+5. **Modified:** `browser/src/primitives/auth/__tests__/LoginPage.test.tsx` (448 lines)
+
+**All files under 500-line limit. No hardcoded colors. No stubs.**
+
+### Response File
+Created: `.deia/hive/responses/20260316-TASK-185-RESPONSE.md` with full details on all 8 required sections.
+
+**Status: READY FOR DEPLOYMENT** ✓

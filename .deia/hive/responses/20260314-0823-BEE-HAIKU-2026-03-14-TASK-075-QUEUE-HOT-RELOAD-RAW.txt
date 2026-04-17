@@ -1,0 +1,67 @@
+# BEE RESPONSE: 2026-03-14-TASK-075-queue-hot-reload
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260314-0823
+# Task file: 2026-03-14-TASK-075-queue-hot-reload.md
+# Success: True
+# Duration: 277.2s
+# Files modified: 19 (verified)
+# Cost (USD): $0
+# Turns: 45
+# API duration (ms): 264680
+# Session ID: 0d85ab25-5ad0-4f09-b104-74e9bea1cf57
+# Boot injected: True
+
+---
+
+Excellent! **124 tests passed** — all queue tests pass, including the 8 new hot-reload tests. Let me create a brief summary for the user:
+
+---
+
+# ✅ TASK-075 COMPLETE: Queue Runner Hot-Reload
+
+I have successfully implemented hot-reload capability for the queue runner with full TDD coverage. Here's what was delivered:
+
+## What Was Built
+
+**Two files modified/created:**
+1. **`run_queue.py`** — Added hot-reload integration (472 lines, under 500-line limit)
+   - `_rescan_queue()` helper: Rescans queue directory, detects new specs, filters out archived ones
+   - Main loop integration: After each spec processes, checks for new specs and inserts them at correct priority
+   - `flush=True` on all 11 print statements for stdout buffering
+
+2. **`test_run_queue_hot_reload.py`** — 8 comprehensive TDD tests covering:
+   - Detecting new specs during processing ✓
+   - Skipping already-processed specs ✓
+   - Preserving priority order (P0 before P1) ✓
+   - Silent handling of empty rescans ✓
+   - Budget tracking across initial + hot-reloaded specs ✓
+   - Event logging (`QUEUE_HOT_RELOAD` events) ✓
+   - Multiple new specs in single rescan ✓
+   - Direct function testing of `_rescan_queue()` ✓
+
+## Test Results
+
+- **8/8 hot-reload tests** — PASSED
+- **23/23 existing queue tests** — PASSED (no regressions)
+- **11/11 dispatch tests** — PASSED
+- **35/35 config tests** — PASSED
+- **47/47 regent prompt tests** — PASSED
+- **124 total tests** — ALL PASSED
+
+## Key Features
+
+✅ Specs added to queue directory during processing are detected automatically  
+✅ Priority order maintained (hot-reloaded P0 specs process before remaining P1s)  
+✅ Already-processed specs not re-added (checked in `_done/` and `_needs_review/`)  
+✅ Budget tracking includes all specs (initial + hot-reloaded)  
+✅ Event logging for queue monitoring and analysis  
+✅ Empty rescans handled silently (no spurious log messages)  
+✅ All print() statements use `flush=True` for live output  
+
+## Response File
+
+📄 `C:\Users\davee\.deia\hive\responses\20260314-TASK-075-RESPONSE.md` — Complete 8-section response with all deliverables, test results, and edge case analysis.
+
+**Status: Ready for production**

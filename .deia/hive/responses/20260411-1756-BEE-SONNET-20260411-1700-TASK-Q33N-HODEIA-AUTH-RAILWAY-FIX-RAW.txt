@@ -1,0 +1,44 @@
+# BEE RESPONSE: 20260411-1700-TASK-Q33N-HODEIA-AUTH-RAILWAY-FIX
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260411-1756
+# Task file: 20260411-1700-TASK-Q33N-HODEIA-AUTH-RAILWAY-FIX.md
+# Success: True
+# Duration: 977.3s
+# Files modified: 5 (verified)
+# Cost (USD): $2.031762
+# Turns: 29
+# API duration (ms): 140120
+# Session ID: 2662cc70-bee5-4c52-b5dc-8fa4adfd8aec
+# Boot injected: True
+
+---
+
+Perfect! The hodeia-auth Railway deployment is now fixed and fully operational. 
+
+## Summary
+
+**Fixed hodeia-auth Railway deployment** — service is now healthy in production.
+
+**What was broken:**
+1. Dockerfile didn't include `packages/core/` (import failure)
+2. Exec-form CMD couldn't substitute Railway's dynamic `$PORT` (502 errors)
+3. Wrong installation command didn't install workspace dependencies
+
+**What I did:**
+1. Updated `packages/hodeia-auth/Dockerfile` to mirror the working hivenode pattern:
+   - Copy workspace root + all needed packages
+   - Use `uv sync --all-packages`
+   - Set proper `PYTHONPATH` and venv `PATH`
+   - Shell-form CMD with `${PORT:-8430}` for Railway port substitution
+2. Committed the fix: `1c695e24ec39`
+3. Deployed to Railway → **SUCCESS**
+
+**Verification:**
+- ✅ Health endpoint: 200 OK with `{"status":"healthy"}`
+- ✅ Deployment ID `d6bed9ba-10b9-4d78-9b43-540283b7a7c5` — **SUCCESS**
+- ✅ Vercel proxies working (no more 502 errors)
+- ✅ Dev-login route: 200 OK
+
+The simdecisions cutover is now complete — both hivenode and hodeia-auth are healthy on Railway. Response file written to `.deia/hive/responses/20260411-RESPONSE-HODEIA-AUTH-RAILWAY-FIX.md`.

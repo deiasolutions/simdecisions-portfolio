@@ -1,0 +1,44 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-FACTORY-003-RESPONSE-BROWSER
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260409-1614
+# Task file: QUEUE-TEMP-SPEC-FACTORY-003-RESPONSE-BROWSER.md
+# Success: True
+# Duration: 112.4s
+# Files modified: 16 (verified)
+# Cost (USD): $1.109304
+# Turns: 13
+# API duration (ms): 77873
+# Session ID: 5bb3ded8-673f-4d41-888e-7471dd8e2b1e
+# Boot injected: True
+
+---
+
+## Task Complete - BLOCKED
+
+I've created a blocker report at `.deia/hive/responses/20260409-FACTORY-003-RESPONSE.md`.
+
+### Summary
+
+**SPEC-FACTORY-003 is blocked** by incomplete deployment of SPEC-FACTORY-006:
+
+- ✅ Backend routes file exists (`hivenode/routes/factory_routes.py`)
+- ❌ Routes NOT mounted in `hivenode/main.py`  
+- ❌ All `/factory/*` endpoints return 404
+- ❌ Cannot build response-browser primitive without working API
+
+### Required Fix
+
+The factory router needs to be imported and mounted in `hivenode/main.py`:
+
+```python
+from .routes import factory_routes
+app.include_router(factory_routes.router)
+```
+
+Then restart hivenode and verify `/factory/health` responds.
+
+### Recommendation
+
+**Do NOT re-dispatch this spec** until the dependency is confirmed working. Once the backend is deployed, this task should take ~45 minutes to complete.

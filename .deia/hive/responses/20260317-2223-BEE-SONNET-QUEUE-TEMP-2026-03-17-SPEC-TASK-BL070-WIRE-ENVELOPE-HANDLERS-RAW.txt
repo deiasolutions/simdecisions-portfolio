@@ -1,0 +1,94 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-17-SPEC-TASK-BL070-wire-envelope-handlers
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260317-2223
+# Task file: QUEUE-TEMP-2026-03-17-SPEC-TASK-BL070-wire-envelope-handlers.md
+# Success: True
+# Duration: 318.4s
+# Files modified: 12 (verified)
+# Cost (USD): $1.579425
+# Turns: 14
+# API duration (ms): 221061
+# Session ID: 1afa799e-bd0b-4e1e-8a83-a497ea2a5329
+# Boot injected: True
+
+---
+
+Now let me report status to Q88N (Dave):
+
+---
+
+## Q88NR STATUS REPORT: BL-070
+
+**Spec:** BL-070 — Wire envelope handlers (to_explorer, to_ir, to_simulator)  
+**Status:** ⚠️ **PAUSED — AWAITING DAVE DECISION**  
+**Queue Position:** `.deia/hive/queue/2026-03-17-SPEC-TASK-BL070-wire-envelope-handlers.md`
+
+---
+
+### Analysis Complete (Previous Session)
+
+I analyzed BL-070 and found the spec is **misdiagnosed**:
+
+**Claimed Issue (from spec):**
+> "Handlers for to_explorer, to_ir, and to_simulator are not wired"
+
+**Actual State:**
+- ✅ **to_ir is FULLY WIRED** — `terminalResponseRouter.ts` sends `terminal:ir-deposit`, `CanvasApp.tsx` receives it, 11 passing tests verify delivery
+- ❌ **to_explorer** — router sends `terminal:explorer-command` but no pane subscribes to it
+- ❌ **to_simulator** — router sends `terminal:simulator-command` but no simulation pane exists
+
+---
+
+### The Ambiguity
+
+The routing infrastructure (`terminalResponseRouter.ts`) is complete. All three envelope slots send bus messages correctly. The issue is **missing receivers**:
+
+1. No tree-browser adapter listens for `terminal:explorer-command`
+2. No simulation pane primitive exists
+
+The spec doesn't clarify:
+- Should `to_ir` be marked ALREADY_COMPLETE?
+- Which adapter should handle explorer commands? (filesystemAdapter? paletteAdapter? new ExplorerApp?)
+- What should the simulator pane display? (No design spec exists)
+
+---
+
+### Options for Dave
+
+**Option A: Wire to_explorer only (small scope)**
+- Add bus subscription to ONE tree-browser adapter (you specify which)
+- Mark `to_ir` as already complete
+- Defer `to_simulator` to future spec
+- **Effort:** S (2-4 hours)
+
+**Option B: Build simulator pane (large scope)**
+- Create `SimulationApp.tsx` + wire `terminal:simulator-command`
+- **Effort:** M (8-16 hours)
+- **Blocker:** No design spec for what simulator displays
+
+**Option C: Split into 3 specs (recommended)**
+1. Mark BL-070 `to_ir` portion as ALREADY_COMPLETE
+2. Create BL-071: Wire `terminal:explorer-command` receiver (S, P1)
+3. Create BL-072: Build simulation pane + wire `terminal:simulator-command` (M, P2, needs design spec)
+
+**Q88NR recommends Option C** for proper scoping and recognizing work already done.
+
+---
+
+### Decision Required
+
+**Q88N (Dave):** Which option do you choose?
+
+- If **Option A**: which tree-browser adapter should handle `terminal:explorer-command`?
+- If **Option B**: provide design spec for simulator pane
+- If **Option C**: I'll mark BL-070 as resolved and create BL-071 + BL-072 specs
+
+---
+
+**Files for Review:**
+- Analysis: `.deia/hive/responses/20260317-Q88NR-BL-070-SPEC-ANALYSIS.md`
+- Briefing: `.deia/hive/coordination/2026-03-17-BRIEFING-BL-070-ENVELOPE-HANDLERS.md`
+
+**Q88NR:** Awaiting your guidance.

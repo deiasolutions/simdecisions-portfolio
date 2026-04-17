@@ -1,0 +1,55 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-FACTORY-SPECSUBMIT-001-fix-gate0
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-1555
+# Task file: QUEUE-TEMP-SPEC-FACTORY-SPECSUBMIT-001-fix-gate0.md
+# Success: True
+# Duration: 795.4s
+# Files modified: 19 (verified)
+# Cost (USD): $14.662064999999998
+# Turns: 57
+# API duration (ms): 406772
+# Session ID: b309e591-99a8-4924-a22e-57def52ad3ce
+# Boot injected: True
+
+---
+
+Perfect! The task is complete. Let me create a summary:
+
+## Summary
+
+Successfully fixed the `POST /factory/spec-submit` endpoint to generate specs that pass Gate 0 validation.
+
+### What Was Fixed
+
+1. **Added acceptance_criteria field** to SpecSubmitRequest (required, list of strings)
+2. **Validates criteria upfront** - returns 422 if missing or empty
+3. **Updated template** to include all Gate 0 required sections:
+   - Changed "Description" → "Objective"
+   - Added "Depends On" section
+   - Added "Files to Read First" placeholder
+   - Populates "Acceptance Criteria" from request as checkboxes
+   - Includes default constraints
+4. **Added Gate 0 validation** - runs programmatically before accepting the spec
+5. **Created 7 comprehensive tests** - all passing, TDD approach
+
+### Smoke Test Confirmed
+
+```bash
+# Valid request with acceptance criteria → spec created and passes Gate 0 ✅
+curl -X POST http://127.0.0.1:8420/factory/spec-submit \
+  -H "Content-Type: application/json" \
+  -d '{"title":"Test","type":"test","priority":"P1","model":"haiku",
+       "description":"Test description",
+       "acceptance_criteria":["Criterion 1","Criterion 2"]}'
+
+# Missing acceptance_criteria → 422 error ✅
+curl -X POST http://127.0.0.1:8420/factory/spec-submit \
+  -H "Content-Type: application/json" \
+  -d '{"title":"Test","type":"test","priority":"P1","model":"haiku",
+       "description":"Test description"}'
+# Returns: {"detail":"acceptance_criteria is required..."}
+```
+
+All acceptance criteria met!

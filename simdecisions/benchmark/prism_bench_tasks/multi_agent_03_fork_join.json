@@ -1,0 +1,46 @@
+{
+  "id": "multi_agent_03_fork_join",
+  "name": "Multi-Agent Fork-Join",
+  "intent": "Test fork to multiple agents with result aggregation",
+  "phase_ir_version": "1.0.0",
+  "groups": [
+    {"id": "coordinator", "name": "Coordinator", "node_ids": ["start", "fork", "aggregate", "end"]},
+    {"id": "worker_a", "name": "Worker A", "node_ids": ["a_work"]},
+    {"id": "worker_b", "name": "Worker B", "node_ids": ["b_work"]},
+    {"id": "worker_c", "name": "Worker C", "node_ids": ["c_work"]}
+  ],
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "fork", "type": "decision", "name": "Distribute Work"},
+    {"id": "a_work", "type": "service", "name": "Worker A Task", "config": {"duration": {"type": "exponential", "params": {"lambda": 1.0}}}},
+    {"id": "b_work", "type": "service", "name": "Worker B Task", "config": {"duration": {"type": "exponential", "params": {"lambda": 1.2}}}},
+    {"id": "c_work", "type": "service", "name": "Worker C Task", "config": {"duration": {"type": "exponential", "params": {"lambda": 0.8}}}},
+    {"id": "aggregate", "type": "service", "name": "Aggregate Results", "config": {"duration": {"type": "constant", "params": {"value": 1.0}}}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "fork", "type": "then"},
+    {"id": "e2", "from_node": "fork", "to_node": "a_work", "type": "fork"},
+    {"id": "e3", "from_node": "fork", "to_node": "b_work", "type": "fork"},
+    {"id": "e4", "from_node": "fork", "to_node": "c_work", "type": "fork"},
+    {"id": "e5", "from_node": "a_work", "to_node": "aggregate", "type": "join"},
+    {"id": "e6", "from_node": "b_work", "to_node": "aggregate", "type": "join"},
+    {"id": "e7", "from_node": "c_work", "to_node": "aggregate", "type": "join"},
+    {"id": "e8", "from_node": "aggregate", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "multi-agent",
+    "description": "Coordinator forks work to 3 workers, waits for all, then aggregates results",
+    "evaluation_criteria": "All workers complete, join synchronization correct, aggregation receives all results",
+    "expected_runtime_seconds": 7,
+    "agent_count": 4,
+    "handoff_points": [
+      {"from": "coordinator", "to": "worker_a", "edge": "e2"},
+      {"from": "coordinator", "to": "worker_b", "edge": "e3"},
+      {"from": "coordinator", "to": "worker_c", "edge": "e4"},
+      {"from": "worker_a", "to": "coordinator", "edge": "e5"},
+      {"from": "worker_b", "to": "coordinator", "edge": "e6"},
+      {"from": "worker_c", "to": "coordinator", "edge": "e7"}
+    ]
+  }
+}

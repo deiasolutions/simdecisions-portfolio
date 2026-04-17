@@ -1,0 +1,223 @@
+{
+  "scan_metadata": {
+    "generated": "2026-04-08",
+    "platform_repo": "C:\\Users\\davee\\OneDrive\\Documents\\GitHub\\platform",
+    "shiftcenter_repo": "C:\\Users\\davee\\OneDrive\\Documents\\GitHub\\shiftcenter",
+    "scan_method": "Manual file enumeration + cross-reference vs BRAVO catalog",
+    "time_spent_minutes": 30
+  },
+  "spec_inventory": {
+    "total_specs": 73,
+    "by_category": {
+      "architecture_decision_records": 23,
+      "feature_build_specs": 28,
+      "design_integration_specs": 12,
+      "session_task_specs": 10
+    },
+    "implementation_status": {
+      "fully_implemented": 9,
+      "partially_implemented": 4,
+      "spec_only": 8,
+      "archived": 3
+    }
+  },
+  "platform_features": {
+    "total_major_features": 11,
+    "implemented_in_platform": 9,
+    "present_in_shiftcenter": 2,
+    "gap_features": 7,
+    "by_feature": {
+      "flow_designer": {
+        "platform_status": "fully_implemented",
+        "shiftcenter_status": "not_present",
+        "loc": 10000,
+        "files": 122
+      },
+      "des_engine": {
+        "platform_status": "partial",
+        "shiftcenter_status": "not_present",
+        "loc": "unknown",
+        "files": "unknown"
+      },
+      "tabletop_engine": {
+        "platform_status": "fully_implemented",
+        "shiftcenter_status": "not_present",
+        "loc": 800,
+        "files": 6
+      },
+      "four_vector_profiling": {
+        "platform_status": "spec_only",
+        "shiftcenter_status": "not_present",
+        "loc": 0,
+        "files": 0
+      },
+      "oracle_tier_routing": {
+        "platform_status": "spec_only",
+        "shiftcenter_status": "not_present",
+        "loc": 0,
+        "files": 0
+      },
+      "efemera_chat": {
+        "platform_status": "fully_implemented",
+        "shiftcenter_status": "partial",
+        "loc": 2000,
+        "files": 15
+      },
+      "llm_metrics_db": {
+        "platform_status": "fully_implemented",
+        "shiftcenter_status": "not_present",
+        "loc": 500,
+        "files": 5
+      },
+      "hive_system": {
+        "platform_status": "partial_telemetry",
+        "shiftcenter_status": "full_automation",
+        "loc": "divergent",
+        "files": "divergent"
+      },
+      "event_ledger": {
+        "platform_status": "spec_only",
+        "shiftcenter_status": "partial",
+        "loc": 1303,
+        "files": 1
+      },
+      "optimization_engine": {
+        "platform_status": "spec_only",
+        "shiftcenter_status": "route_stub",
+        "loc": 330,
+        "files": 1
+      },
+      "dialect_importers": {
+        "platform_status": "fully_implemented",
+        "shiftcenter_status": "not_present",
+        "loc": 600,
+        "files": 3
+      }
+    }
+  },
+  "resurrection_candidates": {
+    "total_candidates": 9,
+    "recommended_ports": 6,
+    "by_effort": {
+      "trivial": 1,
+      "small": 3,
+      "medium": 2,
+      "large": 3
+    },
+    "by_priority": {
+      "tier1_high_value_medium_effort": 3,
+      "tier2_high_value_large_effort": 1,
+      "tier3_medium_value_medium_effort": 2,
+      "tier4_low_value_or_spec_only": 3
+    },
+    "candidates": [
+      {
+        "id": "RC-001",
+        "name": "LLM Metrics Database",
+        "effort": "small",
+        "effort_days": 1,
+        "value": "high",
+        "priority": "tier1",
+        "port_recommended": true
+      },
+      {
+        "id": "RC-002",
+        "name": "Dialect Importers (BPMN)",
+        "effort": "small",
+        "effort_days": 2,
+        "value": "medium",
+        "priority": "tier1",
+        "port_recommended": true
+      },
+      {
+        "id": "RC-003",
+        "name": "Efemera Flow Designer Integration",
+        "effort": "small",
+        "effort_days": 2,
+        "value": "high",
+        "priority": "tier1",
+        "port_recommended": true
+      },
+      {
+        "id": "RC-004",
+        "name": "Flow Designer (Full)",
+        "effort": "large",
+        "effort_days": 20,
+        "value": "very_high",
+        "priority": "tier2",
+        "port_recommended": true
+      },
+      {
+        "id": "RC-005",
+        "name": "Tabletop Engine",
+        "effort": "medium",
+        "effort_days": 4,
+        "value": "medium",
+        "priority": "tier3",
+        "port_recommended": true
+      },
+      {
+        "id": "RC-006",
+        "name": "Queue Approval UI",
+        "effort": "trivial",
+        "effort_days": 1,
+        "value": "medium",
+        "priority": "tier3",
+        "port_recommended": true
+      },
+      {
+        "id": "RC-007",
+        "name": "Four-Vector Entity Profiling",
+        "effort": "large",
+        "effort_days": 10,
+        "value": "low",
+        "priority": "tier4",
+        "port_recommended": false
+      },
+      {
+        "id": "RC-008",
+        "name": "Oracle Tier Routing",
+        "effort": "medium",
+        "effort_days": 5,
+        "value": "low",
+        "priority": "tier4",
+        "port_recommended": false
+      },
+      {
+        "id": "RC-009",
+        "name": "Optimization Engine",
+        "effort": "large",
+        "effort_days": 10,
+        "value": "low",
+        "priority": "tier4",
+        "port_recommended": false
+      }
+    ],
+    "effort_summary": {
+      "recommended_total_days": 30,
+      "wave1_quick_wins_days": 4,
+      "wave2_flow_designer_mvp_days": 10,
+      "wave3_advanced_features_days": 8,
+      "wave4_collaboration_days": 6
+    }
+  },
+  "alignment_assessment": {
+    "conflicts_found": 0,
+    "additive_ports": 6,
+    "breaking_changes": 0,
+    "shiftcenter_direction_alignment": "strong",
+    "notes": [
+      "All Tier 1-2 ports align with chat-first UX, HiveHostPanes, and primitives library",
+      "Flow Designer is perfect fit for pane-based shell",
+      "LLM Metrics DB enables cost-aware routing (existing multi-LLM support)",
+      "BPMN importer extends queue system capabilities"
+    ]
+  },
+  "risk_assessment": {
+    "low_risk": ["RC-001", "RC-002", "RC-005", "RC-006"],
+    "medium_risk": ["RC-003", "RC-004"],
+    "high_risk": [],
+    "highest_risk_item": "RC-004",
+    "mitigation_strategy": "Phased build for Flow Designer (6 phases, MVP after Phase 1-2)"
+  }
+}

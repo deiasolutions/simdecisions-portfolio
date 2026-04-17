@@ -1,0 +1,55 @@
+# BEE RESPONSE: TASK-034
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260312-1843
+# Task file: TASK-034.md
+# Success: True
+# Duration: 362.8s
+# Files modified: 10 (verified)
+# Cost (USD): $0
+# Turns: 39
+# API duration (ms): 329867
+# Session ID: 49c64177-f94d-4e96-8cd6-502f5cf5d041
+# Boot injected: True
+
+---
+
+Great! Tests are running well. Let me create a summary of what was accomplished:
+
+## TASK-034 Implementation Complete
+
+I've successfully completed TASK-034: Repo Index Routes (Part 2) — Tree, Visibility, Stats, Wiring.
+
+### Summary of Changes
+
+**New Routes Added:**
+1. **GET /repo/tree** - Returns nested directory tree structure with same filter options as /repo/index
+2. **PATCH /repo/visibility** - Toggles visibility for files/directories (recursive for directories)
+3. **GET /repo/stats** - Returns repository statistics (counts, extensions, size, last scan time)
+
+**Files Modified:**
+- `hivenode/repo/schemas.py` - Added SetVisibilityRequest and SetVisibilityResponse models
+- `hivenode/repo/routes.py` - Implemented 3 new routes with full error handling
+- `hivenode/repo/__init__.py` - Exported new schemas and routes module
+- `hivenode/main.py` - Added _find_repo_root() and initialized RepoIndexer in lifespan
+- `pyproject.toml` - Added pathspec>=0.12 dependency and hivenode.repo package
+- `tests/hivenode/repo/test_repo_routes.py` - Added 19 comprehensive tests
+
+**Test Results:**
+- ✅ All 79 repo module tests pass (40 route tests + 39 indexer/gitignore tests)
+- ✅ 19 new tests added: 5 tree, 5 visibility, 4 stats, 1 full workflow smoke test
+- ✅ All routes verified and accessible: /repo/tree, /repo/visibility, /repo/stats
+
+**Integration:**
+- RepoIndexer automatically initialized during hivenode startup via lifespan
+- Database stored at `~/.shiftcenter/repo-index.db` (alongside ledger.db)
+- All routes use `verify_jwt_or_local` for auth (local bypasses, cloud requires JWT)
+- Routes properly registered in FastAPI router and accessible
+
+**Feature Inventory:**
+- Added REPO-002 to inventory with 19 tests
+- Exported to FEATURE-INVENTORY.md (now 36 features, 5,645 tests total)
+- Archived TASK-034.md to _archive/
+
+The Repo Index Service is now complete with all planned routes fully implemented, tested, and integrated into the running hivenode application.

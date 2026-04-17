@@ -1,0 +1,53 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-WAVE0-A-ddd-directories
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-1550
+# Task file: QUEUE-TEMP-SPEC-WAVE0-A-ddd-directories.md
+# Success: True
+# Duration: 59.4s
+# Files modified: 4 (verified)
+# Cost (USD): $1.319433
+# Turns: 8
+# API duration (ms): 46379
+# Session ID: 581898cd-3e75-4a7c-9ec3-9d7c7c529c6f
+# Boot injected: True
+
+---
+
+Now I understand the task format better. Looking at the dispatcher code around line 191 and task files, I see the issue: the task specification says to find the "canonical task file template" but after examining the dispatch.py code, I can see that it doesn't use a template file - it directly injects headers at runtime.
+
+Looking at the PROCESS-DOC-DRIVEN-DEVELOPMENT.md, I can see where the template is actually documented - it's in section "Bee Instructions > For Build Bees (BEE-CODE-*)" at line 336-349. This isn't a file template that Q33N uses, but rather instructions that should be injected into task files when they're created.
+
+Based on the spec and my examination of the code, here's my plan:
+
+## Implementation Plan
+
+1. **Create 8 new directories with .gitkeep files**
+   - `.deia/docs/spec/`
+   - `.deia/docs/impl/`
+   - `.deia/docs/test/`
+   - `.deia/docs/ir/`
+   - `.deia/hive/_code_complete/`
+   - `.deia/hive/_qa_review/`
+   - `.deia/hive/_q33n_review/`
+   - `.deia/hive/_needs_revision/`
+
+2. **Create `.deia/docs/impl/SCHEMA.md`**
+   - Extract the IMPL Document Structure from PROCESS-DOC-DRIVEN-DEVELOPMENT.md (lines 240-287)
+   - Include frontmatter specification (lines 164-204)
+   - Format as a reference document for bees
+
+3. **Document that there is NO central task template file**
+   - The spec asks to update a "canonical task file template" but after examining dispatch.py and the task files, I can see that:
+     - Task files are created ad-hoc by Q33N (no template file exists)
+     - The dispatcher injects role headers at runtime (line 607)
+     - BOOT.md contains the response file format that gets injected (lines 186-202 of dispatch.py)
+   - The "REQUIRED OUTPUT" section from the spec should be added to BOOT.md or a process document, not a template file
+   - **OR** I should create a NEW template file that Q33N can reference
+
+Looking back at the spec more carefully, it says "Find the canonical task file template used by Q33N and the dispatcher" - this implies it might not exist yet and I need to create it. Let me create a template file.
+
+**Wait** - let me re-read the acceptance criteria: "No existing task files modified (template only, not instances)". This confirms there should be a template file, separate from instances.
+
+Let me create the implementation:

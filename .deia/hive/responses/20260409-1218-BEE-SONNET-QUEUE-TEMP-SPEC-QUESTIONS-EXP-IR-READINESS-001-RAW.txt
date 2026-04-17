@@ -1,0 +1,51 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-QUESTIONS-EXP-IR-READINESS-001
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260409-1218
+# Task file: QUEUE-TEMP-SPEC-QUESTIONS-EXP-IR-READINESS-001.md
+# Success: True
+# Duration: 259.8s
+# Files modified: 11 (verified)
+# Cost (USD): $2.6315190000000004
+# Turns: 29
+# API duration (ms): 222345
+# Session ID: 87b75168-830a-4016-b5bb-9b894ecab196
+# Boot injected: True
+
+---
+
+## Task Complete ✓
+
+I've successfully completed the research survey and written the response file.
+
+### Summary
+
+**Response file:** `.deia/hive/responses/20260409-EXP-IR-READINESS-RESPONSE.md` (493 lines, 13 sections)
+
+### Key Findings
+
+**❌ Experiment flow CANNOT be encoded as PRISM-IR today** due to 3 critical gaps:
+
+1. **Shell Executor Missing** — No way to run `git`, `npm`, or `dispatch.py` as IR nodes
+2. **Token Attribute Access Missing** — No way to pass `treatment`, `run_number`, `branch` to executors  
+3. **Experiment Metadata Support Missing** — Queue runner doesn't parse or expand experiment specs
+
+### What I Found
+
+**Existing Infrastructure:**
+- ✅ Production engine with ExecutorRegistry exists
+- ✅ 8 core node types defined (`human`, `python`, `llm`, `http`, `subprocess`, `solver`, `wait`, `signal`)
+- ✅ Event ledger exists with extensible payload structure
+- ✅ Queue runner handles dependency resolution in-process
+- ❌ NO `scheduler.py` file (queue runner does scheduling inline)
+- ❌ NO `machine` or `op:` field (uses `type` field instead)
+- ❌ NO shell execution node type
+
+**Estimates for Gaps:**
+- Gap 1 (Shell Executor): < 1 day, 1 bee
+- Gap 2 (Token Attrs): < 1 day, 1 bee  
+- Gap 3 (Experiment Parser): > 1 day, spec needed
+- **Total: 3-5 days, 3-4 specs**
+
+All 17 questions answered with file+line citations. No speculation — all answers based on actual file reads.

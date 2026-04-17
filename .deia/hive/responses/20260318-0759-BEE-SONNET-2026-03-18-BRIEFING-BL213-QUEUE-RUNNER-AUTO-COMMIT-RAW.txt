@@ -1,0 +1,68 @@
+# BEE RESPONSE: 2026-03-18-BRIEFING-BL213-QUEUE-RUNNER-AUTO-COMMIT
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260318-0759
+# Task file: 2026-03-18-BRIEFING-BL213-QUEUE-RUNNER-AUTO-COMMIT.md
+# Success: True
+# Duration: 279.7s
+# Files modified: 5 (verified)
+# Cost (USD): $1.270119
+# Turns: 8
+# API duration (ms): 165749
+# Session ID: fa881ed0-334d-485b-84a0-eef4637eecce
+# Boot injected: True
+
+---
+
+Perfect! I have completed the task. Let me provide a summary:
+
+---
+
+## BL-213 Spec Created — Queue Runner Auto-Commits
+
+I've written a comprehensive SPEC file for implementing auto-commit functionality in the queue runner. Here's what was delivered:
+
+### Spec File Created
+**Location:** `.deia/hive/queue/2026-03-18-SPEC-TASK-BL213-queue-runner-auto-commit.md`
+
+**Key Features:**
+- **Priority:** P0
+- **Model:** Sonnet
+- **Objective:** Auto-commit bee output immediately after completion to prevent loss of uncommitted work (like the recent 280-line loss)
+
+### What the Spec Requires
+
+1. **New Function:** `_auto_commit_bee_changes(spec, result, repo_root)`
+   - Uses `git diff --name-only` to detect changed files
+   - Stages and commits with format: `[BEE-MODEL] SPEC-ID: objective`
+   - Appends status suffix for failures: `(NEEDS_DAVE)` or `(FAILED)`
+   - Handles git failures gracefully (no queue runner crashes)
+
+2. **Integration Point:** Call from `_handle_spec_result()` after processing but before moving files to `_done/` or `_needs_review/`
+
+3. **Test Requirements:** Minimum 6 tests covering:
+   - Clean status commit format
+   - Status suffix for NEEDS_DAVE/FAILED
+   - Graceful handling of no changes
+   - Graceful handling of git unavailable
+   - Verification that git push is NEVER called
+
+4. **Constraints:**
+   - No file over 500 lines (run_queue.py is already 1160 lines)
+   - TDD — tests first
+   - No git push anywhere
+   - Commit-only crash recovery mechanism
+
+### Rule 10 Carve-Out
+The spec explicitly references the Rule 10 exception in BOOT.md that allows the queue runner to auto-commit bee output as crash-recovery checkpoints.
+
+### Next Steps
+The spec file is now in `.deia/hive/queue/` and will be picked up by the queue runner automatically (if running in watch mode). The assigned bee will:
+1. Write 6+ tests first (TDD)
+2. Implement `_auto_commit_bee_changes()` function
+3. Integrate into `_handle_spec_result()`
+4. Verify all tests pass
+5. Write response file with 8 required sections
+
+The response file has been written to `.deia/hive/responses/20260318-BL-213-RESPONSE.md` documenting the spec creation work.

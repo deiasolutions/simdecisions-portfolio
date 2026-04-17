@@ -1,0 +1,82 @@
+[
+  {
+    "egg": "build-monitor",
+    "displayName": "Build Monitor",
+    "description": "Live 4-column build pipeline monitor — feeder queue, runner status, active tasks, completed results.",
+    "version": "1.0.0",
+    "icon": "B",
+    "_stub": false
+  },
+  {
+    "egg": "canvas",
+    "displayName": "SimDecisions Canvas",
+    "description": "Visual diagramming and design — palette sidebar, canvas editor, IR generation terminal, properties sidebar. Drag components, edit IR, real-time sync.",
+    "version": "1.0.0",
+    "icon": "S",
+    "_stub": false
+  },
+  {
+    "egg": "chat",
+    "displayName": "Chat",
+    "description": "AI chat interface powered by terminal primitive and terminal service",
+    "version": "1.0.0",
+    "icon": "C",
+    "_stub": false
+  },
+  {
+    "egg": "code",
+    "displayName": "ShiftCenter Code",
+    "description": "Browser IDE with Fr@nk AI assistant. Activity Bar, file explorer with git status, editor with tabs and line numbers, Fr@nk terminal. Three Currencies on every session.",
+    "version": "2.0.0",
+    "icon": "S",
+    "_stub": false
+  },
+  {
+    "egg": "efemera",
+    "displayName": "Efemera",
+    "description": "Real-time messaging — channels, DMs, presence. Relay-first layout with channel sidebar, chat bubbles, and compose bar.",
+    "version": "1.0.0",
+    "icon": "E",
+    "_stub": false
+  },
+  {
+    "egg": "kanban",
+    "displayName": "Kanban",
+    "description": "Feature inventory kanban board with drag-drop, filters, and accordion columns",
+    "version": "1.0.0",
+    "icon": "K",
+    "_stub": false
+  },
+  {
+    "egg": "monitor",
+    "displayName": "Build Monitor",
+    "description": "Live build queue monitor with SSE heartbeat feed from hivenode",
+    "version": "1.0.0",
+    "icon": "B",
+    "_stub": false
+  },
+  {
+    "egg": "playground",
+    "displayName": "Playground",
+    "description": "Shell playground — test splits, merges, tabs, drag, swap, and pane chrome",
+    "version": "1.0.0",
+    "icon": "P",
+    "_stub": false
+  },
+  {
+    "egg": "sim",
+    "displayName": "SimDecisions Flow Designer",
+    "description": "Visual BPMN flow designer with DES simulation engine. Design, simulate, playback, tabletop, compare.",
+    "version": "1.0.0",
+    "icon": "S",
+    "_stub": false
+  },
+  {
+    "egg": "turtle-draw",
+    "displayName": "Turtle Draw",
+    "description": "Processing (p5.js) canvas with turtle graphics. Draw with commands or natural language via Fr@nk.",
+    "version": "1.0.0",
+    "icon": "T",
+    "_stub": false
+  }
+]

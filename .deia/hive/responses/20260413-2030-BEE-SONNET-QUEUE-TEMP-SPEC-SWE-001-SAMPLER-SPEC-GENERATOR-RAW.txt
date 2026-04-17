@@ -1,0 +1,66 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-SWE-001-sampler-spec-generator
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260413-2030
+# Task file: QUEUE-TEMP-SPEC-SWE-001-sampler-spec-generator.md
+# Success: True
+# Duration: 505.4s
+# Files modified: 5 (verified)
+# Cost (USD): $3.8229210000000005
+# Turns: 24
+# API duration (ms): 275484
+# Session ID: ce5f7503-dc9d-47f5-b73a-b165809324d9
+# Boot injected: True
+
+---
+
+Perfect! All tests pass. Let me create a brief summary document:
+
+## Task Complete: SPEC-SWE-001-sampler-spec-generator
+
+I have successfully implemented the SWE-bench Task Sampler and Factory Spec Generator as specified. Here's what was delivered:
+
+### Files Created
+
+1. **`_tools/swebench_runner.py`** (373 lines)
+   - CLI tool with three subcommands: `sample`, `generate`, `list-repos`
+   - Downloads SWE-bench Verified dataset from HuggingFace
+   - Samples N tasks with deterministic seeding
+   - Generates factory-compatible SPEC files
+   - Creates directory structure for patches and results
+
+2. **`tests/integration/test_swebench_runner.py`** (305 lines)
+   - Comprehensive test suite with 12 tests
+   - All tests passing (100% success rate)
+   - Tests cover sampling, filtering, spec generation, and edge cases
+
+### Key Features
+
+✅ **Three Subcommands Working**:
+- `sample`: Downloads 500 tasks from SWE-bench Verified, samples N tasks (default 50), supports filtering by repo/difficulty, uses seed for reproducibility
+- `generate`: Reads sample.json, creates one SPEC per task with full problem statement embedded, creates patches/ directory
+- `list-repos`: Shows 12 repositories with task counts (django/django has 231 tasks, most popular)
+
+✅ **Gate 0 Compliant Specs**: All generated specs follow `.deia/hive/queue/SUBMISSION-CHECKLIST.md` format with required sections, checkbox-formatted acceptance criteria, and absolute file paths
+
+✅ **Self-Contained Design**: sample.json includes all fields needed for later evaluation (instance_id, repo, base_commit, problem_statement, hints_text, version, difficulty, created_at)
+
+✅ **Windows Compatible**: Avoided `swebench.harness` imports that fail on Windows; uses only `datasets.load_dataset`
+
+✅ **TDD Approach**: Tests written first, then implementation
+
+✅ **Under Line Limits**: Both files well under 500-line limit
+
+### Verification Results
+
+- **Test Suite**: 12/12 tests passing in ~60 seconds
+- **Smoke Tests**: All three smoke tests executed successfully
+- **Deterministic Sampling**: Same seed produces identical task selection
+- **Spec Quality**: Generated specs include full problem statements and follow factory requirements
+
+### Response File
+
+Written to: `.deia/hive/responses/20260413-QUEUE-TEMP-SPEC-SWE-001-sampler-spec-generator-RESPONSE.md`
+
+All acceptance criteria from the spec have been met. The tool is ready for use in the SWE-bench evaluation pipeline.

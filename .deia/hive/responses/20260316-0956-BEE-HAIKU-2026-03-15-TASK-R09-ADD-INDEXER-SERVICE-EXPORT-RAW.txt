@@ -1,0 +1,30 @@
+# BEE RESPONSE: 2026-03-15-TASK-R09-add-indexer-service-export
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260316-0956
+# Task file: 2026-03-15-TASK-R09-add-indexer-service-export.md
+# Success: True
+# Duration: 50.7s
+# Files modified: 8 (verified)
+# Cost (USD): $0
+# Turns: 10
+# API duration (ms): 30942
+# Session ID: cd9970a7-0f06-4450-866a-c84e4d9f4879
+# Boot injected: True
+
+---
+
+## Task Complete ✓
+
+**TASK-R09: Add IndexerService export to RAG __init__.py** is now complete.
+
+### Summary
+
+- ✅ Added import: `from hivenode.rag.indexer.indexer_service import IndexerService` (line 9)
+- ✅ Added export: `"IndexerService"` to `__all__` in alphabetical order (line 34)
+- ✅ Verified import works: `python -c "from hivenode.rag.indexer import IndexerService"` → `OK`
+- ✅ All tests pass: **29 tests** (18 storage + 11 scanner)
+- ✅ Response file written: `.deia/hive/responses/20260316-TASK-R09-RESPONSE.md`
+
+The `IndexerService` class is now properly exported from the `hivenode.rag.indexer` module and ready for use.

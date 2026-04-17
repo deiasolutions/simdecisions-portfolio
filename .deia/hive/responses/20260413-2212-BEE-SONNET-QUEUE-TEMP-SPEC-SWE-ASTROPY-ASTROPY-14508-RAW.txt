@@ -1,0 +1,49 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-SWE-astropy-astropy-14508
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260413-2212
+# Task file: QUEUE-TEMP-SPEC-SWE-astropy-astropy-14508.md
+# Success: True
+# Duration: 246.6s
+# Files modified: 7 (verified)
+# Cost (USD): $5.350407
+# Turns: 32
+# API duration (ms): 202331
+# Session ID: 63d151a4-2f9d-4da6-a0bf-622421612dd3
+# Boot injected: True
+
+---
+
+Perfect! The task is complete. Let me summarize what was accomplished:
+
+## Summary
+
+I have successfully completed the SWE-bench patch generation task for astropy/astropy issue #14508.
+
+**The Problem:**
+The `io.fits.Card._format_float()` function was using `f"{value:.16G}"` formatting which created unnecessarily long float representations. For example, the value 0.009125 was being formatted as "0.009124999999999999" (20 characters), which forced comments to be truncated in FITS card headers.
+
+**The Solution:**
+Changed line 1302 in `astropy/io/fits/card.py` from:
+```python
+value_str = f"{value:.16G}"
+```
+to:
+```python
+value_str = str(value)
+```
+
+This leverages Python's default `str()` representation which provides the minimal number of digits needed for reproducibility. For the example value 0.009125, this produces "0.009125" (8 characters) instead of "0.009124999999999999" (20 characters), saving 12 characters and allowing comments to fit without truncation.
+
+**Files Created:**
+- `C:\Users\davee\OneDrive\Documents\GitHub\simdecisions\.deia\benchmark\swebench\patches\astropy__astropy-14508.diff` - The unified diff patch
+- `C:\Users\davee\OneDrive\Documents\GitHub\simdecisions\.deia\hive\responses\20260413-QUEUE-TEMP-SPEC-SWE-astropy-astropy-14508-RESPONSE.md` - Complete response documentation
+
+**Verification:**
+- Patch applies cleanly to the base commit (verified with `git apply --check`)
+- Python syntax is valid (verified with `py_compile`)
+- The change is minimal (single line modification)
+- The fix aligns with maintainer recommendations from the GitHub issue
+
+The patch is ready for SWE-bench evaluation.

@@ -1,0 +1,60 @@
+# BEE RESPONSE: 2026-03-17-BRIEFING-BUG-024-cross-window-message-leak
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260317-2122
+# Task file: 2026-03-17-BRIEFING-BUG-024-cross-window-message-leak.md
+# Success: True
+# Duration: 265.2s
+# Files modified: 28 (verified)
+# Cost (USD): $3.061371
+# Turns: 31
+# API duration (ms): 228576
+# Session ID: 80b79483-c0f3-4862-b1d3-fc3f134b77d5
+# Boot injected: True
+
+---
+
+Perfect! Now let me create a summary message to Q33NR:
+
+---
+
+## BUG-024 Task Files Ready for Review
+
+**Q33NR**, I've completed the investigation and task breakdown for BUG-024 (cross-window message leaking).
+
+### Investigation Key Findings
+
+After reading the relay bus architecture, I found:
+
+**✅ MessageBus is per-window** — Each tab creates its own isolated instance
+**✅ No cross-tab sync exists** — No BroadcastChannel, no localStorage message events  
+**✅ BroadcastChannel was removed** — Comment in CanvasApp.tsx shows it was removed during port from platform
+
+**The reported bug may not exist as described.** Possible scenarios:
+1. Bug was in old platform code (with BroadcastChannel) — already fixed
+2. Actual issue is **same-window routing** — messages go to wrong pane within one tab
+3. User misreported the issue
+
+### Task Files Created (3 tasks)
+
+**TASK-BUG-024-A** (P0, haiku) — Verify cross-window isolation
+- Write tests proving two MessageBus instances can't leak messages
+- Document root cause analysis
+
+**TASK-BUG-024-C** (P0, haiku) — Test same-window routing
+- Integration test: Canvas terminal → Canvas text vs. Code chat
+- Verify messages route to correct pane when multiple EGGs coexist
+
+**TASK-BUG-024-B** (P1, haiku) — Add windowId scoping (defensive)
+- Add windowId field to MessageBus and MessageEnvelope
+- Future-proofs against regressions if someone adds BroadcastChannel later
+
+### Recommended Dispatch
+
+**Parallel:** A + C (both investigative tests)  
+**Then:** Review findings → dispatch B if needed
+
+**Full details:** `.deia/hive/responses/20260317-Q33N-BUG-024-TASK-FILES-READY.md`
+
+**Awaiting your approval to dispatch bees.**

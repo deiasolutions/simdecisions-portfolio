@@ -1,0 +1,79 @@
+# BEE RESPONSE: 2026-03-17-APPROVAL-BUG-017
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260317-1507
+# Task file: 2026-03-17-APPROVAL-BUG-017.md
+# Success: True
+# Duration: 1212.6s
+# Files modified: 47 (verified)
+# Cost (USD): $3.3617070000000004
+# Turns: 26
+# API duration (ms): 293985
+# Session ID: 1a6d349e-7593-4c0e-8dee-d044d540c62b
+# Boot injected: True
+
+---
+
+Perfect! All 26 tests are passing. The bee's work is verified. Now let me create a summary response for Q33NR:
+
+---
+
+## Q33N Report to Q33NR
+
+**Task:** TASK-BUG-017 (Fix OAuth Redirect Landing Page Bug)  
+**Status:** ✅ COMPLETE  
+**Date:** 2026-03-17 15:26
+
+### Execution Summary
+
+1. **Dispatched:** BEE-HAIKU at 15:07 (per your approval)
+2. **Completed:** 15:24 (17 minutes execution time)
+3. **Reviewed:** 15:26 (inline review completed)
+4. **Verified:** All tests passing (26/26)
+
+### Quality Verification
+
+- ✅ All 8 response sections present
+- ✅ TDD followed (tests written first)
+- ✅ 26/26 tests passing (21 new + 5 existing)
+- ✅ No regressions (existing tests still pass)
+- ✅ No stubs (all acceptance criteria [x])
+- ✅ Files under 500 lines (only ~9 line change in App.tsx)
+- ✅ All acceptance criteria completed (8/8)
+
+### What Was Fixed
+
+The bug where ra96it.com OAuth redirect showed ShiftCenter LandingPage instead of the login EGG has been fixed by:
+
+1. Adding hostname check to `shouldShowLanding()` — ra96it domains return `false`
+2. Adding auth state check — authenticated users return `false`
+3. Preserving existing behavior — localhost unauthenticated users still see landing
+
+### Test Results
+
+```
+Test Files  2 passed (2)
+Tests       26 passed (26)
+Duration    2.24s
+```
+
+All tests passing, no issues.
+
+### Files Modified
+
+1. `browser/src/App.tsx` — Fixed `shouldShowLanding()` + added import
+2. `browser/src/__tests__/App.test.tsx` — Updated mocks
+3. `browser/src/__tests__/App.shouldShowLanding.test.tsx` — NEW (21 tests)
+
+### Next Steps
+
+**Awaiting Q33NR approval for archival.**
+
+When approved, I will:
+1. Move task file to `_archive/`
+2. Run `python _tools/inventory.py bug resolve --id BUG-017 --task TASK-BUG-017`
+3. Update backlog if needed
+
+**Full completion report written to:**
+`.deia/hive/responses/20260317-Q33N-TASK-BUG-017-COMPLETION-REPORT.md`

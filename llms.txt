@@ -1,0 +1,42 @@
+# simdecisions — Machine-Readable Repository Summary
+
+## Overview
+Full-stack discrete event simulation platform with AI agent coordination system.
+
+## Author
+Dave Eichler
+LinkedIn: linkedin.com/in/daaaave-atx
+GitHub: DAAAAVE-ATX
+
+## Tech Stack
+- Backend: Python 3.12+, FastAPI, SQLAlchemy, PostgreSQL
+- Frontend: React 18+, TypeScript, Vite
+- Deployment: Railway (backend), Vercel (frontend)
+- Auth: JWT, cross-app SSO via hodeia.me
+
+## Key Components
+- hivenode/: FastAPI backend, factory runner, remote management
+- simdecisions/: DES engine, Phase-IR loader, optimization
+- browser/: React frontend, pane-based shell
+- hodeia_auth/: Auth service, OAuth provider
+- _tools/: Dev tooling, inventory CLI
+
+## Working Systems
+- Factory Loop: scheduler + dispatcher + queue runner (17+ specs processed)
+- DES Engine: Discrete event simulation with checkpoints
+- Phase-IR Loader: Flow validation and execution
+- Hive Coordination: AI agent task dispatch and response collection
+- Build Monitor: Live status dashboard
+- Event Ledger: Append-only event log
+
+## Hive System
+- Q88N: Human sovereign (Dave)
+- Q33NR: Queen Regent (live session, does NOT code)
+- Q33N: Queen Coordinator (headless, does NOT code unless approved)
+- BEEs: Workers (headless, code-writing agents)
+
+## Source Access
+All files in this portfolio are stubs. Contact Dave Eichler for full source code.
+
+## Repository URL
+https://github.com/DAAAAVE-ATX/simdecisions-portfolio

@@ -1,0 +1,35 @@
+cert_tier: -1              # untrusted until BAT validation pass
+promoted_from: null
+promoted_at: null
+promoted_by: null
+
+capabilities:
+  filesystem_read: true        # reads PRISM-IR input files
+  filesystem_write: true       # writes .py scene files to .deia/m4nim/scenes/
+  network_access: false
+  shell_exec: false            # bee writes only; drone executes render
+  user_data_access: false
+  model_invocation: false
+  event_ledger_write: false
+
+blast_radius: local            # writes to .deia/m4nim/ only
+
+budget:
+  clock_max_seconds: 300       # 5 min for scene generation (LLM call)
+  coin_max_usd: 0.50           # Sonnet default; Opus spike may exceed
+  carbon_max_grams: 20.0       # heavy class — content creation
+
+last_scan:
+  timestamp: null
+  threats_detected: []
+  prompt_injection_risk: unknown
+  pii_exposure_risk: unknown
+
+event_ledger_id: null
+
+notes: >-
+  Render execution is handled by a separate Drone process, not this skill.
+  Shell exec capability is intentionally false — the skill writes scene files
+  only. The Drone subprocess runs `manim` CLI independently.
+  Carbon budget covers LLM scene generation only, not GPU render time.
+  GPU render carbon is tracked separately by the render drone.

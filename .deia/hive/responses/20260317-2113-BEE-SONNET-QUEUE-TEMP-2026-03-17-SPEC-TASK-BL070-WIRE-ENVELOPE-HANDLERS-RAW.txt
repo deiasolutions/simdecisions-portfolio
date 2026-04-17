@@ -1,0 +1,91 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-17-SPEC-TASK-BL070-wire-envelope-handlers
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260317-2113
+# Task file: QUEUE-TEMP-2026-03-17-SPEC-TASK-BL070-wire-envelope-handlers.md
+# Success: True
+# Duration: 635.1s
+# Files modified: 23 (verified)
+# Cost (USD): $4.269912
+# Turns: 29
+# API duration (ms): 239422
+# Session ID: 0c848de3-113f-43ea-a58f-af1611d6665a
+# Boot injected: True
+
+---
+
+---
+
+## Q88NR STATUS REPORT
+
+**Spec:** BL-070 — Wire envelope handlers  
+**Status:** ⚠️ **PAUSED — NEEDS CLARIFICATION**
+
+---
+
+### Summary
+
+I analyzed BL-070 and discovered the spec is based on incomplete analysis:
+
+**Claimed Issue:**
+> "Handlers for to_explorer, to_ir, and to_simulator are not wired"
+
+**Actual State:**
+- ✅ **to_ir is FULLY WIRED** — routing exists + CanvasApp receives messages + 11 passing tests
+- ❌ **to_explorer sends but nobody listens** — routing exists but no pane subscribes to `terminal:explorer-command`
+- ❌ **to_simulator sends but no pane exists** — routing exists but no simulation primitive
+
+---
+
+### Root Cause
+
+The envelope **routing infrastructure** exists in `terminalResponseRouter.ts`. All three slots (`to_ir`, `to_explorer`, `to_simulator`) send bus messages correctly. The issue is that two receivers don't exist:
+
+1. No tree-browser adapter listens for `terminal:explorer-command`
+2. No simulation pane exists to receive `terminal:simulator-command`
+
+---
+
+### Scope Ambiguity
+
+The spec doesn't clarify:
+1. Should `to_ir` be marked ALREADY_COMPLETE?
+2. Which tree-browser adapter (filesystemAdapter? paletteAdapter? new ExplorerApp?) should handle explorer commands?
+3. What does the simulator pane display? (No design spec exists)
+
+---
+
+### Files Written
+
+1. **Briefing:** `.deia/hive/coordination/2026-03-17-BRIEFING-BL-070-ENVELOPE-HANDLERS.md`
+   - Documents current state
+   - Presents 3 options (wire explorer only / build simulator / split into 3 specs)
+   - Requests Dave's decision
+
+2. **Analysis:** `.deia/hive/responses/20260317-Q88NR-BL-070-SPEC-ANALYSIS.md`
+   - Evidence for each finding
+   - Scope options
+   - Awaiting decision
+
+---
+
+### Recommended Path
+
+**Option C: Split into 3 specs**
+1. BL-070-A: Mark `to_ir` ALREADY_COMPLETE
+2. BL-071: Wire `terminal:explorer-command` receiver (S, P1)
+3. BL-072: Build simulation pane (M, P2, needs design spec)
+
+This allows proper scoping and recognizes work already done.
+
+---
+
+### Decision Required
+
+**Q88N (Dave):** Please choose Option A, B, or C from the briefing file, or provide alternate guidance.
+
+---
+
+**Q88NR Status:** PAUSED  
+**Next Action:** Resume after Dave responds

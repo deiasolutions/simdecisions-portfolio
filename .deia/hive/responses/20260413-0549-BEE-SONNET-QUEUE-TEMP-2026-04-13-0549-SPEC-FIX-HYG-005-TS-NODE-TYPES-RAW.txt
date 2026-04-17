@@ -1,0 +1,38 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-04-13-0549-SPEC-fix-HYG-005-ts-node-types
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260413-0549
+# Task file: QUEUE-TEMP-2026-04-13-0549-SPEC-fix-HYG-005-ts-node-types.md
+# Success: False
+# Duration: 242.9s
+# Files modified: 15 (verified)
+# Cost (USD): $1.8459389999999998
+# Turns: 28
+# API duration (ms): 173724
+# Session ID: 4b832921-3c90-4c64-bd7d-c93aaed32e08
+# Boot injected: True
+
+---
+
+Response file written. The analysis is complete:
+
+## Summary
+
+**Status:** NEEDS_DAVE (queue infrastructure issue, not code failure)
+
+The original SPEC-HYG-005-ts-node-types is **already complete**. All acceptance criteria are satisfied:
+- ✅ `@types/node` in devDependencies
+- ✅ "node" in tsconfig types array  
+- ✅ TS2304 count reduced from 344+ to 3 (well below target of <50)
+
+The "failures" in both fix cycles are **queue infrastructure bugs**, not code failures:
+- Watchdog restart logic in `dispatch_handler.py` throws FileNotFoundError when temp files are cleaned up before restart
+- This is a bug in the queue runner itself, not in the HYG-005 code
+
+This is fix cycle 2 of 2. Per HIVE.md rules, after 2 failed fix cycles, the spec must be flagged **NEEDS_DAVE**.
+
+**Recommended actions:**
+1. Move HYG-005 to `.deia/hive/queue/_needs_review/`
+2. Create new spec to fix the watchdog restart bug in `dispatch_handler.py`
+3. Mark original HYG-005 as COMPLETE (no code changes needed)

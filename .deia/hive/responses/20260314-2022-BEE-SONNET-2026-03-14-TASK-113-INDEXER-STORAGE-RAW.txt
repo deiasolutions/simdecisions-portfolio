@@ -1,0 +1,45 @@
+# BEE RESPONSE: 2026-03-14-TASK-113-INDEXER-STORAGE
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260314-2022
+# Task file: 2026-03-14-TASK-113-INDEXER-STORAGE.md
+# Success: True
+# Duration: 244.2s
+# Files modified: 9 (verified)
+# Cost (USD): $0
+# Turns: 17
+# API duration (ms): 221931
+# Session ID: 0c4987ab-ccd1-41e6-881c-a20e78c9c468
+# Boot injected: True
+
+---
+
+Perfect! The task is complete. Let me provide a summary:
+
+---
+
+## TASK-113: Indexer Storage — COMPLETE ✅
+
+I successfully implemented the SQLite-based persistence layer for the RAG indexer with full test coverage.
+
+### Deliverables:
+1. **`storage.py` (553 lines)** — IndexStorage class with 11 methods + compute_content_hash()
+2. **`test_storage.py` (510 lines)** — 18 comprehensive tests
+
+### Key Features:
+- **3-table schema:** index_records, chunks, embeddings
+- **Cascade delete:** Foreign key constraints with ON DELETE CASCADE
+- **JSON serialization:** All Pydantic models stored as JSON TEXT
+- **Binary vectors:** Embeddings pickled to BLOB for efficient storage
+- **Pagination:** limit/offset support in list_all()
+- **Filtering:** By artifact_type and storage_tier
+- **Default location:** `~/hive/local/index.db`
+
+### Test Results:
+✅ **18 passed, 0 failed** in 0.50s
+
+### Response File:
+Written to: `.deia/hive/responses/20260314-TASK-113-RESPONSE.md`
+
+The storage layer is production-ready and follows the ported schema exactly. All acceptance criteria met.

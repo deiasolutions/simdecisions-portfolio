@@ -1,0 +1,38 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MW-032-status-bar-mobile-css
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-0045
+# Task file: QUEUE-TEMP-SPEC-MW-032-status-bar-mobile-css.md
+# Success: True
+# Duration: 68.2s
+# Files modified: 16 (verified)
+# Cost (USD): $0.7754580000000001
+# Turns: 8
+# API duration (ms): 66535
+# Session ID: 88ad454f-355b-422d-8501-8e9a8f782851
+# Boot injected: True
+
+---
+
+## Task Complete ✓
+
+**SPEC-MW-032: Status-Bar Mobile CSS** has been successfully completed.
+
+### Summary
+Added mobile-responsive CSS to the status-bar primitive with:
+
+1. **Tablet breakpoint (≤768px)**: Reduced padding (8px), smaller font (10px), narrower egg-name (120px)
+2. **Phone breakpoint (≤480px)**: Hides currency/connection labels for space efficiency
+3. **Safe area support**: `env(safe-area-inset-bottom)` added to both breakpoints for notched devices
+
+### Changes Made
+- Modified `browser/src/primitives/status-bar/StatusBar.css` (150 lines total, added ~11 lines)
+- Reorganized responsive breakpoints to properly cascade tablet → phone styles
+- No JSX changes required (CSS-only as specified)
+- All CSS variables maintained (`var(--sd-*)`) — Rule 3 compliant
+
+### Acceptance Criteria: 9/9 ✓
+All criteria met, including safe area handling and responsive breakpoints at 768px and 480px.
+
+Response file written to: `.deia/hive/responses/20260406-QUEUE-TEMP-SPEC-MW-032-RESPONSE.md`

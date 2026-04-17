@@ -1,0 +1,51 @@
+# BEE RESPONSE: TASK-040-8os-remaining-cli-commands
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260313-0830
+# Task file: TASK-040-8os-remaining-cli-commands.md
+# Success: True
+# Duration: 576.2s
+# Files modified: 19 (verified)
+# Cost (USD): $0
+# Turns: 50
+# API duration (ms): 404790
+# Session ID: 49db7b4e-c497-4daf-b8c7-9e85f43f399c
+# Boot injected: True
+
+---
+
+Excellent! All commands are working. Let me create a summary of what was accomplished:
+
+---
+
+## TASK-040 Complete ✅
+
+Successfully implemented all remaining 8os CLI commands following TDD principles.
+
+### Commands Added (7 new + 2 subcommands)
+1. **`8os queue`** / **`8os queue --status`** — Run or check build queue
+2. **`8os dispatch <file>`** — Dispatch single task with model/role options
+3. **`8os index`** / **`8os index --full`** — Rebuild repo semantic index
+4. **`8os inventory [args]`** — Passthrough to inventory CLI
+5. **`8os volumes`** — List mounted volumes with status
+6. **`8os node list`** — Show connected peer nodes
+7. **`8os node announce`** — Force cloud re-announcement
+
+### Backend Routes Added
+- **GET `/storage/volumes`** — List all volumes with online/offline status
+- **POST `/node/announce`** — Force re-announce to cloud (local mode)
+
+### Test Coverage
+- **24 new tests**, all passing
+- Full test suite: 114 tests passed (CLI + storage)
+- TDD approach: red → green → refactor
+
+### Key Implementation Details
+- Queue runner dynamically imported to avoid cycles
+- Passthrough commands use `subprocess.run()`
+- All error paths tested and handle gracefully
+- Relative time formatting for node last-seen timestamps
+- Volume type display cleaned up for readability
+
+The 8os CLI tool is now complete with full server, sync, build pipeline, feature tracking, and infrastructure management capabilities.

@@ -1,0 +1,66 @@
+# BEE RESPONSE: 2026-03-15-TASK-153-port-rag-chunker
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260315-1418
+# Task file: 2026-03-15-TASK-153-port-rag-chunker.md
+# Success: True
+# Duration: 610.7s
+# Files modified: 35 (verified)
+# Cost (USD): $0
+# Turns: 32
+# API duration (ms): 273778
+# Session ID: ee838d3b-c2c2-4712-92bd-c7ad6298cc94
+# Boot injected: True
+
+---
+
+Perfect! Let me create a summary:
+
+## TASK-153: Port RAG Chunker Module — COMPLETE ✓
+
+### Summary
+
+I have successfully completed TASK-153 by porting the RAG chunker module from the platform repository and implementing comprehensive tests using TDD.
+
+### Deliverables
+
+1. **Created** `hivenode/rag/indexer/chunker.py` (323 lines, under 500-line limit)
+   - Fully ported Chunker class with all 10 methods
+   - Type-aware chunking for 8 artifact types (CODE, PHASE-IR, ADR, SPEC, DOCUMENT, CONVERSATION_TURN, CONVERSATION_SEGMENT, and fallback)
+   - All chunking methods: Python AST, JavaScript regex, PHASE-IR JSON, ADR sections, Spec/Document headings
+
+2. **Created** `tests/hivenode/rag/test_chunker.py` (635 lines)
+   - 43 comprehensive tests written FIRST (TDD approach)
+   - Tests for Python chunking (5), JavaScript chunking (4), PHASE-IR (4), ADR (3), Spec (2), Document (1), headings (3), chunk creation (3), dispatch (9), edge cases (6), IR pairs (3)
+   - **All 43 tests PASS** ✓
+
+3. **Updated** `hivenode/rag/indexer/__init__.py`
+   - Added Chunker import and export
+   - Verification: `from hivenode.rag.indexer import Chunker` works correctly
+
+4. **Created** response file: `.deia/hive/responses/20260315-TASK-153-RESPONSE.md`
+   - Full 8-section response with all required details
+
+### Key Features Implemented
+
+- ✅ Main dispatcher `chunk()` routes by artifact type
+- ✅ Code dispatcher handles .py, .js, .jsx, .ts, .tsx files
+- ✅ Python chunking via AST (parses functions, classes, async functions)
+- ✅ JavaScript chunking via regex (handles declarations, arrow functions, methods)
+- ✅ PHASE-IR chunking per node with JSON parsing
+- ✅ ADR chunking per decision section (## Decision N)
+- ✅ Spec chunking per capability (## headings)
+- ✅ Document chunking per section (## headings)
+- ✅ Generic markdown heading-based chunking
+- ✅ Token estimation (4 chars/token)
+- ✅ IR pair creation with UNTESTED status
+- ✅ Proper fallbacks for syntax errors, invalid JSON, missing sections
+
+### Test Results
+
+```
+======================== 43 passed, 1 warning in 0.26s ========================
+```
+
+All tests pass without conftest (pre-existing codebase issue unrelated to this task).

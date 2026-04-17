@@ -1,0 +1,58 @@
+# BEE RESPONSE: 2026-04-06-BRIEFING-SCHEDULER-COMPLETION-DETECTION
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260406-0714
+# Task file: 2026-04-06-BRIEFING-SCHEDULER-COMPLETION-DETECTION.md
+# Success: True
+# Duration: 118.6s
+# Files modified: 6 (verified)
+# Cost (USD): $1.089663
+# Turns: 11
+# API duration (ms): 116195
+# Session ID: e8c86705-0e55-4939-ad86-51d8ae612c10
+# Boot injected: True
+
+---
+
+---
+
+## DIAGNOSIS COMPLETE — Root Cause Found
+
+The scheduler daemon is not detecting task completions due to a **task ID extraction bug** on line 252 of `scheduler_daemon.py`.
+
+### The Problem
+
+**Current logic:**
+```python
+done_specs = {f.stem.replace("SPEC-", "") for f in done_dir.glob("SPEC-*.md")}
+```
+
+This creates entries like `"MW-031-menu-bar-drawer"` but task IDs are just `"MW-031"`. The comparison `task.id in done_specs` never matches.
+
+**Evidence:**
+- 19 specs completed overnight in `_done/`: `SPEC-MW-031-menu-bar-drawer.md`, `SPEC-MW-S01-command-interpreter.md`, etc.
+- Scheduler still reports 66 tasks, 95h makespan (unchanged)
+- All completed tasks show status: `"unknown"` instead of `"done"`
+
+### The Fix
+
+Extract just the task ID from spec filenames using prefix matching (same pattern the dispatcher uses). I've written:
+
+**Task file:** `.deia/hive/tasks/2026-04-06-TASK-SCHED-COMPLETION-FIX.md`
+
+**Key deliverable:** Add `_extract_task_id_from_spec()` method that:
+- Input: `SPEC-MW-031-menu-bar-drawer.md`
+- Output: `MW-031`
+- Supports all three naming formats (exact, prefix, dated)
+
+**Impact after fix:**
+1. Scheduler detects 19 completions
+2. Schedule recalculates: 66 → 47 tasks, 95h → ~75h makespan
+3. Phase 0.5 test tasks (MW-T01 through MW-T08) become `"ready"`
+4. Dispatcher moves them from backlog/ to queue/
+5. Build pipeline unblocks
+
+---
+
+**Ready for Q33NR review.** This is a P0 blocker for the entire dependency-blocked task wave. Should I proceed with dispatch after your review?

@@ -1,0 +1,49 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-PERF-05-discovery-guard
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260401-1307
+# Task file: QUEUE-TEMP-SPEC-PERF-05-discovery-guard.md
+# Success: True
+# Duration: 257.9s
+# Files modified: 13 (verified)
+# Cost (USD): $3.5237849999999997
+# Turns: 24
+# API duration (ms): 201057
+# Session ID: 07de1765-8566-424f-8ae6-8800e31734f1
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Let me provide a summary:
+
+## Task Complete ✓
+
+**SPEC-PERF-05: Skip Localhost Port Scanning in Production for discoverHivenodeUrl**
+
+### Summary
+
+I successfully implemented a production hostname guard for `discoverHivenodeUrl()` that prevents unnecessary localhost port scanning when running on production domains (efemera.live, shiftcenter.com, simdecisions.com, hodeia.guru).
+
+### What Changed
+
+1. **Modified `hivenodeDiscovery.ts`**: Added hostname check that returns `""` immediately (same-origin) when hostname is not `localhost` or `127.0.0.1`, preventing up to 19.5 seconds of wasted network probes (13 ports × 1.5s timeout each).
+
+2. **Added 7 comprehensive tests** following TDD:
+   - 4 tests for production domains (efemera.live, shiftcenter.com, simdecisions.com, hodeia.guru)
+   - 2 tests verifying localhost probing still works
+   - 1 test for result caching
+
+### Test Results
+
+- **16/16 tests passing** (7 new + 9 existing)
+- All acceptance criteria met
+- Smoke test passed
+- No regressions
+
+### Files Modified
+
+- `browser/src/services/hivenodeDiscovery.ts`
+- `browser/src/services/__tests__/hivenodeDiscovery.test.ts`
+
+**Response file written to:** `.deia/hive/responses/20260401-SPEC-PERF-05-RESPONSE.md`

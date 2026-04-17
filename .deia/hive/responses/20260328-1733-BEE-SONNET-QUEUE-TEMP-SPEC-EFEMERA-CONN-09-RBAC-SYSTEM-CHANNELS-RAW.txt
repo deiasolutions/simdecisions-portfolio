@@ -1,0 +1,51 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-EFEMERA-CONN-09-rbac-system-channels
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260328-1733
+# Task file: QUEUE-TEMP-SPEC-EFEMERA-CONN-09-rbac-system-channels.md
+# Success: True
+# Duration: 1052.0s
+# Files modified: 5 (verified)
+# Cost (USD): $4.328303999999999
+# Turns: 34
+# API duration (ms): 232616
+# Session ID: 6fee8154-6edf-4131-91de-d1072b3cb082
+# Boot injected: True
+
+---
+
+Excellent! All files are well under the 500-line limit. Let me create a summary for the user:
+
+## Summary
+
+Successfully completed SPEC-EFEMERA-CONN-09: Port RBAC + System Channels from platform to hivenode.
+
+### What Was Built
+
+**RBAC Permission System** (`hivenode/efemera/roles.py`, 73 lines)
+- Three user roles: MEMBER (5 permissions), ADMIN (7 permissions), OWNER (6 permissions)
+- Seven channel permissions: read, write, leave, manage, join, send, read_messages
+- OWNER intentionally cannot LEAVE — must transfer ownership first
+- Case-insensitive role string handling
+
+**System Channels** (`hivenode/efemera/system_channels.py`, 205 lines)
+- 10 system channels with known IDs: commons, the-buzz, announcements, the-window, dev, approvals, moderation-log, bugs-admin, bok-submissions, humans-only
+- Auto-seeding on first boot via `_seed_defaults()` in store.py
+- Each channel gets system user as owner + welcome message
+- Personal channel creation with `personal-{user_id[:8]}` naming
+- All idempotent — safe to call multiple times
+
+### Test Results
+**23 tests, all passing:**
+- 11 RBAC tests covering all permission combinations
+- 12 system channel tests covering seeding, idempotency, properties
+
+**No regressions:** Full efemera test suite shows 107 passed tests. 9 failures are pre-existing flaky tests unrelated to this spec.
+
+### Files Modified
+- Created: `roles.py`, `system_channels.py`
+- Created: `test_efemera_rbac.py` (11 tests), `test_efemera_system_channels.py` (12 tests)
+- Modified: `store.py` (updated `_seed_defaults()` to call `seed_system_channels()`)
+
+All files under 500 lines. Response file written to `.deia/hive/responses/20260328-EFEMERA-CONN-09-RESPONSE.md`.

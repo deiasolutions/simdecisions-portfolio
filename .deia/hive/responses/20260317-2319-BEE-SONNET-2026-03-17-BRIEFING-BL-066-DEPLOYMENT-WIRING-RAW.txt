@@ -1,0 +1,100 @@
+# BEE RESPONSE: 2026-03-17-BRIEFING-BL-066-DEPLOYMENT-WIRING
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260317-2319
+# Task file: 2026-03-17-BRIEFING-BL-066-DEPLOYMENT-WIRING.md
+# Success: True
+# Duration: 192.4s
+# Files modified: 27 (verified)
+# Cost (USD): $2.449416
+# Turns: 23
+# API duration (ms): 142024
+# Session ID: 4a2772c9-352f-4dd0-8b91-5adb4c116c3d
+# Boot injected: False
+
+---
+
+Perfect! I've written the task file. Now let me write my response back to Q33NR summarizing what I've created:
+
+---
+
+**Q33N Report to Q33NR**
+
+**Date:** 2026-03-17  
+**Briefing:** BL-066 Deployment Wiring Verification  
+**Task Files Created:** 1
+
+---
+
+## Task File Created
+
+**File:** `.deia/hive/tasks/2026-03-17-TASK-BL066-deployment-wiring.md`
+
+### Summary
+
+Created a single task file for verifying deployment wiring. The task focuses on **documentation and verification** rather than actual deployment, per the briefing requirements.
+
+### Deliverables in Task File
+
+1. **Railway config evaluation** — Decide if `railway.toml` is needed or if dashboard-only is sufficient
+2. **Vercel config verification** — Verify `vercel.json` settings match requirements
+3. **Create `docs/DEPLOYMENT.md`** — Concise quick-reference guide with env var tables (supplements existing `docs/DEPLOYMENT-WIRING-NOTES.md`)
+4. **Test: Vercel build** — Run `npm run build` locally, verify success, capture output
+5. **Verify health endpoint** — Confirm `/health` endpoint exists and has correct response format
+6. **Document Railway start command** — Verify both `python -m hivenode` and `hive` console script work
+7. **Document port configuration** — Verify Railway `$PORT` auto-detection works
+
+### Key Findings from Codebase Review
+
+✅ **Vercel config complete:**
+- `vercel.json` exists with correct build/output settings
+- `browser/package.json` has `copy-eggs` script that runs before build
+- SPA rewrites configured
+
+✅ **Health endpoint exists:**
+- `hivenode/routes/health.py` — `GET /health` returns JSON with `status`, `mode`, `version`, `uptime_s`
+- No code changes needed
+
+✅ **Port configuration correct:**
+- `hivenode/config.py` line 84-86 detects Railway `$PORT` when `HIVENODE_MODE=cloud`
+
+✅ **Console script defined:**
+- `pyproject.toml` defines `hive = "hivenode.__main__:main"`
+
+✅ **Comprehensive deployment docs exist:**
+- `docs/DEPLOYMENT-WIRING-NOTES.md` (765 lines) — full procedures, DNS config, smoke tests
+- Task will create `docs/DEPLOYMENT.md` as concise quick-reference supplement
+
+❌ **No Railway config file:**
+- No `railway.toml`, `railway.json`, or `Procfile` in repo
+- Task will evaluate if one is needed or document dashboard-only approach
+
+### Test Plan
+
+**Manual tests only** (no automated test files):
+1. Run `cd browser && npm run build` → verify success, capture last 10 lines
+2. Check `browser/dist/` for built files
+3. Verify EGG file handling (copied to dist OR served via Vite plugin)
+4. Read health endpoint code, verify response format
+5. Verify console script in pyproject.toml
+
+### Task Constraints
+- No code modifications (documentation only)
+- No secrets in committed files
+- No git operations
+- `docs/DEPLOYMENT.md` under 300 lines
+
+### Model Assignment
+**sonnet** — requires understanding of deployment platforms, config formats, and technical writing
+
+### Priority
+**P0** — needed before production deploy
+
+---
+
+## Ready for Q33NR Review
+
+The task file is ready for your review. Once approved, I will dispatch a sonnet bee to execute this verification task.
+
+**Awaiting Q33NR approval before dispatch.**

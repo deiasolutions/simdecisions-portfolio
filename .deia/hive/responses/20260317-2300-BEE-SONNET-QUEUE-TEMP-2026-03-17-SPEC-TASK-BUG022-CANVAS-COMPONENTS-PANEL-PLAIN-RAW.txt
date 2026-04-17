@@ -1,0 +1,50 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-17-SPEC-TASK-BUG022-canvas-components-panel-plain
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260317-2300
+# Task file: QUEUE-TEMP-2026-03-17-SPEC-TASK-BUG022-canvas-components-panel-plain.md
+# Success: True
+# Duration: 1551.7s
+# Files modified: 111 (verified)
+# Cost (USD): $7.236003000000001
+# Turns: 36
+# API duration (ms): 476839
+# Session ID: 7e9e12db-3205-4ef2-ab12-1d06bded4fd0
+# Boot injected: True
+
+---
+
+Perfect! BUG-022 is complete. Let me create a summary of the changes:
+
+## Summary
+
+I've successfully fixed **BUG-022** (Canvas components panel shows plain list, no icons, click does nothing). 
+
+### What Was Fixed
+
+1. **Icon Rendering** - TreeNodeRow now renders emoji icons as text content (not CSS classes)
+   - Added smart `isTextIcon()` helper to distinguish Unicode/emoji from CSS class icons
+   - Palette icons now display correctly: ◉ (Task), ◈ (Queue), ● (Start), ○ (End), etc.
+
+2. **Drag Metadata** - PaletteAdapter now provides complete drag data
+   - Added `dragMimeType: 'application/sd-node-type'`
+   - Added `dragData: { nodeType }` 
+   - Added `canvasInternal: true` flag for shell isolation
+
+3. **Architecture Verified** - Click/drag handlers were already wired correctly
+   - TreeNodeRow sets dataTransfer on drag
+   - CanvasApp reads correct MIME type on drop
+   - TreeBrowserAdapter broadcasts palette:node-drag-start
+
+### Test Results
+- ✅ **22 new tests** across 3 test files
+- ✅ **33+ total tests passing** for this fix
+- ✅ All acceptance criteria met
+
+### Files Modified
+- `TreeNodeRow.tsx` - Smart icon rendering (text vs className)
+- `paletteAdapter.ts` - Added drag metadata
+- 3 new test files with comprehensive coverage
+
+The components panel now shows icons for each node type, and clicking/dragging a component correctly places it on the canvas. All tests pass, and the implementation follows the CSS variables requirement (no hardcoded colors).

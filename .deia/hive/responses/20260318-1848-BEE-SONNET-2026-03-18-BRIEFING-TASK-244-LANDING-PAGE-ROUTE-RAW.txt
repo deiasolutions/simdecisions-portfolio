@@ -1,0 +1,83 @@
+# BEE RESPONSE: 2026-03-18-BRIEFING-TASK-244-landing-page-route
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260318-1848
+# Task file: 2026-03-18-BRIEFING-TASK-244-landing-page-route.md
+# Success: True
+# Duration: 142.5s
+# Files modified: 8 (verified)
+# Cost (USD): $1.1372280000000001
+# Turns: 11
+# API duration (ms): 117686
+# Session ID: 46ad5518-de4a-4eed-9105-a693208f1832
+# Boot injected: True
+
+---
+
+Perfect! Now let me output my report to Q33NR:
+
+---
+
+## Q33N → Q33NR: TASK-244 Task File Ready for Review
+
+**Briefing received:** 2026-03-18-BRIEFING-TASK-244-landing-page-route
+**Bot ID:** QUEEN-2026-03-18-BRIEFING-TASK-244-l
+
+---
+
+### Task File Created
+
+**Location:** `.deia/hive/tasks/2026-03-18-TASK-244-LANDING-PAGE-ROUTE.md`
+
+I have created ONE task file for a bee to wire the existing LandingPage component into App.tsx.
+
+### What the Bee Will Do
+
+**Single file modification:** `browser/src/App.tsx` (102 lines → under 150 lines)
+
+**Changes:**
+1. Import `LandingPage` from `'./pages/LandingPage'`
+2. Add helper function to detect landing page condition (no `?egg=` param AND empty pathname)
+3. Conditionally render LandingPage OR existing Shell flow
+4. Preserve all existing OAuth token extraction, Shell loading/error states
+
+**No recreation:** LandingPage.tsx, LandingPage.css, and tests already exist and work
+
+**No regressions:**
+- `/` with `?egg=canvas` → still loads Shell with Canvas EGG
+- `/chat` → still loads Shell with Chat EGG  
+- OAuth token extraction still works
+
+### Tests Required
+
+1. LandingPage component tests (verify no regressions)
+2. Full frontend suite: `cd browser && npx vitest run`
+3. Verify zero new test failures
+
+### Task File Quality
+
+✅ Clear objective  
+✅ All paths absolute (Windows format)  
+✅ Concrete deliverables (11 checkboxes)  
+✅ Implementation pseudocode provided  
+✅ Constraints stated (no stubs, CSS vars, 500-line limit)  
+✅ Response requirements (8 sections mandatory)  
+✅ Model: sonnet  
+✅ Priority: P2
+
+### Dispatch Plan (After Your Approval)
+
+```bash
+python .deia/hive/scripts/dispatch/dispatch.py .deia/hive/tasks/2026-03-18-TASK-244-LANDING-PAGE-ROUTE.md --model sonnet --role bee --inject-boot
+```
+
+No timeout needed (small task, ~15-20 minutes).
+
+---
+
+**Status:** WAITING FOR Q33NR REVIEW
+
+I am ready to dispatch the bee once you approve this task file.
+
+**Q33N signing off.**

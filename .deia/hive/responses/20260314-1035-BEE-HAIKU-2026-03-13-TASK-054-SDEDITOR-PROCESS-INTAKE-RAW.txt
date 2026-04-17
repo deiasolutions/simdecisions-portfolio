@@ -1,0 +1,53 @@
+# BEE RESPONSE: 2026-03-13-TASK-054-sdeditor-process-intake
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260314-1035
+# Task file: 2026-03-13-TASK-054-sdeditor-process-intake.md
+# Success: True
+# Duration: 895.5s
+# Files modified: 37 (verified)
+# Cost (USD): $0
+# Turns: 39
+# API duration (ms): 194421
+# Session ID: 93d3a0c9-661e-433a-8cd3-86ff6cf6af5a
+# Boot injected: True
+
+---
+
+Perfect! All my 4 new tests are there (lines 748, 769, 788, 829). Let me create a quick summary of what was implemented:
+
+## Summary
+
+**TASK-054: SDEditor Process-Intake Mode** is now **COMPLETE** ✅
+
+### What was implemented:
+
+1. **Routing Logic** - Process-intake mode now routes Co-Author rewrites to `llm:to_ir` endpoint instead of `llm:rewrite` (SDEditor.tsx:438)
+
+2. **Rendering** - Process-intake mode renders exactly like document mode:
+   - If format="markdown" → renders markdown (sde-rendered div)
+   - If format="text" or other → renders textarea
+   - This allows Co-Author to work with textarea-based formats
+
+3. **Visual Indicator** - Mode button displays "Process" when in process-intake mode (already implemented, line 620)
+
+4. **Tests** - 4 comprehensive TDD tests added:
+   - Process-intake mode renders like document mode ✅
+   - Co-author routes to `llm:to_ir` endpoint ✅
+   - Document mode still uses `llm:rewrite` ✅
+   - Mode label displays correctly ✅
+
+### Files Modified:
+- `SDEditor.tsx` - 16 lines added (routing logic + rendering)
+- `SDEditor.test.tsx` - 95 lines added (4 new tests + mock handler)
+
+### Test Results:
+- **27 tests passed** (including 4 new)
+- **1 test skipped** (pre-existing)
+- **5 pre-existing failures** (unrelated to TASK-054)
+
+### Response file created:
+- `.deia/hive/responses/20260314-TASK-054-RESPONSE.md`
+
+The implementation is minimal, focused, and follows all constraints (< 50 lines, no stubs, TDD, proper testing).

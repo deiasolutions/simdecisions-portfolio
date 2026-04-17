@@ -1,0 +1,58 @@
+# BEE RESPONSE: 2026-03-13-TASK-066-build-monitor-frontend-timers
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260313-2019
+# Task file: 2026-03-13-TASK-066-build-monitor-frontend-timers.md
+# Success: True
+# Duration: 626.6s
+# Files modified: 18 (verified)
+# Cost (USD): $0
+# Turns: 1
+# API duration (ms): 457398
+# Session ID: 1c46c865-177c-40b6-a267-a4dbf75acb99
+# Boot injected: True
+
+---
+
+Perfect! I can see the linter added token display to the log entries as well (lines 386-390). The implementation is complete and all tests are passing.
+
+## TASK-066 Complete ✅
+
+**Status:** COMPLETE  
+**Model:** Sonnet  
+**Date:** 2026-03-13
+
+### Deliverables
+
+**Files Modified:**
+1. `buildMonitorAdapter.tsx` — Added `formatElapsed()` helper, live timer hook, elapsed/duration displays
+2. `buildMonitorFormatters.test.tsx` — Created new test file with 13 passing tests
+
+### Implementation Summary
+
+**formatElapsed Helper:**
+- Formats milliseconds to human-readable strings
+- `32s` for < 60 seconds
+- `4m 32s` for >= 60 seconds  
+- `72m 15s` for >= 60 minutes (no hours conversion)
+
+**Live Timers for RUNNING Tasks:**
+- `useEffect` hook with 1-second interval
+- Only runs when RUNNING tasks exist
+- Displays in status label: `"RUNNING 4m 32s"`
+- Auto-clears interval on unmount
+
+**Duration Display for Completed Tasks:**
+- Calculates from `first_seen` to `last_seen`
+- Shows in metadata: `"7m 14s, 12,430↑ 3,210↓"`
+
+**Tests:**
+- 13/13 passing (4 formatElapsed + 9 formatTokens)
+- buildMonitorFormatters.test.tsx created per TASK-064 guidance
+
+**File Metrics:**
+- buildMonitorAdapter.tsx: 414 lines (under 500 limit ✅)
+- buildMonitorFormatters.test.tsx: 77 lines
+
+Response file written to `.deia/hive/responses/20260313-TASK-066-RESPONSE.md`

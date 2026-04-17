@@ -1,0 +1,67 @@
+# BEE RESPONSE: 2026-03-19-TASK-BL121-B-fix-properties-adapter-data
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260319-0900
+# Task file: 2026-03-19-TASK-BL121-B-fix-properties-adapter-data.md
+# Success: True
+# Duration: 1036.4s
+# Files modified: 31 (verified)
+# Cost (USD): $1.6986832
+# Turns: 45
+# API duration (ms): 237601
+# Session ID: e6e2ed84-c19d-440e-83f7-84d574727947
+# Boot injected: True
+
+---
+
+Excellent! Everything is complete. Let me create a summary:
+
+---
+
+## Task Completion Summary
+
+**TASK-BL121-B: Fix Properties Adapter Data Handling** ✅ **COMPLETE**
+
+### What Was Accomplished
+
+I've successfully updated the properties adapter to correctly handle Canvas NodeData from `canvas:node-selected` events and display properties in the properties pane.
+
+### Files Modified
+
+1. **propertiesAdapter.ts** (295 lines)
+   - Changed type system from IR `Node` → Canvas `NodeData`
+   - Updated all section builders (General, Timing, Operator, Connections) to map Canvas node fields
+   - Added support for `canvas:node-deselected` event to clear properties
+
+2. **propertiesAdapter.test.ts** (488 lines)
+   - Converted 7 existing tests from IR Node payloads to Canvas NodeData payloads
+   - Added 5 new comprehensive edge case tests
+
+### Test Results
+
+✅ **12/12 tests passing** (100% success rate)
+- 7 existing tests updated and passing
+- 5 new edge case tests added and passing
+- No regressions in 85 adapter tests across 7 test files
+
+### Key Features Implemented
+
+✅ Maps Canvas NodeData → Property tree sections:
+- **General:** label, nodeType
+- **Timing:** distribution, mean, std, min, max, unit
+- **Operator:** type, tier, resource, promptRef, costCap
+- **Connections:** placeholder (for future edge data)
+
+✅ Handles deselection gracefully
+✅ Handles missing/undefined fields (no crashes)
+✅ Handles minimal data (only label + nodeType)
+✅ Handles comprehensive data (all optional fields)
+✅ No hardcoded colors, no stubs, no TODOs
+✅ Files under size limits (295 < 500 lines for adapter)
+
+### Response File
+
+📄 **Location:** `.deia/hive/responses/20260319-TASK-BL121-B-RESPONSE.md`
+
+The task is ready for review by Q88N or integration testing by parallel task BL121-A (wiring).

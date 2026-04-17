@@ -1,0 +1,50 @@
+# BEE RESPONSE: 2026-03-14-TASK-094-canvas-adapter
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260314-1121
+# Task file: 2026-03-14-TASK-094-canvas-adapter.md
+# Success: True
+# Duration: 115.6s
+# Files modified: 4 (verified)
+# Cost (USD): $0
+# Turns: 19
+# API duration (ms): 87132
+# Session ID: 3a5ff482-dea1-4139-a565-1dc6628086f2
+# Boot injected: True
+
+---
+
+## ✅ TASK-094 Complete
+
+I've successfully built the Canvas App Adapter for ShiftCenter. Here's what was delivered:
+
+### **Files Created**
+1. **`browser/src/apps/canvasAdapter.tsx`** (32 lines)
+   - Wraps `CanvasApp` component
+   - Extracts `bus` from ShellCtx
+   - Passes `paneId` as `nodeId`
+   - Handles missing config gracefully
+   - Follows exact pattern from `terminalAdapter.tsx`
+
+2. **`browser/src/apps/__tests__/canvasAdapter.test.tsx`** (89 lines)
+   - 5 comprehensive tests covering all paths
+   - Tests for missing config, null bus, context integration
+   - All tests passing ✓
+
+### **Files Modified**
+- **`browser/src/apps/index.ts`**
+  - Added import: `import { CanvasAdapter } from './canvasAdapter'`
+  - Registered: `registerApp('canvas', CanvasAdapter)`
+
+### **Test Results**
+- ✓ 5 adapter tests passed
+- ✓ 52 total app adapter tests passed (no regressions)
+- ✓ Browser build succeeded (2,128 kB, 8.50s)
+
+### **Key Points**
+- Adapter is now discoverable by EGG configs using `"app": "canvas"`
+- Ready for Canvas EGG integration (TASK-097)
+- All constraints met (lines, CSS, pattern compliance)
+
+Response file written to: `.deia/hive/responses/20260314-TASK-094-RESPONSE.md`

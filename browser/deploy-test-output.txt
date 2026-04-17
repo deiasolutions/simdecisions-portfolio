@@ -1,0 +1,120 @@
+
+Running 9 tests using 1 worker
+
+  ok 1 [chromium] › e2e\deploy-smoke.spec.ts:32:1 › should load homepage and render root element (1.9s)
+  x  2 [chromium] › e2e\deploy-smoke.spec.ts:42:1 › should return 200 from /health endpoint (15.0s)
+  x  3 [chromium] › e2e\deploy-smoke.spec.ts:52:1 › should render chat EGG with 3 panes (11.7s)
+  x  4 [chromium] › e2e\deploy-smoke.spec.ts:70:1 › should render canvas EGG with 5 panes (1.7s)
+  x  5 [chromium] › e2e\deploy-smoke.spec.ts:88:1 › should render build-monitor EGG (2.1s)
+  ok 6 [chromium] › e2e\deploy-smoke.spec.ts:102:1 › should accept terminal input and echo message (2.4s)
+  ok 7 [chromium] › e2e\deploy-smoke.spec.ts:123:1 › should load homepage in under 3 seconds (2.0s)
+  x  8 [chromium] › e2e\deploy-smoke.spec.ts:137:1 › should have no console errors on homepage (2.9s)
+  ok 9 [chromium] › e2e\deploy-smoke.spec.ts:161:1 › should render sim EGG with hhp-root (2.0s)
+
+
+  1) [chromium] › e2e\deploy-smoke.spec.ts:42:1 › should return 200 from /health endpoint ──────────
+
+    [31mTest timeout of 15000ms exceeded while setting up "page".[39m
+
+    TypeError: Cannot read properties of null (reading 'screenshot')
+
+      24 |   const filename = `${testInfo.title.replace(/\s+/g, '-')}-${timestamp}.png`
+      25 |   const screenshotPath = path.join(__dirname, '../../.deia/hive/smoke', filename)
+    > 26 |   await page.screenshot({ path: screenshotPath, fullPage: true })
+         |              ^
+      27 | })
+      28 |
+      29 | /**
+        at C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\browser\e2e\deploy-smoke.spec.ts:26:14
+
+    Error: browserContext.newPage: Test timeout of 15000ms exceeded.
+
+  2) [chromium] › e2e\deploy-smoke.spec.ts:52:1 › should render chat EGG with 3 panes ──────────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.text-pane')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('.text-pane')[22m
+
+
+      61 |
+      62 |   await expect(treeBrowser).toBeVisible({ timeout: 10000 })
+    > 63 |   await expect(textPane).toBeVisible({ timeout: 10000 })
+         |                          ^
+      64 |   await expect(terminal).toBeVisible({ timeout: 10000 })
+      65 | })
+      66 |
+        at C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\browser\e2e\deploy-smoke.spec.ts:63:26
+
+    Error Context: test-results-deploy\deploy-smoke-should-render-chat-EGG-with-3-panes-chromium\error-context.md
+
+  3) [chromium] › e2e\deploy-smoke.spec.ts:70:1 › should render canvas EGG with 5 panes ────────────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThanOrEqual[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: >= [32m5[39m
+    Received:    [31m0[39m
+
+      80 |   
+      81 |   // Canvas has 5 panes: canvas-palette, canvas-editor, canvas-chat, canvas-ir, canvas-properties
+    > 82 |   expect(count).toBeGreaterThanOrEqual(5)
+         |                 ^
+      83 | })
+      84 |
+      85 | /**
+        at C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\browser\e2e\deploy-smoke.spec.ts:82:17
+
+    Error Context: test-results-deploy\deploy-smoke-should-render-canvas-EGG-with-5-panes-chromium\error-context.md
+
+  4) [chromium] › e2e\deploy-smoke.spec.ts:88:1 › should render build-monitor EGG ──────────────────
+
+    Error: page.screenshot: Protocol error (Page.captureScreenshot): Unable to capture screenshot
+    Call log:
+    [2m  - taking page screenshot[22m
+    [2m  - waiting for fonts to load...[22m
+    [2m  - fonts loaded[22m
+
+
+      24 |   const filename = `${testInfo.title.replace(/\s+/g, '-')}-${timestamp}.png`
+      25 |   const screenshotPath = path.join(__dirname, '../../.deia/hive/smoke', filename)
+    > 26 |   await page.screenshot({ path: screenshotPath, fullPage: true })
+         |              ^
+      27 | })
+      28 |
+      29 | /**
+        at C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\browser\e2e\deploy-smoke.spec.ts:26:14
+
+    Error Context: test-results-deploy\deploy-smoke-should-render-build-monitor-EGG-chromium\error-context.md
+
+  5) [chromium] › e2e\deploy-smoke.spec.ts:137:1 › should have no console errors on homepage ───────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoHaveLength[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected length: [32m0[39m
+    Received length: [31m8[39m
+    Received array:  [31m["Access to fetch at 'http://localhost:8420/health' from origin 'https://dev.shiftcenter.com' has been blocked by CORS policy: Permission was denied for this request to access the `loopback` address space.", "Failed to load resource: net::ERR_FAILED", "Access to fetch at 'http://localhost:8420/auth/identity' from origin 'https://dev.shiftcenter.com' has been blocked by CORS policy: Permission was denied for this request to access the `loopback` address space.", "Failed to load resource: net::ERR_FAILED", "Access to fetch at 'http://localhost:8420/health' from origin 'https://dev.shiftcenter.com' has been blocked by CORS policy: Permission was denied for this request to access the `loopback` address space.", "Failed to load resource: net::ERR_FAILED", "Access to fetch at 'http://localhost:8420/node/discover' from origin 'https://dev.shiftcenter.com' has been blocked by CORS policy: Permission was denied for this request to access the `loopback` address space.", "Failed to load resource: net::ERR_FAILED"][39m
+
+      153 |   await page.waitForTimeout(1000)
+      154 |
+    > 155 |   expect(errors).toHaveLength(0)
+          |                  ^
+      156 | })
+      157 |
+      158 | /**
+        at C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\browser\e2e\deploy-smoke.spec.ts:155:18
+
+    Error Context: test-results-deploy\deploy-smoke-should-have-no-console-errors-on-homepage-chromium\error-context.md
+
+  5 failed
+    [chromium] › e2e\deploy-smoke.spec.ts:42:1 › should return 200 from /health endpoint ───────────
+    [chromium] › e2e\deploy-smoke.spec.ts:52:1 › should render chat EGG with 3 panes ───────────────
+    [chromium] › e2e\deploy-smoke.spec.ts:70:1 › should render canvas EGG with 5 panes ─────────────
+    [chromium] › e2e\deploy-smoke.spec.ts:88:1 › should render build-monitor EGG ───────────────────
+    [chromium] › e2e\deploy-smoke.spec.ts:137:1 › should have no console errors on homepage ────────
+  4 passed (2.5m)

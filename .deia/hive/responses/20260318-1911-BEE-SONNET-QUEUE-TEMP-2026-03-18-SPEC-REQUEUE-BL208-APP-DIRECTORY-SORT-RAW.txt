@@ -1,0 +1,86 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-18-SPEC-REQUEUE-BL208-app-directory-sort
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260318-1911
+# Task file: QUEUE-TEMP-2026-03-18-SPEC-REQUEUE-BL208-app-directory-sort.md
+# Success: True
+# Duration: 1236.8s
+# Files modified: 2 (verified)
+# Cost (USD): $1.9673520000000002
+# Turns: 14
+# API duration (ms): 783590
+# Session ID: b4c2accd-9141-41fe-9f5b-14ba842ce196
+# Boot injected: True
+
+---
+
+Now I'll report to Q88N:
+
+---
+
+## BL-208 Re-Queue Analysis — FALSE POSITIVE
+
+**Status:** Work already complete. No bee dispatch needed.
+
+### Summary
+
+The re-queue spec claims "zero sort-by-status logic" but this is **incorrect**. The previous bee (Haiku) successfully implemented sorting AND visual indicators. All tests pass.
+
+### Evidence
+
+**1. Sort logic EXISTS** (AppsHome.tsx lines 51-57):
+```typescript
+// Sort each section: BUILT before STUB
+Object.keys(groups).forEach((section) => {
+  groups[section].sort((a, b) => {
+    if (a.status === b.status) return 0;
+    return a.status === 'BUILT' ? -1 : 1;
+  });
+});
+```
+
+**2. Visual indicators EXIST:**
+- AppCard.tsx line 17: Adds `apps-home-card--stub` class for stub cards
+- AppsHome.css line 41: `.apps-home-card--stub { opacity: 0.6; }`
+
+**3. Tests PASS (12/12):**
+```
+✓ sorts BUILT apps before STUB apps within each section
+✓ applies visual styling to stub cards with reduced opacity
+✓ sorts BUILT before STUB in all sections simultaneously
+```
+
+### Files Created
+
+**Analysis report:**
+`.deia/hive/responses/20260318-Q33NR-BL-208-REQUEUE-ANALYSIS.md`
+
+**Briefing for Q33N (if you want second opinion):**
+`.deia/hive/coordination/2026-03-18-BRIEFING-BL-208-REQUEUE-FALSE-POSITIVE.md`
+
+### Recommendation
+
+**Close the re-queue as DUPLICATE_RESOLVED.** The work is complete and correct.
+
+### What Likely Happened
+
+The verification that created this re-queue probably:
+- Read an old file version, OR
+- Stopped reading at line 49 (grouping) and missed lines 51-57 (sorting), OR  
+- Expected a function named `sortByStatus()` instead of inline `.sort()`
+
+### Process Improvement Needed
+
+Future verification should:
+1. Read the bee's response file FIRST (shows what was delivered)
+2. Run tests BEFORE claiming work is incomplete
+3. Cite exact file paths + line numbers when claiming "missing functionality"
+
+---
+
+**How would you like to proceed?**
+
+A. Close the re-queue (recommended)  
+B. Dispatch Q33N for second opinion  
+C. Something else you see that I missed

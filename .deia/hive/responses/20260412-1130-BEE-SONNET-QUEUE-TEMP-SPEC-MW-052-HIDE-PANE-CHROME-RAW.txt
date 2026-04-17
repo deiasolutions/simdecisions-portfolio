@@ -1,0 +1,46 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MW-052-hide-pane-chrome
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260412-1130
+# Task file: QUEUE-TEMP-SPEC-MW-052-hide-pane-chrome.md
+# Success: True
+# Duration: 128.0s
+# Files modified: 18 (verified)
+# Cost (USD): $2.056503
+# Turns: 17
+# API duration (ms): 111959
+# Session ID: dedb7a82-09d8-473c-8d08-875655d6ab41
+# Boot injected: True
+
+---
+
+## Summary
+
+Task **SPEC-MW-052-hide-pane-chrome** is complete.
+
+### Changes Made
+
+Modified `eggs/workdesk.set.md`:
+- Added `"chrome": false` to `workdesk-chat` pane (Conversation text-pane)
+- Added `"chrome": false` to `workdesk-engine` pane (Command terminal)
+- Added `"chrome": false` to `workdesk-queue` pane (Queue tree-browser)
+
+All chrome primitives (`chrome-top`, `chrome-menu`, `chrome-status`) remain unchanged with `"seamless": true`.
+
+### Why `chrome: false` instead of `seamless: true`?
+
+As specified in the task:
+- `seamless: true` has a secondary effect of excluding panes from mobile navigation
+- Content panes need to appear in the mobile nav (ImmersiveNavigator and MobileNav)
+- Only true chrome primitives should use `seamless: true`
+- Content panes use `chrome: false` to hide chrome bars without the mobile nav exclusion
+
+### Smoke Test
+
+The changes are ready for manual verification:
+1. Open `http://localhost:5173/?set=workdesk`
+2. Verify no pane title bars appear on chat, terminal, or queue panes
+3. Verify standard chrome frame (top-bar, menu-bar, status-bar) still renders correctly
+
+Response file written to: `.deia/hive/responses/20260412-SPEC-MW-052-RESPONSE.md`

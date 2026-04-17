@@ -1,0 +1,19 @@
+# Grace interval configuration — ADR-014
+default_grace_seconds: 300
+
+by_violation_type:
+  forbidden_action: 60
+  forbidden_target: 60
+  domain_violation: 120
+  tier_exceeded: 300
+  missing_rationale: 30
+  escalation_bypassed: 180
+
+by_gate_disposition:
+  BLOCK: 120
+  HOLD: 60
+  ESCALATE: 0
+
+no_grace_gates:
+  - "REQUIRE_HUMAN"
+  - "security_critical"

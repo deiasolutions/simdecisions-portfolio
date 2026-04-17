@@ -1,0 +1,60 @@
+# BEE RESPONSE: TASK-DA4-text-pane-diff-rendering
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260319-1441
+# Task file: TASK-DA4-text-pane-diff-rendering.md
+# Success: True
+# Duration: 215.1s
+# Files modified: 3 (verified)
+# Cost (USD): $1.8002010000000004
+# Turns: 24
+# API duration (ms): 191053
+# Session ID: 9fa25ba5-b32f-46b3-8864-dfd125629375
+# Boot injected: True
+
+---
+
+## Research Complete
+
+I've completed the audit of SDEditor/text-pane diff rendering capabilities across both repos. Here's the executive summary:
+
+### Key Findings
+
+**1. Diff Rendering: ✅ Fully Ported + Extended**
+- Unified diff parser ported identically from platform
+- Shiftcenter ADDS visual diff viewer (DiffView.tsx) with color-coded lines and dual gutters
+- New `mode: 'diff'` in SDEditor
+
+**2. Co-Author: ✅ Ported with Bus Routing**
+- Co-Author rewrite system fully ported
+- Platform calls LLM providers directly (Anthropic/Groq)
+- Shiftcenter routes through bus to terminal backend (architectural difference)
+- Accept/Reject UX identical (Tab/Escape)
+
+**3. The "Diff Queue": ❌ Does Not Exist**
+- Platform EGG declares `"frank.insertMode": "diff-queue"` setting
+- NO implementation exists in platform codebase
+- This is a STUB setting for planned feature
+- Shiftcenter correctly omits it
+
+**4. Markdown + Syntax Highlighting: ✅ Extended**
+- Platform: Simple line-by-line parser, no syntax highlighting
+- Shiftcenter: Full markdown with inline formatting, syntax highlighting via highlight.js
+
+**5. Code Mode: ✅ New Feature**
+- Shiftcenter has dedicated syntax-highlighted code view
+- Not present in platform
+- Supports 9 languages, line numbers, change log tracking
+
+**6. Mode Count: 2 → 6**
+- Platform: rendered, raw
+- Shiftcenter: document, raw, code, diff, process-intake, chat
+
+### Porting Status
+
+**No missing ports. No regressions. All divergences are intentional extensions.**
+
+The dogfood IDE's diff workflow is COMPLETE and EXCEEDS platform capabilities. The "diff queue" referenced in AppletShell comments refers to an unimplemented feature that exists only as a setting stub in the platform EGG file.
+
+Full report written to `.deia/hive/responses/20260319-TASK-DA4-RESPONSE.md`.

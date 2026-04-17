@@ -1,0 +1,42 @@
+# BEE RESPONSE: 2026-04-07-BRIEFING-MCP-REHABILITATION-REVIEW
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260407-1640
+# Task file: 2026-04-07-BRIEFING-MCP-REHABILITATION-REVIEW.md
+# Success: True
+# Duration: 179.5s
+# Files modified: 5 (verified)
+# Cost (USD): $1.411455
+# Turns: 17
+# API duration (ms): 172948
+# Session ID: a868c1c7-ca7e-4849-9e41-3aa00cbaafd8
+# Boot injected: True
+
+---
+
+## MCP Rehabilitation Review Complete
+
+I've completed a comprehensive audit of the MCP rehabilitation spec against the existing codebase and written the response to `.deia/hive/responses/20260407-MCP-REHAB-REVIEW-RESPONSE.md`.
+
+### Key Findings:
+
+**Good news:** The MCP infrastructure is ~70% built and operational:
+- MCP server already running on port 8421 (mounted in hivenode)
+- Most Phase 0 and Phase 1 tools already exist (queue_list, task_read, briefing_write, dispatch_bee, heartbeat, etc.)
+- FACTORY-006 telemetry dual-loop is fully compatible and operational
+
+**Issues identified:**
+1. **Naming conflicts:** Existing tools don't use the `mcp_*` prefix the spec proposes
+2. **Interface mismatches:** `heartbeat` tool uses different parameters than spec's `mcp_heartbeat`
+3. **Missing pieces:** `.mcp.json` file creation in dispatch.py, queue runner health checks, some Phase 1 tools
+4. **Health endpoint:** Exists at `/health` but spec wants `/mcp/health` with tool list and uptime
+
+**15 specific questions** compiled for Mr. AI covering:
+- Architecture decisions (tool naming, .mcp.json vs prompt injection)
+- Conflict resolution (queue_state return format, heartbeat interface)
+- Gap filling (telemetry_log tool, claim/release tools, working directory)
+- Sequencing (wave dependencies, FACTORY-006 integration timing)
+- Risk mitigation (graceful degradation testing, state persistence, port conflicts)
+
+The response file is ready for Mr. AI's review. Once architectural decisions are made, I can write task files for the implementation waves.

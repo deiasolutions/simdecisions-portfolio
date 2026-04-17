@@ -1,0 +1,51 @@
+# BEE RESPONSE: 2026-03-18-BRIEFING-BUG-045-queue-crash-resilience
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260318-2126
+# Task file: 2026-03-18-BRIEFING-BUG-045-queue-crash-resilience.md
+# Success: True
+# Duration: 90.3s
+# Files modified: 3 (verified)
+# Cost (USD): $1.3813890000000002
+# Turns: 10
+# API duration (ms): 83297
+# Session ID: 9a20cf93-1a3b-495d-86a9-a03ab2a40ab7
+# Boot injected: True
+
+---
+
+I've reviewed the briefing and all four core queue files. Here's my analysis and proposed approach:
+
+## Key Findings
+
+**Good news:** `auto_commit.py` already has comprehensive error handling (lines 81-130) — all git operations are wrapped in try/except blocks. No work needed there.
+
+**Challenge:** `run_queue.py` is 1,220 lines, which is **2.4x over the 500-line modularization threshold** and **1.2x over the 1,000-line hard limit** (BOOT.md Rule #4). Adding error handling wrappers will make it even larger.
+
+## Proposed Solution
+
+Instead of just adding crash resilience, I propose a **single comprehensive task** that:
+
+1. **Adds crash resilience** across all the failure points you identified
+2. **Modularizes run_queue.py** to comply with file size limits (split into queue_pool.py, queue_batch.py, queue_util.py)
+3. **Results in both objectives achieved**: crash-proof queue + clean architecture
+
+I've written a proposal document at:
+`.deia/hive/coordination/2026-03-18-Q33N-TASK-BUG045-CRASH-RESILIENCE-PROPOSAL.md`
+
+## Why Single Task?
+
+- Modularization and error handling are intertwined (where to put the wrappers depends on the split)
+- Doing them separately creates merge conflicts
+- Single bee session = faster completion
+- One review cycle instead of multiple
+
+## Requesting Q33NR Approval
+
+Please review the proposal document and confirm:
+1. ✅ Single task approach (crash resilience + modularization together)
+2. ✅ Modularization is necessary given the file size violation
+3. ✅ Sonnet model assignment (justified by complexity)
+
+Once approved, I'll write the complete task file with full acceptance criteria, test requirements, and file-by-file deliverables for your review before dispatch.

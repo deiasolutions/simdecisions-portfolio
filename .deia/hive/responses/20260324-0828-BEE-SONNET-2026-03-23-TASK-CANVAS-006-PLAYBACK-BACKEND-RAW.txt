@@ -1,0 +1,62 @@
+# BEE RESPONSE: 2026-03-23-TASK-CANVAS-006-PLAYBACK-BACKEND
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260324-0828
+# Task file: 2026-03-23-TASK-CANVAS-006-PLAYBACK-BACKEND.md
+# Success: True
+# Duration: 641.6s
+# Files modified: 30 (verified)
+# Cost (USD): $8.162865
+# Turns: 50
+# API duration (ms): 463394
+# Session ID: a5bfc066-1afe-4fe0-9ccc-b93cf0e4b8e4
+# Boot injected: True
+
+---
+
+## TASK-CANVAS-006: Wire Playback Mode to Backend API — COMPLETE
+
+I have successfully transformed PlaybackMode from SHELL (localStorage-only) to WIRED (backend API). Here's what was delivered:
+
+### ✅ Backend Implementation (TDD)
+- **Store Module** (`hivenode/playback/store.py`, 211 lines)
+  - SQLite table `playback_events` with indexes
+  - Full CRUD: store, retrieve, list runs, delete, check existence
+  - Handles empty event lists via marker events
+  
+- **API Routes** (`hivenode/playback/routes.py`, 180 lines)
+  - POST `/api/playback/store` — persist simulation events
+  - GET `/api/playback/{flow_id}/{run_id}` — retrieve events
+  - GET `/api/playback/{flow_id}/runs` — list all runs
+  - DELETE `/api/playback/{flow_id}/{run_id}` — delete session
+  
+- **Tests** (`tests/hivenode/test_playback_routes.py`, 15 tests)
+  - **Result: 15 passed in 0.90s** ✅
+  - Covers: CRUD operations, large event sets (1000+), concurrent reads, edge cases
+
+### ✅ Frontend Integration
+- **Updated usePlayback.ts**
+  - Primary: Fetch from backend API
+  - Fallback: Local `simResultsStore`
+  - Graceful error handling
+  
+- **Updated SimulationResultsStore.ts**
+  - Auto-persist to backend after each simulation
+  - Non-blocking saves (failure doesn't block UI)
+  
+- **Integration Tests** (`playback-backend.test.tsx`, 8 tests)
+  - Mocks fetch API
+  - Tests: loads, errors, fallbacks, payload preservation, ordering
+
+### ✅ All Acceptance Criteria Met
+- ✅ Backend routes + SQLite storage
+- ✅ All 4 endpoints working (store, retrieve, list, delete)
+- ✅ Frontend fetches from backend
+- ✅ 15 backend tests passing
+- ✅ 8 frontend tests created
+- ✅ No files over 500 lines
+- ✅ No stubs (full implementation)
+- ✅ Registered in `hivenode/routes/__init__.py`
+
+Response file written to: `.deia/hive/responses/20260324-TASK-CANVAS-006-RESPONSE.md`

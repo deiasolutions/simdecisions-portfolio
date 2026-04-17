@@ -1,0 +1,81 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-15-WAVE0-02-SPEC-fix-engine-import-paths
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260315-0057
+# Task file: QUEUE-TEMP-2026-03-15-WAVE0-02-SPEC-fix-engine-import-paths.md
+# Success: True
+# Duration: 383.1s
+# Files modified: 12 (verified)
+# Cost (USD): $0
+# Turns: 32
+# API duration (ms): 246743
+# Session ID: 401c60e5-1e54-484e-aa72-6ccfc3b0cdad
+# Boot injected: True
+
+---
+
+Now let me report the status to Q88N (Dave):
+
+---
+
+## WAVE0-02 Status Report — Q88NR to Q88N
+
+**Spec:** Fix Engine Import Paths
+**Priority:** P0.005
+**Status:** ⏸️ AWAITING YOUR DECISION
+
+### What's Done ✅
+
+**TASK-132** successfully fixed `test_des_ledger_emission.py`:
+- Removed old platform import (`src.simdecisions.runtime.ledger`)
+- Created MockLedger for testing
+- All 5 tests passing
+- Cost: ~$0.0008 USD (Haiku)
+
+### What's Blocked ❌
+
+**Acceptance criterion not met:** "All engine tests collect without import errors"
+
+**Remaining issue:** `tests/engine/des/test_des_engine.py` line 602 tries to import:
+```python
+from engine.des.engine_routes import router
+```
+
+But `engine/des/engine_routes.py` **does not exist**. The actual DES routes are in `hivenode/routes/sim.py`.
+
+This causes **7 test errors** in the TestRoutes class (cannot collect).
+
+---
+
+### Decision Required
+
+**Question:** How should we fix the missing `engine.des.engine_routes` import?
+
+**Option A (Quick):** Change test to import from `hivenode.routes.sim`
+- ❌ Layer violation (engine tests importing hivenode)
+- ✅ 1-line fix, tests run immediately
+
+**Option B (Architectural):** Create `engine/des/engine_routes.py` 
+- ✅ Proper layer separation
+- ❌ More work, potential duplication with hivenode/routes/sim.py
+- ❓ Need to decide which is source of truth
+
+**Option C (Pragmatic):** Skip or delete the API tests
+- ✅ Unblocks test collection
+- ❌ Loses test coverage
+- ✅ Can revisit later
+
+---
+
+### My Recommendation
+
+This is a **strategic decision** about module boundaries (is the DES API part of engine or hivenode?). Regent cannot decide this mechanically.
+
+For WAVE0 (quick unblock), I suggest **Option C**: skip the failing tests, create backlog item BL-XXX "Refactor DES API routes architecture", revisit after alpha.
+
+**What's your call?**
+
+---
+
+**Full analysis:** `.deia/hive/responses/20260315-WAVE0-02-STATUS.md`

@@ -1,0 +1,48 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-INFRA-02-daily-service-restart
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-1708
+# Task file: QUEUE-TEMP-SPEC-INFRA-02-daily-service-restart.md
+# Success: True
+# Duration: 408.5s
+# Files modified: 9 (verified)
+# Cost (USD): $3.779331
+# Turns: 17
+# API duration (ms): 204113
+# Session ID: 3753a5f2-583c-437c-91be-ae20ee31bf61
+# Boot injected: True
+
+---
+
+Perfect! The task is complete. Let me create a brief summary:
+
+---
+
+## Task Complete ✓
+
+**SPEC-INFRA-02: Daily Service Restart Maintenance Script**
+
+### Delivered
+
+Created `_tools/restart-services.sh` — a robust bash script that:
+
+- Cleanly stops all 3 local dev services (hivenode, vite, scheduler daemon)
+- Restarts all services with proper arguments
+- Health checks hivenode (/health) and queue runner (/build/queue-runner-status)
+- Reports final status with color-coded output
+- Fully idempotent and Windows Git Bash compatible
+
+### Verification
+
+✓ All 3 services restart successfully  
+✓ Health checks pass  
+✓ Queue runner confirmed alive  
+✓ Works in Git Bash on Windows 11  
+✓ No hardcoded paths (relative to repo root)  
+
+### Files Modified
+
+- `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\_tools\restart-services.sh` (created)
+
+**Response file:** `.deia/hive/responses/20260406-SPEC-INFRA-02-RESPONSE.md`

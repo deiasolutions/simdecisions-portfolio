@@ -1,0 +1,62 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-IDENTITY-001-unify-node-id
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-1658
+# Task file: QUEUE-TEMP-SPEC-IDENTITY-001-unify-node-id.md
+# Success: True
+# Duration: 737.1s
+# Files modified: 31 (verified)
+# Cost (USD): $10.636623000000002
+# Turns: 47
+# API duration (ms): 456517
+# Session ID: a1ff4c24-c5da-4cbc-9818-33fd248f42b9
+# Boot injected: True
+
+---
+
+Perfect! The task is now complete. Let me create a summary of what was accomplished:
+
+## Summary
+
+I have successfully completed **SPEC-IDENTITY-001-unify-node-id** to unify node ID generation and database path resolution. Here's what was done:
+
+### Core Implementation
+
+1. **Created `hivenode/identity.py`** - New authoritative module for identity and path resolution with:
+   - `get_node_id()`: Generates/caches node IDs using `uuid.uuid4().hex[:12]` (12-char format)
+   - `get_device_id()`: Generates/caches device IDs using `uuid.uuid4().hex[:16]` (16-char format)  
+   - `get_db_path(db_name)`: Returns canonical paths to `~/.shiftcenter/{db_name}`
+
+2. **Updated consumers** to use the new identity module:
+   - `hivenode/config.py`: Removed inline generation, now imports from `hivenode.identity`
+   - `hivenode/cli.py`: Removed `secrets.token_hex()` approach, now imports from `hivenode.identity`
+   - `hivenode/main.py`: Initializes database with path from `get_db_path("efemera.db")`
+
+3. **Refactored `simdecisions/database.py`**:
+   - Added `init_database(db_path)` function accepting explicit paths
+   - Removed hardcoded `.deia/efemera.db` default
+   - Implemented lazy initialization via `__getattr__` for backward compatibility
+   - **No imports from hivenode** (verified with tests)
+
+### Tests
+
+Created 28 new tests across 2 test files:
+- **16 tests** in `tests/hivenode/test_identity.py` covering ID generation, caching, persistence, and path resolution
+- **12 tests** in `tests/simdecisions/test_database.py` covering initialization, circular dependency checks, and lazy loading
+
+Updated 2 existing tests in `tests/hivenode/test_cli.py` to mock the new identity module.
+
+**All 49 tests pass** (16 new identity + 12 new database + 9 existing config + 12 existing CLI).
+
+### Key Achievements
+
+✅ Single source of truth for node ID generation  
+✅ Consistent 12-character UUID format (not 8-character secrets)  
+✅ Idempotent ID retrieval with config.yml persistence  
+✅ Canonical database path resolution  
+✅ No circular dependencies (simdecisions ↛ hivenode)  
+✅ All existing data preserved  
+✅ Full test coverage with no stubs
+
+The system now has a unified, well-tested identity and path resolution system that eliminates state divergence between different entry points (uvicorn vs CLI).

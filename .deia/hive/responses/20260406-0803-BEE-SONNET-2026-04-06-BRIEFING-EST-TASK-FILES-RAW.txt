@@ -1,0 +1,65 @@
+# BEE RESPONSE: 2026-04-06-BRIEFING-EST-TASK-FILES
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260406-0803
+# Task file: 2026-04-06-BRIEFING-EST-TASK-FILES.md
+# Success: True
+# Duration: 273.8s
+# Files modified: 19 (verified)
+# Cost (USD): $0.678639
+# Turns: 6
+# API duration (ms): 268116
+# Session ID: 95619454-f3bc-4499-a23e-028ae522138a
+# Boot injected: True
+
+---
+
+## Task Files Created ✓
+
+I've created all 4 EST task files in `.deia/hive/tasks/`:
+
+### 1. `2026-04-06-TASK-EST-01-schema-migration.md`
+- **Type:** BUILD | **Est:** 3 hours | **Model:** Haiku
+- **Deliverables:** Add `inv_estimates` (19 cols) and `inv_calibration` (7 cols) tables to `hivenode/inventory/store.py`
+- **Tests:** 12+ schema tests (column types, indexes, migration idempotent, SQLite + PostgreSQL)
+- **Dependencies:** None
+
+### 2. `2026-04-06-TASK-EST-02-data-collection.md`
+- **Type:** BUILD | **Est:** 6 hours | **Model:** Sonnet
+- **Deliverables:** `_tools/estimates.py` CLI with 5 commands (import-scheduler, import-actuals, import-responses, record, actual)
+- **Tests:** 14+ import tests (scheduler parsing, build monitor API, response file parsing, rate_loader + carbon.yml integration)
+- **Dependencies:** TASK-EST-01
+
+### 3. `2026-04-06-TASK-EST-03-calibration-engine.md`
+- **Type:** BUILD | **Est:** 5 hours | **Model:** Sonnet
+- **Deliverables:** Calibration logic + 4 CLI commands (calibration, compare, budget, trend)
+- **Tests:** 11+ calibration tests (factor computation, apply calibration, budget projection, trend analysis, filters)
+- **Dependencies:** TASK-EST-02
+
+### 4. `2026-04-06-TASK-EST-04-integration-tests.md`
+- **Type:** TEST | **Est:** 3 hours | **Model:** Haiku
+- **Deliverables:** End-to-end integration tests + CLI --help text + README section
+- **Tests:** 10+ integration tests (full workflow, validation, edge cases)
+- **Dependencies:** TASK-EST-03
+
+## Key Details Pulled from Design
+
+Each task file includes:
+- **Complete schema definitions** (copy-paste ready for bees)
+- **Algorithm code** (calibration computation, cost/carbon derivation)
+- **CLI output formats** (exact table structures from design doc)
+- **File paths** (absolute Windows paths for Files to Read First)
+- **12+ acceptance criteria** per task (clear pass/fail)
+- **Smoke test commands** (bees can verify their work)
+
+## What's Next
+
+These task files are ready for:
+1. **Q33NR review** (check for gaps vs briefing)
+2. **Bee dispatch** (after Q33NR approval)
+3. **Sequential execution** (EST-01 → EST-02 → EST-03 → EST-04)
+
+**Total estimated time:** 17 hours (3 + 6 + 5 + 3)  
+**Total estimated cost:** ~$1.50 (2 haiku + 2 sonnet tasks)  
+**Total new code:** ~980 lines (within 500-line-per-file limit)

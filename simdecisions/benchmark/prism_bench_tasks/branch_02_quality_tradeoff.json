@@ -1,0 +1,35 @@
+{
+  "id": "branch_02_quality_tradeoff",
+  "name": "Quality Tradeoff Branch Selection",
+  "intent": "Test branch selection between high quality and acceptable quality outcomes",
+  "phase_ir_version": "1.0.0",
+  "variables": [
+    {"id": "quality_requirement", "type": "number", "default": 0.95}
+  ],
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "assess_requirements", "type": "decision", "name": "Assess Quality Requirements", "mode": "exclusive"},
+    {"id": "high_quality", "type": "service", "name": "High Quality Path", "config": {"duration": {"type": "constant", "params": {"value": 3.0}}, "quality_score": 0.98}},
+    {"id": "acceptable_quality", "type": "service", "name": "Acceptable Quality Path", "config": {"duration": {"type": "constant", "params": {"value": 1.5}}, "quality_score": 0.90}},
+    {"id": "verify", "type": "service", "name": "Quality Verification", "config": {"duration": {"type": "constant", "params": {"value": 0.5}}}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "assess_requirements", "type": "then"},
+    {"id": "e2", "from_node": "assess_requirements", "to_node": "high_quality", "type": "switch", "guard": "quality_requirement >= 0.95"},
+    {"id": "e3", "from_node": "assess_requirements", "to_node": "acceptable_quality", "type": "switch", "guard": "quality_requirement < 0.95"},
+    {"id": "e4", "from_node": "high_quality", "to_node": "verify", "type": "then"},
+    {"id": "e5", "from_node": "acceptable_quality", "to_node": "verify", "type": "then"},
+    {"id": "e6", "from_node": "verify", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "branch-comparison",
+    "description": "Choose between high quality (3s, 98% score) or acceptable quality (1.5s, 90% score)",
+    "evaluation_criteria": "Branch matches quality requirement, quality-time tradeoff measured",
+    "expected_runtime_seconds": 5,
+    "strategies": [
+      {"name": "high_quality", "path": "high_quality", "expected_time": 3.0, "quality_score": 0.98},
+      {"name": "acceptable_quality", "path": "acceptable_quality", "expected_time": 1.5, "quality_score": 0.90}
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-24-1639-SPEC-fix-MON-004-code-egg
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260324-1639
+# Task file: QUEUE-TEMP-2026-03-24-1639-SPEC-fix-MON-004-code-egg.md
+# Success: False
+# Duration: 127.3s
+# Files modified: 11 (verified)
+# Cost (USD): $1.7874659999999998
+# Turns: 16
+# API duration (ms): 114742
+# Session ID: 455be801-e451-4a96-b7b6-4b86c00bc5b3
+# Boot injected: True
+
+---
+
+Perfect. Now let me report back to Q88N with a summary:
+
+---
+
+## REGENT REPORT: Fix Spec SPEC-fix-MON-004 — INVALID
+
+**Status:** Marked INVALID (no execution needed)
+
+### What Happened
+
+The queue runner auto-generated this fix spec after MON-004 failed, but the failure was NOT a bee execution failure — it was a **task file review rejection** during my mechanical review (cycle 1 of 2).
+
+**Actual issue:** The task file in `_stage/` used relative paths instead of absolute paths (Rule 8 violation). Example:
+- **Wrong:** `src/eggs/code.egg.md`
+- **Correct:** `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\eggs\code.egg.md`
+
+### What I Did
+
+1. ✅ **Investigated** — reviewed original spec, task file, and monitor state
+2. ✅ **Wrote briefing** for Q33N: `.deia/hive/coordination/2026-03-24-BRIEFING-FIX-MON-004-CORRECTION.md`
+3. ✅ **Documented** this fix spec as INVALID in response file
+4. ✅ **Recommended** Q33N correct the task file and resubmit for cycle 2 review
+
+### Files Created
+
+- **Briefing:** `.deia/hive/coordination/2026-03-24-BRIEFING-FIX-MON-004-CORRECTION.md`
+- **Response:** `.deia/hive/responses/20260324-REGENT-QUEUE-TEMP-2026-03-24-1639-SPEC-fix-MON-004-RESPONSE.md`
+
+### Next Steps
+
+The briefing instructs Q33N to:
+1. Fix the task file paths (make them absolute)
+2. Clarify subdomain wording (verify, not add)
+3. Resubmit for my cycle 2 review
+4. Dispatch BEE-HAIKU when approved
+
+**No code changes needed.** This was a workflow issue caught early.
+
+### Process Note
+
+The queue runner created a fix spec for a review rejection, which is incorrect behavior. Fix specs should only be created for bee execution failures, not for task file review failures. I've documented this in the response file as a recommended queue runner enhancement.
+
+---
+
+**Awaiting Q88N approval to proceed with briefing or alternative direction.**

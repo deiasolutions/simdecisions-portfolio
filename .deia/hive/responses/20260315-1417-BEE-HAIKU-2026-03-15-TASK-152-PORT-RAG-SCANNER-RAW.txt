@@ -1,0 +1,56 @@
+# BEE RESPONSE: 2026-03-15-TASK-152-port-rag-scanner
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260315-1417
+# Task file: 2026-03-15-TASK-152-port-rag-scanner.md
+# Success: True
+# Duration: 832.4s
+# Files modified: 52 (verified)
+# Cost (USD): $0
+# Turns: 60
+# API duration (ms): 382424
+# Session ID: ad06a649-3640-49f0-ad27-7276e30e5502
+# Boot injected: True
+
+---
+
+Perfect! All tests pass. Let me create a quick summary:
+
+## Summary
+
+✅ **TASK-152: Port RAG Scanner Module — COMPLETE**
+
+### Deliverables
+1. **Created:** `hivenode/rag/indexer/scanner.py` (164 lines)
+   - Scanner class ported verbatim from platform
+   - Methods: `__init__()`, `scan()`, `_detect_type()`, `_is_phase_ir_file()`, `scan_single()`
+   - Validates repository paths, walks directory trees, classifies files by artifact type
+
+2. **Created:** `tests/hivenode/rag/indexer/test_scanner.py` (548 lines)
+   - 32 comprehensive tests (TDD-first approach)
+   - Tests cover all methods, edge cases, error conditions
+   - All tests passing ✅
+
+3. **Updated:** `hivenode/rag/indexer/__init__.py`
+   - Exports Scanner class
+   - Fixed import mismatches from TASK-151
+
+4. **Updated:** `hivenode/rag/indexer/indexer_service.py`
+   - Integrated Scanner with IndexerService
+   - Fixed model imports to match actual model names
+
+5. **Created:** `.deia/hive/responses/20260315-TASK-152-RESPONSE.md`
+   - Full response document with all 8 required sections
+
+### Test Results
+- **32 tests passed** ✅
+- Coverage: initialization, directory scanning, file type detection, PHASE-IR detection, single file scanning, recursive walking, edge cases
+
+### Key Features
+- ✅ Detects: CODE, PHASE_IR, ADR, SPEC, DOCUMENT
+- ✅ Skips excluded directories: node_modules, .git, __pycache__, venv, .venv, dist, build, .next, coverage, .pytest_cache, .mypy_cache
+- ✅ Handles unicode filenames, malformed JSON, deeply nested files
+- ✅ Error handling for invalid paths
+
+The scanner is ready for integration with chunker and embedder modules (TASK-153, 154, etc.).

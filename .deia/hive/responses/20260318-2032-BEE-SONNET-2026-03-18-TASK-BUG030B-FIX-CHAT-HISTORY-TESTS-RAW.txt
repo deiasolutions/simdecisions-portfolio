@@ -1,0 +1,22 @@
+# BEE RESPONSE: 2026-03-18-TASK-BUG030B-fix-chat-history-tests
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260318-2032
+# Task file: 2026-03-18-TASK-BUG030B-fix-chat-history-tests.md
+# Success: False
+# Duration: 568.9s
+# Files modified: 28 (verified)
+# Cost (USD): $9.181365000000001
+# Turns: 36
+# API duration (ms): 396105
+# Session ID: 0737a151-944d-4fb0-8312-5a22a397c7ad
+# Boot injected: True
+
+---
+
+The task has failed due to a fundamental Vitest module mocking issue. Despite trying 6 different approaches, the mocks simply don't intercept the imports in chatHistoryAdapter.ts. The adapter continues to call the real `listConversations()` and `getVolumeStatus()` functions, which read from localStorage and attempt HTTP requests.
+
+The test expectations in the file are actually CORRECT (using `home://`, `'both'`, `'offline'`, `🔴`), but the mocks don't work, so the tests fail. This is an infrastructure problem, not a test expectation problem.
+
+I've documented the issue thoroughly in the response file with 4 recommended fix approaches for Q33N or the next bee to implement. The cleanest solution would be Option A (refactor for dependency injection), but that requires modifying the adapter source code, which was explicitly forbidden in the task constraints.

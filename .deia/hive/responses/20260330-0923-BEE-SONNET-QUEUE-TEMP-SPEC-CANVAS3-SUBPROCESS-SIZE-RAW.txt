@@ -1,0 +1,25 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-CANVAS3-SUBPROCESS-SIZE
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260330-0923
+# Task file: QUEUE-TEMP-SPEC-CANVAS3-SUBPROCESS-SIZE.md
+# Success: True
+# Duration: 64.6s
+# Files modified: 2 (verified)
+# Cost (USD): $0.602685
+# Turns: 4
+# API duration (ms): 54603
+# Session ID: d8ab8eb1-a479-40cc-80fe-70af3e9c5869
+# Boot injected: True
+
+---
+
+Task complete! I've successfully increased the SubProcess node default size from 400×250px to 600×400px and adjusted the child Start/End node positions:
+
+**Changes made:**
+- SubProcess group: 400×250 → 600×400
+- Start child: x: 40 → x: 60 (more padding from left edge)
+- End child: x: gw-120 → x: gw-140 (more padding from right edge)
+
+The SubProcess will now spawn with room for approximately 3 phase nodes wide × 2 tall, making it much more suitable as a container for nested processes.

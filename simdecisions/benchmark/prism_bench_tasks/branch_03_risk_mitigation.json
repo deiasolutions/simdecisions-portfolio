@@ -1,0 +1,37 @@
+{
+  "id": "branch_03_risk_mitigation",
+  "name": "Risk Mitigation Branch Selection",
+  "intent": "Test branch selection between risky shortcut and safe path",
+  "phase_ir_version": "1.0.0",
+  "variables": [
+    {"id": "risk_tolerance", "type": "number", "default": 0.5},
+    {"id": "time_pressure", "type": "number", "default": 0.3}
+  ],
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "assess_risk", "type": "decision", "name": "Assess Risk Tolerance", "mode": "exclusive"},
+    {"id": "risky_shortcut", "type": "service", "name": "Risky Shortcut", "config": {"duration": {"type": "constant", "params": {"value": 1.0}}, "failure_rate": 0.3}},
+    {"id": "safe_path", "type": "service", "name": "Safe Validated Path", "config": {"duration": {"type": "constant", "params": {"value": 4.0}}, "failure_rate": 0.05}},
+    {"id": "rework", "type": "service", "name": "Rework After Failure", "config": {"duration": {"type": "constant", "params": {"value": 2.0}}}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "assess_risk", "type": "then"},
+    {"id": "e2", "from_node": "assess_risk", "to_node": "risky_shortcut", "type": "switch", "guard": "risk_tolerance >= 0.7 or time_pressure >= 0.8"},
+    {"id": "e3", "from_node": "assess_risk", "to_node": "safe_path", "type": "switch", "guard": "risk_tolerance < 0.7 and time_pressure < 0.8"},
+    {"id": "e4", "from_node": "risky_shortcut", "to_node": "end", "type": "switch", "guard": "success == true"},
+    {"id": "e5", "from_node": "risky_shortcut", "to_node": "rework", "type": "switch", "guard": "success == false"},
+    {"id": "e6", "from_node": "rework", "to_node": "end", "type": "then"},
+    {"id": "e7", "from_node": "safe_path", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "branch-comparison",
+    "description": "Choose between risky shortcut (1s, 30% fail + 2s rework) or safe path (4s, 5% fail)",
+    "evaluation_criteria": "Branch selection factors in risk tolerance and time pressure, expected time calculated correctly",
+    "expected_runtime_seconds": 6,
+    "strategies": [
+      {"name": "risky_shortcut", "path": "risky_shortcut", "expected_time_success": 1.0, "expected_time_failure": 3.0, "failure_rate": 0.3},
+      {"name": "safe_path", "path": "safe_path", "expected_time": 4.0, "failure_rate": 0.05}
+    ]
+  }
+}

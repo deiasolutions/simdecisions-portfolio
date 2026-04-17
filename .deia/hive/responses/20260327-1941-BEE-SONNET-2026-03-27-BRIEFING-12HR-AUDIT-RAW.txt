@@ -1,0 +1,49 @@
+# BEE RESPONSE: 2026-03-27-BRIEFING-12HR-AUDIT
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260327-1941
+# Task file: 2026-03-27-BRIEFING-12HR-AUDIT.md
+# Success: True
+# Duration: 311.3s
+# Files modified: 2 (verified)
+# Cost (USD): $1.9837589999999998
+# Turns: 34
+# API duration (ms): 236930
+# Session ID: 62926002-3470-48e4-9d50-890793028e2a
+# Boot injected: True
+
+---
+
+## Audit Complete
+
+I've written the full audit report to `.deia/hive/responses/20260327-12HR-AUDIT-REPORT.md`.
+
+### Key Findings
+
+**Why canvas2 looks unchanged after 12 hours:**
+
+1. **The multi-child split fix (commit 42fafd1) was REAL work, but fixed the wrong bug** — It fixed EGG *parsing* (chat.egg.md now loads), but canvas2's visual proportions are a *rendering* issue, not a parsing issue.
+
+2. **No task was dispatched for the actual canvas2 rendering problem** — The CANVAS2-LAYOUT-FIX briefing was written but Q33N never created a task file or dispatched a bee to fix the visual proportions.
+
+3. **The save-as-derived-EGG work was good infrastructure, but not visible** — It's a new feature for saving user layouts, not a rendering fix.
+
+4. **Auto-commit bug is still happening** — Several specs claim COMPLETE in response files, but their source code changes weren't committed (same issue as Chrome ADR Wave B/C/D).
+
+**The Real Problem:**
+
+Canvas2's layout proportions ([0.22, 0.53, 0.25] for sidebar/canvas/right-column) are correctly parsed and passed to `SplitContainer.tsx`, which correctly applies them as CSS percentages. The visual issue is either:
+- Wrong ratios in the EGG file itself
+- CSS flex parent sizing issue
+- minWidth constraints interfering
+- Seamless border handling affecting layout
+
+**What needs to happen:**
+1. Measure actual rendered widths in the browser
+2. Compare to expected ratios
+3. Investigate CSS, flex parents, constraints
+4. Fix the actual rendering issue
+5. Verify with screenshots
+
+The work done today was not wrong — it was incomplete and misdirected.

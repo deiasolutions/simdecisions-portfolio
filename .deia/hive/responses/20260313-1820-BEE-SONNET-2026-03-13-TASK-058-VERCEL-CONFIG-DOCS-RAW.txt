@@ -1,0 +1,35 @@
+# BEE RESPONSE: 2026-03-13-TASK-058-vercel-config-docs
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260313-1820
+# Task file: 2026-03-13-TASK-058-vercel-config-docs.md
+# Success: True
+# Duration: 97.7s
+# Files modified: 7 (verified)
+# Cost (USD): $0
+# Turns: 8
+# API duration (ms): 73900
+# Session ID: 07c2736f-3c52-4dcd-9981-9521b9bdee04
+# Boot injected: True
+
+---
+
+---
+
+## TASK-058 COMPLETE ✓
+
+**Files Created:**
+- `browser/vercel.json` — Vercel config with SPA fallback rewrites
+- `docs/DEPLOYMENT-WIRING-NOTES.md` — Comprehensive Vercel repoint documentation
+
+**Verification:**
+- ✓ JSON validated with `npx jsonlint` (valid)
+- ✓ Markdown format verified (132 lines, well-structured)
+- ✓ Absolute Windows paths used where relevant
+- ✓ All 8 repoint steps documented with exact CLI commands
+
+**Response file written to:**
+`.deia/hive/responses/20260313-TASK-058-RESPONSE.md`
+
+**Next:** TASK-059 will add Railway section, TASK-060 will add DNS section, TASK-062 will add smoke test section to the same documentation file.

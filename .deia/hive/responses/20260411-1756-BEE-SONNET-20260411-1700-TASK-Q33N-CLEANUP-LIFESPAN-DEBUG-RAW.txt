@@ -1,0 +1,37 @@
+# BEE RESPONSE: 20260411-1700-TASK-Q33N-CLEANUP-LIFESPAN-DEBUG
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260411-1756
+# Task file: 20260411-1700-TASK-Q33N-CLEANUP-LIFESPAN-DEBUG.md
+# Success: True
+# Duration: 814.4s
+# Files modified: 4 (verified)
+# Cost (USD): $2.441052
+# Turns: 24
+# API duration (ms): 137026
+# Session ID: cad13a4d-8f79-4a86-8c73-6bfbdc4def93
+# Boot injected: True
+
+---
+
+## Task Complete
+
+**Cleanup complete.** All six debug lines have been removed from `packages/core/src/simdecisions/core/main.py`, the MCP comment has been tightened to reflect architectural intent, and the code has been deployed successfully to Railway.
+
+### Summary
+
+- **Commit:** `b9bd00e` — "chore: remove lifespan debug prints after Railway cutover"
+- **Deployment:** `d6bed9ba-10b9-4d78-9b43-540283b7a7c5` (SUCCESS)
+- **/health:** 200 OK
+- **Runtime logs:** Clean — 0 DEBUG, 0 [lifespan], "Application startup complete" still present
+
+### Files Modified
+
+- `packages/core/src/simdecisions/core/main.py`
+
+### Response File
+
+Written to: `.deia/hive/responses/20260411-RESPONSE-CLEANUP-LIFESPAN-DEBUG.md`
+
+The hivenode production deployment is now running with clean logs and correct architectural documentation.

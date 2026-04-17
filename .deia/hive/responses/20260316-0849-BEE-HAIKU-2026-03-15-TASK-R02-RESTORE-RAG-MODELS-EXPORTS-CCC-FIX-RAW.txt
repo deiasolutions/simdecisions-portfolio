@@ -1,0 +1,51 @@
+# BEE RESPONSE: 2026-03-15-TASK-R02-restore-rag-models-exports-ccc-fix
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260316-0849
+# Task file: 2026-03-15-TASK-R02-restore-rag-models-exports-ccc-fix.md
+# Success: True
+# Duration: 187.0s
+# Files modified: 17 (verified)
+# Cost (USD): $0
+# Turns: 22
+# API duration (ms): 156819
+# Session ID: 8a304a3d-0d83-475c-b3ba-fb7a3f78928d
+# Boot injected: True
+
+---
+
+Perfect! All verifications pass. Let me create a summary of what was accomplished:
+
+## Summary
+
+**TASK-R02: Restore RAG models exports + CCC_PER_FILE fix** — **COMPLETE**
+
+### What Was Done
+
+1. **Restored 4 compatibility reverse-aliases** to `hivenode/rag/indexer/models.py` (lines 142-146):
+   - `ProvenanceMetadata = ProvenanceInfo`
+   - `ReliabilityMetadata = ReliabilityMetrics`
+   - `RelevanceMetadata = RelevanceMetrics`
+   - `StalenessMetadata = StalenessInfo`
+   
+   These aliases were lost in a git reset but are essential for allowing code expecting canonical "Metadata" names to work with the actual class definitions.
+
+2. **Verified CCC_PER_FILE constant** in `indexer_service.py`:
+   - Field names are already correct: `clock_ms`, `coin_usd`, `carbon_kg`
+   - No changes needed
+
+3. **Verified __init__.py exports**:
+   - Already correctly exports old names (ProvenanceInfo, ReliabilityMetrics, etc.)
+   - No changes needed
+
+### Verification Results
+
+✓ All 4 compatibility aliases import successfully  
+✓ All 4 aliases are correctly set (identity checks pass)  
+✓ CCC_PER_FILE constant has correct field names  
+✓ Models file: 147 lines (under 500 line limit)  
+
+### Response File
+
+Created: `.deia/hive/responses/20260316-TASK-R02-RESPONSE.md`

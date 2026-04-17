@@ -1,0 +1,67 @@
+# BEE RESPONSE: 2026-03-11-TASK-013-CHAT-EGG-MVP
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260311-0818
+# Task file: 2026-03-11-TASK-013-CHAT-EGG-MVP.md
+# Success: True
+# Duration: 697.7s
+# Files modified: 6 (verified)
+# Cost (USD): $0
+# Turns: 61
+# API duration (ms): 605801
+# Session ID: 50447f12-b42c-4117-bd78-dca65708e153
+# Boot injected: True
+
+---
+
+Excellent! Task complete. Let me provide a summary:
+
+---
+
+## TASK-013 Complete ✅
+
+I've successfully created the **chat.egg.md MVP** — the first product wiring together all the building blocks.
+
+### What Was Built (16 files):
+
+**1. Product Definition:**
+- `eggs/chat.egg.md` — AI chat interface with terminal primitive, Frank service, 3-currency ledger
+
+**2. App Infrastructure (7 files):**
+- Vite config + HTML entry point
+- `main.tsx` — Registers apps, imports CSS, renders App
+- `App.tsx` — Root component with EGG resolution and Shell rendering
+- Terminal & text-pane adapters (AppRendererProps → component props)
+- App registry integration
+
+**3. EGG → Shell Bridge (2 files):**
+- `eggToShell.ts` — Converts EGG layout tree to shell state tree
+- `useEggInit.ts` — React hook for async EGG loading with error handling
+
+**4. Tests (5 files, 31 tests):**
+- All new functionality fully tested
+- Test suite: **806 passing**, no regressions
+
+**5. Build System:**
+- package.json updated with Vite dependencies
+- dev/build/preview scripts added
+
+### Architecture Insight:
+**TerminalApp IS the chat UI** — it already has everything needed:
+- `hive>` prompt with history
+- Frank LLM service integration (BYOK)
+- Zone 2 response pane
+- 3-currency metrics
+- Slash commands
+- localStorage persistence
+
+No separate ChatApp component needed. The chat product is simply: TerminalApp registered as `'terminal'` appType, composed via chat.egg.md into a full-screen layout.
+
+### Next Steps:
+1. Run `npm run dev` to test the live app
+2. Create routing.config.egg.md for hostname → EGG mapping
+3. Implement session restore from startup block
+4. Wire /new command for new conversations
+
+All deliverables complete, all tests passing, response file written, task archived. 🎉

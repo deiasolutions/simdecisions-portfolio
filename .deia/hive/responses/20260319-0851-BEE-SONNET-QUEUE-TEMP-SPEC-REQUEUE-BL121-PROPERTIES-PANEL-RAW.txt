@@ -1,0 +1,64 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-REQUEUE-BL121-properties-panel
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260319-0851
+# Task file: QUEUE-TEMP-SPEC-REQUEUE-BL121-properties-panel.md
+# Success: True
+# Duration: 672.7s
+# Files modified: 53 (verified)
+# Cost (USD): $3.052908
+# Turns: 20
+# API duration (ms): 243369
+# Session ID: 35b34e73-68d7-4124-8e1f-afa37dc1610f
+# Boot injected: True
+
+---
+
+Perfect! Now I'll write a status report for Q88N (Dave) explaining what's happening.
+
+## Summary for Q88N (Dave):
+
+**BL-121: Properties Panel Canvas Selection Wiring**
+
+**Status:** ✅ DISPATCHED — Phase 1 running (2 bees in parallel)
+
+**What I did:**
+1. Read BOOT.md and HIVE.md per regent protocol
+2. Wrote briefing for Q33N explaining the problem
+3. Dispatched Q33N to analyze and write task files
+4. Q33N identified root cause: data shape mismatch between CanvasApp and propertiesAdapter
+5. Q33N wrote 3 task files (A, B, C)
+6. I reviewed all 3 task files using mechanical review checklist — **ALL PASS**
+7. Approved dispatch to Q33N
+8. Q33N dispatched Phase 1: TASK-BL121-A and TASK-BL121-B in parallel (both running now)
+
+**Current status:**
+- **TASK-BL121-A** (Canvas selection payload) — BEE-HAIKU running in background
+- **TASK-BL121-B** (Properties adapter data) — BEE-HAIKU running in background
+- **TASK-BL121-C** (Integration tests) — PENDING (will dispatch after A & B complete)
+
+**Expected results:**
+- Canvas node selection → properties panel displays node data
+- Deselection (background click, ESC) → properties panel clears
+- 25+ tests total (8 from A, 5 from B, 7 integration from C)
+- Timeline: 50-90 minutes total
+
+**Q33N is monitoring** for bee completion and will dispatch Phase 2 (task C) automatically once Phase 1 completes.
+
+**Files being modified:**
+- `browser/src/primitives/canvas/CanvasApp.tsx`
+- `browser/src/primitives/canvas/__tests__/CanvasApp.test.tsx`
+- `browser/src/primitives/tree-browser/adapters/propertiesAdapter.ts`
+- `browser/src/primitives/tree-browser/adapters/__tests__/propertiesAdapter.test.ts`
+- `browser/src/infrastructure/relay_bus/busTypes.ts`
+- `browser/src/primitives/canvas/__tests__/canvas-properties-integration.test.tsx` (new)
+
+**Next steps:**
+1. Wait for Phase 1 bees to complete (~30-60 min)
+2. Q33N reviews response files
+3. Q33N dispatches Phase 2 (task C)
+4. Q33N reports final results to me
+5. I report to you
+
+**All work is proceeding according to HIVE.md chain of command. No intervention needed.**

@@ -1,0 +1,60 @@
+# BEE RESPONSE: 2026-03-14-BRIEFING-dispatch-filename-sanitization
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260313-2241
+# Task file: 2026-03-14-BRIEFING-dispatch-filename-sanitization.md
+# Success: True
+# Duration: 68.2s
+# Files modified: 1 (verified)
+# Cost (USD): $0
+# Turns: 8
+# API duration (ms): 65977
+# Session ID: 22c40af0-665e-4324-9167-5f63ab9c1e12
+# Boot injected: True
+
+---
+
+Now let me write a summary response for Q33NR to review.
+
+---
+
+## Q33N Task File Created — Ready for Review
+
+I have written the task file for fixing the dispatch filename sanitization bug:
+
+**Task File:** `.deia/hive/tasks/2026-03-14-TASK-076-dispatch-filename-sanitization.md`
+
+**Summary:**
+
+**Objective:** Fix dispatch.py to sanitize model names containing colons before embedding them in response filenames (Windows rejects `:` in filenames).
+
+**Root Cause:** Line 314 in dispatch.py uses `{model.upper()}` directly in filename, causing `ollama:llama3.1:8b` → `OLLAMA:LLAMA3.1:8B` in filename.
+
+**Solution:** Replace `:` with `-` in model name before embedding (e.g., `OLLAMA:LLAMA3.1:8B` → `OLLAMA-LLAMA3.1-8B`).
+
+**Deliverables:**
+1. New test file: `test_dispatch_filename_sanitization.py` with 5+ tests
+2. Fix dispatch.py line ~314 (and line ~321 for bot_id if needed)
+3. All tests pass (new + existing)
+
+**Test Coverage:**
+- Model with single colon: `ollama:llama3.1:8b`
+- Model with multiple colons: `anthropic:claude:sonnet`
+- Model without colons: `haiku` (regression test)
+- Edge cases: leading/trailing colons, empty model name
+
+**Acceptance Criteria:**
+- All 8 criteria listed (model name sanitization works correctly, no regressions, all tests pass)
+
+**Constraints:**
+- TDD (tests first)
+- Only fix filename sanitization (no refactoring)
+- No stubs
+- Follow unittest framework (consistent with existing tests)
+
+**Model Assignment:** haiku (as specified in briefing)
+
+---
+
+**Ready for Q33NR review.** I have NOT dispatched the bee yet. Awaiting approval or corrections.

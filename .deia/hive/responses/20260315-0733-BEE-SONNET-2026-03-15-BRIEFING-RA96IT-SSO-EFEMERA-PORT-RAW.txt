@@ -1,0 +1,85 @@
+# BEE RESPONSE: 2026-03-15-BRIEFING-ra96it-sso-efemera-port
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260315-0733
+# Task file: 2026-03-15-BRIEFING-ra96it-sso-efemera-port.md
+# Success: True
+# Duration: 299.6s
+# Files modified: 13 (verified)
+# Cost (USD): $0
+# Turns: 19
+# API duration (ms): 291881
+# Session ID: 83ceaf83-2cc8-4143-b07b-ecd10129a2cf
+# Boot injected: True
+
+---
+
+Perfect! Now let me create a summary for you:
+
+---
+
+## Q33N Report: ra96it SSO Federation Task Files Ready for Review
+
+I've completed the planning phase for the ra96it SSO federation port. I read the platform auth code, ra96it service, and hivenode dependencies, then wrote **3 comprehensive task files** corresponding to the 3 phases in your briefing.
+
+### Task Files Created
+
+1. **TASK-136: Port GitHub OAuth + JWKS into ra96it (Backend)**
+   - **File:** `.deia/hive/tasks/2026-03-15-TASK-136-ra96it-github-oauth-jwks.md`
+   - **Model:** Sonnet (OAuth + JWKS complexity)
+   - **Tests:** 21+ (13 OAuth + 3 JWKS + 5 dev-login)
+   - **Key deliverables:** 
+     - Port GitHub OAuth flow (login, callback, exchange) from platform
+     - Add JWKS endpoint at `/.well-known/jwks.json`
+     - Port dev-login bypass for local mode
+     - Add GitHub service for API calls
+     - Extend User model with `github_id`, `provider`, `display_name`, `email_verified`
+     - Upgrade JWT to include `provider`, `scope`, `aud=deiasolutions`
+
+2. **TASK-137: Port AuthPage + authStore into Browser (Frontend)**
+   - **File:** `.deia/hive/tasks/2026-03-15-TASK-137-browser-auth-primitive-login-egg.md`
+   - **Model:** Haiku (UI port)
+   - **Tests:** 17+ (8 component + 9 store)
+   - **Key deliverables:**
+     - Port AuthPage.tsx → LoginPage.tsx with `var(--sd-*)` CSS variables ONLY
+     - Port auth.ts → authStore.ts with `ra96it_token` storage key
+     - Create login EGG at `/login` route
+     - Wire eggResolver + auth adapter
+
+3. **TASK-138: Wire Hivenode to ra96it JWTs via JWKS Cache (Integration)**
+   - **File:** `.deia/hive/tasks/2026-03-15-TASK-138-hivenode-jwks-cache-family-aud.md`
+   - **Model:** Haiku (wire existing code)
+   - **Tests:** 14+ (7 JWKS cache + 7 auth routes)
+   - **Key deliverables:**
+     - Add JWKS cache for dynamic public key retrieval
+     - Update `verify_jwt()` to use JWKS cache
+     - Accept both `aud=deiasolutions` and `aud=shiftcenter` (transition)
+     - Keep local mode bypass working
+     - Static key fallback when JWKS unreachable
+
+### Total Test Coverage
+**52+ tests** across all 3 tasks (all TDD — tests first)
+
+### Key Decisions
+
+- **Port, don't rewrite** — all OAuth code ported from platform (already has 13 passing tests)
+- **Upgrade HS256 → RS256** — ra96it already uses RS256, keep that pattern
+- **Upgrade audience** — `"shiftcenter"` → `"deiasolutions"` (family-wide, accept both during transition)
+- **MFA optional for OAuth** — GitHub already verified email, set `email_verified=True`
+- **Dev-login bypass preserved** — only available when `mode=local` and no GitHub OAuth configured
+- **JWKS cache with fallback** — dynamic key retrieval, falls back to static key when JWKS unreachable
+- **CSS variables only** — all UI uses `var(--sd-*)`, no hardcoded colors (Rule 3)
+
+### Execution Order
+Sequential (TASK-137 depends on TASK-136 endpoints):
+1. TASK-136 (ra96it backend)
+2. TASK-137 (browser frontend)
+3. TASK-138 (hivenode integration)
+
+### Response File
+Written to: `.deia/hive/responses/20260315-BRIEFING-ra96it-sso-federation-Q33N-RESPONSE.md`
+
+---
+
+**All task files ready for your review, Q33NR. I have NOT dispatched bees yet — awaiting your approval.**

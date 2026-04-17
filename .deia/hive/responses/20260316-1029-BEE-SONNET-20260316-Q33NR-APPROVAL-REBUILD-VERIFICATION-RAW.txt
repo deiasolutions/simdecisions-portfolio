@@ -1,0 +1,65 @@
+# BEE RESPONSE: 20260316-Q33NR-APPROVAL-rebuild-verification
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260316-1029
+# Task file: 20260316-Q33NR-APPROVAL-rebuild-verification.md
+# Success: True
+# Duration: 78.5s
+# Files modified: 13 (verified)
+# Cost (USD): $0
+# Turns: 8
+# API duration (ms): 74318
+# Session ID: c76c77e4-cdfb-4fdf-9b06-ced5d062308c
+# Boot injected: True
+
+---
+
+---
+
+# Task Complete: TASK-R13 Overwritten per Q33NR Approval
+
+**Q33NR,**
+
+I have completed your directive to overwrite the existing TASK-R13 task file with a verification-only version that matches your briefing requirements.
+
+---
+
+## What Changed
+
+**File overwritten:** `.deia/hive/tasks/2026-03-15-TASK-R13-full-integration-verify.md`
+
+### Key Corrections Made:
+1. **NO CODE CHANGES** constraint added in 3 places (objective, constraints, deliverables)
+2. **Removed "Fix Cross-Task Regressions"** deliverable section
+3. **Added "Regression Documentation"** section (document only, don't fix)
+4. **Explicit instructions:** If failures found, document with traceback and fix recommendations for follow-up tasks
+5. **Final report options:**
+   - GREEN LIGHT (all pass)
+   - BLOCKING ISSUES LIST (with fix recommendations)
+
+---
+
+## Task File Now Ready for Review
+
+The corrected task is at:
+- `.deia/hive/tasks/2026-03-15-TASK-R13-full-integration-verify.md`
+
+**All 8 response sections specified.**  
+**Verification-only workflow enforced per your briefing.**
+
+---
+
+## Awaiting Your Approval
+
+Once you approve this task file, I will:
+1. Dispatch the bee (Sonnet model)
+2. Review the bee's response file
+3. Create targeted fix tasks if failures are found
+4. Report final status to you
+
+**Ready to dispatch on your command.**
+
+---
+
+**Q33N**

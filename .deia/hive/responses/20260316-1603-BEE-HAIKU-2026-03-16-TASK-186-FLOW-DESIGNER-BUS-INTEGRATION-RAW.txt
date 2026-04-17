@@ -1,0 +1,49 @@
+# BEE RESPONSE: 2026-03-16-TASK-186-flow-designer-bus-integration
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260316-1603
+# Task file: 2026-03-16-TASK-186-flow-designer-bus-integration.md
+# Success: True
+# Duration: 843.8s
+# Files modified: 33 (verified)
+# Cost (USD): $2.76899
+# Turns: 38
+# API duration (ms): 212092
+# Session ID: 9dfdf687-af75-44d2-bb25-239aee293bad
+# Boot injected: True
+
+---
+
+Perfect! The implementation is complete. Let me create a quick summary:
+
+## Summary
+
+**TASK-186: Integrate MessageBus into FlowDesigner** — **COMPLETE** ✓
+
+### What was done:
+1. **Fixed the missing parameter destructuring** in `useNodeEditing.ts`:
+   - Added `bus` and `paneId` to the function signature (lines 39-40)
+   - These parameters are now properly extracted from `UseNodeEditingParams`
+
+2. **Verified full bus event integration**:
+   - `onNodeClick` emits `node:selected` event (lines 105-118)
+   - `onPaneClick` emits `selection_cleared` event (lines 139-145)
+   - Both handlers include proper null checks: `if (bus && paneId)`
+   - Event payloads contain: `nodeId`, `nodeData`, `position`
+
+3. **Confirmed message types exist**:
+   - `NodeSelectedData` interface already defined in types/messages.ts
+   - `node:selected` and `selection_cleared` types registered in ShellMessage union
+   - All types properly exported from relay_bus/index.ts
+
+4. **Verified all tests pass**:
+   - 10/10 tests passing in `useNodeEditing.messagebus.test.ts`
+   - FlowToolbar tests also passing (17/17) — no regressions
+   - Tests cover edge cases: null bus, non-design mode, rapid clicks, multiple node kinds
+
+### Files Modified:
+- **C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\browser\src\apps\sim\components\flow-designer\useNodeEditing.ts** (1 change: 2 lines added to function signature)
+
+### Response File Created:
+- `.deia/hive/responses/20260316-TASK-186-RESPONSE.md` (5.8 KB, all 8 sections complete)

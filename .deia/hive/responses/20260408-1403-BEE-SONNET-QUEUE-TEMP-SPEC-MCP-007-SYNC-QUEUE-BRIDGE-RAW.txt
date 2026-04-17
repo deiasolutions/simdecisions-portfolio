@@ -1,0 +1,76 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MCP-007-sync-queue-bridge
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260408-1403
+# Task file: QUEUE-TEMP-SPEC-MCP-007-sync-queue-bridge.md
+# Success: True
+# Duration: 523.9s
+# Files modified: 15 (verified)
+# Cost (USD): $6.23991
+# Turns: 35
+# API duration (ms): 350985
+# Session ID: d8728ae7-d055-44df-924e-930397b3b103
+# Boot injected: True
+
+---
+
+Good. Now let me create a summary of the implementation:
+
+## Summary
+
+I have successfully completed **SPEC-MCP-007: Sync Queue Bridge + SSE Events Stream**.
+
+### What Was Built
+
+1. **SSE Stream Module** (`events_sse.py`, 124 lines)
+   - Reads events from `~/.shiftcenter/sync_queue/`
+   - Converts to Event Ledger format
+   - Emits as Server-Sent Events
+   - Consumes (deletes) events after emission
+   - Configurable polling (default 2s)
+
+2. **MCP Server Integration** (`local_server.py`, +38 lines)
+   - New `/mcp/events` endpoint
+   - Returns `text/event-stream`
+   - Streams events continuously
+
+3. **Comprehensive Tests** (10 tests, all passing)
+   - Format validation
+   - Event consumption
+   - Error handling (missing directory, corrupted files)
+   - All event types (heartbeat, claim, tool_log)
+
+### Files Created/Modified
+
+**New Files:**
+- `hivenode/hive_mcp/events_sse.py` (124 lines)
+- `hivenode/hive_mcp/tests/test_events_sse.py` (351 lines)
+- `hivenode/hive_mcp/tests/manual_sse_smoke_test.py` (73 lines)
+
+**Modified:**
+- `hivenode/hive_mcp/local_server.py` (+38 lines, total 991)
+
+**Response:**
+- `.deia/hive/responses/20260408-QUEUE-TEMP-SPEC-MCP-007-sync-queue-bridge-RESPONSE.md`
+
+### Acceptance Criteria Status
+
+✅ All 7 criteria met:
+- SSE endpoint added
+- Reads from sync_queue directory
+- Event Ledger format
+- Events consumed after emission
+- Configurable polling
+- Graceful error handling
+- Comprehensive tests
+
+### Test Results
+
+```
+10/10 tests passed (100%)
+```
+
+### Note
+
+The production MCP server (port 8421) needs to be restarted to activate the new `/mcp/events` endpoint. A manual smoke test script is provided for verification after restart.

@@ -1,0 +1,41 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-EFEMERA-CONN-05-adapter-cleanup
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260330-1042
+# Task file: QUEUE-TEMP-SPEC-EFEMERA-CONN-05-adapter-cleanup.md
+# Success: True
+# Duration: 554.1s
+# Files modified: 10 (verified)
+# Cost (USD): $5.727459
+# Turns: 34
+# API duration (ms): 330380
+# Session ID: be29af06-adca-4e3c-8772-b1c8f4bed94a
+# Boot injected: True
+
+---
+
+## Task Complete
+
+**SPEC-EFEMERA-CONN-05: Clean Up Adapters and Dead Code** has been completed successfully.
+
+### Summary
+
+This was a **watchdog restart** (attempt 1/2). Upon investigation, I found that most of the cleanup work had already been completed by a previous bee session. I verified all acceptance criteria and completed the remaining work:
+
+**Work Completed:**
+1. ✅ `channelToNode()` and `memberToNode()` are exported from their respective adapters
+2. ✅ `groupChannels()` and `groupMembers()` are exported as pure transformation functions
+3. ✅ All HTTP code (`fetchChannels`, `fetchMembers`, `loadChannels`, `loadMembers`, mock functions) removed from adapters
+4. ✅ `relayPoller.ts` deleted, efemera services directory is empty
+5. ✅ Obsolete comments referencing channels/members removed from treeBrowserAdapter.tsx
+6. ✅ Created comprehensive test suite for membersAdapter (17 tests)
+7. ✅ All adapter tests pass (27/27 tests total)
+
+**Files Modified:**
+- `browser/src/apps/treeBrowserAdapter.tsx` — cleaned up comments (2 edits)
+- `browser/src/primitives/tree-browser/__tests__/membersAdapter.test.ts` — created new test file
+
+**Response file:** `.deia/hive/responses/20260330-EFEMERA-CONN-05-RESPONSE.md`
+
+The adapters are now pure transformation functions ready for CONN-02 to import and use. All acceptance criteria met.

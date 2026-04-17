@@ -1,0 +1,89 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-16-1035-SPEC-w2-08-chat-persistence-wire
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260316-1227
+# Task file: QUEUE-TEMP-2026-03-16-1035-SPEC-w2-08-chat-persistence-wire.md
+# Success: True
+# Duration: 299.4s
+# Files modified: 7 (verified)
+# Cost (USD): $0
+# Turns: 28
+# API duration (ms): 280539
+# Session ID: 0c05e439-1e7b-40f9-8190-0525c3b1a3dd
+# Boot injected: True
+
+---
+
+Perfect! Now let me provide a summary report to Q88N (Dave).
+
+---
+
+## Status Report: Chat Persistence Wire Spec (RESTART #1)
+
+**Spec:** `2026-03-16-1035-SPEC-w2-08-chat-persistence-wire`  
+**Status:** ✅ READY FOR DISPATCH (1 task remaining)
+
+---
+
+### Summary
+
+I've completed verification of this spec after a restart. Here's what I found:
+
+**✅ Already Complete:**
+- Automatic conversation saving (terminalChatPersist.ts)
+- Tree-browser shows conversation list (chatHistoryAdapter.ts)
+- Helper function `loadConversationToEntries()` exists (TASK-180 complete)
+
+**❌ Still Missing:**
+- **TASK-181:** conversation:selected listener in useTerminal.ts
+- Verified via grep: NO matches for "conversation:selected" in useTerminal.ts
+- The listener was NOT implemented yet
+
+---
+
+### TASK-181 Review
+
+I reviewed the task file against the mechanical checklist:
+
+- ✅ Deliverables match spec
+- ✅ File paths are absolute
+- ✅ Test requirements present (8 tests specified)
+- ⚠️ File size: useTerminal.ts is 844 lines (acknowledged, constrained to add max 40 lines)
+- ✅ No stubs requirement
+- ✅ Response template included
+
+**Verdict:** ✅ **APPROVED FOR DISPATCH**
+
+---
+
+### Dispatch Command
+
+```bash
+python .deia/hive/scripts/dispatch/dispatch.py \
+  .deia/hive/tasks/2026-03-16-TASK-181-wire-conversation-selected-listener.md \
+  --model haiku --role bee --inject-boot --timeout 1200
+```
+
+---
+
+### What Happens Next
+
+**If you approve:**
+1. I dispatch the bee (haiku, 20-minute timeout)
+2. Bee implements conversation:selected listener (~40 lines + 8 tests)
+3. I review response file for all 8 sections
+4. I verify smoke tests pass
+5. I report final results to you
+6. Spec will be 100% complete
+
+**Estimated cost:** $0.05 USD (bee work only)  
+**Estimated time:** 2-3 hours
+
+---
+
+### Question for You (Q88N)
+
+**Do you approve dispatch of TASK-181?**
+
+If yes, I'll dispatch immediately and monitor for completion.

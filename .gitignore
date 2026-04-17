@@ -1,0 +1,98 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Node
+node_modules/
+packages/browser/dist/
+packages/browser/node_modules/
+.next/
+
+# IDE
+.idea/
+.vscode/
+.vscode/settings.json
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test/Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+coverage/
+test-results/
+playwright-report/
+
+# Build artifacts & temp files
+*.egg
+*.whl
+*.tmp
+*.bak
+
+# Secrets (NEVER commit)
+.env
+.env.*
+.env.local
+*.pem
+keys.yml.enc
+.deia/secrets.yml
+
+# Claude Code local settings (personal permissions, not shared)
+.claude/settings.local.json
+
+# Feature inventory DB (generated, rebuild with import-md)
+docs/feature-inventory.db
+
+# Index (large binary, rebuilt locally)
+.deia/index/chunks.db
+.deia/index/vectors.faiss
+.deia/index/vectors.npy
+
+# Bot logs (local telemetry)
+.deia/bot-logs/
+
+# Hive runtime state (locked by running processes, regenerated)
+.deia/hive/hivenode-service.log
+.deia/hive/triage_daemon.log
+.deia/hive/dispatcher_log.jsonl
+.deia/hive/schedule_log.jsonl
+.deia/hive/queue_events.jsonl
+.deia/hive/dispatched.jsonl
+.deia/hive/event_ledger.db
+.deia/hive/schedule.json
+.deia/hive/tmp_outlier_*.{py,txt}
+
+# Hive review-stage scratch dirs (transient work state, not coordination)
+.deia/hive/_code_complete/
+.deia/hive/_needs_revision/
+.deia/hive/_q33n_review/
+.deia/hive/_qa_review/
+
+# Bash-glob typo directory — DELETE, do not commit
+.deia/hive/{tasks,tasks/
+
+# Runtime SQLite DBs (locked by running processes)
+.deia/efemera.db
+
+# Runtime data store (edge storage, not source)
+.data/
+
+# Production render output (generated from engine + TTS, 49M+ WAVs)
+production/**/render/
+production/**/*.wav
+production/**/*.mp4
+production/**/*.mkv
+
+# Railway / Vercel
+.vercel/
+.vercel

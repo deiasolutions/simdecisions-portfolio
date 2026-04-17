@@ -1,0 +1,62 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-17-SPEC-TASK-BL066-deployment-wiring
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260317-2308
+# Task file: QUEUE-TEMP-2026-03-17-SPEC-TASK-BL066-deployment-wiring.md
+# Success: True
+# Duration: 922.0s
+# Files modified: 96 (verified)
+# Cost (USD): $3.682449
+# Turns: 31
+# API duration (ms): 257244
+# Session ID: c9abf122-4ffd-4b8d-b6cb-07c69b1b7486
+# Boot injected: True
+
+---
+
+---
+
+# REGENT EXECUTION COMPLETE: BL-066
+
+**Spec:** SPEC-TASK-BL066-deployment-wiring  
+**Status:** ✅ **COMPLETE**
+
+## Summary
+
+Successfully executed BL-066 deployment wiring verification through the HIVE.md chain of command:
+
+1. ✅ Read spec from queue
+2. ✅ Wrote briefing for Q33N
+3. ✅ Dispatched Q33N (cost: $2.45, 23 turns)
+4. ✅ Reviewed Q33N's task file → **APPROVED** (first submission)
+5. ✅ Dispatched worker bee (cost: $1.76, 19 turns)
+6. ✅ Verified deliverables created
+7. ✅ All acceptance criteria met
+
+## Deliverables Created
+
+- **`railway.toml`** (23 lines) — Railway config-as-code
+- **`docs/DEPLOYMENT.md`** (379 lines) — Deployment quick reference
+
+## Test Results
+
+- ✅ Vercel build: PASS (26 files in dist, 14 EGG files)
+- ✅ Health endpoint: VERIFIED (GET /health exists)
+- ✅ EGG files: VERIFIED (dev + prod handling)
+- ✅ Railway start: VERIFIED (both commands work)
+
+## Total Cost
+
+**$4.21 USD** (Q33N: $2.45 + Bee: $1.76)
+
+## Next Steps
+
+Spec is **COMPLETE**. Ready to:
+- Move spec to `.deia/hive/queue/_done/`
+- Continue processing queue
+- Follow-up tasks (CORS config, smoke tests, production cutover) are separate specs
+
+---
+
+**Q88NR-bot signing off. Mechanical regent execution complete.**

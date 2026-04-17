@@ -1,0 +1,41 @@
+{
+  "id": "multi_agent_02_pipeline",
+  "name": "Three-Agent Pipeline",
+  "intent": "Test sequential pipeline topology across three agents",
+  "phase_ir_version": "1.0.0",
+  "groups": [
+    {"id": "agent_a", "name": "Data Collection", "node_ids": ["a_collect", "a_validate"]},
+    {"id": "agent_b", "name": "Data Transform", "node_ids": ["b_transform", "b_enrich"]},
+    {"id": "agent_c", "name": "Data Store", "node_ids": ["c_validate", "c_store"]}
+  ],
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "a_collect", "type": "service", "name": "Collect Data", "config": {"duration": {"type": "exponential", "params": {"lambda": 1.0}}}},
+    {"id": "a_validate", "type": "service", "name": "Validate Raw", "config": {"duration": {"type": "constant", "params": {"value": 0.5}}}},
+    {"id": "b_transform", "type": "service", "name": "Transform", "config": {"duration": {"type": "exponential", "params": {"lambda": 0.8}}}},
+    {"id": "b_enrich", "type": "service", "name": "Enrich", "config": {"duration": {"type": "constant", "params": {"value": 1.0}}}},
+    {"id": "c_validate", "type": "service", "name": "Validate Final", "config": {"duration": {"type": "constant", "params": {"value": 0.5}}}},
+    {"id": "c_store", "type": "service", "name": "Store", "config": {"duration": {"type": "constant", "params": {"value": 0.8}}}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "a_collect", "type": "then"},
+    {"id": "e2", "from_node": "a_collect", "to_node": "a_validate", "type": "then"},
+    {"id": "e3", "from_node": "a_validate", "to_node": "b_transform", "type": "emit"},
+    {"id": "e4", "from_node": "b_transform", "to_node": "b_enrich", "type": "then"},
+    {"id": "e5", "from_node": "b_enrich", "to_node": "c_validate", "type": "emit"},
+    {"id": "e6", "from_node": "c_validate", "to_node": "c_store", "type": "then"},
+    {"id": "e7", "from_node": "c_store", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "multi-agent",
+    "description": "Three-stage pipeline: collection -> transformation -> storage",
+    "evaluation_criteria": "All three agents complete, handoffs preserve data, pipeline throughput measured",
+    "expected_runtime_seconds": 8,
+    "agent_count": 3,
+    "handoff_points": [
+      {"from": "agent_a", "to": "agent_b", "edge": "e3"},
+      {"from": "agent_b", "to": "agent_c", "edge": "e5"}
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "branch_04_load_balancing",
+  "name": "Load Balancing Branch Selection",
+  "intent": "Test branch selection for load balancing across servers",
+  "phase_ir_version": "1.0.0",
+  "variables": [
+    {"id": "server_a_load", "type": "number", "default": 0.6},
+    {"id": "server_b_load", "type": "number", "default": 0.4},
+    {"id": "server_c_load", "type": "number", "default": 0.8}
+  ],
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "load_balancer", "type": "decision", "name": "Load Balancer", "mode": "exclusive"},
+    {"id": "server_a", "type": "service", "name": "Server A Process", "config": {"duration": {"type": "exponential", "params": {"lambda": 1.0}}}},
+    {"id": "server_b", "type": "service", "name": "Server B Process", "config": {"duration": {"type": "exponential", "params": {"lambda": 1.0}}}},
+    {"id": "server_c", "type": "service", "name": "Server C Process", "config": {"duration": {"type": "exponential", "params": {"lambda": 1.0}}}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "load_balancer", "type": "then"},
+    {"id": "e2", "from_node": "load_balancer", "to_node": "server_a", "type": "switch", "guard": "server_a_load <= server_b_load and server_a_load <= server_c_load"},
+    {"id": "e3", "from_node": "load_balancer", "to_node": "server_b", "type": "switch", "guard": "server_b_load < server_a_load and server_b_load <= server_c_load"},
+    {"id": "e4", "from_node": "load_balancer", "to_node": "server_c", "type": "switch", "guard": "server_c_load < server_a_load and server_c_load < server_b_load"},
+    {"id": "e5", "from_node": "server_a", "to_node": "end", "type": "then"},
+    {"id": "e6", "from_node": "server_b", "to_node": "end", "type": "then"},
+    {"id": "e7", "from_node": "server_c", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "branch-comparison",
+    "description": "Route to least loaded server among 3 options based on current load metrics",
+    "evaluation_criteria": "Least loaded server selected correctly, load balancing reduces variance",
+    "expected_runtime_seconds": 4,
+    "strategies": [
+      {"name": "route_to_a", "path": "server_a", "condition": "server_a_load is minimum"},
+      {"name": "route_to_b", "path": "server_b", "condition": "server_b_load is minimum"},
+      {"name": "route_to_c", "path": "server_c", "condition": "server_c_load is minimum"}
+    ]
+  }
+}

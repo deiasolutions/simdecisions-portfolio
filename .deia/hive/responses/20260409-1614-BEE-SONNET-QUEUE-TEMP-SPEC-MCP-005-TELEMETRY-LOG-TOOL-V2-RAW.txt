@@ -1,0 +1,49 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MCP-005-telemetry-log-tool-v2
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260409-1614
+# Task file: QUEUE-TEMP-SPEC-MCP-005-telemetry-log-tool-v2.md
+# Success: True
+# Duration: 378.4s
+# Files modified: 15 (verified)
+# Cost (USD): $6.141594
+# Turns: 29
+# API duration (ms): 330466
+# Session ID: 0272afba-b01c-4dde-9450-890ce45ea922
+# Boot injected: True
+
+---
+
+Excellent! The implementation is complete and all tests pass. Let me create a summary of what was delivered:
+
+## Summary
+
+Successfully implemented SPEC-MCP-005: Telemetry Log Tool
+
+**Deliverables:**
+1. ✅ New `telemetry_log` tool for logging individual tool invocations to Event Ledger
+2. ✅ Registered in MCP server with proper parameters and schema
+3. ✅ Returns unique event IDs in format `evt_{id}`
+4. ✅ Writes to Event Ledger with TOOL_INVOCATION event type
+5. ✅ Comprehensive test suite (9 tests, all passing)
+
+**Key Features:**
+- Required parameters: `bee_id`, `task_id`, `tool_name`
+- Optional parameters: `input_tokens`, `output_tokens`, `duration_ms`, `success` (default: true)
+- Automatic CLOCK/COIN/CARBON currency calculation
+- Proper entity ID formatting (`bee:{id}`, `task:{id}`)
+- Event Ledger integration via `LedgerWriter`
+
+**Testing:**
+- 9 comprehensive tests covering all functionality
+- Tests include minimal params, all params, failure cases, validation, currency calculation, normalization
+- All tests passing in 1.26s
+
+**Constraints Met:**
+- ✅ No file over 500 lines
+- ✅ TDD (tests first, then implementation)
+- ✅ No new tool files created
+- ✅ Uses existing Event Ledger write path
+
+The tool is ready for bees to use for opt-in telemetry logging of their tool invocations, feeding data into the surrogate training pipeline.

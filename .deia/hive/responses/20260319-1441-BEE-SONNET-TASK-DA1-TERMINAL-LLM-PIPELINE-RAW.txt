@@ -1,0 +1,50 @@
+# BEE RESPONSE: TASK-DA1-terminal-llm-pipeline
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260319-1441
+# Task file: TASK-DA1-terminal-llm-pipeline.md
+# Success: True
+# Duration: 242.3s
+# Files modified: 5 (verified)
+# Cost (USD): $2.2576739999999997
+# Turns: 26
+# API duration (ms): 210687
+# Session ID: e5488141-91b2-44f0-8001-14e304f550e3
+# Boot injected: True
+
+---
+
+Perfect! I've completed the audit of the terminal → LLM response pipeline. Here's what I found:
+
+## Summary
+
+**Task complete.** Research audit of the terminal → LLM pipeline across both platform and shiftcenter repos.
+
+### Key Discoveries
+
+1. **Call chain:** User input → handleSubmit → build history → get provider → compose dialects → provider.call() → HTTP POST to LLM → parse response → calculate metrics
+
+2. **BYOLLM pattern:** Model-agnostic `LLMProvider` interface. Supports Anthropic, Groq, OpenAI. BYOK (Bring Your Own Key) stored in localStorage. MCP support for tool calling.
+
+3. **Structured envelopes:** LLM returns JSON with slots: `to_user` (required), `to_text`, `to_explorer`, `to_ir`, `to_simulator`, `to_bus`. Parser validates and routes to bus targets.
+
+4. **to_text routing:** Array of targets with ops (append/replace/insert/delete) or diff strings. Terminal resolves nicknames → nodeIds, sends `terminal:text-patch` bus messages, text-pane applies ops.
+
+5. **Zone 2 rendering:** Response pane with configurable position (top/bottom/left/right/hidden). Renders entries: banner, input, response (markdown), system, ir (interactive cards).
+
+6. **Dialect system:** System prompt assembled from modular .md files (patois, envelope, ir-generation, simulation). EGG prompts prepended for custom capabilities.
+
+7. **MessageBus:** IPC mechanism. Nonce-protected, replay prevention. Supports broadcast (`target: '*'`) and targeted delivery.
+
+8. **Shiftcenter extensions:** 5 routing modes (shell/ai/relay/canvas/ir), proxy mode (hivenode /llm/chat), file attachment support.
+
+### No P0 Issues Found
+
+All platform code correctly ported. Shiftcenter extensions are intentional feature additions, not drift.
+
+### Response File
+
+Written to: `.deia/hive/responses/20260319-TASK-DA1-RESPONSE.md`
+
+Contains 10 atomic research findings with source citations, divergence analysis, and architectural documentation.

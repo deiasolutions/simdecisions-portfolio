@@ -1,0 +1,35 @@
+# BEE RESPONSE: 2026-03-14-TASK-122-RAG-INTEGRATION
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260314-2045
+# Task file: 2026-03-14-TASK-122-RAG-INTEGRATION.md
+# Success: True
+# Duration: 557.3s
+# Files modified: 16 (verified)
+# Cost (USD): $0
+# Turns: 1
+# API duration (ms): 451147
+# Session ID: 9a0f5125-507e-499a-a7b4-d5bd6ef76bca
+# Boot injected: True
+
+---
+
+Task complete! I've successfully integrated all RAG components with hivenode and registered all routes. The response file has been written with all required sections.
+
+**Summary of deliverables:**
+
+✅ **7 indexer routes** at `/rag/` (index-repo, index-file, index/{id}, index list, sync, sync-all, sync/status)  
+✅ **2 BOK routes** at `/rag/bok/` (search, enrich)  
+✅ **1 query endpoint** at `/rag/query` (combines search + synthesis)  
+✅ **4 factory methods** in engine.py (IndexerService, ReliabilityCalculator, Synthesizer, SyncDaemon)  
+✅ **8 integration test classes** covering pipeline, BOK, entities, sync, backward compatibility  
+✅ **All routes registered** in hivenode/routes/__init__.py without conflicts  
+✅ **Backward compatibility maintained** — existing `/rag/index`, `/rag/search`, `/rag/ingest-chat` unchanged  
+
+**Files created (all under 500 lines):**
+- `hivenode/rag/indexer/routes.py` (335 lines)
+- `hivenode/rag/bok/routes.py` (116 lines)  
+- `tests/hivenode/rag/test_integration.py` (475 lines)
+
+The integration is complete and follows the port-not-rewrite mandate, preserving the factory pattern from platform/efemera. Response file written to `.deia/hive/responses/20260314-TASK-122-RESPONSE.md`.

@@ -1,0 +1,49 @@
+# BEE RESPONSE: 2026-03-25-TASK-SEC-1-CONFIG-CLEANUP
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260325-1613
+# Task file: 2026-03-25-TASK-SEC-1-CONFIG-CLEANUP.md
+# Success: True
+# Duration: 319.0s
+# Files modified: 15 (verified)
+# Cost (USD): $2.6275320000000004
+# Turns: 20
+# API duration (ms): 174229
+# Session ID: a78810b0-fb2a-4377-95f6-5e7bb514abf1
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Let me provide a brief summary:
+
+---
+
+## TASK-SEC-1: Clean Hardcoded Credentials from config.py — ✅ COMPLETE
+
+### Summary
+Successfully removed all hardcoded Railway PostgreSQL credentials from `hivenode/config.py` and replaced the inventory database URL logic with clean environment-variable-only configuration.
+
+### Key Changes
+1. **Replaced inventory URL fallback logic** (lines 106-115):
+   - Old: Falls back to `DATABASE_URL` if no `HIVENODE_INVENTORY_DATABASE_URL`
+   - New: Defaults to local SQLite at `~/.shiftcenter/inventory.db` for "local" or empty
+   - Custom PostgreSQL URLs are preserved as-is when explicitly set
+
+2. **Verified zero hardcoded credentials**:
+   - ✅ No `RAILWAY_DATABASE_URL` constants
+   - ✅ No `RAILWAY_DATABASE_PUBLIC_URL` constants  
+   - ✅ No `postgresql://` strings anywhere in config.py
+   - ✅ `database_url` reads from env only, no hardcoded production fallback
+
+### Test Results
+- **16 tests passing** (config + inventory URL tests)
+- **83 tests passing** (all config-related tests)
+- **0 failures**
+- TDD approach: tests written first, implementation followed
+
+### Files Modified
+- `hivenode/config.py` — removed fallback to DATABASE_URL, changed "local" behavior
+- `tests/hivenode/test_config_inventory_url.py` — updated 5 tests, added 1 new test
+
+**Response file:** `.deia/hive/responses/20260325-TASK-SEC-1-RESPONSE.md`

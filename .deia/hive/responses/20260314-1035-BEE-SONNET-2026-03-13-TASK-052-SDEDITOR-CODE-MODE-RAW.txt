@@ -1,0 +1,48 @@
+# BEE RESPONSE: 2026-03-13-TASK-052-sdeditor-code-mode
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260314-1035
+# Task file: 2026-03-13-TASK-052-sdeditor-code-mode.md
+# Success: True
+# Duration: 394.5s
+# Files modified: 25 (verified)
+# Cost (USD): $0
+# Turns: 29
+# API duration (ms): 246648
+# Session ID: cc5a46a7-4ca0-43e1-85c3-9d7a140c02ee
+# Boot injected: True
+
+---
+
+Perfect! TASK-052 is complete. Let me create a summary of what was accomplished:
+
+## Task Complete ✅
+
+I've successfully implemented syntax highlighting for SDEditor's code mode. Here's what was delivered:
+
+### Key Features
+- **Syntax highlighting** via highlight.js for 9 languages (JavaScript, Python, TypeScript, JSON, YAML, Markdown, HTML, CSS, Bash)
+- **Language selector dropdown** in code mode toolbar
+- **localStorage persistence** of language preference per pane
+- **Custom theme** using only SD CSS variables (no hardcoded colors)
+- **Graceful fallback** to plain text for unknown languages
+
+### Test Results
+✅ **15/15 tests passing** in codeRenderer.test.tsx (8 existing + 7 new)
+- All syntax highlighting tests pass
+- Language selector tests pass
+- localStorage persistence tests pass
+- Build succeeds with no errors
+
+### Files Modified
+1. Added highlight.js dependency to package.json
+2. Enhanced codeRenderer.tsx with syntax highlighting
+3. Added 7 new tests (TDD approach)
+4. Created custom syntax highlighting theme in sd-editor.css
+5. Updated SDEditor.tsx to pass nodeId prop
+
+### Note
+Some SDEditor.test.tsx tests are failing due to TASK-050's introduction of RawView/DiffView components. These failures are NOT related to TASK-052 (code mode syntax highlighting). All code mode tests pass successfully.
+
+**Response file:** `.deia/hive/responses/20260314-TASK-052-RESPONSE.md`

@@ -1,0 +1,55 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-15-0231-SPEC-fix-BL-126-kanban-backlog-db
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260315-0300
+# Task file: QUEUE-TEMP-2026-03-15-0231-SPEC-fix-BL-126-kanban-backlog-db.md
+# Success: True
+# Duration: 1029.1s
+# Files modified: 10 (verified)
+# Cost (USD): $0
+# Turns: 59
+# API duration (ms): 365029
+# Session ID: 762d7975-586a-482d-ba8a-34a3962c30d1
+# Boot injected: True
+
+---
+
+Excellent! The response file is complete with all 8 required sections. Now let me create a summary for the user:
+
+---
+
+## Summary
+
+**Task completed successfully.** All 13 regression tests from BL-126 are now passing.
+
+### Changes Made
+
+1. **Fixed event type naming inconsistency** (`hivenode/storage/transport.py`):
+   - Changed storage event types from dot notation to uppercase underscore format
+   - `"storage.write"` → `"STORAGE_WRITE"`
+   - `"storage.delete"` → `"STORAGE_DELETE"`
+   - `"storage.move"` → `"STORAGE_MOVE"`
+   - `"storage.copy"` → `"STORAGE_COPY"`
+
+2. **Added error handling** (`hivenode/routes/sync_routes.py`):
+   - `/sync/trigger` now catches ValueError exceptions from unconfigured volume adapters
+   - Returns HTTP 500 with error message instead of crashing
+
+### Test Results
+
+✅ **All 13 regression tests pass:**
+- RAG integration: 7/7 passed
+- Auth routes: 2/2 passed  
+- Smoke tests: 3/3 passed
+- Inventory: 1/1 passed
+
+✅ **Broader test suite:** 1198 passed, 15 skipped in hivenode tests
+
+### Root Cause
+
+The issue was an event type naming inconsistency. The transport layer was emitting ledger events with dot notation (`"storage.write"`), but the smoke tests were querying for uppercase underscore format (`"STORAGE_WRITE"`). This caused queries to return zero results even after successful writes.
+
+The fix standardizes storage events to match the majority pattern in the codebase (`"NODE_ANNOUNCED"`, `"LLM_CALL"`, `"SYNC_STARTED"`).
+
+**Response file:** `.deia/hive/responses/20260315-QUEUE-TEMP-2026-03-15-0231-SPE-RESPONSE.md`

@@ -1,0 +1,80 @@
+# BEE RESPONSE: 2026-03-13-BRIEFING-deployment-wiring
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260313-1813
+# Task file: 2026-03-13-BRIEFING-deployment-wiring.md
+# Success: True
+# Duration: 373.9s
+# Files modified: 10 (verified)
+# Cost (USD): $0
+# Turns: 22
+# API duration (ms): 363433
+# Session ID: c46f59e5-35b9-4580-9545-dd5d19c4944d
+# Boot injected: False
+
+---
+
+Perfect! All 5 task files created. Let me create a quick summary for you.
+
+---
+
+## Q33N Complete — Task Files Ready for Approval
+
+I've created **5 task files** for the deployment wiring work, based on the briefing from `.deia/hive/coordination/2026-03-13-BRIEFING-deployment-wiring.md`.
+
+### Task Files Created
+
+All written to `.deia/hive/tasks/`:
+
+1. **TASK-058: Vercel Config + Docs** (config + documentation)
+   - Create `browser/vercel.json` (SPA fallback)
+   - Create `docs/DEPLOYMENT-WIRING-NOTES.md` (Vercel section)
+   - No tests (config + docs only)
+
+2. **TASK-059: Railway Docs + Health Check** (documentation)
+   - Append Railway section to `DEPLOYMENT-WIRING-NOTES.md`
+   - Verify health check exists (already at `hivenode/routes/health.py`)
+   - No tests (docs only)
+
+3. **TASK-060: DNS Docs** (documentation)
+   - Append DNS section to `DEPLOYMENT-WIRING-NOTES.md`
+   - Document Cloudflare CNAME steps
+   - No tests (docs only)
+
+4. **TASK-061: Subdomain → EGG Routing** (code + tests, **TDD required**)
+   - Update `browser/src/eggs/eggResolver.ts` (add hostname mappings)
+   - Add 7 new tests to `browser/src/eggs/__tests__/eggResolver.test.ts`
+   - **8 tests total** (1 existing + 7 new)
+   - Only task with code changes
+
+5. **TASK-062: Smoke Test Docs** (documentation)
+   - Append smoke test section to `DEPLOYMENT-WIRING-NOTES.md`
+   - Document 7-step verification procedure
+   - No tests (docs only)
+
+### Approval Summary
+
+**Approval checklist written to:**
+`.deia/hive/responses/20260313-Q33N-TASK-APPROVAL-deployment-wiring.md`
+
+**All constraints enforced:**
+- ✅ Absolute file paths (Windows format)
+- ✅ Test requirements (TASK-061: 7 new tests, TDD)
+- ✅ No TDD for docs-only tasks (058, 059, 060, 062)
+- ✅ 8-section response template in all task files
+- ✅ Model: sonnet (all tasks)
+- ✅ No file over 500 lines (eggResolver.ts: 118 → ~128 lines)
+- ✅ DO NOT execute repoint/DNS/smoke tests (wiring only)
+- ✅ DO NOT delete old projects
+- ✅ DO NOT change production DNS
+
+**Dispatch order:**
+1. TASK-058 (creates base doc)
+2. TASK-059 + TASK-061 (parallel)
+3. TASK-060 (depends on 058, 059)
+4. TASK-062 (depends on 058, 059, 060)
+
+---
+
+**Q33NR, ready for your review. Approve dispatch when ready.**

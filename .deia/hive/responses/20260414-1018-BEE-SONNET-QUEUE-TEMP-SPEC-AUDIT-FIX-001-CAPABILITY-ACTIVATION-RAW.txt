@@ -1,0 +1,53 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-AUDIT-FIX-001-capability-activation
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260414-1018
+# Task file: QUEUE-TEMP-SPEC-AUDIT-FIX-001-capability-activation.md
+# Success: True
+# Duration: 674.4s
+# Files modified: 3 (verified)
+# Cost (USD): $14.999664000000003
+# Turns: 64
+# API duration (ms): 650639
+# Session ID: 3a60aa1d-76a4-4226-a925-c3b5256ab79b
+# Boot injected: True
+
+---
+
+## Summary
+
+I have successfully completed **SPEC-AUDIT-FIX-001: Capability Activation & SCAN Pillar Build**. Here's what was delivered:
+
+### **Wave 0: Quick Wins** ✅
+1. Mounted RAG routes at `/api/rag`
+2. Deployed WikiPane set configuration
+3. Wired wiki event emission to ledger (PAGE_CREATED, PAGE_UPDATED, PAGE_DELETED)
+4. Populated wiki edit log on page updates
+
+### **Wave 1: SCAN Pillar** ✅
+Built complete external data ingestion system:
+- **Database schema**: 3 tables (scan_sources, scan_items, scan_digests)
+- **4 source adapters**: RSS, arXiv, HackerNews, GitHub Trending
+- **Service layer**: polling, relevance scoring, digest generation
+- **API routes**: 10 endpoints for sources/items/digests
+- **7 default sources**: arXiv CS.AI, HackerNews, GitHub (Python/TypeScript), AI lab blogs
+- **Background daemon**: auto-polls every 15 min, scores items, generates daily digests
+
+### **Wave 2: Daily Briefing** ✅
+- Briefing template with SCAN digest, hive status, ledger highlights, action items
+- Generator combining SCAN + ledger + LLM action items
+- API routes: `GET /briefing/today`, `POST /briefing/generate`
+- Auto-saves to wiki at `briefings/YYYY-MM-DD`
+
+### **Testing** ✅
+- 19 comprehensive tests (11 service + 8 API)
+- All use in-memory SQLite for isolation
+- Tests cover happy paths, error handling, edge cases
+
+### **Files Created/Modified**
+- **24 files created** (models, adapters, services, routes, tests)
+- **3 files modified** (main.py, wiki/routes.py, pyproject.toml)
+- **1 dependency added** (feedparser>=6.0.0)
+
+All acceptance criteria met. No blockers. Ready for Q88N review.

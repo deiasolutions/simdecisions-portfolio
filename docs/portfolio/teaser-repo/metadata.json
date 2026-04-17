@@ -1,0 +1,114 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "SimDecisions Architecture - Multi-Tier AI Agent Orchestration",
+  "description": "Constitutional AI governance system for multi-agent development. Hierarchical coordination (Regent → Coordinator → Workers) with automated validation gates, healing loops, and traceability. Demonstrates multi-tier 12-factor architecture, CI/CD pipelines, and systematic AI correction mechanisms.",
+  "author": {
+    "@type": "Person",
+    "name": "Dave Eichler",
+    "url": "https://github.com/daaaave-atx"
+  },
+  "dateCreated": "2026-04-16",
+  "dateModified": "2026-04-16",
+  "keywords": [
+    "multi-tier architecture",
+    "12-factor app",
+    "AI developer agents",
+    "agent orchestration",
+    "CI/CD pipelines",
+    "evaluate and correct AI output",
+    "strangler fig pattern",
+    "clean separation of concerns",
+    "constitutional governance",
+    "DEIA Hive",
+    "Phase-IR",
+    "discrete-event simulation",
+    "FastAPI",
+    "React",
+    "PostgreSQL",
+    "Railway",
+    "Vercel",
+    "validation gates",
+    "healing loops",
+    "traceability",
+    "three currencies",
+    "CLOCK COIN CARBON"
+  ],
+  "programmingLanguage": [
+    "Python",
+    "TypeScript",
+    "JavaScript"
+  ],
+  "runtimePlatform": [
+    "Python 3.12",
+    "Node.js",
+    "Railway",
+    "Vercel"
+  ],
+  "applicationCategory": "DeveloperApplication",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "codeRepository": "https://github.com/deiasolutions/simdecisions-architecture",
+  "softwareRequirements": [
+    "Python 3.12+",
+    "Node.js 18+",
+    "PostgreSQL 14+",
+    "Docker"
+  ],
+  "operatingSystem": [
+    "Linux",
+    "Windows",
+    "macOS"
+  ],
+  "isAccessibleForFree": true,
+  "abstract": "Portfolio teaser demonstrating multi-tier AI agent orchestration platform under constitutional governance. Includes DEIA Hive (4-tier agent hierarchy), PROCESS-13 (Gate 0 + 3-phase validation with healing loops), traceability system (REQ → SPEC → TASK → CODE → TEST), and strangler fig pattern examples (20-year domain evolution from 2006 C++ to 2026 open standard). Deployed to Railway + Vercel with verified 5.2-day uptime. 1,358 specs completed autonomously at 98.7% success rate.",
+  "associatedMedia": [
+    {
+      "@type": "ImageObject",
+      "name": "Five-Tier Architecture Diagram",
+      "contentUrl": "diagrams/5-tier-architecture.mmd",
+      "description": "Mermaid diagram showing clean separation: view (React) → API interface (FastAPI) → service/business logic (DES engine) → persistence (SQLAlchemy Core) → database (PostgreSQL)"
+    },
+    {
+      "@type": "ImageObject",
+      "name": "Agent Chain Diagram",
+      "contentUrl": "diagrams/agent-chain.mmd",
+      "description": "Mermaid diagram showing DEIA Hive hierarchy: Q88N (human) → Q33NR (regent) → Q33N (coordinator) → BEEs (workers)"
+    },
+    {
+      "@type": "ImageObject",
+      "name": "Validation Gates Diagram",
+      "contentUrl": "diagrams/validation-gates.mmd",
+      "description": "Mermaid diagram showing PROCESS-13: Gate 0 → Phase 0 → Phase 1 → Phase 2 with healing loops and escalation"
+    },
+    {
+      "@type": "ImageObject",
+      "name": "Deployment Flow Diagram",
+      "contentUrl": "diagrams/deployment-flow.mmd",
+      "description": "Mermaid diagram showing CI/CD: git push → build → deploy → health check"
+    }
+  ],
+  "mentions": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "PRISM-IR",
+      "url": "https://github.com/deiasolutions/prism-ir",
+      "description": "Process Representation, Intent Simulation & Manifestation - Open specification for domain-agnostic process intermediate representation (Apache 2.0)"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "familybondbot",
+      "description": "Full-stack consumer Discord bot with multiple seasons of live usage. Private repo available on request."
+    }
+  ],
+  "maintainer": {
+    "@type": "Organization",
+    "name": "DEIA Solutions",
+    "url": "https://github.com/deiasolutions"
+  },
+  "version": "1.0",
+  "releaseNotes": "Architecture snapshot as of April 2026. Demonstrates multi-tier 12-factor architecture, AI agent orchestration under governance, systematic validation with healing loops, CI/CD deployment evidence, and 20-year strangler fig evolution.",
+  "funding": {
+    "@type": "MonetaryGrant",
+    "name": "Self-funded"
+  }
+}

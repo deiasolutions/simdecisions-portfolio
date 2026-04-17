@@ -1,0 +1,33 @@
+# BEE RESPONSE: 2026-03-15-TASK-158-fix-shell-chrome-css-violations
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260315-1426
+# Task file: 2026-03-15-TASK-158-fix-shell-chrome-css-violations.md
+# Success: True
+# Duration: 124.0s
+# Files modified: 11 (verified)
+# Cost (USD): $0
+# Turns: 17
+# API duration (ms): 77063
+# Session ID: 988226e3-0472-4ba9-9a1c-f6d433742045
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Here's a summary:
+
+## TASK-158: Fix Hardcoded Colors — COMPLETE ✅
+
+**What was fixed:**
+1. **ShellTabBar.tsx:150** — `rgba(0, 0, 0, 0.15)` → `var(--sd-shadow-sm)`
+2. **WorkspaceBar.tsx:57** — `rgba(139,92,246,0.06)` → `var(--sd-accent-subtle)`
+3. **WorkspaceBar.tsx:146** — `rgba(139,92,246,0.06)` → `var(--sd-accent-subtle)`
+4. **WorkspaceBar.tsx:230** — `rgba(0,0,0,0.5)` → `var(--sd-shadow-xl)`
+
+**Verification:**
+- ✅ CSS compliance check: No hardcoded colors remain (grep exit code 1)
+- ✅ All 60 tests pass (MenuBar 25, ShellTabBar 14, WorkspaceBar 21)
+- ✅ Response file written with all 8 mandatory sections
+
+Hard Rule #3 (NO HARDCODED COLORS) is now enforced across the shell chrome components.

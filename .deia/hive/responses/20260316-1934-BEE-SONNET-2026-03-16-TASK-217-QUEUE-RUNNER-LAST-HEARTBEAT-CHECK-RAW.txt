@@ -1,0 +1,47 @@
+# BEE RESPONSE: 2026-03-16-TASK-217-queue-runner-last-heartbeat-check
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260316-1934
+# Task file: 2026-03-16-TASK-217-queue-runner-last-heartbeat-check.md
+# Success: True
+# Duration: 412.6s
+# Files modified: 18 (verified)
+# Cost (USD): $5.168799
+# Turns: 37
+# API duration (ms): 281287
+# Session ID: 55d68b9b-601c-4c40-ae4e-611f72a71148
+# Boot injected: True
+
+---
+
+Perfect! The task is complete. Let me create a summary of what was accomplished:
+
+## Task Complete: TASK-217
+
+I've successfully updated the queue runner's liveness detection to use `last_heartbeat` instead of `last_seen`. Here's what was done:
+
+### Changes Made
+
+1. **Modified `dispatch_handler.py::_is_heartbeat_stale()`** (lines 192-220)
+   - Now checks `last_heartbeat` field first (updates on every heartbeat)
+   - Falls back to `last_seen` if `last_heartbeat` is missing (backward compatible)
+   - Added comprehensive docstring explaining the distinction
+
+2. **Created comprehensive test suite** (`tests/_tools/test_dispatch_handler_liveness.py`)
+   - 8 tests covering all edge cases
+   - All tests pass (TDD approach)
+
+### Key Features
+
+- **Accurate liveness detection:** Bees that are alive but not transitioning state won't be killed
+- **Backward compatible:** Works with old monitor state files missing `last_heartbeat`
+- **Preserved error handling:** Monitor API failures don't trigger false positives
+- **Timeout unchanged:** 480 seconds (8 minutes) as defined in code constant
+
+### Test Results
+- **8 new tests:** All passing
+- **21 total tests in `tests/_tools/`:** All passing
+- **No regressions**
+
+The response file has been written to `.deia/hive/responses/20260316-TASK-217-RESPONSE.md` with all required sections.

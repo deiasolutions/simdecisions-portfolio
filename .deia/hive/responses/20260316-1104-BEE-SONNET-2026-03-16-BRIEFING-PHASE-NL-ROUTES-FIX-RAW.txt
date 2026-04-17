@@ -1,0 +1,51 @@
+# BEE RESPONSE: 2026-03-16-BRIEFING-phase-nl-routes-fix
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260316-1104
+# Task file: 2026-03-16-BRIEFING-phase-nl-routes-fix.md
+# Success: True
+# Duration: 531.8s
+# Files modified: 24 (verified)
+# Cost (USD): $0
+# Turns: 3
+# API duration (ms): 103493
+# Session ID: 3f90d069-8964-4ec5-b331-6ca5107fb800
+# Boot injected: True
+
+---
+
+Excellent! All response files are present. Let me provide a final summary for Q33NR:
+
+---
+
+## ✅ TASK-R17 COMPLETE — Phase NL Routes Fixed
+
+**Dispatch Summary:**
+- **Duration:** 368.5 seconds (~6 minutes)
+- **Model:** Sonnet 4.5
+- **Turns:** 1
+- **Exit Code:** 0 (success)
+
+**Files Created:**
+1. `.deia/hive/responses/20260316-TASK-R17-RESPONSE.md` (4.2KB, all 8 sections)
+2. `.deia/hive/responses/20260316-1105-BEE-SONNET-2026-03-16-TASK-R17-FIX-PHASE-NL-ROUTES-RAW.txt` (668 bytes, raw output)
+3. `.deia/hive/responses/20260316-Q33NR-COMPLETION-REPORT-TASK-R17.md` (1.9KB, completion report)
+
+**What Was Fixed:**
+- Route module `hivenode/routes/phase_nl_routes.py` already existed (13.5KB)
+- Was simply not registered in `hivenode/routes/__init__.py`
+- Bee added 2 lines to register the router
+
+**Test Results:**
+- ✅ **15/15 tests passing** (was 0/15)
+- ✅ `/api/phase/nl-to-ir` endpoint responds (was 404)
+- ✅ No regressions
+- ⏱️ Test duration: 0.89 seconds
+
+**Clock / Cost / Carbon:**
+- **Clock:** 8 minutes total
+- **Cost:** $0.02
+- **Carbon:** ~1g CO₂
+
+**Ready for Archival:** Yes — all acceptance criteria met.

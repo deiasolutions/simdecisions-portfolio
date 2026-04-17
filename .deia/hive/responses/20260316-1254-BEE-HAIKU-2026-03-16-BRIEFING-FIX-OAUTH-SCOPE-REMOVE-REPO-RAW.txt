@@ -1,0 +1,47 @@
+# BEE RESPONSE: 2026-03-16-BRIEFING-fix-oauth-scope-remove-repo
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: queen
+# Timestamp: 20260316-1254
+# Task file: 2026-03-16-BRIEFING-fix-oauth-scope-remove-repo.md
+# Success: True
+# Duration: 63.7s
+# Files modified: 4 (verified)
+# Cost (USD): $0
+# Turns: 10
+# API duration (ms): 40053
+# Session ID: c5b3e710-19e8-49c5-b769-8900134d0283
+# Boot injected: True
+
+---
+
+Perfect. Now I'll write a summary for Q33NR and stop, waiting for approval to dispatch the bee.
+
+---
+
+## Q33N Summary — Task File Ready
+
+I have read the briefing and analyzed the codebase. The OAuth scope fix is straightforward:
+
+**Task: TASK-182 — Fix GitHub OAuth scope (remove repo access)**
+
+### Key Findings:
+
+1. **Two locations to change** in `ra96it/routes/oauth.py`:
+   - Line 171: `"scope": "user:email,repo"` → `"read:user,user:email"`
+   - Line 279: `github_scopes="user:email,repo"` → `"read:user,user:email"`
+
+2. **No test changes needed**: The test file `test_oauth.py` does NOT assert on scope values. All 11 existing tests will continue to pass.
+
+3. **Files stay small**: Both files are well under 500 lines, no modularization needed.
+
+4. **Scope is safe**: The app only calls `GET /user` and `GET /user/emails`, both of which work with `read:user,user:email`.
+
+### Deliverables:
+✅ Task file written to `.deia/hive/tasks/2026-03-16-TASK-182-fix-oauth-scope.md`
+
+### Ready for:
+- Q33NR review and approval to dispatch bee
+- Smoke test: `cd hivenode && python -m pytest tests/ra96it/ -v`
+
+Awaiting Q33NR approval to dispatch the bee.

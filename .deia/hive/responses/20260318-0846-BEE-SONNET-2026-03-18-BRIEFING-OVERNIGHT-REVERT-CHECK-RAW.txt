@@ -1,0 +1,47 @@
+# BEE RESPONSE: 2026-03-18-BRIEFING-OVERNIGHT-REVERT-CHECK
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260318-0846
+# Task file: 2026-03-18-BRIEFING-OVERNIGHT-REVERT-CHECK.md
+# Success: True
+# Duration: 1006.8s
+# Files modified: 10 (verified)
+# Cost (USD): $2.030685
+# Turns: 22
+# API duration (ms): 486081
+# Session ID: ae515355-902f-48b4-a0b2-4f2099f20f43
+# Boot injected: True
+
+---
+
+Perfect! I've completed the investigation and written a comprehensive report. Let me summarize the findings:
+
+---
+
+## Investigation Complete
+
+I've analyzed the overnight commit (`43f447f`) and found:
+
+### ✅ Main Finding: BL-203 Revert (Already Fixed)
+The overnight crash recovery commit reverted work from BL-203 (heartbeat split), specifically the `_is_state_transition()` method in `build_monitor.py`. **However, this was already recovered** in commit `ad06402`.
+
+### 🔍 Root Cause: Temporal Collision
+The crash recovery checkpoint was created at 18:19, but BL-203 work completed AFTER that in the same evening. When the recovery was committed, it contained an older version of the file.
+
+### ⚠️ High-Risk Collision Files
+I identified **6 files** that were targeted by 3+ specs in the overnight batch:
+- `browser/src/shell/reducer.ts` (3 specs)
+- `browser/src/shell/dragDropUtils.ts` (3 specs)
+- `browser/src/shell/components/appRegistry.ts` (3 specs)
+- `browser/src/primitives/terminal/useTerminal.ts` (3 specs)
+- `browser/src/primitives/terminal/TerminalApp.tsx` (3 specs)
+- `.deia/hive/scripts/queue/run_queue.py` (3 specs)
+
+### 📋 Recommended Preventive Measures
+1. **Spec Staleness Detector** - Warn if spec is >1hr old at dispatch time
+2. **Collision Pre-Flight Check** - Scan queued specs, flag files claimed by 2+ specs
+3. **Post-Dispatch Regression Scan** - Detect accidental overwrites after completion
+4. **Crash Recovery Protocol** - Check git log before bulk commits, prefer cherry-pick
+
+**Full report written to:** `.deia/hive/responses/20260318-OVERNIGHT-REVERT-CHECK.md`

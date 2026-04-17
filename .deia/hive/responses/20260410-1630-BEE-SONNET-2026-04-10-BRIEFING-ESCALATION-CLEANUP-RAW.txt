@@ -1,0 +1,106 @@
+# BEE RESPONSE: 2026-04-10-BRIEFING-ESCALATION-CLEANUP
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260410-1630
+# Task file: 2026-04-10-BRIEFING-ESCALATION-CLEANUP.md
+# Success: True
+# Duration: 155.1s
+# Files modified: 4 (verified)
+# Cost (USD): $0.676209
+# Turns: 7
+# API duration (ms): 142461
+# Session ID: 146146ac-f960-4c50-9f07-5bdfd11e2d15
+# Boot injected: True
+
+---
+
+Good. Now let me write a summary report back to Q33NR with the task files ready for review:
+
+## Phase 1 Survey Task File Ready for Review
+
+**Q33N Report to Q33NR — Escalation Cleanup Task Files**
+
+I've created two task files for the escalation chain cleanup briefing:
+
+### TASK-ESC-001: Phase 1 Survey (Sonnet, 45 min cap)
+**File:** `C:/Users/davee/OneDrive/Documents/GitHub/simdecisions/.deia/hive/tasks/2026-04-10-TASK-ESC-001-ESCALATION-SURVEY.md`
+
+**Objective:** Forensic read-only survey of 15 spec families across simdecisions and shiftcenter to identify canonical sources and create disposition table.
+
+**Key deliverables:**
+- Disposition table with one row per spec family
+- For each spec: canonical source location, disposition (RESTORE / RESTORE_WITH_STRIP / SKIP_* / HOLD_Q88N / KILL)
+- Evidence citations for all dispositions
+
+**Scope:**
+- Read-only operations in both repos
+- Git history traversal in shiftcenter via `git show` (no checkout)
+- Working tree inspection in simdecisions
+- 15 spec families surveyed, prioritized by file size if 45 min cap is hit
+
+**Constraints enforced:**
+- Zero writes to either repo
+- No git checkout in shiftcenter (frozen-legacy)
+- No code changes
+- Explicit `cd` in every command for repo clarity
+
+---
+
+### TASK-ESC-002: Phase 2 Restore (Haiku/Sonnet, 30 min cap)
+**File:** `C:/Users/davee/OneDrive/Documents/GitHub/simdecisions/.deia/hive/tasks/2026-04-10-TASK-ESC-002-ESCALATION-RESTORE.md`
+
+**Objective:** Execute restore operations based on ESC-001 disposition table.
+
+**Prerequisite:** ESC-001 MUST complete first. ESC-002 reads the disposition table from ESC-001's response file.
+
+**Key deliverables:**
+- All `RESTORE` dispositions: copy clean originals from shiftcenter git to simdecisions `_needs_review/`
+- All `RESTORE_WITH_STRIP` dispositions: strip pollution blocks, write to `_needs_review/`
+- Working tree changes left uncommitted for Q88N review
+
+**Constraints enforced:**
+- Write ONLY to simdecisions `_needs_review/`
+- No modifications to `_escalated/` (forensic preservation)
+- No git operations (commit/push)
+- Explicit `cd` in every command
+
+---
+
+### Task File Quality Check
+
+Both task files include:
+- ✅ Clear objective (one sentence)
+- ✅ Context from briefing
+- ✅ Files to Read First (absolute paths)
+- ✅ Concrete deliverables with checkboxes
+- ✅ Test requirements / acceptance criteria
+- ✅ All constraints from briefing enforced
+- ✅ 8-section response file requirement (MANDATORY template)
+- ✅ Model assignment guidance (Sonnet for ESC-001, Haiku/Sonnet for ESC-002)
+- ✅ Time caps (45 min / 30 min)
+- ✅ Explicit `cd` requirement for cross-repo work
+- ✅ No hardcoded colors (N/A for these tasks)
+- ✅ No stubs (N/A for research/file-ops tasks)
+- ✅ TDD requirement (N/A for research/file-ops tasks)
+
+---
+
+### Awaiting Q33NR Approval
+
+Ready to dispatch ESC-001 after your review. ESC-002 will be dispatched only after:
+1. ESC-001 completes
+2. Q33NR reviews ESC-001 disposition table
+3. Q33NR approves ESC-002 dispatch
+
+**Recommended dispatch commands:**
+
+```bash
+# Phase 1 (after approval)
+python .deia/hive/scripts/dispatch/dispatch.py .deia/hive/tasks/2026-04-10-TASK-ESC-001-ESCALATION-SURVEY.md --model sonnet --role bee --inject-boot
+
+# Phase 2 (after ESC-001 complete + Q33NR approval)
+python .deia/hive/scripts/dispatch/dispatch.py .deia/hive/tasks/2026-04-10-TASK-ESC-002-ESCALATION-RESTORE.md --model haiku --role bee --inject-boot
+```
+
+Note: No `--timeout` added per HIVE.md guidance ("Do NOT add `--timeout` unless the spec explicitly requires it"). Both tasks have time caps but will self-manage within those constraints.

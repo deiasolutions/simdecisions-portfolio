@@ -1,0 +1,27 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-BL-146-A-CLOUDNODE-BOT-TOKEN-CRUD
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260416-1114
+# Task file: QUEUE-TEMP-SPEC-BL-146-A-CLOUDNODE-BOT-TOKEN-CRUD.md
+# Success: True
+# Duration: 699.9s
+# Files modified: 12 (verified)
+# Cost (USD): $16.984844999999996
+# Turns: 65
+# API duration (ms): 574160
+# Session ID: b4de6696-9aba-4d30-babe-c937cf261737
+# Boot injected: True
+
+---
+
+Perfect! The task is complete. All 20 tests pass, all acceptance criteria are met, and the smoke tests confirm everything works. The bot token CRUD system is now fully implemented in CloudNode with:
+
+- BotToken model with SHA-256 hashing
+- Partial unique index enforcing one active bot per user (PostgreSQL + SQLite)
+- Full CRUD service layer
+- REST API endpoints (POST/GET/DELETE /bot/token)
+- Bot authentication dependency
+- Database migration (no Alembic)
+- Comprehensive test coverage (20 tests)
+- All smoke tests passing

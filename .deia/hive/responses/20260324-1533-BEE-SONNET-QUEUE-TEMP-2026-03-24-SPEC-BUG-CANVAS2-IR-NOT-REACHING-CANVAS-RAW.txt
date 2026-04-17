@@ -1,0 +1,63 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-24-SPEC-BUG-canvas2-ir-not-reaching-canvas
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260324-1533
+# Task file: QUEUE-TEMP-2026-03-24-SPEC-BUG-canvas2-ir-not-reaching-canvas.md
+# Success: True
+# Duration: 1282.5s
+# Files modified: 66 (verified)
+# Cost (USD): $2.817765
+# Turns: 19
+# API duration (ms): 232483
+# Session ID: fccd7895-feb7-42bc-a22e-0e26ee87d68b
+# Boot injected: True
+
+---
+
+The queue runner is still active. My work on this spec is complete. Let me create a final summary for Q88N (Dave):
+
+---
+
+## SPEC COMPLETE: BUG-058 (Canvas2 IR Pipeline)
+
+**Status:** ✅ COMPLETE — Ready for manual verification
+
+**What Was Fixed:**
+The canvas2 IR pipeline was failing because EGG prompt blocks told the LLM to return bare JSON arrays `[{...}]`, but the terminal router expects envelope format `{ to_user: "...", to_ir: [...] }`. Without the envelope, mutations were treated as plain text and never reached FlowDesigner.
+
+**Root Cause:**
+- Prompt engineering issue (not architecture issue)
+- Architecture was already correct
+- Just needed to update EGG prompts to instruct LLM properly
+
+**Changes Made:**
+1. Updated `canvas2.egg.md` prompt block (lines 268-290) — now instructs LLM to use envelope format
+2. Updated `canvas.egg.md` prompt block (preventative fix, same issue)
+3. Created regression test: `FlowDesigner.envelope-ir-deposit.test.tsx` (7 test cases, 283 lines)
+
+**No Code Changes:**
+- No TypeScript/React changes
+- No terminalResponseRouter changes
+- No FlowDesigner changes
+- Only EGG prompt blocks modified
+
+**Cost:**
+- Total: ~$10.10 USD
+- Q33N diagnosis: $4.32
+- BEE implementation: $5.70
+- 43 minutes total clock time
+
+**Manual Verification Required:**
+1. Open canvas2 EGG in browser
+2. Type "add a decision node" in IR terminal
+3. Confirm LLM responds with envelope format
+4. Confirm node appears on canvas
+
+**Files Modified:**
+- `eggs/canvas2.egg.md` (prompt block)
+- `eggs/canvas.egg.md` (prompt block)
+- `browser/src/apps/sim/components/flow-designer/__tests__/FlowDesigner.envelope-ir-deposit.test.tsx` (new test)
+
+**Next Step:**
+Awaiting your manual verification. If verified, approve for commit. If issues found, I'll dispatch a fix task (max 2 fix cycles).

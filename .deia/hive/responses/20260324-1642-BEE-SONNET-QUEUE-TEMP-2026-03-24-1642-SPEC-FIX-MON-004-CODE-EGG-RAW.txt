@@ -1,0 +1,56 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-24-1642-SPEC-fix-MON-004-code-egg
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260324-1642
+# Task file: QUEUE-TEMP-2026-03-24-1642-SPEC-fix-MON-004-code-egg.md
+# Success: True
+# Duration: 249.3s
+# Files modified: 15 (verified)
+# Cost (USD): $2.6049900000000004
+# Turns: 17
+# API duration (ms): 150426
+# Session ID: 15940a1b-d242-4dbc-ab85-f2601e118607
+# Boot injected: True
+
+---
+
+Perfect! Now I need to create a summary message for Q88N. Let me provide a concise status report:
+
+---
+
+## ✅ SPEC-fix-MON-004-code-egg — COMPLETE
+
+**Status:** Fix cycle 2 of 2 complete. Task file corrected and approved.
+
+### What Happened
+
+This fix spec was created because the queue runner misinterpreted a task file review rejection as a bee execution failure. The actual issue:
+
+- **Original problem:** MON-004 task file had relative paths (Rule 8 violation)
+- **Cycle 1:** Regent rejected task file, requested corrections
+- **Cycle 2 (this fix spec):** Q33N applied corrections, task now approved
+
+### Corrections Applied
+
+1. **Absolute paths (Rule 8):** All file paths converted from `src/eggs/...` to `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\eggs\...`
+2. **Subdomain wording:** Changed from "Add subdomain" to "Verify subdomain exists... If missing, add"
+
+### Files Modified
+
+- `.deia\hive\queue\_stage\2026-03-24-TASK-MON-004-code-egg.md` (corrected by Q33N)
+- Briefing + response files created
+
+### Outcome
+
+**✅ MON-004 task file now approved for BEE-HAIKU dispatch.** All mechanical review checks passing. No warnings.
+
+### Queue Runner Issue Identified
+
+The queue runner creates fix specs when regent rejects task files during review. This is incorrect — review rejections should trigger correction cycles (1-2), not fix specs. Fix specs should only be created when bees execute and fail tests.
+
+**Recommendation:** Update queue runner to distinguish review rejections from bee execution failures.
+
+---
+
+**Next action:** Queue runner or Q33N should dispatch BEE-HAIKU with the corrected task file to execute the actual work (write code.egg.md, tests, etc).

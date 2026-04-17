@@ -1,0 +1,54 @@
+# BEE RESPONSE: 2026-03-19-TASK-BL121-C-integration-tests
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260319-2150
+# Task file: 2026-03-19-TASK-BL121-C-integration-tests.md
+# Success: True
+# Duration: 1192.1s
+# Files modified: 18 (verified)
+# Cost (USD): $5.0400248
+# Turns: 75
+# API duration (ms): 433901
+# Session ID: d948c39c-5ced-47ab-94a4-986516fc85ec
+# Boot injected: True
+
+---
+
+Excellent! All done. Let me create a summary for the user:
+
+## Summary
+
+I have successfully completed **TASK-BL121-C: Canvas Properties Integration Tests**. 
+
+### ✅ Deliverables
+
+**Created:** `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\browser\src\primitives\canvas\__tests__\canvas-properties-integration.test.tsx`
+
+- **482 lines** (under 500 limit)
+- **8 integration tests**, all passing
+- **No stubs, no TODOs**, fully implemented
+
+### ✅ Tests Implemented
+
+1. **Select node → properties display** — Verifies General section appears with node data
+2. **Deselect node → properties clear** — Verifies empty-state shows when deselected
+3. **Switch selection** — Verifies properties update from node A to node B
+4. **Re-select after deselection** — Verifies state integrity through full cycle
+5. **Missing data handling** — Verifies graceful fallback with incomplete node data
+6. **Event payload structure** — Verifies CanvasNodeSelectedData type compliance
+7. **Full lifecycle** — Complete flow: select → switch → deselect → reselect
+8. **Bus integration** — Direct bus event verification without renders
+
+### ✅ Key Finding
+
+Discovered that `propertiesAdapter` subscribes using message types as paneIds (e.g., `bus.subscribe('canvas:node-selected', ...)`). Tests correctly target these message types as paneIds rather than broadcasting.
+
+### ✅ All Tests Pass
+
+```
+Test Files: 1 passed
+Tests:      8 passed (8)
+```
+
+**Response file:** `.deia/hive/responses/20260319-TASK-BL121-C-RESPONSE.md`

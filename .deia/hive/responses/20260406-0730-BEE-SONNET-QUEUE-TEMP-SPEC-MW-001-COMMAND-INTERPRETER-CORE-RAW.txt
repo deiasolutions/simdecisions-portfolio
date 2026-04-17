@@ -1,0 +1,63 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MW-001-command-interpreter-core
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-0730
+# Task file: QUEUE-TEMP-SPEC-MW-001-command-interpreter-core.md
+# Success: True
+# Duration: 645.4s
+# Files modified: 18 (verified)
+# Cost (USD): $13.999380000000002
+# Turns: 65
+# API duration (ms): 615662
+# Session ID: 4c8df596-25b0-41aa-90b6-abf1ebde4a90
+# Boot injected: True
+
+---
+
+Perfect! Let me create a final summary:
+
+## Task Complete ✓
+
+I've successfully implemented **SPEC-MW-001: Command-Interpreter Core Parser + Fuzzy Matching** with the following results:
+
+### Deliverables
+
+**1. Command Interpreter** (`hivenode/shell/command_interpreter.py` - 356 lines)
+- `CommandInterpreter` class with `parse()` method
+- `ParseResult` dataclass with spec-compliant fields: `command`, `confidence`, `requires_confirmation`, `alternatives`, `arguments`
+- Fuzzy matching using `difflib.SequenceMatcher` + Levenshtein distance
+- Multi-word command support ("open terminal" → "open-terminal")
+- Compound fuzzy matching ("opn terminal" → "open-terminal")
+- Ambiguity detection for base commands with variants
+- Case-insensitive matching with original case preserved in parameters
+
+**2. Command Dictionary** (`hivenode/shell/commands.yml` - 265 lines)
+- **42 commands** (exceeds 30+ requirement by 40%)
+- Compound commands: open-terminal, open-file, create-new-terminal, close-terminal, search-text, etc.
+- Structured YAML: categories, aliases, parameters, descriptions
+
+**3. Test Suite** (`hivenode/shell/tests/test_command_interpreter.py` - 202 lines)
+- **26 comprehensive tests** across 7 test classes
+- **100% pass rate**
+- Coverage: exact matching, fuzzy matching, parameter extraction, ambiguity, confidence thresholds, edge cases
+
+### Test Results
+
+```
+26 passed in 0.90s
+```
+
+All smoke tests pass:
+- ✓ "open terminal" → open-terminal (confidence: 1.0, no confirmation)
+- ✓ "opn terminal" (typo) → open-terminal (confidence: 0.857, requires confirmation)
+- ✓ "open file test.py" → open-file with filename='test.py'
+- ✓ "open" (ambiguous) → confidence 0.6, shows 4 alternatives
+
+### Response File
+
+Written to: `.deia/hive/responses/20260406-QUEUE-TEMP-SPEC-MW-001-command-interpreter-core-RESPONSE.md`
+
+**Ready for next phases:**
+- MW-002: PRISM-IR emission
+- MW-003: Confirmation + ambiguity flows

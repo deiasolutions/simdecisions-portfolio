@@ -1,0 +1,67 @@
+{
+  "id": "workflow_01_simple_queue",
+  "name": "Simple Queue Workflow",
+  "intent": "Source -> Queue -> Service -> Sink. Basic M/M/1 queueing system for baseline validation.",
+  "phase_ir_version": "1.0.0",
+  "nodes": [
+    {
+      "id": "source",
+      "type": "source",
+      "name": "Token Generator",
+      "config": {
+        "arrival_distribution": "poisson",
+        "lambda": 5.0,
+        "max_arrivals": 100
+      }
+    },
+    {
+      "id": "queue",
+      "type": "queue",
+      "name": "Wait Queue",
+      "config": {
+        "discipline": "FIFO",
+        "capacity": 10
+      }
+    },
+    {
+      "id": "service",
+      "type": "service",
+      "name": "Service Node",
+      "config": {
+        "service_distribution": "exponential",
+        "mu": 6.0,
+        "servers": 1
+      }
+    },
+    {
+      "id": "sink",
+      "type": "sink",
+      "name": "Completion"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from_node": "source",
+      "to_node": "queue",
+      "type": "then"
+    },
+    {
+      "id": "e2",
+      "from_node": "queue",
+      "to_node": "service",
+      "type": "then"
+    },
+    {
+      "id": "e3",
+      "from_node": "service",
+      "to_node": "sink",
+      "type": "then"
+    }
+  ],
+  "metadata": {
+    "description": "Source -> Queue -> Service -> Sink",
+    "evaluation_criteria": "Throughput > 4 entities/min, mean cycle time < 3 min",
+    "expected_runtime_seconds": 5
+  }
+}

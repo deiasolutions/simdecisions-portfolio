@@ -1,0 +1,46 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-15-2309-SPEC-rebuild-R10-rag-smoke-tests
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260316-0956
+# Task file: QUEUE-TEMP-2026-03-15-2309-SPEC-rebuild-R10-rag-smoke-tests.md
+# Success: True
+# Duration: 289.6s
+# Files modified: 30 (verified)
+# Cost (USD): $0
+# Turns: 1
+# API duration (ms): 112802
+# Session ID: 0923d6f7-09ff-45a8-844f-49c868271446
+# Boot injected: True
+
+---
+
+Perfect! The task has been completed successfully. The bee added the `TestQueryRoute` class with both smoke tests, and all 14 tests are passing.
+
+---
+
+## ✅ TASK-R10 COMPLETE — REGENT APPROVAL
+
+**Status:** APPROVED — Ready for archive
+**Bee Response:** `.deia/hive/responses/20260315-TASK-R10-RESPONSE.md` ✅
+
+### What Was Delivered
+- `TestQueryRoute` class added to `tests/hivenode/rag/test_rag_routes.py` (lines 183-196)
+- `test_query_endpoint_exists` — validates endpoint responds with 200, 500, or 503
+- `test_query_missing_query_param` — validates missing param returns 422 or 400
+
+### Quality Verification
+✅ All 8 response sections present and complete  
+✅ 14/14 tests passing (12 existing + 2 new)  
+✅ File size: 217 lines (under 500 limit)  
+✅ No stubs, no hardcoded values  
+✅ Bee correctly identified URL param pattern (`?query=...`)  
+✅ Independent verification run confirms passing tests  
+
+### Metrics
+- **Duration:** 10 minutes
+- **Cost:** ~$0.0003 USD
+- **Model:** Haiku 4.5
+- **Turns:** 18
+
+**This spec is complete and ready for inventory registration.**

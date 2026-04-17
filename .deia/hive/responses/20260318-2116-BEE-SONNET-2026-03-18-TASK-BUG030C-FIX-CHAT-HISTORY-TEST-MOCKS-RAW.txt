@@ -1,0 +1,44 @@
+# BEE RESPONSE: 2026-03-18-TASK-BUG030C-fix-chat-history-test-mocks
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260318-2116
+# Task file: 2026-03-18-TASK-BUG030C-fix-chat-history-test-mocks.md
+# Success: True
+# Duration: 405.0s
+# Files modified: 16 (verified)
+# Cost (USD): $5.811660000000001
+# Turns: 29
+# API duration (ms): 280975
+# Session ID: 81fc4133-dd67-47d6-be99-40efe88ee4c6
+# Boot injected: True
+
+---
+
+Perfect! Task complete. Let me create a summary:
+
+## Summary
+
+**TASK-BUG-030-C: Fix Chat History Adapter Test Mocks — ✅ COMPLETE**
+
+### What Was Done
+Fixed the broken test mocks in `chatHistoryAdapter.test.ts` by implementing the global `fetch` mock pattern from `volumeStatus.test.ts`. The previous `vi.mock()` pattern wasn't intercepting API calls, causing real functions to be called and resulting in 401 errors.
+
+### Key Changes
+1. **Removed `vi.mock()` calls** for chatApi and volumeStatus
+2. **Added global fetch mock**: `const mockFetch = vi.fn(); global.fetch = mockFetch;`
+3. **Added cache clearing** in `beforeEach`: `clearDiscoverCache()` and `resetBackendCache()`
+4. **Configured fetch responses** for all endpoints: `/health`, `/node/discover`, `/storage/read`
+5. **Fixed volume status tests** by setting `last_seen` to 6 minutes ago (> 5 minute threshold)
+6. **Fixed error test** by corrupting localStorage to trigger actual error
+
+### Test Results
+✅ **9 passed | 0 failed** (was 2 passed | 7 failed)
+
+- No 401 errors in test output
+- No random conversation IDs
+- All mock data correctly used
+- Adapter source code untouched (as required)
+
+### Response File
+Written to: `.deia/hive/responses/20260318-TASK-BUG030C-RESPONSE.md`

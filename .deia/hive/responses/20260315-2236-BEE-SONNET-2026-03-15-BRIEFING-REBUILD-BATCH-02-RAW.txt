@@ -1,0 +1,163 @@
+# BEE RESPONSE: 2026-03-15-BRIEFING-rebuild-batch-02
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260315-2236
+# Task file: 2026-03-15-BRIEFING-rebuild-batch-02.md
+# Success: True
+# Duration: 229.6s
+# Files modified: 15 (verified)
+# Cost (USD): $0
+# Turns: 19
+# API duration (ms): 227313
+# Session ID: da1bcc53-75be-478b-8f92-7f1d8e06c7e0
+# Boot injected: True
+
+---
+
+Perfect! All 5 task files for Batch 02 are now written. Let me create a summary report for Q33NR.
+
+## Task Files Created — Rebuild Batch 02
+
+I've successfully written all 5 task files to `.deia/hive/tasks/`. Here's the summary:
+
+---
+
+### Batch 02 Overview
+
+**Total Tasks:** 5  
+**Priority Range:** P0.30 - P0.50  
+**Estimated Duration:** 48-58 minutes total  
+**Dependencies:** Tasks depend on Batch 01 completing first
+
+---
+
+### Task Breakdown
+
+| Task ID | Title | Priority | Model | Duration | Depends On |
+|---------|-------|----------|-------|----------|------------|
+| **TASK-R06** | Fix RAG indexer_service.py imports + storage.py methods | P0.30 | Sonnet | 20-30 min | R02-R05 (Batch 01) |
+| **TASK-R07** | Register RAG routes + canvas chat routes in __init__.py | P0.35 | Haiku | 5-10 min | R01 (Batch 01) |
+| **TASK-R08** | Fix CSS var violations in ShellTabBar + WorkspaceBar | P0.40 | Haiku | 5 min | None (independent) |
+| **TASK-R09** | Add IndexerService export to RAG __init__.py | P0.45 | Haiku | 3 min | R06 |
+| **TASK-R10** | Add 2 smoke tests to RAG routes test file | P0.50 | Haiku | 5 min | None (independent) |
+
+---
+
+### What Each Task Restores
+
+**R06 (Sonnet, Complex):**
+- Fix broken imports in `indexer_service.py` (chunker, embedder, scanner)
+- Fix model field mismatches (StorageTier, StalenessInfo, ProvenanceInfo, etc.)
+- Add CodeChunk-to-Chunk conversion method
+- Fix IR summary computation
+- Add storage API methods (get_chunks, get_embeddings, list_all limit)
+- Fix 13 test assertions to match actual model schema
+
+**R07 (Haiku, Simple):**
+- Register `hivenode/routes/rag_routes.py` in `__init__.py` (rename to avoid collision)
+- Register `hivenode/routes/canvas_chat.py` in `__init__.py`
+- Verify 16 + 8 = 24 tests pass
+
+**R08 (Haiku, Simple):**
+- Replace 4 hardcoded `rgba()` values with CSS variables
+- ShellTabBar.tsx: 1 fix (boxShadow)
+- WorkspaceBar.tsx: 3 fixes (hover, active indicator, menu shadow)
+- Verify 35 tests pass + grep compliance check
+
+**R09 (Haiku, Trivial):**
+- Add `IndexerService` import to `hivenode/rag/indexer/__init__.py`
+- Add `IndexerService` to `__all__` list
+- Verify 54 tests pass (22 storage + 32 scanner)
+
+**R10 (Haiku, Simple):**
+- Add `TestQueryRoute` class to `tests/hivenode/rag/test_rag_routes.py`
+- Add 2 test methods (endpoint exists, missing param validation)
+- Verify 14 total tests pass (12 existing + 2 new)
+
+---
+
+### Dependency Chain
+
+```
+Batch 01 (R01-R05)
+  ├─> R06 (depends on R02-R05 for correct __init__.py exports)
+  │     └─> R09 (depends on R06 for fixed IndexerService)
+  ├─> R07 (depends on R01 for DES routes registration)
+  ├─> R08 (independent — browser-side CSS)
+  └─> R10 (independent — test file only)
+```
+
+**Parallel Execution Possible:**
+- After Batch 01 completes: R06, R07, R08, R10 can run in parallel
+- R09 must wait for R06 to complete
+
+---
+
+### Test Coverage
+
+**Expected Test Results After Batch 02:**
+- RAG indexer service: 13 tests ✓
+- RAG routes: 16 tests ✓
+- Canvas chat: 8 tests ✓
+- Shell components: 35 tests ✓
+- RAG indexer storage: 22 tests ✓
+- RAG indexer scanner: 32 tests ✓
+- RAG routes smoke: 14 tests ✓
+
+**Total:** 140 tests passing
+
+---
+
+### Files Modified (Total: 6 files)
+
+**Backend (3 files):**
+1. `hivenode/rag/indexer/indexer_service.py` (R06)
+2. `hivenode/rag/indexer/storage.py` (R06)
+3. `hivenode/rag/indexer/__init__.py` (R09)
+4. `hivenode/routes/__init__.py` (R07)
+
+**Frontend (2 files):**
+5. `browser/src/shell/components/ShellTabBar.tsx` (R08)
+6. `browser/src/shell/components/WorkspaceBar.tsx` (R08)
+
+**Tests (2 files):**
+7. `tests/hivenode/rag/indexer/test_indexer_service.py` (R06)
+8. `tests/hivenode/rag/test_rag_routes.py` (R10)
+
+---
+
+### Task Files Written
+
+All 5 task files are now in `.deia/hive/tasks/`:
+- ✅ `2026-03-15-TASK-R06-fix-rag-indexer-imports-storage.md`
+- ✅ `2026-03-15-TASK-R07-register-rag-canvas-routes.md`
+- ✅ `2026-03-15-TASK-R08-fix-shell-css-variables.md`
+- ✅ `2026-03-15-TASK-R09-add-indexer-service-export.md`
+- ✅ `2026-03-15-TASK-R10-add-rag-routes-smoke-tests.md`
+
+---
+
+### Ready for Q33NR Review
+
+All task files are complete with:
+- ✅ Clear objectives and context
+- ✅ Absolute file paths
+- ✅ Specific deliverables (checkboxes)
+- ✅ Test requirements (TDD + pass counts)
+- ✅ Acceptance criteria
+- ✅ Response file requirements (8 sections)
+- ✅ Model assignments (Sonnet/Haiku)
+- ✅ Dependency tracking
+
+**Next Steps:**
+1. Q33NR reviews these 5 task files
+2. If approved, Q33NR tells me to dispatch bees
+3. I dispatch after Batch 01 completes (respecting dependencies)
+
+**DO NOT dispatch bees yet. Awaiting Q33NR approval.**
+
+---
+
+**Q33N — Bot ID: QUEEN-2026-03-15-BRIEFING-rebuild-ba**  
+**Date:** 2026-03-15

@@ -1,0 +1,66 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-INFRA-01-queue-runner-crash-investigation
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-1558
+# Task file: QUEUE-TEMP-SPEC-INFRA-01-queue-runner-crash-investigation.md
+# Success: True
+# Duration: 520.2s
+# Files modified: 15 (verified)
+# Cost (USD): $10.259730000000001
+# Turns: 36
+# API duration (ms): 365504
+# Session ID: ace97eb0-9677-4a90-ad00-7aa4d9d22cdf
+# Boot injected: True
+
+---
+
+Excellent! All 14 tests pass. Let me create a brief summary of the completed work:
+
+---
+
+## Summary
+
+I've successfully investigated and fixed the embedded queue runner crash issue. Here's what was found and fixed:
+
+### Root Cause
+The queue runner was failing to start due to an **import error**. When `run_queue.py` was loaded via `importlib`, its relative imports (`from .morning_report import ...`) failed, and the fallback absolute imports also failed because the queue scripts directory wasn't in `sys.path`.
+
+### Three Critical Issues Fixed
+
+1. **Import Failure** - Added queue scripts directory to `sys.path` before loading the module
+2. **Silent Exception Swallowing** - Changed warnings to errors with full tracebacks (`exc_info=True`)
+3. **No Restart Mechanism** - Enhanced `/build/queue-wake` endpoint to restart dead runners
+
+### Files Modified
+
+- `hivenode/queue_bridge.py` - Fixed module loading, added exception logging callback
+- `hivenode/main.py` - Improved error logging (warning → error)
+- `hivenode/routes/build_monitor.py` - Added restart capability to wake endpoint
+- `tests/hivenode/test_queue_bridge.py` - Extended with 14 comprehensive tests
+- `tests/hivenode/test_queue_bridge_smoke.py` - New smoke tests for fresh boot scenario
+
+### Test Results
+
+✅ **14/14 unit tests pass** covering:
+- Startup validation
+- Import error handling
+- Exception logging
+- Restart after failure
+- Long-running stability
+- Wake endpoint functionality
+
+✅ **2/2 smoke tests pass** verifying:
+- Runner starts successfully on fresh hivenode boot
+- Wake endpoint can restart a dead runner
+
+### Verification
+
+Tested with live environment - runner now starts successfully and picks up specs from the queue:
+
+```
+Before: running=False (import error: No module named 'morning_report')
+After:  running=True (processing specs correctly)
+```
+
+All acceptance criteria met. The embedded queue runner is now reliable on startup, recovers from errors, and can be restarted via the wake endpoint.

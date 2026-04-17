@@ -1,0 +1,48 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MW-002-command-interpreter-prism-ir
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-0743
+# Task file: QUEUE-TEMP-SPEC-MW-002-command-interpreter-prism-ir.md
+# Success: True
+# Duration: 229.6s
+# Files modified: 8 (verified)
+# Cost (USD): $2.910054
+# Turns: 22
+# API duration (ms): 220720
+# Session ID: cbba858d-d5ef-4e47-973a-4c9fe84b3682
+# Boot injected: True
+
+---
+
+## Summary
+
+**SPEC-MW-002 COMPLETE** ✓
+
+I've successfully implemented PRISM-IR emission for the command interpreter. Here's what was delivered:
+
+### Files Created
+1. **`hivenode/shell/prism_emitter.py`** (219 lines) - Full PRISMEmitter implementation
+2. **`hivenode/shell/tests/test_prism_emitter.py`** (259 lines) - Comprehensive test suite
+
+### Key Features
+- **PRISMEmitter class** with `emit(parse_result: ParseResult) -> dict` method
+- **PRISM-IR schema** includes: action, target, parameters, confidence, mode, metadata
+- **Execution modes**: auto (≥0.9), confirm (0.7-0.9), disambiguate (<0.7)
+- **Full validation** of emitted IR structure
+- **JSON serialization** support (all primitive types)
+- **Error handling** with custom `EmissionError` exception
+
+### Test Results
+- **14 comprehensive tests** - all passing in 0.26s
+- **3 integration tests** - full parse → emit → serialize → validate pipeline
+- **All smoke tests pass**:
+  - Exact match: "open terminal" → auto mode
+  - Typo correction: "opn terminal" → confirm mode with typo flag
+  - Ambiguous: "open" → disambiguate mode with 4 alternatives
+  - JSON serialization verified
+
+### Response File
+Written to: `.deia/hive/responses/20260406-QUEUE-TEMP-SPEC-MW-002-command-interpreter-prism-ir-RESPONSE.md`
+
+Ready for next phase (MW-003: command-interpreter confirmation UI).

@@ -1,0 +1,66 @@
+# BEE RESPONSE: 2026-03-16-BRIEFING-animation-event-wiring
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260316-1458
+# Task file: 2026-03-16-BRIEFING-animation-event-wiring.md
+# Success: True
+# Duration: 187.7s
+# Files modified: 18 (verified)
+# Cost (USD): $2.5821690000000004
+# Turns: 20
+# API duration (ms): 173678
+# Session ID: 67fe19d8-be23-43d5-b3a8-6ed7cde3342b
+# Boot injected: True
+
+---
+
+Perfect! Now let me create a summary for the user:
+
+---
+
+## Coordination Complete
+
+I've analyzed the briefing for wiring DES simulation events to canvas animation components. Here's what I found:
+
+### Current State
+✅ All 6 animation components already exist (ported in TASK-147):
+- NodePulse, TokenAnimation, ResourceBar, SimClock, QueueBadge, CheckpointFlash
+- Each has its own test suite (21 tests total)
+
+✅ `useSimulation` hook already emits events (lines 264-354)
+
+✅ FlowDesigner already receives simulation state via `useSimulationLayer` hook
+
+### What's Missing
+❌ FlowDesigner doesn't RENDER the animation components yet
+❌ Need an overlay layer that maps simulation state → animation props
+
+### Task Breakdown
+
+I've created **2 task files**:
+
+**TASK-186: Add Animation Overlay Layer** (Sonnet)
+- Create `AnimationOverlay.tsx` component
+- Wire up all 6 animation components based on simulation state
+- Integrate into FlowDesigner overlay section (after line 700)
+- Animations reset when simulation stops
+
+**TASK-187: Animation Event Mapping Tests** (Haiku)
+- Write 8+ tests for event → animation state mapping
+- Test node_activate → NodePulse, token_move → TokenAnimation, etc.
+- Test animation reset on simulation stop/pause
+
+### Dependency Order
+1. TASK-187 (tests) **FIRST** — TDD requirement
+2. TASK-186 (implementation) — uses tests from TASK-187
+
+### Files to be Modified
+- **New:** `browser/src/apps/sim/components/flow-designer/animation/AnimationOverlay.tsx`
+- **New:** `browser/src/apps/sim/components/flow-designer/animation/__tests__/AnimationOverlay.test.tsx`
+- **Modified:** `browser/src/apps/sim/components/flow-designer/FlowDesigner.tsx` (add overlay render)
+
+**Coordination report written to:**
+`.deia/hive/responses/20260316-Q33N-BRIEFING-animation-event-wiring-COORDINATION-REPORT.md`
+
+**Awaiting Q33NR review and approval to dispatch bees.**

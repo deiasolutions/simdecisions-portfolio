@@ -1,0 +1,49 @@
+{
+  "id": "multi_step_04_decision_tree",
+  "name": "Deep Decision Tree Workflow",
+  "intent": "Test complex decision logic with 4+ levels of conditional branches",
+  "phase_ir_version": "1.0.0",
+  "variables": [
+    {"id": "priority", "type": "number", "default": 0},
+    {"id": "complexity", "type": "number", "default": 0},
+    {"id": "urgency", "type": "number", "default": 0}
+  ],
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "classify_priority", "type": "decision", "name": "Classify Priority", "mode": "exclusive"},
+    {"id": "check_complexity_high", "type": "decision", "name": "Check Complexity (High Pri)", "mode": "exclusive"},
+    {"id": "check_complexity_low", "type": "decision", "name": "Check Complexity (Low Pri)", "mode": "exclusive"},
+    {"id": "check_urgency_hc", "type": "decision", "name": "Check Urgency (High/Complex)", "mode": "exclusive"},
+    {"id": "check_urgency_hs", "type": "decision", "name": "Check Urgency (High/Simple)", "mode": "exclusive"},
+    {"id": "process_critical", "type": "service", "name": "Critical Path", "config": {"duration": {"type": "constant", "params": {"value": 1.0}}}},
+    {"id": "process_normal", "type": "service", "name": "Normal Path", "config": {"duration": {"type": "constant", "params": {"value": 2.0}}}},
+    {"id": "process_low", "type": "service", "name": "Low Priority Path", "config": {"duration": {"type": "constant", "params": {"value": 3.0}}}},
+    {"id": "process_deferred", "type": "service", "name": "Deferred Path", "config": {"duration": {"type": "constant", "params": {"value": 0.5}}}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "classify_priority", "type": "then"},
+    {"id": "e2", "from_node": "classify_priority", "to_node": "check_complexity_high", "type": "switch", "guard": "priority >= 7"},
+    {"id": "e3", "from_node": "classify_priority", "to_node": "check_complexity_low", "type": "switch", "guard": "priority < 7"},
+    {"id": "e4", "from_node": "check_complexity_high", "to_node": "check_urgency_hc", "type": "switch", "guard": "complexity >= 5"},
+    {"id": "e5", "from_node": "check_complexity_high", "to_node": "check_urgency_hs", "type": "switch", "guard": "complexity < 5"},
+    {"id": "e6", "from_node": "check_urgency_hc", "to_node": "process_critical", "type": "switch", "guard": "urgency >= 8"},
+    {"id": "e7", "from_node": "check_urgency_hc", "to_node": "process_normal", "type": "switch", "guard": "urgency < 8"},
+    {"id": "e8", "from_node": "check_urgency_hs", "to_node": "process_normal", "type": "switch"},
+    {"id": "e9", "from_node": "check_complexity_low", "to_node": "process_low", "type": "switch", "guard": "complexity >= 3"},
+    {"id": "e10", "from_node": "check_complexity_low", "to_node": "process_deferred", "type": "switch", "guard": "complexity < 3"},
+    {"id": "e11", "from_node": "process_critical", "to_node": "end", "type": "then"},
+    {"id": "e12", "from_node": "process_normal", "to_node": "end", "type": "then"},
+    {"id": "e13", "from_node": "process_low", "to_node": "end", "type": "then"},
+    {"id": "e14", "from_node": "process_deferred", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "multi-step",
+    "description": "4-level decision tree routing to 4 terminal paths based on priority/complexity/urgency",
+    "evaluation_criteria": "Guard evaluation correct, exclusive routing enforced, all paths reachable",
+    "expected_runtime_seconds": 5,
+    "node_count": 11,
+    "decision_depth": 4,
+    "terminal_paths": 4
+  }
+}

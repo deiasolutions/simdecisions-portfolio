@@ -1,0 +1,46 @@
+# BEE RESPONSE: 2026-03-16-Q33NR-DIRECTIVE-dispatch-task-190
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260316-1612
+# Task file: 2026-03-16-Q33NR-DIRECTIVE-dispatch-task-190.md
+# Success: True
+# Duration: 348.1s
+# Files modified: 10 (verified)
+# Cost (USD): $0.7820519999999999
+# Turns: 8
+# API duration (ms): 35767
+# Session ID: da7726ac-adfc-4dc7-9caf-8624f0a244a8
+# Boot injected: True
+
+---
+
+Perfect! BEE has been dispatched for TASK-190 (subdomain-egg-routing) running in background with task ID `b512125`.
+
+## Dispatch Confirmation
+
+**Task:** TASK-190 (subdomain-egg-routing)
+**Model:** Haiku
+**Role:** BEE
+**Status:** Running in background
+**Task ID:** b512125
+**Output file:** `C:\Users\davee\AppData\Local\Temp\claude\C--Users-davee-OneDrive-Documents-GitHub-shiftcenter\tasks\b512125.output`
+
+**What the BEE will do:**
+1. Add `canvas.shiftcenter.com` → `canvas` mapping to `eggResolver.ts`
+2. Create test file with 10+ test cases covering:
+   - Query param override (3 tests)
+   - Hostname mapping (6 tests)
+   - Fallback behavior (1 test)
+   - Pathname routing (1 test)
+3. Run all tests and verify they pass
+4. Write response file to `.deia/hive/responses/20260316-TASK-190-RESPONSE.md`
+
+**When BEE completes, I will:**
+1. Read the response file
+2. Verify all 8 sections are present
+3. Verify tests pass
+4. Write a completion report
+5. Report results to Q33NR
+
+Monitoring background task. Will report when complete.

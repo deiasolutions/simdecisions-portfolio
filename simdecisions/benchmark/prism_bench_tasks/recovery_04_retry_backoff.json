@@ -1,0 +1,41 @@
+{
+  "id": "recovery_04_retry_backoff",
+  "name": "Exponential Backoff Retry Recovery",
+  "intent": "Test retry logic with exponential backoff strategy",
+  "phase_ir_version": "1.0.0",
+  "variables": [
+    {"id": "retry_count", "type": "counter", "default": 0},
+    {"id": "backoff_delay", "type": "number", "default": 1.0}
+  ],
+  "nodes": [
+    {"id": "start", "type": "start", "name": "Start"},
+    {"id": "attempt_service", "type": "service", "name": "Service Attempt", "config": {"duration": {"type": "constant", "params": {"value": 0.5}}}},
+    {"id": "backoff_wait", "type": "wait", "name": "Exponential Backoff Wait", "config": {"duration": {"type": "constant", "params": {"value": 1.0}}}},
+    {"id": "success_path", "type": "service", "name": "Success Handler", "config": {"duration": {"type": "constant", "params": {"value": 0.5}}}},
+    {"id": "failure_path", "type": "service", "name": "Permanent Failure Handler", "config": {"duration": {"type": "constant", "params": {"value": 1.0}}}},
+    {"id": "end", "type": "sink", "name": "End"}
+  ],
+  "edges": [
+    {"id": "e1", "from_node": "start", "to_node": "attempt_service", "type": "then"},
+    {"id": "e2", "from_node": "attempt_service", "to_node": "success_path", "type": "switch", "guard": "success == true"},
+    {"id": "e3", "from_node": "attempt_service", "to_node": "backoff_wait", "type": "switch", "guard": "success == false and retry_count < 3"},
+    {"id": "e4", "from_node": "attempt_service", "to_node": "failure_path", "type": "switch", "guard": "success == false and retry_count >= 3"},
+    {"id": "e5", "from_node": "backoff_wait", "to_node": "attempt_service", "type": "repeat", "delay": "backoff_delay * (2 ^ retry_count)"},
+    {"id": "e6", "from_node": "success_path", "to_node": "end", "type": "then"},
+    {"id": "e7", "from_node": "failure_path", "to_node": "end", "type": "then"}
+  ],
+  "metadata": {
+    "category": "recovery",
+    "description": "Service with retry (max 3 attempts) using exponential backoff (1s, 2s, 4s)",
+    "evaluation_criteria": "Backoff delays increase exponentially, max retries enforced, failure path taken if exhausted",
+    "expected_runtime_seconds": 15,
+    "failure_injection": {
+      "node_id": "attempt_service",
+      "failure_type": "transient_error",
+      "injection_probability": 0.7,
+      "recovery_strategy": "exponential_backoff",
+      "backoff_base": 1.0,
+      "max_retries": 3
+    }
+  }
+}

@@ -1,0 +1,60 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-18-SPEC-REQUEUE-BUG022B-canvas-click-to-place
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260318-1911
+# Task file: QUEUE-TEMP-2026-03-18-SPEC-REQUEUE-BUG022B-canvas-click-to-place.md
+# Success: True
+# Duration: 2068.8s
+# Files modified: 41 (verified)
+# Cost (USD): $5.660049
+# Turns: 30
+# API duration (ms): 804794
+# Session ID: 679525c0-f68f-4265-b4ed-8e9dd6a1e150
+# Boot injected: True
+
+---
+
+Perfect. Now let me create a concise summary for Q88N:
+
+---
+
+## Q88N: BUG-022-B Re-Queue Investigation Complete
+
+**Finding:** The re-queue spec for BUG-022-B is a **FALSE ALARM**. The feature was fully implemented on 2026-03-17 and is working correctly.
+
+### Evidence
+
+**Source code exists:**
+- `TreeBrowser.tsx` line 138: Publishes `palette:node-click` events ✅
+- `CanvasApp.tsx` line 188: Subscribes and creates nodes ✅
+- All type definitions and permissions in place ✅
+
+**Tests pass (verified today 19:20):**
+- `paletteClickToPlace.test.tsx`: **10/10 passing** ✅
+- `TreeNodeRow.icon.test.tsx`: **9/9 passing** ✅
+
+**Response file exists:**
+- `.deia/hive/responses/20260317-TASK-BUG-022-B-RESPONSE.md` documents the complete implementation by Haiku bee
+
+### What Happened
+
+1. **2026-03-17:** BUG-022-B fully implemented (source code + tests)
+2. **2026-03-18:** FIX-BUG022B fixed a test infrastructure issue (mock setup)
+3. **2026-03-18:** Someone created a re-queue spec claiming the feature was never implemented ← **This claim is false**
+
+### Recommendation
+
+**Close both specs as "already complete":**
+- `2026-03-18-SPEC-REQUEUE-BUG022B-canvas-click-to-place.md` → move to `_done/` with note "False alarm"
+- `2026-03-18-1937-SPEC-fix-REQUEUE-BUG022B-canvas-click-to-place.md` → move to `_done/` with note "No fix needed"
+
+**No dispatch needed. No code changes needed.**
+
+### Documentation
+
+Full investigation report: `.deia/hive/responses/20260318-Q33NR-BUG022B-REQUEUE-FALSE-ALARM.md`
+
+---
+
+**Do you want me to move these specs to `_done/` and close this issue, or do you want to manually verify the feature first?**

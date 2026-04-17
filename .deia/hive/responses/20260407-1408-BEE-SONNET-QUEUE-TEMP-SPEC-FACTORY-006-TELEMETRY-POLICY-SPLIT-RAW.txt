@@ -1,0 +1,94 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-FACTORY-006-telemetry-policy-split
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260407-1408
+# Task file: QUEUE-TEMP-SPEC-FACTORY-006-telemetry-policy-split.md
+# Success: True
+# Duration: 421.8s
+# Files modified: 17 (verified)
+# Cost (USD): $7.122083999999999
+# Turns: 31
+# API duration (ms): 416892
+# Session ID: ec62292a-9d39-476a-bf53-99b3daebccd5
+# Boot injected: True
+
+---
+
+Perfect! Now let me write a summary of what was completed:
+
+## Task Complete: SPEC-FACTORY-006 — Telemetry and Policy Separation
+
+I've successfully implemented the telemetry logging and policy recommendation system as specified. Here's what was delivered:
+
+### 📊 **Telemetry Logging** (Observation Layer)
+
+**Files Created:**
+- `.deia/hive/scripts/queue/telemetry_logger.py` — Core telemetry logging module
+- `tests/hive/queue/test_telemetry_logging.py` — 6 comprehensive tests
+
+**Features:**
+- Every build attempt logged to Event Ledger (success, failure, TTL timeout)
+- Captures: spec_id, operator_id, vendor_id, duration, tokens, cost, acceptance_criteria, failure_reason, split_decision
+- Append-only observation — NO side effects, NO policy mutations
+- Best-effort logging — never blocks on failure
+- Integrated in:
+  - `spec_processor.py` — logs on build completion
+  - `ttl_enforcement.py` — logs on TTL timeout
+- Auto-computes CLOCK/COIN/CARBON currencies
+
+### 📈 **Policy Recommendations** (Advisory Layer)
+
+**Files Created:**
+- `.deia/hive/scripts/queue/policy_recommender.py` — Pattern analysis and recommendation generation
+- `tests/hive/queue/test_policy_recommendations.py` — 7 comprehensive tests
+- `_tools/generate_policy_recommendations.py` — CLI tool for on-demand generation
+
+**Features:**
+- Analyzes patterns from 10+ attempts per operator/scope combination
+- Produces recommendations like "RECOMMENDED: sonnet for python_file 300-600 lines — 90% success rate, $0.03 avg cost"
+- Groups by (operator, content_type, size_bucket)
+- Generates markdown report with:
+  - REQUIRE_HUMAN gate notice (prominently displayed)
+  - Supporting data (sample sizes, success rates, costs)
+  - Cost optimization insights
+  - Per-operator breakdowns
+- Advisory ONLY — no auto-apply, no policy mutations
+
+### ✅ **All Acceptance Criteria Met**
+
+- [x] Every build attempt logs to Event Ledger (telemetry_log)
+- [x] Telemetry logged for every attempt — including TTL failures
+- [x] `generate_policy_recommendations(telemetry_entries)` function implemented
+- [x] Analyzes patterns from 10+ attempts per operator/scope combo
+- [x] Recommendations are text strings with supporting data
+- [x] Written to `.deia/hive/coordination/policy-recommendations.md`
+- [x] NOT auto-applied — REQUIRE_HUMAN gate enforced
+- [x] Tests: telemetry on success, failure, TTL; recommendations from mock data
+- [x] No file over 500 lines
+- [x] TDD: tests first
+
+### 🧪 **Test Results**
+
+**13 tests, all passing:**
+- 6 telemetry logging tests
+- 7 policy recommendation tests
+
+```
+============================= 13 passed in 0.17s ==============================
+```
+
+### 🔧 **Usage**
+
+**Generate recommendations:**
+```bash
+python _tools/generate_policy_recommendations.py
+python _tools/generate_policy_recommendations.py --min-sample 15
+```
+
+**Output location:**
+`.deia/hive/coordination/policy-recommendations.md`
+
+---
+
+The dual-loop separation is complete: **telemetry logs facts** (observation), **policy recommendations propose changes** (advisory), and **humans approve** (execution). No autonomous policy modifications — REQUIRE_HUMAN gate strictly enforced.

@@ -1,0 +1,26 @@
+[
+  {
+    "event_type": "QUEUE_SPEC_STARTED",
+    "timestamp": "2026-03-19T08:41:45.075335",
+    "spec_id": "2026-03-18-SPEC-REQUEUE2-BL207-chrome-opt-out",
+    "cost_usd": 0.0,
+    "duration_ms": 0,
+    "model_used": "sonnet",
+    "details": {
+      "priority": 0,
+      "batch_mode": true
+    }
+  },
+  {
+    "event_type": "QUEUE_BEES_COMPLETE",
+    "timestamp": "2026-03-19T08:44:26.208942",
+    "spec_id": "2026-03-18-SPEC-REQUEUE2-BL207-chrome-opt-out",
+    "cost_usd": 2.713896,
+    "duration_ms": 147000,
+    "model_used": "sonnet",
+    "details": {
+      "status": "CLEAN",
+      "response_file": "20260319-0841-BEE-SONNET-QUEUE-TEMP-2026-03-18-SPEC-REQUEUE2-BL207-CHROME-OPT-OUT-RAW.txt"
+    }
+  }
+]

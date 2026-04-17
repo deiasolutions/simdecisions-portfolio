@@ -1,0 +1,43 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-17-SPEC-TASK-BUG031-code-explorer-click-error
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260317-2311
+# Task file: QUEUE-TEMP-2026-03-17-SPEC-TASK-BUG031-code-explorer-click-error.md
+# Success: False
+# Duration: 1256.4s
+# Files modified: 103 (verified)
+# Cost (USD): $11.152398
+# Turns: 53
+# API duration (ms): 457864
+# Session ID: e0628bf3-b466-4800-b99b-37c09d5fea1a
+# Boot injected: True
+
+---
+
+Perfect! All 8 tests pass:
+
+```
+"numTotalTests":8
+"numPassedTests":8
+"numFailedTests":0
+```
+
+## Summary
+
+**BUG-031 is now FIXED.** The Code EGG file explorer now correctly loads file content when clicking files.
+
+### What was wrong:
+The `treeBrowserAdapter.tsx` was sending incomplete `file:selected` bus events:
+- Missing `name` field (needed for loading text and pane label)
+- Missing protocol prefix in `uri` field (backend expects `home://path/to/file.md`, not just `path/to/file.md`)
+
+### What was fixed:
+Modified `treeBrowserAdapter.tsx` to include:
+1. Full URI with protocol: `home://README.md`
+2. Name field from node label: `name: 'README.md'`
+
+### Test results:
+✅ **8/8 tests passing** (4 for treeBrowserAdapter, 4 for SDEditor file loading)
+
+The fix is backward-compatible and includes comprehensive test coverage for file selection, loading, error handling, and language auto-detection.

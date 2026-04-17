@@ -1,0 +1,59 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-18-SPEC-TASK-FIX-SIM-EGG-TESTS
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260318-1453
+# Task file: QUEUE-TEMP-2026-03-18-SPEC-TASK-FIX-SIM-EGG-TESTS.md
+# Success: True
+# Duration: 1382.5s
+# Files modified: 4 (verified)
+# Cost (USD): $6.670359
+# Turns: 44
+# API duration (ms): 695218
+# Session ID: 92fdf1d3-f76e-4c77-8aff-69f61b5e5ee2
+# Boot injected: True
+
+---
+
+Now let me report to Q88N (Dave):
+
+## Investigation Complete: Fix Sim EGG Tests
+
+I've completed my investigation of the "Fix Sim EGG Tests" spec. Here's what I found:
+
+### Key Findings
+
+The spec describes 11 failing tests with errors like:
+- "SimAdapter not registered"
+- "startup.defaultDocuments must be an array" 
+- "AUTO_EXPAND_ADAPTERS missing 'chat-history'"
+
+However, **my investigation shows these issues don't exist in the current code:**
+
+1. ✓ **SimAdapter IS registered** (`browser/src/apps/index.ts` line 45)
+2. ✓ **Test setup DOES call registerApps()** (`browser/src/infrastructure/relay_bus/__tests__/setup.ts` line 21)
+3. ✓ **AUTO_EXPAND_ADAPTERS DOES include 'chat-history'** (`browser/src/apps/treeBrowserAdapter.tsx` line 39)
+4. ✓ **sim.egg.md has valid startup JSON** with `"defaultDocuments": []`
+
+### What I Did
+
+1. ✓ Read the spec
+2. ✓ Investigated the codebase (read 9 relevant files)
+3. ✓ Wrote briefing for Q33N (`.deia/hive/coordination/2026-03-18-BRIEFING-FIX-SIM-EGG-TESTS.md`)
+4. ✓ Wrote investigation report (`.deia/hive/responses/20260318-Q33NR-FIX-SIM-EGG-TESTS-INVESTIGATION.md`)
+
+### Critical Issue
+
+**The test failures described in the spec may not actually exist.** The spec appears to be based on a stale test sweep report from earlier today. The code already has the fixes in place.
+
+### Recommendation
+
+The briefing I wrote instructs Q33N to **run the tests FIRST** before writing task files, to verify which tests (if any) are actually failing. This prevents wasted work fixing non-existent issues.
+
+### Next Steps
+
+Since the queue runner is already handling this spec, I'm waiting for it to dispatch Q33N with my briefing. Once Q33N returns with task files, I'll review them and either:
+- Approve dispatch (if tests are actually failing)
+- Reject the spec as ALREADY_FIXED (if tests pass)
+
+**Status:** Ready for queue runner to proceed. No action needed from you unless you want me to manually run the tests right now to verify.

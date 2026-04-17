@@ -1,0 +1,104 @@
+# BEE RESPONSE: 2026-03-19-BRIEFING-BL121-properties-panel-wiring
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260319-0852
+# Task file: 2026-03-19-BRIEFING-BL121-properties-panel-wiring.md
+# Success: True
+# Duration: 61.7s
+# Files modified: 5 (verified)
+# Cost (USD): $1.321344
+# Turns: 13
+# API duration (ms): 54084
+# Session ID: 596b5442-a04f-41fb-ba1e-ad3de4159cc2
+# Boot injected: True
+
+---
+
+Perfect! Now I understand the complete picture. Let me write a completion report for Q33NR:
+
+## Analysis Complete
+
+I've read the briefing and all relevant files. Here's what I found:
+
+### Current State
+
+**What Works:**
+1. ✅ CanvasApp.tsx sends `canvas:node-selected` bus events (line 410)
+2. ✅ propertiesAdapter.ts listens for `canvas:node-selected` (line 204)
+3. ✅ treeBrowserAdapter.tsx reloads properties when event fires (line 106-112)
+4. ✅ Tests exist and pass for this flow (propertiesAdapter.test.ts)
+
+**What's Broken:**
+1. ❌ **Data mismatch**: CanvasApp sends `data: node.data` (just the NodeData), but propertiesAdapter expects `data: { node: Node }`
+2. ❌ **Type mismatch**: IR `Node` type vs Canvas `NodeData` type
+3. ❌ CanvasApp's NodeData doesn't match IR's Node shape
+4. ❌ No deselection handling
+
+### Root Cause
+
+**CanvasApp.tsx line 415:**
+```typescript
+data: node.data,  // This is NodeData (label, nodeType, operator, timing, etc.)
+```
+
+**propertiesAdapter.ts line 206 expects:**
+```typescript
+data: { node: Node }  // Wrapped in object, expects IR Node type
+```
+
+**Mismatch:** CanvasApp sends a flat NodeData object. Adapter expects a wrapped Node object with IR shape.
+
+### Solution
+
+Two options:
+
+**Option A (Minimal — Fix CanvasApp):**
+- Change CanvasApp to send `data: { node }` (the full ReactFlow Node)
+- Update propertiesAdapter to handle ReactFlow Node → IR Node mapping
+- ~50 lines of code change
+
+**Option B (Comprehensive — Fix both sides):**
+- Normalize the data shape at both ends
+- Add proper TypeScript types for canvas:node-selected payload
+- Add deselection support
+- Add tests for deselection
+- ~150 lines of code change
+
+I recommend **Option B** for a robust fix.
+
+---
+
+## Task Breakdown
+
+I will create **3 task files:**
+
+### TASK-BL121-A: Fix Canvas Selection Event Payload
+**Objective:** Make CanvasApp send the correct data shape for canvas:node-selected
+- Update CanvasApp.tsx to send full node + metadata
+- Add TypeScript type for CanvasNodeSelectedData
+- Add deselection handler (canvas click, ESC key)
+- Write tests for selection + deselection events
+
+### TASK-BL121-B: Fix Properties Adapter Data Handling  
+**Objective:** Make propertiesAdapter correctly process canvas node data
+- Update propertiesAdapter to handle ReactFlow Node type
+- Map canvas NodeData → IR Node shape
+- Handle deselection (clear properties pane)
+- Update existing tests, add deselection tests
+
+### TASK-BL121-C: Integration Tests
+**Objective:** Verify end-to-end flow from canvas click → properties display
+- Test canvas node selection → properties pane update
+- Test deselection → properties pane clear
+- Test multi-selection (if applicable)
+- Smoke test: all browser tests pass
+
+---
+
+**Next Steps:**
+1. I'll write the 3 task files
+2. Return them to you for review
+3. Wait for your approval before dispatching bees
+
+Should I proceed with writing the task files?

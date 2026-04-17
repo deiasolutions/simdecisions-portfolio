@@ -1,0 +1,50 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-MW-054-avatar-initials-fix
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260412-1132
+# Task file: QUEUE-TEMP-SPEC-MW-054-avatar-initials-fix.md
+# Success: True
+# Duration: 464.0s
+# Files modified: 3 (verified)
+# Cost (USD): $4.932192
+# Turns: 29
+# API duration (ms): 234522
+# Session ID: 12bfd980-88e9-44ba-a175-955a0db44b8a
+# Boot injected: True
+
+---
+
+Excellent! The task is complete. Let me create a summary:
+
+## Summary
+
+I have successfully fixed the avatar initials issue in the workdesk top-bar component. The problem was in the initials extraction logic in `TopBar.tsx`.
+
+### Changes Made
+
+1. **Created `getInitials()` helper function** that properly handles all edge cases:
+   - Two-word names: "DEIA Solutions" → "DS" ✓
+   - Single-word names: "Admin" → "AD"
+   - Three+ word names: "John Doe Smith" → "JS"
+   - Empty names: → "?"
+
+2. **Updated `UserAvatar` component** to use the new `getInitials(user.displayName)` function instead of the previous inline logic
+
+3. **Fixed pre-existing bug** where `bus` variable was missing from shell context destructuring (would have caused runtime errors on mobile)
+
+4. **Created comprehensive unit tests** with 6 test cases covering all edge cases - all tests pass ✓
+
+### Files Modified
+
+- `packages/browser/src/primitives/top-bar/TopBar.tsx` (300 lines - well under 500 limit)
+- `packages/browser/src/primitives/top-bar/TopBar.test.tsx` (68 lines - new test file)
+
+### Test Results
+
+```
+✓ 6 tests passed in TopBar.test.tsx
+All initials extraction edge cases verified
+```
+
+The avatar initials will now correctly show "DS" for "DEIA Solutions" and handle all other name formats properly.

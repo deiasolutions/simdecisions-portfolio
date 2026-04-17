@@ -1,0 +1,20 @@
+# Default ethics template — ADR-014
+allowed_domains: []
+forbidden_actions:
+  - "delete_production_data"
+  - "bypass_gate"
+  - "modify_ethics"
+  - "impersonate_human"
+  - "access_pii_unredacted"
+forbidden_targets:
+  - "system:event-ledger"
+  - "system:gate-enforcer"
+escalation_triggers:
+  - "security"
+  - "pii"
+  - "financial"
+  - "legal"
+  - "medical"
+max_autonomy_tier: 1
+requires_rationale: false
+grace_period_seconds: 300

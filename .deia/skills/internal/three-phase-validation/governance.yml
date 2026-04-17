@@ -1,0 +1,28 @@
+cert_tier: 3
+promoted_from: null
+promoted_at: null
+promoted_by: Q88N
+
+capabilities:
+  filesystem_read: true
+  filesystem_write: true
+  network_access: true
+  shell_exec: false
+  user_data_access: false
+  model_invocation: true
+  event_ledger_write: true
+
+blast_radius: contained
+
+budget:
+  clock_max_seconds: 900
+  coin_max_usd: 0.50
+  carbon_max_grams: 20.0
+
+last_scan:
+  timestamp: null
+  threats_detected: []
+  prompt_injection_risk: none
+  pii_exposure_risk: none
+
+event_ledger_id: null

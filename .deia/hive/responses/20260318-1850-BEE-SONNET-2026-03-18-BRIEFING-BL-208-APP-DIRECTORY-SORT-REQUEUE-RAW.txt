@@ -1,0 +1,55 @@
+# BEE RESPONSE: 2026-03-18-BRIEFING-BL-208-APP-DIRECTORY-SORT-REQUEUE
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260318-1850
+# Task file: 2026-03-18-BRIEFING-BL-208-APP-DIRECTORY-SORT-REQUEUE.md
+# Success: True
+# Duration: 191.7s
+# Files modified: 25 (verified)
+# Cost (USD): $1.770546
+# Turns: 14
+# API duration (ms): 168504
+# Session ID: f418f6ac-ab75-48e6-9f62-ba51ba00ea57
+# Boot injected: True
+
+---
+
+## Task File Ready for Q33NR Review
+
+I've completed writing the task file for **BL-208 App Directory Sort (Re-Queue)**.
+
+### Summary
+
+**Task file created:** `.deia/hive/tasks/2026-03-18-TASK-BL-208-APP-DIRECTORY-SORT.md`
+
+**What it specifies:**
+- **Objective:** Sort EGGs within each section so BUILT apps appear before STUB apps
+- **Scope:** Modify AppsHome.tsx (add sort logic), AppsHome.css (add stub styling), AppsHome.test.tsx (add 3 tests)
+- **Model:** Haiku (straightforward sort logic)
+- **TDD:** 3 new tests required BEFORE implementation
+
+**Key improvements over previous failed attempt:**
+1. Crystal clear requirement: "After grouping, sort each group's array by status field"
+2. Exact code location specified (lines 38-52 in AppsHome.tsx)
+3. Example implementation provided in task file
+4. 3 complete test examples included
+5. Explicit visual distinction requirement (reduce opacity on stub cards)
+
+**Why this will succeed:**
+- Previous bee confused "grouping" with "sorting" — this task file explicitly separates the two steps
+- Provides exact code snippet showing where to add sort logic
+- Test examples verify the exact behavior needed
+
+### Question for Q33NR
+
+**Visual distinction approach:** I recommended Option A (reduce card opacity to 0.6 for stub cards using `.apps-home-card--stub` class). Is this acceptable, or do you prefer a different approach (badge label change, "Coming Soon" text, etc.)?
+
+### Ready for Dispatch
+
+Pending your approval, I'm ready to dispatch the Haiku bee with:
+```bash
+python .deia/hive/scripts/dispatch/dispatch.py .deia/hive/tasks/2026-03-18-TASK-BL-208-APP-DIRECTORY-SORT.md --model haiku --role bee --inject-boot
+```
+
+**Awaiting Q33NR review and approval.**

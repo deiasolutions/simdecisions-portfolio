@@ -1,0 +1,55 @@
+# BEE RESPONSE: 2026-03-15-TASK-171-collapsed-pane-strip
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260315-1744
+# Task file: 2026-03-15-TASK-171-collapsed-pane-strip.md
+# Success: True
+# Duration: 335.2s
+# Files modified: 7 (verified)
+# Cost (USD): $0
+# Turns: 31
+# API duration (ms): 242850
+# Session ID: 93367d36-a5e7-4550-ac4a-1078dbf4339d
+# Boot injected: True
+
+---
+
+Perfect! Let me create a quick summary for the user:
+
+## TASK-171 Complete ✅
+
+I've successfully implemented the **CollapsedPaneStrip** component following TDD methodology.
+
+### What Was Built
+
+**CollapsedPaneStrip Component** (`browser/src/shell/components/CollapsedPaneStrip.tsx`)
+- 34px wide vertical strip that renders when `node.meta.isCollapsed === true`
+- Shows pane icon (from APP_REGISTRY, fallback □), vertical label, and expand button (▶)
+- Dispatches `TOGGLE_COLLAPSE` action on click
+- CSS uses only `var(--sd-*)` variables (no hardcoded colors)
+
+**ShellNodeRenderer Integration**
+- Updated to conditionally render `CollapsedPaneStrip` when pane is collapsed
+- Works across all load states (COLD, WARM, HOT)
+- Falls back to normal PaneChrome rendering when not collapsed
+
+**CSS Styling** (`browser/src/shell/components/shell.css`)
+- `.collapsed-pane-strip` with proper sizing and layout
+- Hover states for visual feedback
+- Vertical text using `writing-mode: vertical-rl` and `transform: rotate(180deg)`
+
+### Test Results
+- ✅ **10/10** CollapsedPaneStrip tests passing
+- ✅ **17/17** ShellNodeRenderer tests passing (12 existing + 5 new)
+- ✅ **329/329** shell component tests passing
+- ✅ **2474/2474** full browser test suite passing
+
+### Files Modified
+- Created: `CollapsedPaneStrip.tsx` (52 lines)
+- Created: `CollapsedPaneStrip.test.tsx` (148 lines)
+- Modified: `ShellNodeRenderer.tsx` (added import + conditional rendering)
+- Modified: `shell.css` (added 47 lines of CSS)
+- Modified: `ShellNodeRenderer.test.tsx` (added 5 tests)
+
+**Response file:** `.deia/hive/responses/20260315-TASK-171-RESPONSE.md`

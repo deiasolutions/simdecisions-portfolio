@@ -1,0 +1,74 @@
+# BEE RESPONSE: 2026-03-12-BRIEFING-HIVENODE-E2E-WAVE-2
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260312-1532
+# Task file: 2026-03-12-BRIEFING-HIVENODE-E2E-WAVE-2.md
+# Success: False
+# Duration: 185.3s
+# Files modified: 3 (verified)
+# Cost (USD): $0
+# Turns: 6
+# API duration (ms): 181677
+# Session ID: 196c6717-9754-4413-bfb0-835c3f8291c8
+# Boot injected: True
+
+---
+
+---
+
+# Three Task Files Written — Ready for Review
+
+I've written the three task files for Wave 2 of SPEC-HIVENODE-E2E-001:
+
+## TASK-029: Browser Terminal Shell Parsing
+**Location:** `.deia/hive/tasks/TASK-029.md`
+
+**What it does:** Adds smart input parsing to the browser terminal to detect shell commands vs natural language, with NO LLM needed. Implements 7 parsing rules, mode switching (`/mode shell|chat|hybrid`), and routes shell commands to the `/shell/exec` endpoint.
+
+**Key files:**
+- New: `shellCommands.ts`, `shellParser.ts`, `shellExecutor.ts`
+- Modified: `useTerminal.ts`, `terminalCommands.ts`, `index.ts`
+- Tests: 18 (parsing rules, mode switching, execution flow)
+
+---
+
+## TASK-030: Cloud Storage Adapter
+**Location:** `.deia/hive/tasks/TASK-030.md`
+
+**What it does:** Replaces all 8 `NotImplementedError` stubs in `cloud.py` with real `httpx` HTTPS calls to the cloud hivenode's `/storage/*` routes. Implements offline detection and write queueing.
+
+**Key files:**
+- New: `exceptions.py` (VolumeOfflineError), `sync_queue.py` (offline write queue)
+- Modified: `cloud.py` (all 8 methods)
+- Tests: 15 (all adapter methods, offline behavior, queue flush)
+
+---
+
+## TASK-031: Token Tracking Schema Migration
+**Location:** `.deia/hive/tasks/TASK-031.md`
+
+**What it does:** Adds `cost_tokens_up` (input/prompt) and `cost_tokens_down` (output/completion) columns to the Event Ledger schema. Updates LLM_CALL emission and cost aggregation to track directional costs separately (critical because output tokens cost 3-5x more).
+
+**Key files:**
+- Modified: `schema.py`, `writer.py`, `cost.py`, `aggregation.py`, `reader.py`, `ledger_routes.py`, `schemas.py`
+- Tests: 12 (schema migration, writer, aggregation, backward compatibility)
+
+---
+
+## Dependencies
+
+All three tasks are **independent** and can be dispatched in parallel:
+- TASK-029 depends on Wave 1's `/shell/exec` route (already committed)
+- TASK-030 is fully independent
+- TASK-031 is fully independent
+
+---
+
+## Model Assignment
+
+All three tasks assigned to **Sonnet** (as requested).
+
+---
+
+**Ready for dispatch?** All three task files follow DEIA standards: absolute paths, TDD requirements, no stubs, test counts specified, response file locations, 8-section checklist.

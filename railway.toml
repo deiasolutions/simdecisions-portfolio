@@ -1,0 +1,13 @@
+# Top-level config applies to hivenode service (default).
+# beneficial-cooperation (hodeia-auth) is configured via Railway dashboard:
+#   Builder = Dockerfile
+#   Dockerfile Path = hodeia_auth/Dockerfile
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+healthcheckPath = "/health"
+healthcheckTimeout = 120
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3

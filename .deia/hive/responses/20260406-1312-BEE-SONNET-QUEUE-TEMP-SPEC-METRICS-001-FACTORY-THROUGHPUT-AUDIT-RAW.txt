@@ -1,0 +1,51 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-METRICS-001-factory-throughput-audit
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-1312
+# Task file: QUEUE-TEMP-SPEC-METRICS-001-factory-throughput-audit.md
+# Success: True
+# Duration: 318.9s
+# Files modified: 7 (verified)
+# Cost (USD): $2.652309
+# Turns: 34
+# API duration (ms): 314940
+# Session ID: be4df0fd-0632-4cce-9a86-05a4c1dc9280
+# Boot injected: True
+
+---
+
+## SPEC-METRICS-001 Complete ✓
+
+**Factory Throughput Audit delivered:**
+
+📊 **Factory Scorecard (Last 24 Hours):**
+- **109 tasks** dispatched, **103 completed** (94.5% success rate)
+- **$1,050.94** total spend
+- **51 human-hours** equivalent output produced
+- **Peak throughput:** 20 tasks/hour (07:00-08:00 window)
+- **Average throughput:** 4.54 tasks/hour over 24h period
+
+📈 **Calibration Numbers for Planning:**
+1. **Tasks/Hour:** 4.54 average, 20 peak, **8 recommended for planning**
+2. **Human-Hours/Factory-Hour:** 2.12x multiplier (parallelism benefit)
+3. **Cost/Human-Hour:** $20.61 (vs. $50-75 for human developer)
+
+🌙 **Overnight Run Recommendation (10 hours):**
+- **80 tasks** at 8 tasks/hour conservative rate
+- **Model mix:** 80% Sonnet (64 tasks) / 20% Haiku (16 tasks)
+- **Estimated cost:** $654
+- **Expected output:** 17 human-hours equivalent
+- **Max concurrency:** 5 bees
+
+🔧 **Instrumentation Gaps Identified:**
+- Real-time concurrency tracking
+- Actual LOC metrics (git diff stats)
+- Token/cost attribution per subtask
+- Failure categorization taxonomy
+- Dependency wait time tracking
+- Human intervention time logging
+
+**Next recommended spec:** TASK-METRICS-002 (Automated Factory Dashboard)
+
+**Response file:** `.deia/hive/responses/20260406-SPEC-METRICS-001-RESPONSE.md` (557 lines, 21KB)

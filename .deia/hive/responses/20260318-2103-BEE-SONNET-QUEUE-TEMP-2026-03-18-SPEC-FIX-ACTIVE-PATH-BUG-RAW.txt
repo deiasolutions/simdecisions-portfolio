@@ -1,0 +1,28 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-18-SPEC-FIX-ACTIVE-PATH-BUG
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: regent
+# Timestamp: 20260318-2103
+# Task file: QUEUE-TEMP-2026-03-18-SPEC-FIX-ACTIVE-PATH-BUG.md
+# Success: True
+# Duration: 237.0s
+# Files modified: 8 (verified)
+# Cost (USD): $5.833272
+# Turns: 28
+# API duration (ms): 210025
+# Session ID: bb49444a-f155-466e-adc6-fdc782b3cbb7
+# Boot injected: True
+
+---
+
+Excellent! The fix is clean and minimal. Both functions now correctly reference the `_done/` path instead of the ephemeral `_active/` or original queue path.
+
+## Summary
+
+**Bug fixed:** Fix cycle specs now correctly reference the original spec's `_done/` path instead of `_active/` path.
+
+**Root cause:** When `run_queue.py` moves specs to `_active/` before dispatch, `original_spec.path` pointed to the temporary `_active/foo.md` location. By the time the fix spec was generated, the original had already been moved to `_done/` or `_needs_review/`, making the reference invalid.
+
+**Solution:** Changed both `generate_fix_spec()` and `generate_q33n_fix_spec()` to compute the correct path: `original_spec.path.parent.parent / '_done' / original_spec.path.name`. This works regardless of where the spec currently is (queue root, `_active/`, etc.) because it goes up to the queue directory and explicitly appends `_done/`.
+
+**Tests:** All 16 fix_cycle tests pass, including the critical test that verifies the `_done/` path is correctly included in generated fix specs.

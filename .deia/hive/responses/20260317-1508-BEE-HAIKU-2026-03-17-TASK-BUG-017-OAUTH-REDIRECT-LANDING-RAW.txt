@@ -1,0 +1,65 @@
+# BEE RESPONSE: 2026-03-17-TASK-BUG-017-oauth-redirect-landing
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: haiku
+# Role: bee
+# Timestamp: 20260317-1508
+# Task file: 2026-03-17-TASK-BUG-017-oauth-redirect-landing.md
+# Success: True
+# Duration: 939.7s
+# Files modified: 39 (verified)
+# Cost (USD): $2.1317
+# Turns: 40
+# API duration (ms): 399605
+# Session ID: e0a2ee2d-05d0-485c-b61b-319d34062b06
+# Boot injected: True
+
+---
+
+Excellent! All 26 tests pass. Let me create a summary of the work:
+
+## Summary
+
+I have successfully completed **TASK-BUG-017: Fix OAuth Redirect Landing Page Bug**.
+
+### What Was Fixed
+
+**Bug:** When users completed OAuth on `ra96it.com` and were redirected to `https://ra96it.com/?token=xxx`, they saw the ShiftCenter LandingPage instead of the login EGG. The token was properly saved by `extractTokenFromUrl()`, but `shouldShowLanding()` didn't check hostname or authentication status.
+
+**Root Cause:** `shouldShowLanding()` (lines 58-63 of App.tsx) only checked for root path and missing `?egg=` param. It ignored:
+1. Hostname — ra96it domains should never show the ShiftCenter landing page (they map to the `login` EGG)
+2. Authentication state — authenticated users should enter the EGG system, not the landing page
+
+### Implementation (TDD Approach)
+
+**Step 1 - Test First (21 tests):**
+- Created `browser/src/__tests__/App.shouldShowLanding.test.tsx` with comprehensive test coverage:
+  - 6 core edge cases (as per task requirements)
+  - 15 additional edge case tests for robustness
+  - Tests for hostname priorities (ra96it.com, www.ra96it.com, dev.ra96it.com)
+  - Tests for authentication priorities
+  - Tests for existing behavior preservation
+
+**Step 2 - Implementation:**
+- Modified `shouldShowLanding()` in `App.tsx` (lines 52-80):
+  - Added hostname check: ra96it domains return `false`
+  - Added authentication check: authenticated users return `false`
+  - Preserved existing behavior: root path + no egg param + not authenticated + not ra96it = `true`
+- Added `isAuthenticated` to imports from `authStore`
+
+**Step 3 - Test Updates:**
+- Updated `App.test.tsx` to properly mock `isAuthenticated()` and `window.location`
+- All 5 existing App tests continue to pass
+
+### Test Results
+
+✅ **All 26 tests passing:**
+- 21 new tests in `App.shouldShowLanding.test.tsx`
+- 5 existing tests in `App.test.tsx`
+
+### Files Modified
+
+1. `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\browser\src\App.tsx`
+2. `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\browser\src\__tests__\App.test.tsx`
+3. `C:\Users\davee\OneDrive\Documents\GitHub\shiftcenter\browser\src\__tests__\App.shouldShowLanding.test.tsx` (NEW)
+
+**Response file:** `.deia/hive/responses/20260317-TASK-BUG-017-RESPONSE.md`

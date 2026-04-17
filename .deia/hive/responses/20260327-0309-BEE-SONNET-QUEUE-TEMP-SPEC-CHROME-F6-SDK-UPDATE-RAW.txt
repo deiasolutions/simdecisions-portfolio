@@ -1,0 +1,53 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-CHROME-F6-sdk-update
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260327-0309
+# Task file: QUEUE-TEMP-SPEC-CHROME-F6-sdk-update.md
+# Success: True
+# Duration: 393.4s
+# Files modified: 4 (verified)
+# Cost (USD): $1.457727
+# Turns: 6
+# API duration (ms): 375016
+# Session ID: e59d2b1c-6fcc-4397-b252-642926fb82a1
+# Boot injected: True
+
+---
+
+## Summary
+
+I've completed SPEC-CHROME-F6: SDK-APP-BUILDER v0.3.0 Update.
+
+### Deliverables
+
+1. **SDK Documentation** (`docs/specs/SDK-APP-BUILDER-v0.3.0.md`)
+   - 1,200+ lines of comprehensive reference documentation
+   - Covers all ADR-SC-CHROME-001-v3 sections
+   - 13 major sections from introduction to migration guide
+   - Complete config schemas for all 7 chrome primitives
+   - Reference layouts from ADR Sections 17-18
+   - 8-step migration guide with before/after code examples
+
+2. **Validation Tests** (`browser/src/eggs/__tests__/sdkExamples.test.ts`)
+   - 24 tests across 9 describe blocks
+   - Validates all JSON examples from the SDK doc
+   - Tests chrome primitives, slideoverss, toolbars, ratio syntax
+   - Tests complete layouts, lifecycle events, RTD protocol
+   - **All 24 tests pass ✅**
+
+### Key Documentation Sections
+
+- **Breaking Changes**: Removed `hide*` flags, `devOverride`, workspace files
+- **UI Block**: `chromeMode` with 4 modes (auto/full/compact/immersive)
+- **Multi-Child Ratios**: CSS Grid-style `px` + `fr` units
+- **Chrome Primitives**: top-bar, menu-bar, status-bar, bottom-nav, tab-bar, toolbar, command-palette
+- **Slideoverss**: Edge-anchored panels with dock/undock behavior
+- **Toolbars**: Floating/docked tool palettes with minimize-never-close pattern
+- **Lifecycle Events**: 5 event types for pane state transitions
+- **Dirty Tracking**: Layout dirty + content dirty with autosave/recovery
+- **Design Mode**: Runtime layout editing with save-as-derived-EGG
+- **RTD Protocol**: CLOCK/COIN/CARBON message format
+- **Migration Guide**: Complete upgrade path from v0.2.0 to v0.3.0
+
+All JSON examples are validated by tests and consistent with the ADR reference layouts. The migration guide provides clear before/after comparisons for every breaking change.

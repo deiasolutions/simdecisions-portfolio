@@ -1,0 +1,244 @@
+# PRISM-IR Mobile Command Dictionary
+# Defines all valid commands for the Mobile Workdesk command interpreter
+
+version: "1.0"
+schema_version: "mobile/v1"
+
+categories:
+  navigation:
+    description: "Commands for opening, closing, and navigating between panes and views"
+    commands:
+      - verb: "open"
+        description: "Open a pane, file, or view"
+        targets: ["terminal", "file", "pane", "notification", "queue", "diff", "settings", "chat"]
+        examples:
+          - "open terminal"
+          - "open notifications"
+          - "open settings"
+
+      - verb: "close"
+        description: "Close the current or specified pane"
+        targets: ["terminal", "pane", "notification", "diff", "chat"]
+        examples:
+          - "close this"
+          - "close terminal"
+
+      - verb: "navigate"
+        description: "Navigate to a specific location or pane"
+        targets: ["home", "back", "terminal", "queue", "notifications"]
+        examples:
+          - "navigate home"
+          - "navigate to queue"
+
+      - verb: "back"
+        description: "Go back to previous view"
+        targets: []
+        examples:
+          - "go back"
+          - "back"
+
+      - verb: "home"
+        description: "Return to home view"
+        targets: []
+        examples:
+          - "go home"
+          - "home"
+
+      - verb: "switch"
+        description: "Switch between panes or tabs"
+        targets: ["terminal", "pane", "tab", "view"]
+        examples:
+          - "switch to terminal"
+          - "switch pane"
+
+  execution:
+    description: "Commands for running, controlling, and managing tasks"
+    commands:
+      - verb: "execute"
+        description: "Execute a command or action"
+        targets: ["command", "script", "test", "build"]
+        examples:
+          - "execute tests"
+          - "execute build"
+
+      - verb: "run"
+        description: "Run a specific task or process"
+        targets: ["command", "test", "build", "deploy"]
+        examples:
+          - "run tests"
+          - "run build"
+
+      - verb: "cancel"
+        description: "Cancel the current operation"
+        targets: ["task", "build", "test"]
+        examples:
+          - "cancel this"
+          - "cancel build"
+
+      - verb: "retry"
+        description: "Retry the last failed operation"
+        targets: ["task", "command", "build"]
+        examples:
+          - "retry"
+          - "retry last command"
+
+      - verb: "pause"
+        description: "Pause the current operation"
+        targets: ["task", "build"]
+        examples:
+          - "pause build"
+          - "pause"
+
+      - verb: "resume"
+        description: "Resume a paused operation"
+        targets: ["task", "build"]
+        examples:
+          - "resume build"
+          - "resume"
+
+  search:
+    description: "Commands for searching and filtering content"
+    commands:
+      - verb: "search"
+        description: "Search for files, content, or items"
+        targets: ["file", "content", "code", "notification"]
+        examples:
+          - "search for tests"
+          - "search notifications"
+
+      - verb: "find"
+        description: "Find specific items or patterns"
+        targets: ["file", "function", "class", "notification"]
+        examples:
+          - "find main.py"
+          - "find notifications"
+
+      - verb: "filter"
+        description: "Filter current view by criteria"
+        targets: ["notification", "queue", "diff", "logs"]
+        examples:
+          - "filter by errors"
+          - "filter completed"
+
+      - verb: "grep"
+        description: "Search content using patterns"
+        targets: ["file", "logs", "output"]
+        examples:
+          - "grep error in logs"
+
+  state:
+    description: "Commands for toggling and managing UI state"
+    commands:
+      - verb: "toggle"
+        description: "Toggle a feature or setting on/off"
+        targets: ["theme", "sidebar", "notifications", "voice", "keyboard"]
+        examples:
+          - "toggle dark mode"
+          - "toggle notifications"
+
+      - verb: "enable"
+        description: "Enable a feature or setting"
+        targets: ["notifications", "voice", "keyboard", "theme"]
+        examples:
+          - "enable voice input"
+          - "enable notifications"
+
+      - verb: "disable"
+        description: "Disable a feature or setting"
+        targets: ["notifications", "voice", "keyboard"]
+        examples:
+          - "disable notifications"
+          - "disable voice"
+
+      - verb: "show"
+        description: "Show a hidden element"
+        targets: ["sidebar", "notifications", "queue", "logs"]
+        examples:
+          - "show sidebar"
+          - "show notifications"
+
+      - verb: "hide"
+        description: "Hide a visible element"
+        targets: ["sidebar", "notifications", "queue", "logs"]
+        examples:
+          - "hide sidebar"
+          - "hide notifications"
+
+  data:
+    description: "Commands for data operations"
+    commands:
+      - verb: "save"
+        description: "Save current work or file"
+        targets: ["file", "changes", "session"]
+        examples:
+          - "save file"
+          - "save changes"
+
+      - verb: "load"
+        description: "Load a file or session"
+        targets: ["file", "session", "config"]
+        examples:
+          - "load session"
+          - "load config"
+
+      - verb: "export"
+        description: "Export data to a file"
+        targets: ["logs", "data", "config"]
+        examples:
+          - "export logs"
+          - "export data"
+
+      - verb: "import"
+        description: "Import data from a file"
+        targets: ["config", "data"]
+        examples:
+          - "import config"
+          - "import data"
+
+      - verb: "copy"
+        description: "Copy text or data to clipboard"
+        targets: ["output", "logs", "diff"]
+        examples:
+          - "copy output"
+          - "copy logs"
+
+      - verb: "paste"
+        description: "Paste from clipboard"
+        targets: []
+        examples:
+          - "paste"
+
+  voice:
+    description: "Commands specific to voice input"
+    commands:
+      - verb: "listen"
+        description: "Start voice input"
+        targets: []
+        examples:
+          - "start listening"
+          - "listen"
+
+      - verb: "stop-listening"
+        description: "Stop voice input"
+        targets: []
+        examples:
+          - "stop listening"
+
+  help:
+    description: "Commands for getting help and information"
+    commands:
+      - verb: "help"
+        description: "Get help about commands or features"
+        targets: ["commands", "feature", "shortcuts"]
+        examples:
+          - "help"
+          - "help with voice"
+
+      - verb: "info"
+        description: "Get information about current state"
+        targets: ["session", "queue", "task"]
+        examples:
+          - "info about queue"
+          - "session info"
+
+# Total: 37 commands across 7 categories

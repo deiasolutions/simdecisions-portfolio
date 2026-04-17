@@ -1,0 +1,111 @@
+# BEE RESPONSE: 2026-03-24-BRIEFING-P0-BUG-BLITZ
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260324-0951
+# Task file: 2026-03-24-BRIEFING-P0-BUG-BLITZ.md
+# Success: True
+# Duration: 646.1s
+# Files modified: 6 (verified)
+# Cost (USD): $7.630107000000001
+# Turns: 56
+# API duration (ms): 530506
+# Session ID: 26195f88-3e19-4e09-a91d-368261784e5b
+# Boot injected: True
+
+---
+
+---
+
+## Q33N Report to Q33NR
+
+**Task:** P0 Bug Blitz — Task File Creation
+**Date:** 2026-03-24
+**Status:** COMPLETE — Awaiting Q33NR review before dispatch
+
+### Task Files Created (5 total)
+
+I have written 5 task files for the P0 Bug Blitz briefing. All files are in `.deia/hive/tasks/` with the format `2026-03-24-TASK-BUG-XXX-<SHORT-NAME>.md`.
+
+#### Wave 0 (Verification) — 1 task file
+
+**TASK-BUG-VERIFY-WAVE-0** (5.9 KB)
+- **Objective:** Verify whether BUG-018, BUG-019, BUG-028 were fixed by Canvas Full Port
+- **Deliverables:** Investigation report per bug, verification tests if FIXED, fix specs if OPEN, inventory updates
+- **Files to investigate:**
+  - BUG-018: irConverter.ts, FlowDesigner.tsx bus subscription, ir-deposit tests
+  - BUG-019: paletteAdapter.ts, canvasDragIsolation tests, LassoOverlay
+  - BUG-028: channelsAdapter.ts, SDEditor channel:selected handlers
+- **Test requirements:** 3+ test cases per bug if status = FIXED and no test exists
+- **Model recommendation:** Sonnet (investigation + test writing)
+
+#### Wave 1 (Fix) — 4 task files
+
+**TASK-BUG-017-OAUTH-REDIRECT** (4.7 KB)
+- **Objective:** Fix OAuth redirect showing LandingPage instead of Shell after auth
+- **Root cause:** Token extraction from URL query string, auth state recognition in App.tsx
+- **Deliverables:** Token extraction, URL cleaning, App.tsx auth check fix, 8+ tests
+- **Edge cases:** Token in query/hash, invalid token, expired token, URL cleaning
+- **Model recommendation:** Haiku (OAuth flow is well-documented, straightforward fix)
+
+**TASK-BUG-023-PALETTE-COLLAPSE** (6.0 KB)
+- **Objective:** Implement icon-only collapse mode for Canvas sidebar panel
+- **Deliverables:** Collapse/expand affordance, collapsed mode (48px width, icon-only), expanded mode (220px, icon+label), localStorage persistence, 14+ tests
+- **Design:** Chevron icon in header, CSS transitions, independent state per sidebar
+- **Model recommendation:** Sonnet (UI + state management + tests)
+
+**TASK-BUG-058-CANVAS-IR-HANDLER** (6.1 KB)
+- **Objective:** Wire canvas pane to receive terminal IR deposits and render on canvas
+- **Root cause:** Canvas pane may not be listening on correct paneId or bus subscription incomplete
+- **Deliverables:** Canvas receives terminal:ir-deposit, IR converted to ReactFlow nodes/edges, 14+ tests
+- **Note:** irConverter.ts already exists, focus on wiring/routing
+- **Model recommendation:** Sonnet (bus routing + integration testing)
+
+**TASK-BUG-068-EXPLORER-FILE-ICONS** (5.6 KB)
+- **Objective:** Fix explorer tree file type icons and directory indicators
+- **Root cause likely:** getFileIcon() exists but not called when creating TreeNodeData
+- **Deliverables:** Icons populated by filesystemAdapter, correct emoji per file type, 14+ tests
+- **Hypothesis:** Line ~80-100 in filesystemAdapter.ts missing `icon: getFileIcon(name, isDir)` assignment
+- **Model recommendation:** Haiku (simple fix, icon mapping already exists)
+
+### Summary
+
+- **Total task files:** 5
+- **Wave 0 (verify):** 1 task (investigates 3 bugs)
+- **Wave 1 (fix):** 4 tasks (1 bug each)
+- **Total bugs addressed:** 7 (3 verify + 4 fix)
+- **Estimated test count:** 66+ tests across all tasks
+- **All files under 500 lines** per task constraints
+- **All tasks include:** TDD requirements, 8-section response template, edge cases, manual verification steps
+
+### Files Ready for Review
+
+```
+.deia/hive/tasks/2026-03-24-TASK-BUG-VERIFY-WAVE-0.md
+.deia/hive/tasks/2026-03-24-TASK-BUG-017-OAUTH-REDIRECT.md
+.deia/hive/tasks/2026-03-24-TASK-BUG-023-PALETTE-COLLAPSE.md
+.deia/hive/tasks/2026-03-24-TASK-BUG-058-CANVAS-IR-HANDLER.md
+.deia/hive/tasks/2026-03-24-TASK-BUG-068-EXPLORER-FILE-ICONS.md
+```
+
+### Recommended Dispatch Sequence
+
+1. **First:** TASK-BUG-VERIFY-WAVE-0 (Sonnet)
+   - Wait for completion and review verification results
+   - If any bugs are OPEN, they become Wave 1 tasks
+
+2. **Then (parallel):** All 4 Wave 1 tasks
+   - BUG-017 (Haiku) — OAuth redirect
+   - BUG-068 (Haiku) — Explorer icons
+   - BUG-023 (Sonnet) — Palette collapse
+   - BUG-058 (Sonnet) — Canvas IR wiring
+
+### Awaiting Q33NR Review
+
+I am ready to dispatch bees after you review the task files and approve. Per HIVE.md workflow (Step 5), I will not dispatch until you give the go-ahead.
+
+**Questions for Q33NR:**
+1. Are the task files complete and unambiguous?
+2. Do model assignments (Haiku vs Sonnet) match task complexity?
+3. Should I dispatch Wave 0 first and wait, or dispatch all 5 in parallel?
+4. Any corrections needed before dispatch?

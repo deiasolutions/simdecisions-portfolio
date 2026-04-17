@@ -1,0 +1,57 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-WIKI-01-pages-storage-crud-api
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260406-1916
+# Task file: QUEUE-TEMP-SPEC-WIKI-01-pages-storage-crud-api.md
+# Success: True
+# Duration: 56.1s
+# Files modified: 7 (verified)
+# Cost (USD): $0.957243
+# Turns: 9
+# API duration (ms): 45969
+# Session ID: e9f6adb9-6fcc-470b-9a93-0201812f3831
+# Boot injected: True
+
+---
+
+Perfect! Now I have enough context. Let me create my implementation plan:
+
+## IMPLEMENTATION PLAN
+
+I will create the following files:
+
+### 1. **Schema & Store** (`hivenode/wiki/store.py` - ~400 lines)
+   - SQLAlchemy Core tables for `wiki_pages` and `wiki_edit_log`
+   - `init_engine()` function
+   - CRUD functions (create, read, update, delete, list, get_backlinks)
+   - Proper indexes
+
+### 2. **Wikilink Parser** (`hivenode/wiki/parser.py` - ~150 lines)
+   - Extract `[[link]]` patterns
+   - Extract YAML frontmatter
+   - Handle edge cases (nested brackets, escaped brackets, etc.)
+
+### 3. **API Routes** (`hivenode/wiki/routes.py` - ~350 lines)
+   - POST /api/wiki/pages - create
+   - GET /api/wiki/pages - list
+   - GET /api/wiki/pages/{path} - get one
+   - PUT /api/wiki/pages/{path} - update
+   - DELETE /api/wiki/pages/{path} - delete
+   - GET /api/wiki/pages/{path}/backlinks - find backlinks
+   - All with event emission
+
+### 4. **Schemas** (`hivenode/wiki/schemas.py` - ~100 lines)
+   - Pydantic models for requests/responses
+
+### 5. **Tests** (3 files)
+   - `hivenode/wiki/tests/test_parser.py` (6 unit tests)
+   - `hivenode/wiki/tests/test_routes.py` (4 integration tests)
+   - `hivenode/wiki/tests/test_backlinks.py` (2 backlinks tests)
+
+### 6. **Route Registration** (modify existing file)
+   - Update `hivenode/routes/__init__.py` to include wiki routes
+
+Total: 5 new files + 1 modified = ~1200 lines
+
+**Shall I proceed with this implementation?**

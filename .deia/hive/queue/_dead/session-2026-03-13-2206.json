@@ -1,0 +1,71 @@
+[
+  {
+    "event_type": "QUEUE_SPEC_STARTED",
+    "timestamp": "2026-03-13T21:52:48.233988",
+    "spec_id": "2026-03-14-0100-SPEC-phase-ir-port",
+    "cost_usd": 0.0,
+    "duration_ms": 0,
+    "model_used": "sonnet",
+    "details": {
+      "priority": "P0"
+    }
+  },
+  {
+    "event_type": "QUEUE_BEES_COMPLETE",
+    "timestamp": "2026-03-13T22:00:48.846395",
+    "spec_id": "2026-03-14-0100-SPEC-phase-ir-port",
+    "cost_usd": 0.0,
+    "duration_ms": 468400,
+    "model_used": "sonnet",
+    "details": {
+      "status": "CLEAN",
+      "response_file": "20260313-2152-BEE-SONNET-QUEUE-TEMP-2026-03-14-0100-SPEC-PHASE-IR-PORT-RAW.txt"
+    }
+  },
+  {
+    "event_type": "QUEUE_SPEC_STARTED",
+    "timestamp": "2026-03-13T22:00:48.846395",
+    "spec_id": "2026-03-14-0101-SPEC-status-alignment",
+    "cost_usd": 0.0,
+    "duration_ms": 0,
+    "model_used": "sonnet",
+    "details": {
+      "priority": "P1"
+    }
+  },
+  {
+    "event_type": "QUEUE_BEES_COMPLETE",
+    "timestamp": "2026-03-13T22:04:33.171170",
+    "spec_id": "2026-03-14-0101-SPEC-status-alignment",
+    "cost_usd": 0.0,
+    "duration_ms": 210300,
+    "model_used": "sonnet",
+    "details": {
+      "status": "CLEAN",
+      "response_file": "20260313-2200-BEE-SONNET-QUEUE-TEMP-2026-03-14-0101-SPEC-STATUS-ALIGNMENT-RAW.txt"
+    }
+  },
+  {
+    "event_type": "QUEUE_SPEC_STARTED",
+    "timestamp": "2026-03-13T22:04:33.171170",
+    "spec_id": "2026-03-14-0102-SPEC-queue-hot-reload",
+    "cost_usd": 0.0,
+    "duration_ms": 0,
+    "model_used": "sonnet",
+    "details": {
+      "priority": "P1"
+    }
+  },
+  {
+    "event_type": "QUEUE_BEES_COMPLETE",
+    "timestamp": "2026-03-13T22:06:41.335483",
+    "spec_id": "2026-03-14-0102-SPEC-queue-hot-reload",
+    "cost_usd": 0.0,
+    "duration_ms": 98600,
+    "model_used": "sonnet",
+    "details": {
+      "status": "CLEAN",
+      "response_file": "20260313-2204-BEE-SONNET-QUEUE-TEMP-2026-03-14-0102-SPEC-QUEUE-HOT-RELOAD-RAW.txt"
+    }
+  }
+]

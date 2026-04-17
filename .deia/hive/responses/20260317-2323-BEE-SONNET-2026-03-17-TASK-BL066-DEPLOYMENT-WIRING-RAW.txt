@@ -1,0 +1,61 @@
+# BEE RESPONSE: 2026-03-17-TASK-BL066-deployment-wiring
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260317-2323
+# Task file: 2026-03-17-TASK-BL066-deployment-wiring.md
+# Success: True
+# Duration: 245.3s
+# Files modified: 32 (verified)
+# Cost (USD): $1.759857
+# Turns: 19
+# API duration (ms): 227226
+# Session ID: b54d3f4b-375e-4a5e-82b5-760f79dea01a
+# Boot injected: False
+
+---
+
+Perfect! I've completed TASK-BL066: Deployment Wiring Verification. Here's what was done:
+
+## Summary
+
+**Status:** ✅ COMPLETE
+
+### Deliverables Created
+
+1. **`railway.toml`** (18 lines)
+   - Railway configuration-as-code
+   - Start command: `python -m hivenode`
+   - Health check: `/health` endpoint, 30s timeout
+   - Restart policy: ON_FAILURE with 3 retries
+
+2. **`docs/DEPLOYMENT.md`** (379 lines)
+   - Quick reference deployment guide
+   - Environment variables tables (Vercel + Railway)
+   - Build verification steps
+   - Health check verification procedures
+   - Port configuration documentation
+   - EGG file handling (dev vs production)
+   - Pre-deployment checklist
+   - Rollback procedures
+
+### Verification Completed
+
+✅ **Vercel config** — Correct (build command includes `npm run copy-eggs`)
+✅ **Railway config** — Correct (port auto-detection from `$PORT`)
+✅ **Health endpoint** — Exists at `/health` with correct response format
+✅ **Console scripts** — Both `python -m hivenode` and `hive` work
+✅ **Build test** — Local build succeeded, 26 files in dist, 14 EGG files copied
+✅ **EGG files** — Dev mode uses Vite plugin, production copies to dist
+
+### Key Findings
+
+- All configuration files are correct (no changes needed)
+- Build process works locally (verified with `npm run build`)
+- 14 EGG files successfully copied to `browser/dist/`
+- Health endpoint returns: `{status, mode, version, uptime_s}`
+- Railway auto-injects `PORT` and `DATABASE_URL` (no manual config needed)
+
+**No blockers for deployment.** Ready for smoke tests when Vercel/Railway repoint is executed.
+
+Response file written to: `.deia/hive/responses/20260317-BL066-RESPONSE.md`

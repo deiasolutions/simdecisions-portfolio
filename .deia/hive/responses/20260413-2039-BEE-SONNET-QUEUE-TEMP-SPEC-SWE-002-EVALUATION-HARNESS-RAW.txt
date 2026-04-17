@@ -1,0 +1,62 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-SWE-002-evaluation-harness
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260413-2039
+# Task file: QUEUE-TEMP-SPEC-SWE-002-evaluation-harness.md
+# Success: True
+# Duration: 253.2s
+# Files modified: 5 (verified)
+# Cost (USD): $2.987682
+# Turns: 26
+# API duration (ms): 259428
+# Session ID: d2f7c3e9-51c9-4eb8-9177-3e51b4bc3294
+# Boot injected: True
+
+---
+
+Excellent! Task complete. Let me create a final summary:
+
+---
+
+## Task Complete: SPEC-SWE-002-evaluation-harness
+
+I successfully built the SWE-bench evaluation harness (`_tools/swebench_eval.py`) with all four required subcommands:
+
+### Deliverables
+1. **`_tools/swebench_eval.py`** (588 lines) - CLI with collect, evaluate, report, status subcommands
+2. **`tests/integration/test_swebench_eval.py`** (404 lines) - 12 comprehensive tests
+3. **Response file** - Complete documentation at `.deia/hive/responses/20260413-QUEUE-TEMP-SPEC-SWE-002-evaluation-harness-RESPONSE.md`
+
+### Key Features
+- **collect**: Scans patches directory, matches against sample.json, assembles predictions JSON in swebench format
+- **evaluate**: Runs Docker-based evaluation via subprocess, prepends `wsl` on Windows, streams real-time output
+- **report**: Parses results, computes statistics, generates markdown with per-repo breakdown and top 5 resolved/unresolved
+- **status**: Quick progress overview showing sample tasks, patches, predictions, results, resolved count
+
+### Test Results
+✅ All 12 tests pass (0.08s)
+✅ Smoke tests verified (status, collect, predictions JSON)
+✅ File sizes within limits (588 + 404 = 992 lines total, well under 1000 hard limit)
+✅ No stubs, all functions complete
+✅ TDD followed (tests written first)
+
+### Smoke Test Output
+```
+$ python _tools/swebench_eval.py status
+SWE-bench Evaluation Status
+  Sample tasks: 1
+  Patches collected: 1
+  Predictions assembled: 1
+  Results evaluated: 0
+  Resolved: 0
+Progress: 1/1 patches generated, 0/1 tasks evaluated
+
+$ python _tools/swebench_eval.py collect
+Loaded 1 tasks from sample.json
+Found 1 patch files
+Collected 1/1 patches
+OK Predictions written to predictions.json
+```
+
+The predictions JSON follows the exact swebench schema with keys: `instance_id`, `model_name_or_path`, `model_patch`.

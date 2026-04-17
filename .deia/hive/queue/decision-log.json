@@ -1,0 +1,1553 @@
+[
+  {
+    "ts": "2026-03-18T05:23:15",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:25:15",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:27:16",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:29:16",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:31:16",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:33:16",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:35:16",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:37:16",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:39:16",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:41:17",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:43:17",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:45:17",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:47:17",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:49:18",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:51:23",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:53:23",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:55:23",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:57:23",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T05:59:24",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 3 pending",
+    "pending": 3,
+    "active": 3,
+    "cost": 119.06342099999998
+  },
+  {
+    "ts": "2026-03-18T06:02:59",
+    "event": "TICK_START",
+    "msg": "Starting pool (6 pending)",
+    "pending": 6,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:02:59",
+    "event": "SLOT_WAIT",
+    "msg": "0 slots available, waiting",
+    "pending": 6
+  },
+  {
+    "ts": "2026-03-18T06:02:59",
+    "event": "POOL_COMPLETE",
+    "msg": "Pool finished. Cost: $0.00",
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:02:59",
+    "event": "WATCH_IDLE",
+    "msg": "Queue drained, next check in 60s",
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:04:08",
+    "event": "WATCH_IDLE",
+    "msg": "Queue drained, next check in 60s",
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:05:16",
+    "event": "WATCH_IDLE",
+    "msg": "Queue drained, next check in 120s",
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:07:17",
+    "event": "WATCH_IDLE",
+    "msg": "Queue drained, next check in 180s",
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:10:17",
+    "event": "WATCH_IDLE",
+    "msg": "Queue drained, next check in 300s",
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:15:17",
+    "event": "WATCH_IDLE",
+    "msg": "Queue drained, next check in 480s",
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:16:22",
+    "event": "TICK_START",
+    "msg": "Starting pool (3 pending)",
+    "pending": 3,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:16:22",
+    "event": "SLOT_WAIT",
+    "msg": "0 slots available, waiting",
+    "pending": 3
+  },
+  {
+    "ts": "2026-03-18T06:16:22",
+    "event": "POOL_COMPLETE",
+    "msg": "Pool finished. Cost: $0.00",
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:16:22",
+    "event": "WATCH_IDLE",
+    "msg": "Queue drained, next check in 60s",
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:17:22",
+    "event": "WATCH_IDLE",
+    "msg": "Queue drained, next check in 60s",
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:17:45",
+    "event": "TICK_START",
+    "msg": "Starting pool (3 pending)",
+    "pending": 3,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:17:45",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/10 [single-bee]",
+    "spec": "2026-03-17-SPEC-TASK-BUG023-canvas-components-no-collapse.md",
+    "pending": 2,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:17:45",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 2/10 [single-bee]",
+    "spec": "2026-03-17-SPEC-TASK-BL206-regent-slot-reservation.md",
+    "pending": 1,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:17:45",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 3/10 [single-bee]",
+    "spec": "2026-03-16-SPEC-TASK-228-des-pipeline-runner.md",
+    "pending": 0,
+    "active": 3,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:19:45",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 0 pending",
+    "pending": 0,
+    "active": 3,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:21:45",
+    "event": "LIVENESS_PING",
+    "msg": "3 active, 0 pending",
+    "pending": 0,
+    "active": 3,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:13",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "SPEC-regress.md"
+  },
+  {
+    "ts": "2026-03-18T06:23:13",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "SPEC-fail.md"
+  },
+  {
+    "ts": "2026-03-18T06:23:30",
+    "event": "TICK_START",
+    "msg": "Starting pool (2 pending)",
+    "pending": 2,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:30",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-1000-SPEC-p0.md",
+    "pending": 1,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:30",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 2/3",
+    "spec": "2026-03-11-0900-SPEC-p2.md",
+    "pending": 0,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:31",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-1000-SPEC-p0.md"
+  },
+  {
+    "ts": "2026-03-18T06:23:31",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-1000-SPEC-p0.md",
+    "pending": 1,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:31",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0623-SPEC-fix-p0.md",
+    "pending": 0,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:31",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0900-SPEC-p2.md"
+  },
+  {
+    "ts": "2026-03-18T06:23:31",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0900-SPEC-p2.md",
+    "pending": 1,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:32",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0623-SPEC-fix-p2.md",
+    "pending": 0,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:33",
+    "event": "TICK_START",
+    "msg": "Starting pool (5 pending)",
+    "pending": 5,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:34",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0000-SPEC-0.md",
+    "pending": 4,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:34",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 2/3",
+    "spec": "2026-03-11-0001-SPEC-1.md",
+    "pending": 3,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:35",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 3/3",
+    "spec": "2026-03-11-0002-SPEC-2.md",
+    "pending": 2,
+    "active": 3,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:36",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0000-SPEC-0.md"
+  },
+  {
+    "ts": "2026-03-18T06:23:36",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0000-SPEC-0.md",
+    "pending": 3,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:36",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0623-SPEC-fix-0.md",
+    "pending": 2,
+    "active": 3,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:37",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0001-SPEC-1.md"
+  },
+  {
+    "ts": "2026-03-18T06:23:37",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0001-SPEC-1.md",
+    "pending": 3,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:38",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0623-SPEC-fix-1.md",
+    "pending": 2,
+    "active": 3,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:38",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0002-SPEC-2.md"
+  },
+  {
+    "ts": "2026-03-18T06:23:38",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0002-SPEC-2.md",
+    "pending": 3,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:38",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0623-SPEC-fix-2.md",
+    "pending": 2,
+    "active": 3,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:39",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:40",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-test.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:41",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0900-SPEC-test.md"
+  },
+  {
+    "ts": "2026-03-18T06:23:41",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0900-SPEC-test.md",
+    "pending": 1,
+    "active": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:44",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0623-SPEC-fix-test.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:46",
+    "event": "SPEC_DONE",
+    "msg": "CLEAN",
+    "spec": "2026-03-17-SPEC-TASK-BL206-regent-slot-reservation.md",
+    "pending": 0,
+    "active": 2,
+    "cost": 3.612234
+  },
+  {
+    "ts": "2026-03-18T06:23:48",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:48",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-test.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:49",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0900-SPEC-test.md"
+  },
+  {
+    "ts": "2026-03-18T06:23:49",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0900-SPEC-test.md",
+    "pending": 1,
+    "active": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:49",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0623-SPEC-fix-test.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:50",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:50",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-test.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:50",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0900-SPEC-test.md"
+  },
+  {
+    "ts": "2026-03-18T06:23:50",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0900-SPEC-test.md",
+    "pending": 1,
+    "active": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:51",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0623-SPEC-fix-test.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:51",
+    "event": "TICK_START",
+    "msg": "Starting pool (20 pending)",
+    "pending": 20,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:51",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0000-SPEC-0.md",
+    "pending": 19,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:51",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 2/3",
+    "spec": "2026-03-11-0001-SPEC-1.md",
+    "pending": 18,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:51",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 3/3",
+    "spec": "2026-03-11-0002-SPEC-2.md",
+    "pending": 17,
+    "active": 3,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:52",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0002-SPEC-2.md"
+  },
+  {
+    "ts": "2026-03-18T06:23:52",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0002-SPEC-2.md",
+    "pending": 18,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:52",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0623-SPEC-fix-2.md",
+    "pending": 17,
+    "active": 3,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:52",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0001-SPEC-1.md"
+  },
+  {
+    "ts": "2026-03-18T06:23:52",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0001-SPEC-1.md",
+    "pending": 18,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:52",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0623-SPEC-fix-1.md",
+    "pending": 17,
+    "active": 3,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:52",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0000-SPEC-0.md"
+  },
+  {
+    "ts": "2026-03-18T06:23:52",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0000-SPEC-0.md",
+    "pending": 18,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:53",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0623-SPEC-fix-0.md",
+    "pending": 17,
+    "active": 3,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:54",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:54",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-initial.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:55",
+    "event": "SPEC_DONE",
+    "msg": "CLEAN",
+    "spec": "2026-03-11-0900-SPEC-initial.md",
+    "pending": 0,
+    "active": 0,
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:55",
+    "event": "POOL_COMPLETE",
+    "msg": "Pool finished. Cost: $0.10",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:55",
+    "event": "WATCH_ACTIVE",
+    "msg": "5 active slot(s), polling in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:55",
+    "event": "WATCH_ACTIVE",
+    "msg": "5 active slot(s), polling in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:55",
+    "event": "WATCH_FOUND",
+    "msg": "1 spec(s) to process",
+    "pending": 1,
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:56",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:56",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-1000-SPEC-new.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:56",
+    "event": "SPEC_DONE",
+    "msg": "CLEAN",
+    "spec": "2026-03-11-1000-SPEC-new.md",
+    "pending": 0,
+    "active": 0,
+    "cost": 0.2
+  },
+  {
+    "ts": "2026-03-18T06:23:56",
+    "event": "POOL_COMPLETE",
+    "msg": "Pool finished. Cost: $0.20",
+    "cost": 0.2
+  },
+  {
+    "ts": "2026-03-18T06:23:56",
+    "event": "WATCH_ACTIVE",
+    "msg": "1 pending, 5 active slot(s), polling in 60s",
+    "cost": 0.2
+  },
+  {
+    "ts": "2026-03-18T06:23:56",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:57",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-initial.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:57",
+    "event": "SPEC_DONE",
+    "msg": "CLEAN",
+    "spec": "2026-03-11-0900-SPEC-initial.md",
+    "pending": 0,
+    "active": 0,
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:57",
+    "event": "POOL_COMPLETE",
+    "msg": "Pool finished. Cost: $0.10",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:57",
+    "event": "WATCH_ACTIVE",
+    "msg": "5 active slot(s), polling in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:57",
+    "event": "WATCH_ACTIVE",
+    "msg": "5 active slot(s), polling in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:57",
+    "event": "WATCH_ACTIVE",
+    "msg": "5 active slot(s), polling in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:57",
+    "event": "WATCH_ACTIVE",
+    "msg": "5 active slot(s), polling in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:58",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:58",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-initial.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:58",
+    "event": "SPEC_DONE",
+    "msg": "CLEAN",
+    "spec": "2026-03-11-0900-SPEC-initial.md",
+    "pending": 0,
+    "active": 0,
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:58",
+    "event": "POOL_COMPLETE",
+    "msg": "Pool finished. Cost: $0.10",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:58",
+    "event": "WATCH_ACTIVE",
+    "msg": "5 active slot(s), polling in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:58",
+    "event": "WATCH_ACTIVE",
+    "msg": "5 active slot(s), polling in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:58",
+    "event": "WATCH_ACTIVE",
+    "msg": "5 active slot(s), polling in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:23:59",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:23:59",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-late.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:00",
+    "event": "SPEC_DONE",
+    "msg": "CLEAN",
+    "spec": "2026-03-11-0900-SPEC-late.md",
+    "pending": 0,
+    "active": 0,
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:24:00",
+    "event": "POOL_COMPLETE",
+    "msg": "Pool finished. Cost: $0.10",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:24:00",
+    "event": "WATCH_ACTIVE",
+    "msg": "5 active slot(s), polling in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:24:00",
+    "event": "WATCH_ACTIVE",
+    "msg": "5 active slot(s), polling in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:24:01",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:01",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-1.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:01",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0900-SPEC-1.md"
+  },
+  {
+    "ts": "2026-03-18T06:24:01",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0900-SPEC-1.md",
+    "pending": 1,
+    "active": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:01",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0624-SPEC-fix-1.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:02",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:02",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-1.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:02",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0900-SPEC-1.md"
+  },
+  {
+    "ts": "2026-03-18T06:24:02",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0900-SPEC-1.md",
+    "pending": 1,
+    "active": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:03",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0624-SPEC-fix-1.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:04",
+    "event": "TICK_START",
+    "msg": "Starting pool (2 pending)",
+    "pending": 2,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:04",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-p1a.md",
+    "pending": 1,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:05",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 2/3",
+    "spec": "2026-03-11-0930-SPEC-p1b.md",
+    "pending": 0,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:05",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0900-SPEC-p1a.md"
+  },
+  {
+    "ts": "2026-03-18T06:24:05",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0900-SPEC-p1a.md",
+    "pending": 1,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:05",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0624-SPEC-fix-p1a.md",
+    "pending": 0,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:06",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0930-SPEC-p1b.md"
+  },
+  {
+    "ts": "2026-03-18T06:24:06",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0930-SPEC-p1b.md",
+    "pending": 1,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:06",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0624-SPEC-fix-p1b.md",
+    "pending": 0,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:07",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:07",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-1.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:07",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0900-SPEC-1.md"
+  },
+  {
+    "ts": "2026-03-18T06:24:07",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0900-SPEC-1.md",
+    "pending": 1,
+    "active": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:07",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0624-SPEC-fix-1.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:08",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:08",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-1.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:08",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0900-SPEC-1.md"
+  },
+  {
+    "ts": "2026-03-18T06:24:08",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0900-SPEC-1.md",
+    "pending": 1,
+    "active": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:08",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0624-SPEC-fix-1.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:09",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:09",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-1.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:09",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0900-SPEC-1.md"
+  },
+  {
+    "ts": "2026-03-18T06:24:09",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0900-SPEC-1.md",
+    "pending": 1,
+    "active": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:09",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0624-SPEC-fix-1.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:10",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:10",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-1.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:10",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0900-SPEC-1.md"
+  },
+  {
+    "ts": "2026-03-18T06:24:10",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0900-SPEC-1.md",
+    "pending": 1,
+    "active": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:24:11",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0624-SPEC-fix-1.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:25:46",
+    "event": "LIVENESS_PING",
+    "msg": "2 active, 0 pending",
+    "pending": 0,
+    "active": 2,
+    "cost": 3.612234
+  },
+  {
+    "ts": "2026-03-18T06:26:46",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:26:47",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-initial.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:26:47",
+    "event": "SPEC_DONE",
+    "msg": "CLEAN",
+    "spec": "2026-03-11-0900-SPEC-initial.md",
+    "pending": 0,
+    "active": 0,
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:26:47",
+    "event": "POOL_COMPLETE",
+    "msg": "Pool finished. Cost: $0.10",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:26:47",
+    "event": "WATCH_ACTIVE",
+    "msg": "6 active slot(s), polling in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:26:47",
+    "event": "WATCH_ACTIVE",
+    "msg": "6 active slot(s), polling in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:26:47",
+    "event": "WATCH_ACTIVE",
+    "msg": "6 active slot(s), polling in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:26:47",
+    "event": "WATCH_ACTIVE",
+    "msg": "6 active slot(s), polling in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:26:55",
+    "event": "SPEC_DONE",
+    "msg": "CLEAN",
+    "spec": "2026-03-16-SPEC-TASK-228-des-pipeline-runner.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 9.724644000000001
+  },
+  {
+    "ts": "2026-03-18T06:27:28",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:27:28",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-initial.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:27:28",
+    "event": "SPEC_DONE",
+    "msg": "CLEAN",
+    "spec": "2026-03-11-0900-SPEC-initial.md",
+    "pending": 0,
+    "active": 0,
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:27:28",
+    "event": "POOL_COMPLETE",
+    "msg": "Pool finished. Cost: $0.10",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:27:28",
+    "event": "WATCH_IDLE",
+    "msg": "Queue drained, next check in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:27:28",
+    "event": "WATCH_IDLE",
+    "msg": "Queue drained, next check in 60s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:27:28",
+    "event": "WATCH_IDLE",
+    "msg": "Queue drained, next check in 120s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:27:28",
+    "event": "WATCH_IDLE",
+    "msg": "Queue drained, next check in 180s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:27:28",
+    "event": "TICK_START",
+    "msg": "Starting pool (1 pending)",
+    "pending": 1,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:27:29",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-0900-SPEC-initial.md",
+    "pending": 0,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:27:29",
+    "event": "SPEC_DONE",
+    "msg": "CLEAN",
+    "spec": "2026-03-11-0900-SPEC-initial.md",
+    "pending": 0,
+    "active": 0,
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:27:29",
+    "event": "POOL_COMPLETE",
+    "msg": "Pool finished. Cost: $0.10",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:27:29",
+    "event": "WATCH_IDLE",
+    "msg": "Queue drained, next check in 45s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:27:29",
+    "event": "WATCH_IDLE",
+    "msg": "Queue drained, next check in 45s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:27:29",
+    "event": "WATCH_IDLE",
+    "msg": "Queue drained, next check in 45s",
+    "cost": 0.1
+  },
+  {
+    "ts": "2026-03-18T06:27:40",
+    "event": "TICK_START",
+    "msg": "Starting pool (2 pending)",
+    "pending": 2,
+    "blocked": 0,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:27:40",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 1/3",
+    "spec": "2026-03-11-1000-SPEC-p0.md",
+    "pending": 1,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:27:40",
+    "event": "SPEC_SUBMITTED",
+    "msg": "Slot 2/3",
+    "spec": "2026-03-11-0900-SPEC-p2.md",
+    "pending": 0,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:27:40",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-1000-SPEC-p0.md"
+  },
+  {
+    "ts": "2026-03-18T06:27:40",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-1000-SPEC-p0.md",
+    "pending": 1,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:27:40",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0627-SPEC-fix-p0.md",
+    "pending": 0,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:27:40",
+    "event": "FIX_CYCLE",
+    "msg": "Cycle 1/2",
+    "spec": "2026-03-11-0900-SPEC-p2.md"
+  },
+  {
+    "ts": "2026-03-18T06:27:40",
+    "event": "SPEC_DONE",
+    "msg": "NEEDS_DAVE",
+    "spec": "2026-03-11-0900-SPEC-p2.md",
+    "pending": 1,
+    "active": 1,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:27:40",
+    "event": "BACKFILL",
+    "msg": "Backfilled into slot",
+    "spec": "2026-03-18-0627-SPEC-fix-p2.md",
+    "pending": 0,
+    "active": 2,
+    "cost": 0.0
+  },
+  {
+    "ts": "2026-03-18T06:28:55",
+    "event": "LIVENESS_PING",
+    "msg": "1 active, 0 pending",
+    "pending": 0,
+    "active": 1,
+    "cost": 9.724644000000001
+  },
+  {
+    "ts": "2026-03-18T06:30:55",
+    "event": "LIVENESS_PING",
+    "msg": "1 active, 0 pending",
+    "pending": 0,
+    "active": 1,
+    "cost": 9.724644000000001
+  }
+]

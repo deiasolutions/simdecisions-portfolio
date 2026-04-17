@@ -1,0 +1,76 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-WIKI-RECON-001-wiki-infrastructure-audit
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260416-0921
+# Task file: QUEUE-TEMP-SPEC-WIKI-RECON-001-wiki-infrastructure-audit.md
+# Success: True
+# Duration: 197.0s
+# Files modified: 5 (verified)
+# Cost (USD): $2.3107710000000004
+# Turns: 19
+# API duration (ms): 182736
+# Session ID: 18cdd9ee-6bb0-46c7-8602-a31509907cdf
+# Boot injected: True
+
+---
+
+Perfect! I've completed the comprehensive wiki infrastructure audit. Let me summarize what I found:
+
+## Summary
+
+I've completed a thorough audit of the wiki infrastructure and produced a comprehensive findings report. Here's what I discovered:
+
+### What's Built ✅
+
+**Backend (Functional):**
+- Full CRUD API (create, read, update, delete pages)
+- Versioning system (tracks all page versions)
+- Backlinks query (finds pages linking to a page)
+- Frontmatter & wikilink parsing
+- ONET data tables (occupations, skills, wages, AI exposure)
+- Ingest/query/lint operations
+
+**Frontend (Partially Functional):**
+- WikiPane with tree browser ✅
+- MarkdownViewer with wikilink navigation ✅
+- BacklinksPanel ✅
+- Registered in app registry ✅
+- wiki.set.md configuration ✅
+
+### What's Missing ❌
+
+**Critical Blockers (P0):**
+1. **Zero pages exist** — no seeding, no content
+2. **No dispatch integration** — bees can't retrieve wiki pages as context
+3. **No SCHEMA.md** — no spec-to-wiki mapping
+
+**Important Gaps (P1):**
+4. **WikiEditor missing** — API-only creation, no in-UI editing
+5. **WikiSearch missing** — no full-text search or discovery
+
+**Infrastructure Issues (P2):**
+6. **log.md path wrong** — writes to `.data/wiki` (ephemeral), not repo
+7. **raw/ directory missing** — LLM Wiki pattern not set up
+8. **No .wiki/ directories** — convention from spec not implemented
+
+### Key Finding
+
+**The wiki infrastructure is 80% built but 0% viable for bee context injection because:**
+- No content exists (page_count: 0)
+- No integration with dispatch.py
+- No SCHEMA.md to map specs → wiki pages
+
+### Recommendations
+
+**To reach "wiki-first viable" requires 7 follow-on specs:**
+
+1. **SPEC-WIKI-SEED-001** (P0, Small) — Seed ONET + 10-20 tool pages
+2. **SPEC-WIKI-DISPATCH-001** (P0, Medium) — Wire dispatch.py to query wiki
+3. **SPEC-WIKI-SCHEMA-001** (P0, Small) — Create SCHEMA.md mapping
+4. **SPEC-WIKI-SEARCH-001** (P1, Medium) — Add search endpoint + UI
+5. **SPEC-WIKI-EDITOR-001** (P1, Medium) — Build in-UI editor
+6. **SPEC-WIKI-WATCHER-001** (P2, Small) — Auto-ingest daemon
+7. **SPEC-WIKI-PATHS-001** (P2, Small) — Fix path resolution
+
+The report includes complete YAML findings blocks for all 5 required sections (infrastructure, content, adoption, gap_assessment, recommendations) and answers all 10 research questions with file:line evidence.

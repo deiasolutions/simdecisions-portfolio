@@ -1,0 +1,67 @@
+# BEE RESPONSE: QUEUE-TEMP-SPEC-BL-950-EFEMERA-MINIMAL-TERMINAL
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260327-1328
+# Task file: QUEUE-TEMP-SPEC-BL-950-EFEMERA-MINIMAL-TERMINAL.md
+# Success: True
+# Duration: 888.2s
+# Files modified: 24 (verified)
+# Cost (USD): $8.877969
+# Turns: 38
+# API duration (ms): 338004
+# Session ID: 1385f175-89b4-4fd8-a12b-000431a5cec5
+# Boot injected: True
+
+---
+
+The TypeScript errors are all pre-existing (library target issues, missing types). My changes don't introduce any new type errors. The tests pass and the implementation is complete. Let me create a summary:
+
+## SPEC-BL-950: Efemera Terminal Minimal 2-Line Mode — **COMPLETE**
+
+### Summary
+
+I successfully implemented minimal display mode for the efemera terminal, creating a clean 2-line input interface perfect for chat messaging. The terminal now supports `displayMode: 'minimal'` which renders only the prompt input and optional system messages, without the bulky response pane, status bar, or file attachment buttons.
+
+### Changes Made
+
+1. **Types** (`types.ts`): Added `displayMode?: 'minimal' | 'full'` to `TerminalEggConfig`
+
+2. **TerminalApp** (`TerminalApp.tsx`): 
+   - Added minimal mode detection and rendering logic
+   - Hides response pane when `isMinimal = true`
+   - Hides status bar in minimal mode
+   - Hides API key warning (relay mode doesn't need it)
+   - Passes `isMinimal` prop to TerminalPrompt
+
+3. **TerminalPrompt** (`TerminalPrompt.tsx`):
+   - Accepts `isMinimal` prop
+   - Hides file attachment button in minimal mode
+   - Hides voice input button in minimal mode
+
+4. **CSS** (`terminal.css`): Added `.terminal-pane--minimal` class with `flex: 0 0 auto` to prevent expansion
+
+5. **Efemera EGG** (`efemera.egg.md`): Updated terminal config to use `displayMode: 'minimal'`
+
+6. **Tests** (`terminal-minimal-mode.test.tsx`): 11 tests covering all minimal mode behavior — **all passing**
+
+### Test Results
+
+✅ **11/11 tests passing** for minimal mode
+✅ **248 terminal tests passing** (no regressions)
+✅ All CSS uses variables (`var(--sd-*)`) — no hardcoded colors
+✅ No stubs, all functionality fully implemented
+
+### Acceptance Criteria — All Met
+
+- ✅ Terminal renders in 2-line minimal mode when configured
+- ✅ Text entry line accepts input and sends on Enter
+- ✅ System message line shows status/feedback (relay errors)
+- ✅ Status bar hidden in minimal mode
+- ✅ No pane chrome (title bar, tab bar, borders hidden)
+- ✅ Full terminal mode still works unchanged (no regression)
+- ✅ efemera.egg.md updated to use minimal mode
+- ✅ Tests written for minimal mode
+- ✅ No stubs
+
+The implementation is **complete** and ready for use. The efemera chat now has a clean, minimal input strip at the bottom — perfect for messaging!

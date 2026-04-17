@@ -1,0 +1,31 @@
+# BEE RESPONSE: TASK-027-E2E-ROUTE-TESTS
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260312-1031
+# Task file: TASK-027-E2E-ROUTE-TESTS.md
+# Success: True
+# Duration: 481.8s
+# Files modified: 13 (verified)
+# Cost (USD): $0
+# Turns: 1
+# API duration (ms): 297637
+# Session ID: 535201f2-7c2c-4a6b-80e4-d2ce28471a81
+# Boot injected: True
+
+---
+
+I see the shell routes were added! The E2E test suite is complete and all 27 tests pass (24 passed, 3 skipped for cloud mode). The full hivenode test suite shows 593 passed tests with no regressions.
+
+**TASK-027 is COMPLETE.**
+
+### Deliverables
+
+✅ **`tests/hivenode/test_e2e.py`** — 565 lines, 27 comprehensive E2E tests  
+✅ **Real server subprocess** on random port with full isolation  
+✅ **Real HTTP calls** via `httpx.AsyncClient` (not mocked transport)  
+✅ **All 16 routes tested** (health, status, auth, ledger, storage, node)  
+✅ **24 passing tests**, 3 skipped (cloud mode only)  
+✅ **Response file** written to `.deia/hive/responses/`
+
+The E2E test suite verifies the complete HTTP → route → business logic → storage → response flow with real data on disk and in SQLite. All tests are isolated using temp directories and a random port to avoid conflicts.

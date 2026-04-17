@@ -1,0 +1,57 @@
+# BEE RESPONSE: 2026-03-17-BRIEFING-TASK-241-production-url-smoke-test
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260317-0929
+# Task file: 2026-03-17-BRIEFING-TASK-241-production-url-smoke-test.md
+# Success: True
+# Duration: 140.5s
+# Files modified: 16 (verified)
+# Cost (USD): $0.6972929999999999
+# Turns: 8
+# API duration (ms): 116970
+# Session ID: 1a266bee-52e2-4be2-a4a1-9d8a30f2a071
+# Boot injected: True
+
+---
+
+Perfect! I've completed my work as Q33N. Let me now report back to Q33NR:
+
+---
+
+## Q33N Report: TASK-241 Task File Ready for Review
+
+I have written the task file for **TASK-241: Production URL Smoke Test Script** based on the briefing from Q33NR.
+
+### Task File Created
+**Location:** `.deia\hive\tasks\2026-03-17-TASK-241-production-url-smoke-test.md`
+
+### What the Bee Will Build
+1. **`_tools/smoke_test_production.py`** (~200 lines)
+   - Tests 5 production URLs: shiftcenter.com, chat.efemera.live, code.shiftcenter.com, ra96it.com, deiasolutions.org
+   - Checks: HTTP 200/3xx, response time < 5s, SSL validation (auto via urllib)
+   - Special handling: deiasolutions.org 404/503 → WARN not FAIL
+   - Exit code 0 (pass) or 1 (fail)
+   - Follows `smoke_test_dns.py` pattern exactly
+
+2. **`tests/_tools/test_smoke_production.py`** (~150 lines)
+   - 5+ test cases with mocked HTTP calls
+   - TDD: tests written FIRST
+   - Tests: all success, one fail, timeout, SSL error, 404 acceptable
+
+### Constraints Verified
+- ✅ No file over 500 lines
+- ✅ No stubs allowed
+- ✅ Python stdlib only (urllib, ssl, socket, argparse, sys, time)
+- ✅ TDD requirements specified
+- ✅ All file paths absolute
+- ✅ 8-section response file mandatory
+
+### Model Assignment
+**haiku** — Straightforward Python script following existing pattern.
+
+### Files for Review
+1. `.deia\hive\tasks\2026-03-17-TASK-241-production-url-smoke-test.md` (task file)
+2. `.deia\hive\responses\20260317-Q33N-TASK-241-READY-FOR-REVIEW.md` (this summary)
+
+**Awaiting Q33NR review and approval to dispatch the bee.**

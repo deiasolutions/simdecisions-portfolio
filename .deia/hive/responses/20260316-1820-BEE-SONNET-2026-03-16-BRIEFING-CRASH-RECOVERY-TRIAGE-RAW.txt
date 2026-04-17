@@ -1,0 +1,71 @@
+# BEE RESPONSE: 2026-03-16-BRIEFING-crash-recovery-triage
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260316-1820
+# Task file: 2026-03-16-BRIEFING-crash-recovery-triage.md
+# Success: True
+# Duration: 284.5s
+# Files modified: 11 (verified)
+# Cost (USD): $3.037827
+# Turns: 32
+# API duration (ms): 259102
+# Session ID: 8027e087-c82e-47f4-9da2-a7479e8c3b9a
+# Boot injected: True
+
+---
+
+Perfect! Now let me create a quick summary to report back to Q33NR:
+
+## Crash Recovery Triage — COMPLETE ✅
+
+I've completed the crash recovery triage for all 3 orphaned specs. Here's what I found:
+
+### Summary
+
+| Spec | Verdict | Action |
+|------|---------|--------|
+| **SPEC-1502** (palette-drag-fix) | ✅ **COMPLETE** | None — work landed, 20 tests passing |
+| **SPEC-1608** (fix-canvas-palette-dnd) | ⚠️ **INVALID** | None — false positive, no actual failure |
+| **SPEC-1750** (fix-volume-sync-e2e) | ⚠️ **PARTIAL** | New fix spec written |
+
+### What I Did
+
+1. ✅ Read all 3 bee responses from `.deia/hive/responses/`
+2. ✅ Verified codebase status (ran frontend + backend tests)
+3. ✅ Confirmed all specs already in correct locations (_done/ or _dead/)
+4. ✅ Wrote comprehensive triage report
+5. ✅ Created new fix spec for SPEC-1750 (2 failing tests)
+
+### Key Findings
+
+**SPEC-1502:** Work complete — TreeNodeRow drag implementation + 20 passing tests. No action needed.
+
+**SPEC-1608:** Invalid spec with placeholder error text ("Dispatch reported failure"). Investigation confirmed the original w2-09 work is complete and passing all tests. This was a race condition false positive. No action needed.
+
+**SPEC-1750:** Partial completion — 10/12 tests passing, 2 failures:
+- `test_e2e_conflict_resolution` — assertion error (expects 1 file, gets 2)
+- `test_e2e_offline_queue` — TypeError (await on non-async flush())
+
+### Files Created
+
+1. **Triage Report:** `.deia/hive/responses/20260316-CRASH-RECOVERY-TRIAGE-REPORT.md`
+2. **New Fix Spec:** `.deia/hive/queue/2026-03-16-SPEC-fix-volume-sync-e2e-tests.md`
+3. **Completion Report:** `.deia/hive/responses/20260316-Q33N-CRASH-RECOVERY-TRIAGE-COMPLETE.md`
+
+### Next Steps (Awaiting Your Approval)
+
+The new fix spec is ready for review and dispatch:
+- **File:** `2026-03-16-SPEC-fix-volume-sync-e2e-tests.md`
+- **Priority:** P1
+- **Model:** haiku
+- **Estimated cost:** ~$2-3 USD
+- **What it fixes:** 2 failing tests in test_sync_e2e.py
+
+**All triage constraints followed:**
+- ✅ Did NOT dispatch bees (waiting for your approval)
+- ✅ Did NOT modify source code
+- ✅ Did NOT run git write operations
+- ✅ DID run tests read-only to verify status
+
+Ready for your review of the new fix spec.

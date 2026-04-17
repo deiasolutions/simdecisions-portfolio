@@ -1,0 +1,54 @@
+# BEE RESPONSE: TASK-REFACTOR-MONITOR-003
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260407-2213
+# Task file: TASK-REFACTOR-MONITOR-003.md
+# Success: False
+# Duration: 787.0s
+# Files modified: 10 (verified)
+# Cost (USD): $5.235462
+# Turns: 59
+# API duration (ms): 355988
+# Session ID: ddda651d-f85e-48d5-ad64-90806fcaae03
+# Boot injected: True
+
+---
+
+## Monitoring Complete
+
+I've completed the 45-minute monitoring window for Phase 2 of the overnight refactor pipeline. Here's what I found:
+
+### Pipeline Status
+
+**Phase 0 (Inventory):** ✅ COMPLETE (4/4 specs)
+**Phase 1 (Validation):** ✅ COMPLETE (4/4 specs, 98.2% pass rate)
+**Phase 2 (Architecture):** ⚠️ **BLOCKED** (1/5 specs complete)
+
+### What Completed
+
+**SPEC-030 (Directory Consolidation):** ✅ Successfully committed (84b00db)
+- Moved infrastructure to shell/infrastructure/
+- Moved adapters to shell/adapters/
+- Updated 157 import statements
+- No syntax errors introduced
+
+### Critical Blocker
+
+**MW-V04 Dispatcher Deadlock:** The dispatcher daemon is stuck trying to dispatch a zombie spec (MW-V04) that's missing from the queue. This is blocking ALL subsequent dispatches, including:
+- SPEC-031 (set-md configs) — waiting in queue but can't dispatch
+- SPEC-032, 033, 034 — blocked by dependency chain
+
+The dispatcher logs show it attempting MW-V04 every 60 seconds, failing with `"spec_not_found"`, and skipping the entire queue.
+
+### Recommended Fix
+
+**Restart the scheduler daemon** to regenerate schedule.json without the stale MW-V04 entry:
+```bash
+pkill -f scheduler_daemon.py
+python hivenode/scheduler/scheduler_daemon.py --schedule-dir .deia/hive --queue-dir .deia/hive/queue &
+```
+
+This should unblock SPEC-031 and allow Phase 2 to continue.
+
+Full monitoring report written to: `.deia/hive/responses/20260407-REFACTOR-MONITOR-003-RESPONSE.md`

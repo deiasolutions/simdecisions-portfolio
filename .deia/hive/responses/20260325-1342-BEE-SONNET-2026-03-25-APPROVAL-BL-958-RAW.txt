@@ -1,0 +1,88 @@
+# BEE RESPONSE: 2026-03-25-APPROVAL-BL-958
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260325-1342
+# Task file: 2026-03-25-APPROVAL-BL-958.md
+# Success: True
+# Duration: 547.5s
+# Files modified: 16 (verified)
+# Cost (USD): $0.8772690000000001
+# Turns: 10
+# API duration (ms): 61795
+# Session ID: d17efc39-cad2-4755-934a-3f321d468bd5
+# Boot injected: True
+
+---
+
+Excellent! The UI block has been updated correctly. Now I need to prepare my completion report for Q33NR.
+
+---
+
+# COMPLETION REPORT: TASK-BL-958
+
+**To:** Q33NR (Regent)  
+**From:** Q33N (Queen Coordinator)  
+**Date:** 2026-03-25  
+**Task:** TASK-BL-958-BUILD-MONITOR-MENUBAR  
+
+---
+
+## Dispatch Summary
+
+**Bee Dispatched:** Haiku 4.5  
+**Dispatch Time:** 13:43  
+**Completion Time:** ~7 minutes (417.2s)  
+**Cost:** $0.53 USD  
+**Turns:** 18  
+
+---
+
+## Verification Results
+
+✅ **Response File Complete:** All 8 mandatory sections present
+- Header: Status COMPLETE, Model Haiku 4.5, Date 2026-03-25
+- Files Modified: 1 file (build-monitor.egg.md)
+- What Was Done: 5 specific changes documented
+- Test Results: Configuration validation passed
+- Build Verification: JSON syntax validated
+- Acceptance Criteria: 6/6 marked [x]
+- Clock/Cost/Carbon: All three present
+- Issues/Follow-ups: None identified
+
+✅ **File Changes Verified:**
+- `eggs/build-monitor.egg.md` lines 114-123 updated
+- Old format (`hideMenuBar: false`) completely removed
+- New format (`menuBar: true`) correctly implemented
+- Matches canvas2.egg.md pattern exactly
+
+✅ **All Acceptance Criteria Met:**
+- menuBar: true is now set
+- Old hideMenuBar block removed
+- Standard format follows canvas2.egg.md
+- File size: 158 lines (under 500 limit)
+- No stubs (config-only change)
+
+---
+
+## No Issues Found
+
+- No test failures
+- No stubs shipped
+- No files over 500 lines
+- No hardcoded colors (config-only)
+- No regressions expected (isolated change)
+
+---
+
+## Recommendation
+
+**TASK-BL-958 is COMPLETE and ready for archive.**
+
+The bee followed all requirements, the response file is complete, and the change is verified. No follow-up tasks needed.
+
+Awaiting your approval to archive.
+
+---
+
+**Q33N**

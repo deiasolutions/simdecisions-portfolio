@@ -1,0 +1,59 @@
+# BEE RESPONSE: 2026-03-24-BRIEFING-P0-BUG-BLITZ
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: queen
+# Timestamp: 20260324-1006
+# Task file: 2026-03-24-BRIEFING-P0-BUG-BLITZ.md
+# Success: True
+# Duration: 178.6s
+# Files modified: 3 (verified)
+# Cost (USD): $1.547718
+# Turns: 22
+# API duration (ms): 175061
+# Session ID: af08093a-785a-4520-b3cf-d566b47a929c
+# Boot injected: True
+
+---
+
+No P0 bug responses yet (all those are from the canvas port overnight). Let me provide a summary to the user:
+
+---
+
+## P0 Bug Blitz — Dispatch Complete ✓
+
+I've successfully dispatched **6 Sonnet bees** to fix all 7 P0 bugs plus the MessageBus API violations. All bees are running in parallel.
+
+### Dispatched Tasks:
+
+**Wave 0 (Verification):**
+1. **TASK-BUG-VERIFY-WAVE-0** — Verify if BUG-018, BUG-019, BUG-028 were already fixed by the canvas port
+
+**Wave 1 (Fix Required):**
+2. **TASK-BUG-017** — OAuth redirect shows LandingPage instead of Shell
+3. **TASK-BUG-023** — Canvas components panel doesn't collapse to icon-only mode
+4. **TASK-BUG-058** — Canvas to_ir handler not wired (IR deposits don't render)
+5. **TASK-BUG-068** — Explorer tree missing file type icons
+
+**Wave 1.5 (Bus API Sweep):**
+6. **TASK-BUS-API-SWEEP** — Fix all `bus.emit()`, `bus.on()`, `bus.off()` violations across `browser/src/`
+
+### Files Created:
+- **Task file:** `.deia/hive/tasks/2026-03-24-TASK-BUS-API-SWEEP.md` (146 lines)
+- **Dispatch report:** `.deia/hive/responses/20260324-Q33N-P0-BUG-BLITZ-DISPATCH-REPORT.md` (180 lines)
+- **Q33N response:** `.deia/hive/responses/20260324-QUEEN-2026-03-24-BRIEFING-P0-BUG-BLITZ-RESPONSE.md` (this file)
+
+### What Happens Next:
+
+1. **Bees complete their work** (30-60 min estimated wall time, parallel execution)
+2. **Response files appear** in `.deia/hive/responses/20260324-TASK-*-RESPONSE.md`
+3. **Q33N reads responses** and verifies all 8 sections present
+4. **Wave 0 results** determine if 3 bugs were already fixed by canvas port
+5. **Inventory updated** for fixed bugs via `python _tools/inventory.py bug update`
+6. **Report to Q33NR** with completion summary
+
+### Cost Estimate:
+- **Clock:** 38-68 minutes (including Q33N coordination)
+- **Cost:** $3.15-6.15 USD (6 Sonnet bees + coordination)
+- **Carbon:** 53-103g CO2e
+
+**Status:** All bees dispatched and running. No blockers. Awaiting completion.

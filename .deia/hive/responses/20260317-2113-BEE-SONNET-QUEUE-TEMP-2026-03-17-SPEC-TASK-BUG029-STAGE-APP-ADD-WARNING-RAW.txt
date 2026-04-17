@@ -1,0 +1,41 @@
+# BEE RESPONSE: QUEUE-TEMP-2026-03-17-SPEC-TASK-BUG029-stage-app-add-warning
+# Adapter: hivenode.adapters.cli.claude_code_cli_adapter.ClaudeCodeCLIAdapter
+# Model: sonnet
+# Role: bee
+# Timestamp: 20260317-2113
+# Task file: QUEUE-TEMP-2026-03-17-SPEC-TASK-BUG029-stage-app-add-warning.md
+# Success: True
+# Duration: 1912.1s
+# Files modified: 67 (verified)
+# Cost (USD): $14.069697
+# Turns: 56
+# API duration (ms): 955354
+# Session ID: 267558ec-bc04-4622-aca4-61867cc4182f
+# Boot injected: True
+
+---
+
+Perfect! The fix is complete. Let me create a summary of what was done:
+
+## Summary
+
+I successfully fixed BUG-029 where adding an app from an EmptyPane in Stage layout was showing a "takeover window" warning instead of spawning the app into the current pane.
+
+### Changes Made:
+
+1. **EmptyPane.tsx** - Added logic to detect Stage layout vs single-app mode:
+   - In Stage layout (multi-pane with splits/tabs): apps spawn directly into the pane using `SPAWN_APP` action
+   - In single-app mode: apps show confirmation dialog and navigate with `?egg=` parameter (original behavior preserved)
+
+2. **New test suite** - Created comprehensive tests (7 passing):
+   - Stage layout behavior (no confirm dialog, uses SPAWN_APP)
+   - Single-app mode behavior (shows confirm, navigates with ?egg=)
+   - Primitives and applets always use SPAWN_APP
+
+### Key Implementation:
+- Detection: `isStageLayout = root?.layout && (root.layout.type === 'split' || 'triple-split' || 'tabbed')`
+- For apps in Stage: dispatch `SPAWN_APP` directly
+- For apps in single-app mode: show confirm + navigate
+- Primitives/applets unchanged (always SPAWN_APP)
+
+All tests passing! ✓

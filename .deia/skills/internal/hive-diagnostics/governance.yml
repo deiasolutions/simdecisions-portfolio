@@ -1,0 +1,28 @@
+cert_tier: 3
+promoted_from: null
+promoted_at: null
+promoted_by: null
+
+capabilities:
+  filesystem_read: true
+  filesystem_write: true   # writes gap reports to docs/audits/
+  network_access: false
+  shell_exec: true         # REQUIRED for grep, find, wc commands
+  user_data_access: false
+  model_invocation: true   # LLM analyzes survey results
+  event_ledger_write: true
+
+blast_radius: contained    # survey is read-only, gap report is local
+
+budget:
+  clock_max_seconds: 300   # 5 minutes for survey + gap report
+  coin_max_usd: 0.10       # minimal LLM usage
+  carbon_max_grams: 5.0    # light carbon class
+
+last_scan:
+  timestamp: null
+  threats_detected: []
+  prompt_injection_risk: none
+  pii_exposure_risk: none
+
+event_ledger_id: null
