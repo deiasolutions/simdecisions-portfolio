@@ -2,7 +2,7 @@
 
 **Author:** Dave Eichler  
 **LinkedIn:** [linkedin.com/in/daaaave-atx](https://linkedin.com/in/daaaave-atx)  
-**GitHub:** [DAAAAVE-ATX](https://github.com/DAAAAVE-ATX)  
+**GitHub:** [deiasolutions](https://github.com/deiasolutions)  
 **Contact:** Full source code available on request
 
 This portfolio mirror shows the **real architecture** of SimDecisions—a production platform I designed and built from scratch. Source code is replaced with descriptive stubs that preserve structure.
