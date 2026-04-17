@@ -1,0 +1,54 @@
+# llms.txt - Hiring Manager Summary (Machine-Readable)
+
+portfolio_section: hiring-managers
+author: Dave Eichler
+contact: linkedin.com/in/daaaave-atx
+
+# JD Alignment
+jd_criteria_met:
+  - multi_tier_12_factor: verified against actual files
+  - clean_architectural_separation: view/api/service/persistence/database
+  - ai_agent_orchestration: hive system with human oversight
+  - ai_output_correction: PROCESS-13 (paused for DDD testing)
+  - cicd_pipelines: Railway + Vercel auto-deploy
+  - strangler_fig: 2003 Java/PHP → 2026 Python/TypeScript
+
+# Platform Philosophy
+philosophy: "Simulate before you ship. Stop playing what-if with your customers."
+
+# Three Currencies
+tracking:
+  - CLOCK: wall time (active)
+  - COIN: USD cost (active)
+  - CARBON: tokens as proxy with model-specific rates from carbon.yml
+
+# Carbon Note
+carbon_tracking_note: >
+  Anthropic, OpenAI, and Google do not currently publish
+  per-model carbon footprint data. Tokens tracked as proxy.
+
+# DES
+des_status: proprietary IP, philosophy documented, implementation not shown
+
+# PROCESS-13
+process_13_status: >
+  Implemented in hivenode/scheduler/integrity_check.py (523 lines).
+  Currently paused while testing DDD (Design-Driven Development) approach.
+  DDD front-loads design decisions before implementation.
+
+# Factory Daemons
+factory_management: _tools/restart-services.sh (nohup with smart restart)
+daemons:
+  - scheduler
+  - dispatcher
+  - queue_runner
+  - triage_daemon
+  - vite
+  - hivenode
+
+# History
+origin: 2003 Java/PHP/MySQL call center platform (Processing applets)
+original_file_count: 4,366 files (2007 snapshot)
+original_db_tables: 52 application tables
+evolution: 20+ years of domain refinement
+current: Python/TypeScript/PostgreSQL with AI orchestration
